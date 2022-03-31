@@ -193,7 +193,7 @@ XTest(:,5), XTest(:,6),XTest(:,7), 'VariableNames',varNames);
 
 \begin{frame}[fragile]
 \frametitle{Reducing data}
-We remove \texttt{Gender} and \texttt{FamilySize}
+We remove \texttt{Gender}, \texttt{Risk} and \texttt{FamilySize} and added \texttt{IncomeWealthRatio} $=$ \texttt{Income} $/$ \texttt{Wealth}.
 \tiny
 \begin{verbatim}
 Xsmall = [rescale(IncomeWealthRatio) rescale(pAge) rescale(pFin) rescale(pIncome) rescale(pWealth)];
