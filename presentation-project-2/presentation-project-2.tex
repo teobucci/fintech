@@ -182,6 +182,7 @@ XTest(:,5), XTest(:,6),XTest(:,7), 'VariableNames',varNames);
 
 \begin{frame}[fragile]
 \frametitle{Reducing data}
+We remove \texttt{Gender} and \texttt{FamilySize}
 \tiny
 \begin{verbatim}
 Xsmall = [rescale(IncomeWealthRatio) rescale(pAge) rescale(pFin) rescale(pIncome) rescale(pWealth)];
@@ -232,6 +233,14 @@ Using Bayesian optimization we decide to use the Bagged Tree model after evaluat
     \end{figure}
 \end{frame}
 
+\section{Further development points}
+
+\begin{frame}
+    \begin{itemize}
+        \item more data cleaning to improve model accuracy;
+        \item better data visualization for product recommendation.
+    \end{itemize}
+\end{frame}
 
 
 
