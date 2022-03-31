@@ -174,9 +174,20 @@ XTest(:,5), XTest(:,6),XTest(:,7), 'VariableNames',varNames);
 
 \begin{frame}
     \frametitle{Classification Learner: Boosted Tree confusion matrix}
-    \begin{figure}
-    	\centering
-    	\includegraphics[width=0.6\textwidth]{cl_1_confusion}
+    \begin{figure}  
+        \centering
+        \begin{subfigure}[t]{0.48\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{cl_1_confusion}
+            \caption{Confusion matrix.}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[t]{0.48\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{cl_1_confusion_penalized}
+            \caption{Penalized confusion matrix.}
+        \end{subfigure}
+        %\caption{Comparison of transformations, we'll go with the second.}
     \end{figure}
 \end{frame}
 
