@@ -25,11 +25,13 @@ Keywords:
 	\item Cryptography
 	\item Generation of new money
 \end{itemize}
+
 \section{Decentralization}
+
 \begin{itemize}
 	\item Politically decentralized: Bitcoin is not controlled by a specific entity.
 	\item Architecturally decentralized (or distributed): Bitcoin lives on machines spread across the planet.
-	\item Logically centralized: all machines that Bitcoin lives on agree on a shared status (e.g. how many bitcoins each has).
+	\item Logically centralized: all machines that Bitcoin lives on agree on a shared status (e.g. how many Bitcoins each has).
 \end{itemize}
 
 A blockchain is a distributed (or architecturally decentralized) and politically decentralized database managed by a peer-to-peer network through distributed consensus mechanisms (to agree on a shared state, as logically centralized).\footnote{Visit this website to explore it! \url{https://www.blockchain.com/explorer}}
@@ -44,7 +46,7 @@ A blockchain is a distributed (or architecturally decentralized) and politically
 	\item \textbf{Confirmation:} to be included in a block, and therefore in the Blockchain, a transaction must be confirmed by several nodes (miners), i.e. processed by the network.
 	\item \textbf{Mining:} it is a mathematical process performed by the Blockchain nodes on the candidate block: once solved the block (and therefore all the transactions recorded in it) is confirmed and inserted into a block of the Blockchain. As a reward for their service, miners receive newly created Bitcoins (and the transaction fees). Mining $1$ new block now makes you earn $6.25$ BTC, mining can be done with ad hoc hardware and consumes a lot of energy.
 	      
-	      Miners accumulate transactions all the time (selecting them with a certain criterion, such as those that offer the highest fees). When they have enough transactions to fill a block (which has a fixed size) they try to solve the mining problem. The first miner that solves the mining problem propagates the block in the network, which is verified (they verify if the \textit{proof of work} is valid) by the other nodes and added to their copy of the blockchain.
+	      Miners accumulate transactions all the time (selecting them with a certain criterion, such as those that offer the highest fees). When they have enough transactions to fill a block (which has a fixed size) they try to solve the mining problem. The first miner that solves the mining problem propagates the block in the network, which is verified (they verify if the \textit{Proof of Work} is valid) by the other nodes and added to their copy of the blockchain.
 \end{itemize}
 
 \fg{0.7}{804e766ecde2775d6efff4a980e6a2ab-b0x52ZU7IL-image}
@@ -58,6 +60,7 @@ A blockchain is a distributed (or architecturally decentralized) and politically
 \fg{0.7}{6133e4c47407f4c52e44ce591f19e7c7-bAzikty36C-anatomy_of_a_transaction}
 
 \section{Asymmetric (or public key) encryption}
+
 \begin{itemize}
 	\item Step 1: a public-private key pair is generated for Alice
 	\item Step 2: Bob uses Alice's public key to encrypt the message. Only those who have Alice's private key can decrypt it!
@@ -73,54 +76,48 @@ Public keys are based on the creation of a mathematical problem that is very dif
 
 \textit{An example: RSA encryption.}
 
-Let's take two prime numbers, {\fontfamily{pcr}\selectfont 13} and {\fontfamily{pcr}\selectfont 7} (and don't reveal them to anyone).
+Let's take two prime numbers, \texttt{13} and \texttt{7} (and don't reveal them to anyone).
 
-Let's multiply them together: we get {\fontfamily{pcr}\selectfont n=91}.
+Let's multiply them together: we get \texttt{n=91}.
 
-We choose a public key: {\fontfamily{pcr}\selectfont 5}.
+We choose a public key: \texttt{5}.
 
-We use the \textit{Extended Euclidean Algorithm} with inputs {\fontfamily{pcr}\selectfont 5}, {\fontfamily{pcr}\selectfont 7} and {\fontfamily{pcr}\selectfont 13}, and we get the private key: {\fontfamily{pcr}\selectfont 29}.
+We use the \textit{Extended Euclidean Algorithm} with inputs \texttt{5}, \texttt{7} and \texttt{13}, and we get the private key: \texttt{29}.
 
-So {\fontfamily{pcr}\selectfont n=91}, public key {\fontfamily{pcr}\selectfont 5}, private key {\fontfamily{pcr}\selectfont 29}.
+So \texttt{n=91}, public key \texttt{5}, private key \texttt{29}.
 
-Let Alice and Bob know that {\fontfamily{pcr}\selectfont n=91}, Alice's public key is {\fontfamily{pcr}\selectfont 5}, and her private key is {\fontfamily{pcr}\selectfont 29}.
+Let Alice and Bob know that \texttt{n=91}, Alice's public key is \texttt{5}, and her private key is \texttt{29}.
 
-Bob wants to send a message to Alice: the message is {\fontfamily{pcr}\selectfont 3}.
+Bob wants to send a message to Alice: the message is \texttt{3}.
 
-Then multiply {\fontfamily{pcr}\selectfont 3} by itself {\fontfamily{pcr}\selectfont 5} (public key) times, modulo {\fontfamily{pcr}\selectfont n=91}: {\fontfamily{pcr}\selectfont 3*3*3*3*3=243}, {\fontfamily{pcr}\selectfont mod(243,91)=61}.
+Then multiply \texttt{3} by itself \texttt{5} (public key) times, modulo \texttt{n=91}: \texttt{3*3*3*3*3=243}, \texttt{mod(243,91)=61}.
 
-The public message is {\fontfamily{pcr}\selectfont 61}.
+The public message is \texttt{61}.
 
 By doing the opposite we can decode the message.
 
-{\fontfamily{pcr}\selectfont a=3; at=3;}
+\begin{verbatim}
+a=3; at=3;
+for i=1:5-1
+    at=mod(at*a,91)
+end
+Output=61.
 
-{\fontfamily{pcr}\selectfont for i=1:5-1}
-
-{\fontfamily{pcr}\selectfont  \ at=mod(at*a,91)}
-
-{\fontfamily{pcr}\selectfont end}
-
-{\fontfamily{pcr}\selectfont Output=61}
-
-{\fontfamily{pcr}\selectfont a=61; at=61;}
-
-{\fontfamily{pcr}\selectfont for i=1:29-1}
-
-{\fontfamily{pcr}\selectfont  \ at=mod(at*a,91)}
-
-{\fontfamily{pcr}\selectfont end}
-
-{\fontfamily{pcr}\selectfont Output=3.}
+a=61; at=61;
+for i=1:29-1
+    at=mod(at*a,91)
+end
+Output=3.
+\end{verbatim}
 
 We have decoded the message!
 
 \begin{itemize}
-	\item Alice and Bob know {\fontfamily{pcr}\selectfont n=91}.
-	\item Everyone knows {\fontfamily{pcr}\selectfont 5}.
-	\item Only Alice knows {\fontfamily{pcr}\selectfont 29}.
-	\item Knowing {\fontfamily{pcr}\selectfont 5} (public key) is not sufficient to decrypt the message.
-	\item Can Bob trace Alice's private key? That is, is the information {\fontfamily{pcr}\selectfont 91} sufficient to compromise security?
+	\item Alice and Bob know \texttt{n=91}.
+	\item Everyone knows \texttt{5}.
+	\item Only Alice knows \texttt{29}.
+	\item Knowing \texttt{5} (public key) is not sufficient to decrypt the message.
+	\item Can Bob trace Alice's private key? That is, is the information \texttt{91} sufficient to compromise security?
 	\item Mathematical problem: factorization into prime numbers.
 \end{itemize}
 
@@ -144,7 +141,7 @@ In addition to checking that the digital signatures of the transactions are auth
 
 \section{Proof of Work}
 
-The Bitcoin Blockchain is therefore based on \textit{proof-of-work}.
+The Bitcoin Blockchain is therefore based on \textit{Proof of Work}.
 
 Proof of Work, or PoW, is an algorithm that is used by different cryptocurrencies - such as Bitcoin and Ethereum - to reach a decentralized agreement between different nodes in the process of adding a specific block to the blockchain.
 
@@ -160,11 +157,12 @@ It is also known as the digital fingerprint.
 
 Every transaction has a hash associated with it. In a block, all of the transaction hashes in the block are themselves hashed (sometimes several times, the exact process is complex), and the result is the Merkle root. In other words, the Merkle root is the \textit{hash of all the hashes of all the transactions in the block}. 
 
-Our target is to \textbf{find a variation of it that SHA-256 hashes to a value beginning with '000'}. We vary the string by adding an integer value to the end called a nonce and incrementing it each time. Finding a match for "Hello, world!" takes us 4251 tries (but happens to have zeroes in the first four digits):
+Our target is to \textbf{find a variation of it that SHA-256 hashes to a value beginning with '000'}. We vary the string by adding an integer value to the end called a \texttt{nonce} and incrementing it each time. Finding a match for ``Hello, world!'' takes us 4251 tries (but happens to have zeroes in the first four digits):
 
 A PoW system \textbf{discourages attacks} and other abuse of service by enforcing certain jobs that require a computer's high processing time. A key feature of these works is their asymmetry: the work must be moderately, but easy to control.
 
-Game theory: the nodes of the network compete with each other to register the new block thus obtaining compensation. Thanks to the expected remuneration, most of the nodes have an \textbf{interest in behaving in a "legitimate" manner}, thus contributing to the growth of the blockchain.
+Game theory: the nodes of the network compete with each other to register the new block thus obtaining compensation. Thanks to the expected remuneration, most of the nodes have an \textbf{interest in behaving in a \emph{legitimate} manner}, thus contributing to the growth of the blockchain.
+
 \section{Proof of Stake}
 
 Proof of Stake is an alternative method, a way by which nodes reach a consensus.
@@ -172,17 +170,18 @@ Proof of Stake is an alternative method, a way by which nodes reach a consensus.
 In the Proof of Stake consensus model, the number of digital currency tokens held by each user is an important issue within the system. The greater the stake (``stake''), i.e. the number of tokens owned by a user, the greater the chances that the system is not being breached. The more an individual is exposed to a cryptocurrency, the more likely they are to perform optimally.
 
 The Proof of Stake blocks, unlike the Proof of Work blocks, are not mined, but minted. Participants who have a significant stake in Proof of Stake systems are selected on a pseudorandom basis to mint the blocks and add them to the blockchain.
+
 \section{Uniqueness}
 
 The chain is unique: if two different chains are created (for example, due to a delay in updating the blocks), the \textit{incorrect} one is automatically deleted and overwritten by the correct one.
 
 To determine the correct chain, there are mechanisms: the chain considered correct is always the \textbf{longest one} (longest chain rule). \textbf{The blockchain rewards computational effort.}
 
-Generally, the longest chain is also the one stored by the majority of the network nodes (50\% + 1 rule), given that \textbf{miners are constantly incentivized to create valid blocks} through the fees and bitcoins generated at each resolution of the mining problem. 
+Generally, the longest chain is also the one stored by the majority of the network nodes (50\% + 1 rule), given that \textbf{miners are constantly incentivized to create valid blocks} through the fees and Bitcoins generated at each resolution of the mining problem. 
 
 From a game theory perspective, collaborating on the longest chain is a balance, as no one can achieve a better result for themselves (without collaborating with others) by creating invalid blocks (PoWs). \textbf{This makes it very difficult for a hacker to change even the last block}.
 
-\fg{0.7}{c5d0d8444570c81ebcd5ac910f0741e7-HutyWMPv53-image}
+\fg{0.9}{c5d0d8444570c81ebcd5ac910f0741e7-HutyWMPv53-image}
 
 \section{How the nodes get paid}
 
@@ -194,9 +193,10 @@ Who pays the nodes? \textbf{The system itself}. When a new block is added, besid
 
 Until a few years ago a good computer was enough to produce (mine) Bitcoin, today thousands of very powerful processors and graphics cards are needed.
 
-For the extraction of bitcoins, computers with specific processors called ASICs (application-specific integrated circuits) have been developed; these processors, in addition to having a high cost, also involve a \textbf{high consumption of electricity}.
+For the extraction of Bitcoins, computers with specific processors called ASICs (application-specific integrated circuits) have been developed; these processors, in addition to having a high cost, also involve a \textbf{high consumption of electricity}.
 
 It's \textit{not real-time} technology, it may take up to 1-2 hours to complete a transaction.
+
 \section{Hashing and Notarization}
 
 Notarization is a very useful \textbf{application} of the Blockchain. Suppose you want to prove that a certain document (a thesis for example) was ready on a given day.
@@ -208,8 +208,8 @@ Notarization is a very useful \textbf{application} of the Blockchain. Suppose yo
 How Does It Work? It is not possible to attach documents to the blockchain.
 \begin{enumerate}
 	\item The document is hashed. This means that the content of the document is \textit{summarized}, or better represented, by a string of 64 characters (256bit).
-	\item The 64-character string is then put into a Bitcoin (or other) blockchain transaction using the {\fontfamily{pcr}\selectfont OP\_RETURN} \textbf{field}, it's a \textit{free} field presented in every Bitcoin transaction: free, but limited in size.
-	\item A small Bitcoin payment is made to process the transaction and \textit{register it on the blockchain} (\textbf{you can also make a 0 bitcoin transaction}, so paying only the cost of the transaction - variable but around 0.00001 bitcoin).
+	\item The 64-character string is then put into a Bitcoin (or other) blockchain transaction using the \texttt{OP\_RETURN} \textbf{field}, it's a \textit{free} field presented in every Bitcoin transaction: free, but limited in size.
+	\item A small Bitcoin payment is made to process the transaction and \textit{register it on the blockchain} (\textbf{you can also make a 0 BTC transaction}, so paying only the cost of the transaction - variable but around 0.00001 BTC).
 \end{enumerate}
 
 Hashing is \textit{irreversible} once you know the hash, it is \textit{mathematically impossible} to deduce the original text.
@@ -226,17 +226,17 @@ The cryptography used in Blockchain could certainly be considered to make curren
 
 Not just finance: The Blockchain can be used as a register in which to enter any type of information and consequently also a contract, an act or a certificate, avoiding the intermediation of third parties, but maintaining the guarantee of advertising.
 
-Comparison of transactions capacity\footnote{\url{https://altcointoday.com/bitcoin-ethereum-vs-visa-paypal-transactions-per-second/}}
+Comparison of transactions capacity\footnote{\url{https://altcointoday.com/Bitcoin-ethereum-vs-visa-paypal-transactions-per-second/}}
 \begin{itemize}
 	\item Bitcoin – 3 to 4 transactions per second (1 block every 10 minutes);
 	\item Ethereum – 20 transactions per second (1 block every 15 seconds);
 	\item PayPal – 193 transactions per second average;
-	\item Visa – 1,667 transaction per second.
+	\item Visa – 1.667 transaction per second.
 \end{itemize}
 
 PoW is \textbf{expensive:} it is the main cause of scalability problems (as well as memory problems: all nodes should store all transactions).
 
-Solutions under study: off-chain operations, proof of stake, proof-of-work only on some random blocks, permissioned ledgers.
+Solutions under study: off-chain operations, Proof of Stake, Proof of Work only on some random blocks, permissioned ledgers.
 
 Permissioned ledgers (or private blockchains) can be controlled, and therefore can have ownership. When a new data or record is added to the blockchain, the approval system is not bound to the majority of participants but to a limited number of actors who can be defined as trusted.
 
@@ -261,9 +261,9 @@ Permissioned ledgers (or private blockchains) can be controlled, and therefore c
 	      \end{enumerate}
 \end{enumerate}
 
-Read here to see how to check a block on the blockchain!
+Read here to see how to verify a block on the blockchain!
 
-\url{https://blockchain-academy.hs-mittweida.de/courses/blockchain-introduction-technical-beginner-to-intermediate/lessons/lesson-13-bitcoin-block-hash-verification/topic/how-to-calculate-and-verify-a-hash-of-a-block/}
+{\scriptsize\url{https://blockchain-academy.hs-mittweida.de/courses/blockchain-introduction-technical-beginner-to-intermediate/lessons/lesson-13-Bitcoin-block-hash-verification/topic/how-to-calculate-and-verify-a-hash-of-a-block/}}
 
 \chapter{Cryptoassets (D. Marazzina)}
 
@@ -279,38 +279,39 @@ It's not easy to \textit{diversify} cryptoassets because correlation is very hig
 
 USDT and USDC are very stable.
 
-\textbf{Soft fork:} when there are two versions of the Blockchain and it's solved automatically.
+It may happen that there are so called \textbf{forks} on the Blockchain:
+\begin{itemize}
+	\item \textbf{Soft fork:} when there are two versions of the Blockchain and it's solved automatically.
+	\item \textbf{Hard fork:} when something (a software update that only some install) creates two versions of the Blockchain.
+\end{itemize}
 
-\textbf{Hard fork:} when something (a software update that only some install) creates two versions of the Blockchain.
-
-\textbf{Bitcoin Cash.}
+\paragraph*{Bitcoin Cash.}
 
 It's a cryptocurrency that is a fork of Bitcoin that was created in 2017:
 \begin{itemize}
-	\item On 21 July 2017 bitcoin miners locked in a software upgrade referred to as \textbf{Bitcoin Improvement Proposal (BIP) 91: the Segregated Witness (Consensus layer).}
+	\item On 21 July 2017 Bitcoin miners locked in a software upgrade referred to as \textbf{Bitcoin Improvement Proposal (BIP) 91: the Segregated Witness (Consensus layer).}
 	\item SegWit alleviates the scaling problem by enabling the Lightning Network, an overlay network of micropayment channels, hypothetically resolving the scaling problem by enabling virtually unlimited numbers of instant, low-fee transactions to occur \textit{off chain}.
-	\item By 8 August 100\% of the bitcoin mining pools signaled support for SegWit.
-	\item A small group of mostly China-based bitcoin miners, that were unhappy with bitcoin's proposed SegWit improvement plans, pushed forward alternative plans for a split which \textbf{created Bitcoin Cash}. The proposed split included a plan to increase the number of transactions its ledger can process by increasing the block size limit.
+	\item By 8 August 100\% of the Bitcoin mining pools signaled support for SegWit.
+	\item A small group of mostly China-based Bitcoin miners, that were unhappy with Bitcoin's proposed SegWit improvement plans, pushed forward alternative plans for a split which \textbf{created Bitcoin Cash}. The proposed split included a plan to increase the number of transactions its ledger can process by increasing the block size limit.
 \end{itemize}
 
 In 2018 Bitcoin Cash subsequently split into two cryptocurrencies: Bitcoin Cash, and Bitcoin SV.
 
-\textbf{Bitcoin SV.}
+\paragraph*{Bitcoin SV.}
 \begin{itemize}
 	\item On 15 November 2018, a hard fork chain split of Bitcoin Cash occurred between two rival factions called Bitcoin Cash and Bitcoin SV.
-	\item The split originated from what was described as a \textit{civil war} in two competing bitcoin cash camps.
+	\item The split originated from what was described as a \textit{civil war} in two competing Bitcoin cash camps.
 	\item The first camp promoted the software entitled Bitcoin ABC (short for Adjustable Blocksize Cap) which would maintain the block size at 32MB.
-	\item The second camp put forth a competing software version Bitcoin SV, short for "Bitcoin Satoshi Vision," that would increase the block size limit to 128MB.
+	\item The second camp put forth a competing software version Bitcoin SV, short for \emph{Bitcoin Satoshi Vision}, that would increase the block size limit to 128MB.
 \end{itemize}
 
-\textbf{Bitcoin Gold. }Another hard fork of Bitcoin.
+\paragraph*{Bitcoin Gold.}
+Another hard fork of Bitcoin.
 \begin{itemize}
-	\item Bitcoin Gold is a fork of Bitcoin that seeks to reduce the influence of miners who use specialized equipment known as ASICs. The team’s stated goal is to ``make bitcoin decentralized again.''
+	\item Bitcoin Gold is a fork of Bitcoin that seeks to reduce the influence of miners who use specialized equipment known as ASICs. The team’s stated goal is to ``make Bitcoin decentralized again.''
 	\item Bitcoin Gold hard forked from the Bitcoin blockchain on October 24, 2017.
 	\item In May 2018, Bitcoin Gold was hit by a 51\% hashing attack by an unknown actor. This type of attack makes it possible to manipulate the blockchain ledger on which transactions are recorded and to spend the same digital coins more than once. During the attack, 388,000 BTG (worth approximately \$18 million) was stolen from several cryptocurrency exchanges. 
-	\item Bitcoin Gold suffered from 51\% attacks again in January 2020.
-	      
-	      \url{https://thenextweb.com/hardfork/2020/01/27/bitcoin-gold-51-percent-attack-blockchain-reorg-cryptocurrency-binance-exchange/}
+	\item Bitcoin Gold suffered from 51\% attacks again in January 2020\footnote{{\scriptsize\url{https://thenextweb.com/hardfork/2020/01/27/Bitcoin-gold-51-percent-attack-blockchain-reorg-cryptocurrency-binance-exchange/}}}.
 \end{itemize}
 
 \textit{Interesting example.}
@@ -338,7 +339,8 @@ A hard fork was made, and the blockchain was rewritten by eliminating the transa
 How? With distributed consent! More than 50\% of Ethereum users have accepted the update. This is why now there exists Ethereum Classic, almost abandoned.
 
 \textbf{Distributed consent overcomes the immutability of the Blockchain.}
-\section{Stable Coins}
+
+\section{Stablecoins}
 
 \fg{0.7}{bdcc146817b36f24613f0c0967a7d1f9-1ruH8716er-image}
 
@@ -367,7 +369,9 @@ The biggest disadvantage of an ICO investment is the risk. The market is volatil
 According to the evaluation of the Wall Street Journal, due to fraudulent crowdfunding campaigns, token holders have lost more than a billion dollars. One of the main reasons for such statistics might be the lack of token holders' control over their investments and the absence of bills and laws regulating the legal field in the sphere of ICO.
 
 The other serious threat is hackers' attacks. Research, conducted by Ernst\&Young (2017), showed that more than $10\%$ of all funds raised by ICO were stolen by cybercriminals. Analysts examined 372 ICOs conducted between 2015 and 2017. The monthly amount of losses from hackers in an ICO is $\$1.5$ million. Moreover, attackers often manage to gain access to personal data from investors: from their addresses and phone numbers to billing information. This vulnerability of ICO is usually caused by errors in the code of the smart contract which weren't indicated during the audit.
+
 \subsection{Security Token Offerings (STO)}
+
 \begin{itemize}
 	\item The popular utility tokens used in ICO have the main disadvantage, which is the absence of any compensation for investors in case of ICO fails as utility tokens are not security papers leading to the absence of any obligations for making beneficial conditions for investors. 
 	\item The decision to this challenge is a security token. Security tokens represent real capital in the enterprise, at the same time such token is not necessarily tied to a share in the company, it can be used to divide the rights of the ownership. They may give the holder several rights: ownership of shares, periodic dividends, cashflows, payment of debts, the right to vote, etc. All these rights are secured by a smart contract. Due to the features of these tokens, their value is supported by securities, therefore, they are considered an investment. 
@@ -400,9 +404,10 @@ Correlation
 
 \section{Central Bank Digital Currency}
 
-{\fontfamily{pcr}\selectfont [08-CBDM.pptx]}
+\texttt{[08-CBDM.pptx]}
 
 \chapter{Blockchain (N. C. Fabrizio)}
+
 \section{Intro to DTL}
 
 Bitcoin is the mother of all the blockchains. It's constructed around the idea of having a \textbf{ledger} where we track information. Typically there is a \textbf{central} authority which holds the only copy of it and is the only one allowed to modify it.
@@ -415,6 +420,7 @@ DLT: which desirable properties?
 	\item Accessibility
 	\item Decentralisation
 \end{itemize}
+
 \section{Bitcoin Protocol}
 
 Blockchain: a data structure to record information incrementally (a history). An append-only data structure, a growing chain of blocks, with immutable history: what is written cannot be altered.
@@ -429,15 +435,14 @@ Problem: how does the community select someone in charge to write the next block
 
 Who writes the next sentence?
 
-In our case, whoever writes the next sentence gets 100,000 EUR!
+In our case, whoever writes the next sentence gets \numprint{100000} EUR!
 
 Who writes the next sentence?
 
-Proof of work! This is the solution adopted by the bitcoin blockchain: by controlling the difficulty of the challenge (against the available computational power in the network), it is possible to select, with a reasonable probability, a leader in charge of the next sentence/block. Note that the challenge is difficult to solve, i.e. find 431 and 433, but easy to validate, i.e. multiply them and check the result: difficult to be elected, straightforward to be recognized as a leader.
+Proof of Work! This is the solution adopted by the Bitcoin blockchain: by controlling the difficulty of the challenge (against the available computational power in the network), it is possible to select, with a reasonable probability, a leader in charge of the next sentence/block. Note that the challenge is difficult to solve, i.e. find 431 and 433, but easy to validate, i.e. multiply them and check the result: difficult to be elected, straightforward to be recognized as a leader.
 
-\textbf{Bitcoin mining protocol [Nakamoto08]}
-
-Each node of the bitcoin network will
+\paragraph*{Bitcoin mining protocol [Nakamoto08]}
+Each node of the Bitcoin network will
 \begin{itemize}
 	\item choose and verify pending transactions
 	\item solve the crypto-puzzle (depending on the previous block)
@@ -451,7 +456,7 @@ If solved/leader then
 
 Everyone
 \begin{itemize}
-	\item validate new block (proof of work + transactions) and embed it in the local copy of the blockchain
+	\item validate new block (Proof of Work + transactions) and embed it in the local copy of the blockchain
 	\item start mining the next block
 \end{itemize}
 
@@ -462,9 +467,10 @@ Currently, a block is about 1MB and is added every 10 minutes (for an average of
 If a node wants to change an old block, or in general wants to make the chain take a direction he wants, he would need half as much the computational power of the network to keep up with the others. This is considered to be impossible, and everyone has an advantage in sticking with the same version.
 
 \section{Security aspects}
+
 \subsection{Hash functions}
 
-\textbf{Hashes} are functions: $H( a) =h$ such that
+\paragraph*{Hashes.} Are functions: $H(a)=h$ such that:
 \begin{itemize}
 	\item from $a$ to $h$ is easy, but from $h$ to $a$ computationally infeasible (you should try every possible input);
 	\item $a$ can be of any length (thus could even be a document) but $h$ is fixed by the specific hash function chosen.
@@ -472,10 +478,11 @@ If a node wants to change an old block, or in general wants to make the chain ta
 
 \textbf{Properties:}
 \begin{itemize}
-	\item \textbf{Collision resistance}, it's infeasible to find $a$ and $b$ such that $a\neq b$ and $H( a) =H( b)$
-	\item \textbf{Hiding}, when a secret value $r$ is chosen from a probability distribution that has high entropy, then given $H( r\| x)$ it is infeasible to find $x$. $\| $ means concatenation of two strings.
-	\item \textbf{Puzzle friendliness}, given $h$ and a random $k$, it's unfeasible to find $x$ such that $h=H( k\| x)$.
+	\item \textbf{Collision resistance}, it's infeasible to find $a$ and $b$ such that $a\neq b$ and $H(a)=H(b)$
+	\item \textbf{Hiding}, when a secret value $r$ is chosen from a probability distribution that has high entropy, then given $H(r\mid x)$ it is infeasible to find $x$. ``$\mid$'' means concatenation of two strings.
+	\item \textbf{Puzzle friendliness}, given $h$ and a random $k$, it's unfeasible to find $x$ such that $h=H(k\mid x)$.
 \end{itemize}
+
 \subsection{Merkle tree}
 
 Some desirable properties of a (new) block
@@ -485,7 +492,7 @@ Some desirable properties of a (new) block
 	\item the leader is identified – as the solver of the puzzle
 \end{itemize}
 
-\textbf{Merkle tree} is a digest of digests, i.e. a tree, a compact representation of a set of hashes of Bitcoin transactions, amongst the proposed and selected ones. The root represents all the hashes in the tree and any change anywhere would affect the root.
+\paragraph*{Merkle tree.} Is a digest of digests, i.e. a tree, a compact representation of a set of hashes of Bitcoin transactions, amongst the proposed and selected ones. The root represents all the hashes in the tree and any change anywhere would affect the root.
 \begin{itemize}
 	\item Transactions are hashed two by two until the root, which is like the DNA of the block.
 	\item In other words, a Merkle tree summarizes all the transactions in a block by producing a digital fingerprint of the entire set of transactions, thereby enabling a user to verify whether or not a transaction is included in a block.
@@ -497,9 +504,9 @@ Some desirable properties of a (new) block
 
 \subsection{Proof of Work}
 
-\textbf{Proof-of-Work} (at a certain degree of approximation): find \textbf{nounce} such that 
+\paragraph*{Proof of Work} (at a certain degree of approximation) is finding \texttt{nonce} (number only used once) such that 
 \begin{equation*}
-	H\left( H\left(\text{previous block}\right) ,M\left(\text{transactions} +\text{revenue transaction}\right) ,\text{nounce}\right)
+	H(H(\text{previous block}),M(\text{transactions} +\text{revenue transaction}),\texttt{nonce})
 \end{equation*}
 is an hash starting with $C$ zeros. $C$ controls the complexity and adapts regularly. There are some technical details involved, like the fact the timestamps are also hashed, everything has to be converted to hexadecimal and the hash is made two times.
 
@@ -508,10 +515,12 @@ PoW is very expensive in terms of energy consumption.
 Miners have interest in solving this hard problem because they are rewarded:
 \begin{itemize}
 	\item the fees from each transaction;
-	\item an amount of BTC generated (mined), in other words, everyone suddenly agrees that such miner has that quantity in addition to their wallet. The quantity was initially 50 BTC and is halved every 210.000 blocks; currently, it's 6.25 BTC. This mechanisms guarantees that in circulation there will never be more than\begin{equation*}
-	      210000\cdot ( 50+25+12.5+6.25+\cdots ) =21000000\ \text{BTC}
+	\item an amount of BTC generated (mined), in other words, everyone suddenly agrees that such miner has that quantity in addition to their wallet. The quantity was initially 50 BTC and is halved every \numprint{210000} blocks; currently, it's 6.25 BTC. This mechanisms guarantees that in circulation there will never be more than
+	\begin{equation*}
+		\numprint{210000} \cdot (50+25+12.5+6.25+\cdots) = \numprint{21000000}\ \text{BTC}
 	\end{equation*}
 \end{itemize}
+
 \subsection{Public and private keys}
 
 Asymmetric\footnote{\textit{asymmetric} means that the two keys are different.} cryptography is based on two keys associated with an identity:
@@ -530,8 +539,8 @@ Asymmetric\footnote{\textit{asymmetric} means that the two keys are different.} 
 
 Signature of a message (of a transaction) – on top of asymmetric cryptography:
 \begin{itemize}
-	\item $sig:=sign\left( sk,\text{message}\right)$
-	\item $isValid:=verify\left( pk,\text{message} ,sig\right)$
+	\item $sig:=sign(sk,\text{message})$
+	\item $isValid:=verify(pk,\text{message},sig)$
 \end{itemize}
 
 Using the public key $pk$ one can validate the author of a message (transaction!)
@@ -543,6 +552,7 @@ You generate your own private key from a very large set, from there you derive y
 \fg{0.7}{f468dea48fcab290a0d662d26e78de02-t8qu0CuuVm-image}
 
 Bitcoin transactions move value from multiple input addresses to multiple output addresses.
+
 \section{EC DSA with Elliptic Curves And Merkle Tree}
 
 In algebraic geometric, an elliptic curves (EC) over $\mathbb{R}$ is defined by the (Weirstrass’s equation): $y^{2} =x^{3} +ax+b$. The curve is non singular if its determinant is non zero, which means $4a^{3} +27b^{2} \neq 0$.
@@ -557,20 +567,21 @@ Bitcoin uses EC for public key, it uses a famous EC \textbf{secp256k1}:
 \url{https://youtu.be/qCafMW4OG7s}
 
 Bitcoin uses elliptic curves for public keys.
+
 \section{Structure of a Block}
 
 A block has two main components:
 \begin{itemize}
 	\item \textbf{list of transactions};
 	\item \textbf{block header}, which contains:
-	      \begin{itemize}
-	      	\item Version: Block version number
-	      	\item Previous Block hash: This is used to compute a new block hash. Hence, making the blockchain temper-proof.\footnote{The first block doesn't have any previous one, it's called the \textbf{genesis block}.}
-	      	\item Merkle Tree Root: The root of the Merkle tree is a verification of all the transactions.
-	      	\item Timestamp: The time at which block is mined.
-	      	\item Bits/Difficulty: Difficulty in Bitcoin is expressed by the hash of a Bitcoin block header being required to be numerically lower than a certain target.
-	      	\item Nonce: A 32-bit random number used in blockchain, while calculating the cryptographic hash for a Block.
-	      \end{itemize}
+	\begin{itemize}
+		\item \texttt{Version}: Block version number
+		\item \texttt{Previous Block hash}: This is used to compute a new block hash. Hence, making the blockchain temper-proof.\footnote{The first block doesn't have any previous one, it's called the \textbf{genesis block}.}
+		\item \texttt{Merkle Tree Root}: The root of the Merkle tree is a verification of all the transactions.
+		\item \texttt{Timestamp}: The time at which block is mined.
+		\item \texttt{Bits/Difficulty}: Difficulty in Bitcoin is expressed by the hash of a Bitcoin block header being required to be numerically lower than a certain target.
+		\item \texttt{Nonce}: A 32-bit random number used in blockchain, while calculating the cryptographic hash for a Block.
+	\end{itemize}
 \end{itemize}
 
 \section{Public, Hybrid and Private DLT}
@@ -584,7 +595,7 @@ The network maybe \textbf{permissionless} or \textbf{permissioned}.
 	\item No one is in charge
 	\item Anyone can participate 
 	\item Open and transparent
-	\item Decentralized consensus mechanisms (PoW, PoS ..)
+	\item Decentralized consensus mechanisms (PoW, PoS, ...)
 	\item Mining
 	\item Slow
 \end{itemize}
@@ -608,9 +619,10 @@ The network maybe \textbf{permissionless} or \textbf{permissioned}.
 	\item Lighter and faster
 \end{itemize}
 
-\fg{0.7}{0ab69fc7ee15e9b5efb04bb8d39299ab-2lIIJXa4gj-image}
+\fg{1}{0ab69fc7ee15e9b5efb04bb8d39299ab-2lIIJXa4gj-image}
 
 In general, every blockchain has its token.
+
 \section{Ethereum}
 
 Ethereum is an \textbf{open-source} and public blockchain-based \textbf{distributed computing platform for building decentralized applications}. Vitalik Buterin envisioned Ethereum as a platform for developers to write programs on the blockchain. In short, Ethereum wants to be a \textbf{World Computer} that would decentralize – and some would argue, democratize – the existing client-server model. With Ethereum, servers and clouds are replaced by thousands of so-called ``nodes'' run by volunteers from across the globe (thus forming a ``world computer'').
@@ -640,15 +652,17 @@ Every time a contract is executed, Ethereum consumes a token which is termed as 
 	\item A smart contract could be programmed to release funds for someone’s birthday each year. It could also be programmed to release payment once someone confirms receipt of delivered goods. It could be used to enforce particular rights for holders of digital assets.
 	\item A simple example could be in the case of \textbf{life insurance}. The policy terms would be encoded into the smart contract. In the event of a passing, the notarized death certificate would be provided as the input trigger for the smart contract to release the payment to the named beneficiaries.
 \end{itemize}
+
 \section{Ethereum vs. Bitcoin}
 
 While both the Bitcoin and Ethereum networks are powered by the principle of distributed ledgers and cryptography, the two differ technically in many ways. For example, \textbf{transactions on the Ethereum network may contain executable code, while data affixed to Bitcoin network transactions are generally only for keeping notes.}
 
-Both Bitcoin and Ethereum currently use a consensus protocol called proof of work (PoW), which allows the nodes of the respective networks to agree on the state of all information recorded on their blockchains and prevent certain types of economic attacks on the networks. In 2022, \textbf{Ethereum will be moving to a different system called proof of stake (PoS)} as part of its Eth2 upgrade, a set of interconnected upgrades that will make Ethereum more scalable, secure, and \textbf{sustainable}.
+Both Bitcoin and Ethereum currently use a consensus protocol called Proof of Work (PoW), which allows the nodes of the respective networks to agree on the state of all information recorded on their blockchains and prevent certain types of economic attacks on the networks. In 2022, \textbf{Ethereum will be moving to a different system called Proof of Stake (PoS)} as part of its Eth2 upgrade, a set of interconnected upgrades that will make Ethereum more scalable, secure, and \textbf{sustainable}.
 
-Proof of stake substitutes computational power with staking—making it less energy-intensive—and replaces miners with validators, who stake their cryptocurrency holdings to activate the ability to create new blocks.
+Proof of Stake substitutes computational power with staking—making it less energy-intensive—and replaces miners with validators, who stake their cryptocurrency holdings to activate the ability to create new blocks.
 
-While bitcoin was created as an alternative to national currencies and thus aspires to be a medium of exchange and a store of value, \textbf{Ethereum was intended as a platform to facilitate immutable, programmatic contracts and applications via its own currency}.
+While Bitcoin was created as an alternative to national currencies and thus aspires to be a medium of exchange and a store of value, \textbf{Ethereum was intended as a platform to facilitate immutable, programmatic contracts and applications via its own currency}.
+
 \section{Ethereum moving to Proof of Stake}
 
 Ethereum has announced the launch of 2.0 and the process of moving to Proof
@@ -664,19 +678,23 @@ of Stake (may be completed and happen soon)
 	\item On the other hand, it reduces the chance of a 51\% attack and allows for near-instant transaction approvals
 	\item The protocol is called Casper and this will be a hard fork
 \end{itemize}
+
 \section{Dapps}
+
 \begin{itemize}
 	\item \textbf{Decentralized Applications (Dapps)} are computer applications that operate over a blockchain enabling direct interaction between end-users and providers.
 	\item \textbf{The interface of the decentralized applications does not look any different than any website or mobile app today.}
-	\item The\textbf{ smart contract represents the core logic} of a decentralized application. Smart contracts are integral building blocks of blockchains, that process information from external sensors or events and help the blockchain manage the state of all network actors.
+	\item The \textbf{smart contract represents the core logic} of a decentralized application. Smart contracts are integral building blocks of blockchains, that process information from external sensors or events and help the blockchain manage the state of all network actors.
 \end{itemize}
+
 \section{ERC20}
+
 \begin{itemize}
 	\item First token standard
 	\item Introduced in November 2015 as an Ethereum Request for Comments (ERC)
 	\item Automatically assigned GitHub issue number 20, giving rise to the name ``ERC20''
 	\item A standard for fungible tokens, meaning that different units of an ERC20 token are interchangeable and have no unique properties
 	\item The ERC20 protocol standard contains basic functions that any useful token should implement to enable trading. These include transferring tokens, inquiring about the balance of tokens at a certain address, and the total supply of tokens.
-	\item The ERC-20 standard defines the interfaces for a few common methods: i.e. totalSupply, balanceOf, transfer, transferFrom, and approve. These methods allow Ethereum smart contracts to issue fungible tokens and token holders to transfer tokens to one another. https://eips.ethereum.org/erc
+	\item The ERC-20 standard defines the interfaces for a few common methods: i.e. totalSupply, balanceOf, transfer, transferFrom, and approve. These methods allow Ethereum smart contracts to issue fungible tokens and token holders to transfer tokens to one another.\footnote{\url{https://eips.ethereum.org/erc}}
 	\item Today, there are thousands and thousands of ERC20 tokens (derivatives of ETH), almost in every sector and use case, not only in finance (for a list see Etherscan and select ERC20)
 \end{itemize}

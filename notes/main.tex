@@ -1,0 +1,51 @@
+\documentclass[10pt,a4paper,twoside,openright]{book}
+
+% emph per gli eventi
+% spazio dopo \exists e \forall
+% rimuovere leqslant, geqslant in favore di leq, geq
+% usare versioni var di varepsilon, vartheta, varrho, varphi
+
+
+\usepackage{geometry}
+\geometry{
+	nomarginpar, % Toglie doppi margini
+	margin=1in, % Imposta i margini a 1 inch
+}
+
+\input{includes/style.tex}
+
+\usepackage[english]{babel}
+\usepackage{numprint}
+
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{equation}{chapter}
+
+%\allowdisplaybreaks[4] % Consente di rompere equazioni su più pagine
+
+\begin{document}
+
+\frontmatter
+
+% COPERTINA
+\pagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+	{\large \textsc{Lecture Notes of}}\\
+	\vspace*{0.4cm}
+	{\Huge \textsc{Fintech}}
+\end{center}
+\vspace*{\fill}
+\cleardoublepage
+
+% INDICE
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\tableofcontents
+\cleardoublepage
+
+\setcounter{page}{1}
+\mainmatter
+
+\input{lectures/blockchain}
+
+\end{document}
