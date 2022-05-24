@@ -16,7 +16,7 @@ The problem of the \textbf{Byzantine generals} is a computer problem on how to r
 
 \section{Bitcoin}
 
-Bitcoin is an electronic currency created in 2009, the inventor is known under the pseudonym of \textbf{Satoshi Nakamoto}.
+Bitcoin is an electronic currency created in 2009 following the famouse paper\footnote{\url{https://bitcoin.org/bitcoin.pdf}} published in November 2008 by the inventor known under the pseudonym of \textbf{Satoshi Nakamoto}.
 
 Keywords:
 \begin{itemize}
@@ -43,7 +43,7 @@ A blockchain is a distributed (or architecturally decentralized) and politically
 
 \begin{itemize}
 	\item A \textbf{block} is a part of the Blockchain that contains a set of (Bitcoin) transactions. On average, a new block, which includes transactions, is added to the Blockchain every $10$ minutes (the system is tuned to make so happen).
-	\item \textbf{Confirmation:} to be included in a block, and therefore in the Blockchain, a transaction must be confirmed by several nodes (miners), i.e. processed by the network.
+	\item \textbf{Confirmation:} to be included in a block, and therefore in the Blockchain, a transaction must be confirmed by several nodes (\textbf{miners}), i.e. processed by the network.
 	\item \textbf{Mining:} it is a mathematical process performed by the Blockchain nodes on the candidate block: once solved the block (and therefore all the transactions recorded in it) is confirmed and inserted into a block of the Blockchain. As a reward for their service, miners receive newly created Bitcoins (and the transaction fees). Mining $1$ new block now makes you earn $6.25$ BTC, mining can be done with ad hoc hardware and consumes a lot of energy.
 	      
 	      Miners accumulate transactions all the time (selecting them with a certain criterion, such as those that offer the highest fees). When they have enough transactions to fill a block (which has a fixed size) they try to solve the mining problem. The first miner that solves the mining problem propagates the block in the network, which is verified (they verify if the \textit{Proof of Work} is valid) by the other nodes and added to their copy of the blockchain.
@@ -157,7 +157,7 @@ It is also known as the digital fingerprint.
 
 Every transaction has a hash associated with it. In a block, all of the transaction hashes in the block are themselves hashed (sometimes several times, the exact process is complex), and the result is the Merkle root. In other words, the Merkle root is the \textit{hash of all the hashes of all the transactions in the block}. 
 
-Our target is to \textbf{find a variation of it that SHA-256 hashes to a value beginning with '000'}. We vary the string by adding an integer value to the end called a \texttt{nonce} and incrementing it each time. Finding a match for ``Hello, world!'' takes us 4251 tries (but happens to have zeroes in the first four digits):
+Our target is to \textbf{find a variation of it that SHA-256 hashes to a value beginning with `000'}. We vary the string by adding an integer value to the end called a \texttt{nonce} and incrementing it each time. Finding a match for ``Hello, world!'' takes us 4251 tries (but happens to have zeroes in the first four digits).
 
 A PoW system \textbf{discourages attacks} and other abuse of service by enforcing certain jobs that require a computer's high processing time. A key feature of these works is their asymmetry: the work must be moderately, but easy to control.
 
@@ -177,11 +177,11 @@ The chain is unique: if two different chains are created (for example, due to a 
 
 To determine the correct chain, there are mechanisms: the chain considered correct is always the \textbf{longest one} (longest chain rule). \textbf{The blockchain rewards computational effort.}
 
-Generally, the longest chain is also the one stored by the majority of the network nodes (50\% + 1 rule), given that \textbf{miners are constantly incentivized to create valid blocks} through the fees and Bitcoins generated at each resolution of the mining problem. 
+Generally, the longest chain is also the one stored by the majority of the network nodes (50\%+1 rule), given that \textbf{miners are constantly incentivized to create valid blocks} through the fees and Bitcoins generated at each resolution of the mining problem. 
 
 From a game theory perspective, collaborating on the longest chain is a balance, as no one can achieve a better result for themselves (without collaborating with others) by creating invalid blocks (PoWs). \textbf{This makes it very difficult for a hacker to change even the last block}.
 
-\fg{0.9}{c5d0d8444570c81ebcd5ac910f0741e7-HutyWMPv53-image}
+\fg[An example of distributed consensus (or maybe not). \texttt{BTC Guild} can choose: \emph{longer chain rule»} vs. \emph{50\%+1 rule}.]{0.9}{c5d0d8444570c81ebcd5ac910f0741e7-HutyWMPv53-image}
 
 \section{How the nodes get paid}
 
@@ -425,7 +425,7 @@ DLT: which desirable properties?
 
 Blockchain: a data structure to record information incrementally (a history). An append-only data structure, a growing chain of blocks, with immutable history: what is written cannot be altered.
 
-It's maintained by a \textbf{peer2peer} open network of nodes: anyone can join! Identical replicated copies of the ledger/blockchain, \textbf{openly available}: anyone can read, \textbf{true by majority}.
+It's maintained by a \textbf{peer-to-peer} open network of nodes: anyone can join! Identical replicated copies of the ledger/blockchain, \textbf{openly available}: anyone can read, \textbf{true by majority}.
 
 PoW slows and controls the creation of new blocks, in this way you can't change the blockchain previously and have the time to re-calculate all hashes, because the chain will grow and the longest chain always wins (except with hard-forks).
 
@@ -460,9 +460,9 @@ Everyone
 	\item start mining the next block
 \end{itemize}
 
-The blockchain is actually a tree, including THE chain.
+The blockchain is actually a tree, including \emph{the} chain.
 
-Currently, a block is about 1MB and is added every 10 minutes (for an average of 3-7 trans/sec).
+Currently, a block is about 1 MB and is added every 10 minutes (for an average of 3-7 trans/sec).
 
 If a node wants to change an old block, or in general wants to make the chain take a direction he wants, he would need half as much the computational power of the network to keep up with the others. This is considered to be impossible, and everyone has an advantage in sticking with the same version.
 
@@ -508,7 +508,7 @@ Some desirable properties of a (new) block
 \begin{equation*}
 	H(H(\text{previous block}),M(\text{transactions} +\text{revenue transaction}),\texttt{nonce})
 \end{equation*}
-is an hash starting with $C$ zeros. $C$ controls the complexity and adapts regularly. There are some technical details involved, like the fact the timestamps are also hashed, everything has to be converted to hexadecimal and the hash is made two times.
+is an hash starting with $C$ zeros. $M$ is the Merkle Root of the input transaction and the reward transaction. $C$ controls the complexity and adapts regularly. There are some technical details involved, like the fact the timestamps are also hashed, everything has to be converted to hexadecimal and the hash is made two times.
 
 PoW is very expensive in terms of energy consumption.
 
@@ -553,7 +553,7 @@ You generate your own private key from a very large set, from there you derive y
 
 Bitcoin transactions move value from multiple input addresses to multiple output addresses.
 
-\section{EC DSA with Elliptic Curves And Merkle Tree}
+\subsection{Encryption with Elliptic Curves}
 
 In algebraic geometric, an elliptic curves (EC) over $\mathbb{R}$ is defined by the (Weirstrass’s equation): $y^{2} =x^{3} +ax+b$. The curve is non singular if its determinant is non zero, which means $4a^{3} +27b^{2} \neq 0$.
 
@@ -698,3 +698,7 @@ of Stake (may be completed and happen soon)
 	\item The ERC-20 standard defines the interfaces for a few common methods: i.e. totalSupply, balanceOf, transfer, transferFrom, and approve. These methods allow Ethereum smart contracts to issue fungible tokens and token holders to transfer tokens to one another.\footnote{\url{https://eips.ethereum.org/erc}}
 	\item Today, there are thousands and thousands of ERC20 tokens (derivatives of ETH), almost in every sector and use case, not only in finance (for a list see Etherscan and select ERC20)
 \end{itemize}
+
+Il Bitcoin è un token?
+
+Non esattamente. Sebbene tutte le criptovalute siano tecnicamente dei token, il Bitcoin solitamente non è considerato un token, bensì una coin. Questo perché è generato dalla blockchain che lo supporta. I token, invece, come già spiegato nell'articolo, operano su blockchain già esistenti. Di fatto, una sola blockchain offre spazio per tanti token diversi. Basti pensare che la rete Ethereum al momento ne ospita quasi mezzo milione.
