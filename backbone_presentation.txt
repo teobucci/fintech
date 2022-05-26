@@ -1,0 +1,17 @@
+titolo con nomi
+
+obiettivo e preview della cosa finale
+
+passi principale (4-5)
+
+presentazione delle covariate dei dataset
+
+modificazioni fatte
+
+R/matlab machine learning algo
+
+app finale
+
+esempio
+
+references
