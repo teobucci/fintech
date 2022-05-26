@@ -1,0 +1,5 @@
+Referenze
+
+• <https://blockchainworkbench.com> (sito curato da UCL, contiene un glossario utile, più vari esempi)
+• <https://bitcoinbook.cs.princeton.edu> (non necessario per esame, per chi volesse approfondire)
+• <https://ethereum.org/en/developers/> (referenza per gli SC, linguaggio, etc)
