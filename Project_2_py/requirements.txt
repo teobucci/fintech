@@ -1,0 +1,7 @@
+numpy
+pandas ==1.4.2
+streamlit
+joblib
+scikit-learn
+lxml
+xlrd
