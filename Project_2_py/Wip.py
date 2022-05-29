@@ -101,6 +101,10 @@ from sklearn.linear_model import LinearRegression
 #%%
 
 ###### Linear regression #######
+df = pd.read_excel('Needs.xls')
+scaler = MinMaxScaler()
+scaler.fit(df)
+df = pd.DataFrame(scaler.transform(df))
 id = [1,2,3,4,6,7]
 X_Risk = df.iloc[:,id]
 y_risk = df.iloc[:,5]
@@ -110,5 +114,12 @@ print('coefficient of determination:', r_sq)  # 0.5130044646191534
 print('intercept:', model.intercept_)
 print('slope:', model.coef_) 
 y_pred = model.predict(X_Risk)
+#%%
 joblib.dump(model, 'lm_risk.pkl')
 ################################
+
+# %%
+Products = pd.read_excel('Needs.xls', sheet_name="Products")
+
+
+# %%

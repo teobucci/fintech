@@ -12,17 +12,17 @@ It take in account: Age, Gender, Family members, Financial education, Income and
 """)
 
 # Utils:
-colNames = ["Age", "Gender", "Family Members", "Financial Education", "Risk", "Income", "Wealth"]
-colMeans = [33, "Male", 2, 0.41, 0.35, 53, 66]
-colMin = [18, "Female", 1, 0.00, 0.00, 1, 1]
-colMax = [100, "Male", 5, 1.00, 1.00, 400, 2200]
+colNames = ["Age", "Gender", "Family Members", "Financial Education", "Income", "Wealth"]       # "Risk",
+colMeans = [33, "Male", 2, 0.41, 53, 66]            # 0.35,
+colMin = [18, "Female", 1, 0.00, 1, 1]              # 0.00,
+colMax = [100, "Male", 5, 1.00, 400, 2200]          # 1.00,
 gender = ["Male", "Female"]
 
 # Client to manage informations
 class Client():
 
     def __init__(self):
-        self.client = [0]*7
+        self.client = [0] * 6
         self.income = 0
         self.accumulation = 0
         self.suggested = pd.DataFrame
@@ -45,10 +45,13 @@ for i in range(len(colNames)):
 # Functions
 def CalcRisk():
     # Estimate risk based on other parameters
-    tmp = pd.DataFrame(man.client).T
-    id = [0, 1, 2, 3, 5, 6]
-    tmp = tmp.iloc[:, id]
+    man.client = pd.DataFrame(man.client).T
+    man.client.columns = ["Age", "Gender", "Family Members", "Financial Education", "Income", "Wealth"]
+    id = [0, 1, 2, 3, 4, 5]
+    tmp = man.client.iloc[:, id]
     man.risk = lm_risk.predict(tmp)
+    man.client["Risk"] = man.risk
+    man.client = man.client[["Age", "Gender", "Family Members", "Financial Education", "Risk", "Income", "Wealth"]]
     return man.risk
 
 def refactor_solution():
@@ -77,11 +80,13 @@ def pred():
     st.write(f"Riscalato diventa: {man.client}")
     risk_pred = CalcRisk()
     st.write(f"Il rischio calcolato è: {risk_pred}")
-    man.income = int(bg_inc.predict([man.client]))
-    man.accumulation = int(bg_acc.predict([man.client]))
+    st.write(f"Aggiungendo il rischio: {man.client}")
+    man.income = int(bg_inc.predict(man.client))
+    man.accumulation = int(bg_acc.predict(man.client))
     st.write(f"Income {man.income} e Acc {man.accumulation}")
+    tmp = pd.Series([man.risk]*Products.shape[0])
     man.suggested = Products.query(
-        "(Income == @man.income or Accumulation == @man.accumulation) and Risk <= @man.client[4]")
+        "(Income == @man.income or Accumulation == @man.accumulation) and Risk <= @tmp")
     refactor_solution()
     return
 
