@@ -123,3 +123,12 @@ Products = pd.read_excel('Needs.xls', sheet_name="Products")
 
 
 # %%
+import shap
+#compute SHAP values
+
+# %%
+explainer = shap.Explainer(bg_acc, X_test)
+#%%
+shap_values = explainer(X_test)
+# %%
+shap.plots.waterfall(shap_values[3], max_display=14)

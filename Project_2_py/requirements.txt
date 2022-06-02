@@ -5,3 +5,5 @@ joblib
 scikit-learn
 lxml
 xlrd
+shap
+catboost
