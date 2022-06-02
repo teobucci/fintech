@@ -51,6 +51,23 @@ joblib.dump(bg_acc, 'bg_acc.pkl')
 
 ############ bg #############
 
+
+##### XGBoost model #####
+import xgboost
+
+xgb_acc = xgboost.XGBClassifier().fit(X_train, y_train_acc)
+print(xgb_acc.score(X_test, y_test_acc))    # 0.815
+
+xgb_inc = xgboost.XGBClassifier().fit(X_train, y_train_inc)
+print(xgb_inc.score(X_test, y_test_inc))    # 0.779
+
+
+# Save the model as a pickle in a file
+joblib.dump(xgb_acc, 'xgb_acc.pkl')
+joblib.dump(xgb_inc, 'xgb_inc.pkl')
+
+############### XGB ###############
+
 from sklearn.linear_model import LinearRegression
 
 ###### Linear regression #######
@@ -72,3 +89,4 @@ print('slope:', model.coef_)
 joblib.dump(model, 'lm_risk.pkl')
 
 ############# lm ###################
+

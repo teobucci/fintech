@@ -3,6 +3,8 @@ from pyrsistent import inc
 import streamlit as st
 import numpy as np
 import joblib
+import matplotlib.pyplot as plt
+import shap
 
 # Interfaccia web
 st.title('Product suggestion by client Needs')
@@ -40,6 +42,9 @@ bg_inc = joblib.load('bg_inc.pkl')      # score = 0.792
 bg_acc = joblib.load('bg_acc.pkl')      # score = 0.796
 lm_risk = joblib.load('lm_risk.pkl')    # r_sq = 0.513
 Products = pd.read_excel('Needs.xls', sheet_name="Products")
+xgb_acc = joblib.load('xgb_acc.pkl')    # score = 0.815
+xgb_inc = joblib.load('xgb_inc.pkl')    # score = 0.779
+
 
 # Inizialize variable with means
 for i in range(len(colNames)):
@@ -92,8 +97,10 @@ def pred():
     CalcRisk()
     createXsmall()
     # predict
-    man.income = int(bg_inc.predict(man.Xsmall))
-    man.accumulation = int(bg_acc.predict(man.Xsmall))
+    # man.income = int(bg_inc.predict(man.Xsmall))
+    # man.accumulation = int(bg_acc.predict(man.Xsmall))
+    man.income = int(xgb_acc.predict(man.Xsmall))
+    man.accumulation = int(xgb_inc.predict(man.Xsmall))
     # query on the result
     tmp = pd.Series([man.risk]*Products.shape[0])
     man.suggested = Products.query(
@@ -128,6 +135,25 @@ elif (man.income):
 else:
     st.write("The client seem not to need products, ask him more informations")
 st.write(f"The estimated risk is: {man.risk[0]:.2f}")
-st.write(f"Suggested products sorted by risk are:")
+st.subheader(f"Suggested products sorted by risk are:")
 st.dataframe(man.suggested)
 
+explainer_acc = shap.Explainer(xgb_acc)
+shap_values_acc = explainer_acc(man.Xsmall)
+
+explainer_inc = shap.Explainer(xgb_inc)
+shap_values_inc = explainer_inc(man.Xsmall)
+
+
+
+st.subheader("Explanation of the models")
+
+st.write("Explanation of income prediction: (with rescaled parameters)")
+fig_inc = plt.figure()
+shap.plots.waterfall(shap_values_inc[0],) 
+st.pyplot(fig_inc)
+
+st.write("Explanation of accumulation prediction: (with rescaled parameters)")
+fig_acc = plt.figure()
+shap.plots.waterfall(shap_values_acc[0],)
+st.pyplot(fig_acc)
