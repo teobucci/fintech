@@ -1,4 +1,5 @@
 import pandas as pd
+from pyrsistent import inc
 import streamlit as st
 import numpy as np
 import joblib
@@ -23,6 +24,7 @@ class Client():
 
     def __init__(self):
         self.client = [0] * 6
+        self.Xsmall = []
         self.income = 0
         self.accumulation = 0
         self.suggested = pd.DataFrame
@@ -45,8 +47,6 @@ for i in range(len(colNames)):
 # Functions
 def CalcRisk():
     # Estimate risk based on other parameters
-    man.client = pd.DataFrame(man.client).T
-    man.client.columns = ["Age", "Gender", "Family Members", "Financial Education", "Income", "Wealth"]
     id = [0, 1, 2, 3, 4, 5]
     tmp = man.client.iloc[:, id]
     man.risk = lm_risk.predict(tmp)
@@ -72,17 +72,29 @@ def scale():
         if (i != 1):
             man.client[i] = (man.client[i] - colMin[i])/(colMax[i]-colMin[i])
 
+def createXsmall():
+    incWealth = man.client.Income / man.client.Wealth
+    # Ratio, Age, Fin, Inc, Wealth
+    man.Xsmall = man.client.iloc[:,[0, 3, 5, 6]]
+    man.Xsmall["IncomeWealth"] = incWealth
+    man.Xsmall = man.Xsmall[["IncomeWealth", "Age", "Financial Education", "Income", "Wealth"]]
+    return
+
 
 def pred():
     # predict client need for inc or acc product
     st.write(f"Il soggeto scelto è: {man.client}")
     scale()
+    man.client = pd.DataFrame(man.client).T
+    man.client.columns = ["Age", "Gender", "Family Members", "Financial Education", "Income", "Wealth"]
     st.write(f"Riscalato diventa: {man.client}")
     risk_pred = CalcRisk()
     st.write(f"Il rischio calcolato è: {risk_pred}")
     st.write(f"Aggiungendo il rischio: {man.client}")
-    man.income = int(bg_inc.predict(man.client))
-    man.accumulation = int(bg_acc.predict(man.client))
+    createXsmall()
+    st.write(f"Xsmall diventa: {man.Xsmall}")
+    man.income = int(bg_inc.predict(man.Xsmall))
+    man.accumulation = int(bg_acc.predict(man.Xsmall))
     st.write(f"Income {man.income} e Acc {man.accumulation}")
     tmp = pd.Series([man.risk]*Products.shape[0])
     man.suggested = Products.query(
