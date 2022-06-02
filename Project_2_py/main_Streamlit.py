@@ -10,6 +10,9 @@ st.title('Product suggestion by client Needs')
 st.markdown("""
 This web app helps you to suggest the best product based on the client profile.
 It take in account: Age, Gender, Family members, Financial education, Income and Wealth.
+Risk is predicted using a linear model
+Accumulation and Income need are predicted using Bagging Classifier
+For more indormation about the models see "Model_creator.py" in this repository
 """)
 
 # Utils:
@@ -52,7 +55,7 @@ def CalcRisk():
     man.risk = lm_risk.predict(tmp)
     man.client["Risk"] = man.risk
     man.client = man.client[["Age", "Gender", "Family Members", "Financial Education", "Risk", "Income", "Wealth"]]
-    return man.risk
+    return
 
 def refactor_solution():
     # factor product df for presentation
@@ -71,6 +74,8 @@ def scale():
     for i in range(len(colNames)):
         if (i != 1):
             man.client[i] = (man.client[i] - colMin[i])/(colMax[i]-colMin[i])
+    man.client = pd.DataFrame(man.client).T
+    man.client.columns = ["Age", "Gender", "Family Members", "Financial Education", "Income", "Wealth"]
 
 def createXsmall():
     incWealth = man.client.Income / man.client.Wealth
@@ -83,19 +88,13 @@ def createXsmall():
 
 def pred():
     # predict client need for inc or acc product
-    st.write(f"Il soggeto scelto è: {man.client}")
-    scale()
-    man.client = pd.DataFrame(man.client).T
-    man.client.columns = ["Age", "Gender", "Family Members", "Financial Education", "Income", "Wealth"]
-    st.write(f"Riscalato diventa: {man.client}")
-    risk_pred = CalcRisk()
-    st.write(f"Il rischio calcolato è: {risk_pred}")
-    st.write(f"Aggiungendo il rischio: {man.client}")
+    scale()     
+    CalcRisk()
     createXsmall()
-    st.write(f"Xsmall diventa: {man.Xsmall}")
+    # predict
     man.income = int(bg_inc.predict(man.Xsmall))
     man.accumulation = int(bg_acc.predict(man.Xsmall))
-    st.write(f"Income {man.income} e Acc {man.accumulation}")
+    # query on the result
     tmp = pd.Series([man.risk]*Products.shape[0])
     man.suggested = Products.query(
         "(Income == @man.income or Accumulation == @man.accumulation) and Risk <= @tmp")
@@ -120,13 +119,15 @@ with st.sidebar.form(key='my_form'):
 
 
 # Show data
-st.write(f"The estimate need are: income: {man.income}, accumulation: {man.accumulation}")
-st.write(f"The estimated risk is: {man.risk}")
-st.write(f"Suggested products are:")
+if (man.accumulation and man.income):
+    st.write(f"The estimate need are: Income and Accumulation")
+elif (man.accumulation):
+    st.write(f"The estimate need is: Accumulation")
+elif (man.income):
+    st.write(f"The estimate need is: Income")
+else:
+    st.write("The client seem not to need products, ask him more informations")
+st.write(f"The estimated risk is: {man.risk[0]:.2f}")
+st.write(f"Suggested products sorted by risk are:")
 st.dataframe(man.suggested)
 
-
-# if st.button('Calcola piano'):
-#     st.write("Pulsante premuto")
-
-# streamlit run "/Users/marco/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Polimi/4.2 Fintech - Marazzina/Final work/Project_2_py/main_Streamlit.py"
