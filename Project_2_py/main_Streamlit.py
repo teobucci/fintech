@@ -10,11 +10,11 @@ import shap
 st.title('Product suggestion by client Needs')
 
 st.markdown("""
-This web app helps you to suggest the best product based on the client profile.
-It take in account: Age, Gender, Family members, Financial education, Income and Wealth.
-Risk is predicted using a linear model
-Accumulation and Income need are predicted using Bagging Classifier
-For more indormation about the models see "Model_creator.py" in this repository
+This web app helps you suggest the best product based on the client profile.
+It takes into account: **Age, Gender, Family Members, Financial Education, Income and Wealth**.
+**Risk** is predicted using a linear model.
+**Accumulation** and **Income** need are predicted using a Bagging Classifier.
+For more indormation about the models see `Model_creator.py` in this repository.
 """)
 
 # Utils:
@@ -148,12 +148,12 @@ shap_values_inc = explainer_inc(man.Xsmall)
 
 st.subheader("Explanation of the models")
 
-st.write("Explanation of income prediction: (with rescaled parameters)")
+st.write("Explanation of Income prediction (with rescaled parameters):")
 fig_inc = plt.figure()
 shap.plots.waterfall(shap_values_inc[0],) 
 st.pyplot(fig_inc)
 
-st.write("Explanation of accumulation prediction: (with rescaled parameters)")
+st.write("Explanation of Accumulation prediction (with rescaled parameters):")
 fig_acc = plt.figure()
 shap.plots.waterfall(shap_values_acc[0],)
 st.pyplot(fig_acc)
