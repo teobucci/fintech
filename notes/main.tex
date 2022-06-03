@@ -1,51 +1,76 @@
-\documentclass[10pt,a4paper,twoside,openright]{book}
+\documentclass[10pt,a4paper]{book}
 
-% emph per gli eventi
-% spazio dopo \exists e \forall
-% rimuovere leqslant, geqslant in favore di leq, geq
-% usare versioni var di varepsilon, vartheta, varrho, varphi
-
-
-\usepackage{geometry}
-\geometry{
-	nomarginpar, % Toglie doppi margini
-	margin=1in, % Imposta i margini a 1 inch
-}
-
-\input{includes/style.tex}
-
-\usepackage[english]{babel}
+\input{style}
+\usepackage[
+	nomarginpar,
+	margin=1in,
+]{geometry}
 \usepackage{numprint}
-
-\usepackage{chngcntr}
-\counterwithout{figure}{chapter}
-\counterwithout{equation}{chapter}
-
-%\allowdisplaybreaks[4] % Consente di rompere equazioni su più pagine
 
 \begin{document}
 
 \frontmatter
 
-% COPERTINA
 \pagestyle{empty}
+
+% COPERTINA
+
+\hypertarget{mytitlepage}{} % set the hypertarget
+\bookmark[dest=mytitlepage,level=chapter]{Title Page} % add the bookmark
+
 \vspace*{\fill}
+
 \begin{center}
-	{\large \textsc{Lecture Notes of}}\\
+	{\large \textsc{Notes of}}\\
 	\vspace*{0.4cm}
-	{\Huge \textsc{Fintech}}
+	{\Huge \textsc{Fintech}}\\
+	\vspace*{0.4cm}
+	{\large for the MSc in Mathematical Engineering}\\
+	\vspace*{0.1cm}
+	{\large {by Teo Bucci}}\\
+	\vspace*{1cm}
+	Politecnico di Milano\\
+	A.Y. 2021/2022
 \end{center}
 \vspace*{\fill}
-\cleardoublepage
+\clearpage
+
+% COPYRIGHT PAGE
+
+\hypertarget{mycopyright}{} % set the hypertarget
+\bookmark[dest=mycopyright,level=chapter]{Copyright Page} % add the bookmark
+\input{firstpages/copyright}
+\clearpage
+
+% PREFAZIONE
+
+\hypertarget{mypreface}{} % set the hypertarget
+\bookmark[dest=mypreface,level=chapter]{Preface} % add the bookmark
+\input{firstpages/preface}
+\clearpage
 
 % INDICE
-\addtocontents{toc}{\protect\thispagestyle{empty}}
+
+\cleardoublepage
+\pagestyle{toc}
+\hypertarget{mytoc}{} % set the hypertarget
+\bookmark[dest=mytoc,level=chapter]{\contentsname} % add the bookmark
 \tableofcontents
 \cleardoublepage
 
-\setcounter{page}{1}
+% MAIN MATTER
+
+\pagestyle{fancy}
 \mainmatter
 
-\input{lectures/blockchain}
+\input{lectures/blockchain} \cleardoublepage
+
+% APPENDICE
+
+% \appendix
+
+% \begin{appendices}
+% \input{} \cleardoublepage
+% \end{appendices}
 
 \end{document}
