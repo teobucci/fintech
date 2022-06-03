@@ -1,10 +1,9 @@
-import streamlit as st
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
 import joblib
 
 # Bagged Trees Regressor
+from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.preprocessing import MinMaxScaler
@@ -17,6 +16,8 @@ colMax = [100, "Male", 5, 1, 1, 400, 2200]
 
 #### Baggede model ######
 df = pd.read_excel('Needs.xls')
+df["Income"] = np.power(df.Income, (0.3026))/ 0.3026
+df["Wealth"] = np.power(df.Wealth,(0.1341))/ 0.1341
 IncomeWealthRatio = np.zeros(df.shape[0])
 IncomeWealthRatio[df.Wealth>10] = df.Income[df.Wealth>10]/df.Wealth[df.Wealth>10]
 df["IncomeWealth"] = IncomeWealthRatio
@@ -26,10 +27,10 @@ df = pd.DataFrame(scaler.transform(df))
 X = df.iloc[:,1:8]
 X.columns = colNames
 X["IncomeWealth"] = df.iloc[:,10]
-#Xsmall
+# Xsmall
 Xsmall = X.iloc[:,[0, 3, 5, 6, 7]]
 Xsmall = Xsmall[["IncomeWealth", "Age", "Fin.Edu.", "Income", "Wealth"]]
-#Train and test
+# Train and test
 y_inc = df.iloc[:,8] # Income
 y_acc = df.iloc[:,9] # Accumulation
 X_train, X_test, y_train_inc, y_test_inc = train_test_split(Xsmall, y_inc, random_state=0, test_size=0.3)
@@ -38,11 +39,11 @@ X_train, X_test, y_train_acc, y_test_acc = train_test_split(Xsmall, y_acc, rando
 # Training for Income
 bg_inc = BaggingClassifier(DecisionTreeClassifier(), max_samples= 0.5, max_features = 1.0, n_estimators = 20)
 bg_inc.fit(X_train,y_train_inc)
-print(bg_inc.score(X_test,y_test_inc))      # 0.809
+print(bg_inc.score(X_test,y_test_inc))      # 0.788
 # Training for Accumulation
 bg_acc = BaggingClassifier(DecisionTreeClassifier(), max_samples= 0.5, max_features = 1.0, n_estimators = 20)
 bg_acc.fit(X_train,y_train_acc)
-print(bg_acc.score(X_test,y_test_acc))      # 0.843
+print(bg_acc.score(X_test,y_test_acc))      # 0.793
 #bg_inc.predict(X_test)
 
 # Save the model as a pickle in a file
@@ -56,11 +57,10 @@ joblib.dump(bg_acc, 'bg_acc.pkl')
 import xgboost
 
 xgb_acc = xgboost.XGBClassifier().fit(X_train, y_train_acc)
-print(xgb_acc.score(X_test, y_test_acc))    # 0.815
+print(xgb_acc.score(X_test, y_test_acc))    # 0.795
 
 xgb_inc = xgboost.XGBClassifier().fit(X_train, y_train_inc)
-print(xgb_inc.score(X_test, y_test_inc))    # 0.779
-
+print(xgb_inc.score(X_test, y_test_inc))    # 0.771
 
 # Save the model as a pickle in a file
 joblib.dump(xgb_acc, 'xgb_acc.pkl')
@@ -68,10 +68,13 @@ joblib.dump(xgb_inc, 'xgb_inc.pkl')
 
 ############### XGB ###############
 
+
 from sklearn.linear_model import LinearRegression
 
 ###### Linear regression #######
 df = pd.read_excel('Needs.xls')
+df["Income"] = np.power(df.Income, (0.3026))/ 0.3026
+df["Wealth"] = np.power(df.Wealth,(0.1341))/ 0.1341
 scaler = MinMaxScaler()
 scaler.fit(df)
 df = pd.DataFrame(scaler.transform(df))
@@ -89,4 +92,3 @@ print('slope:', model.coef_)
 joblib.dump(model, 'lm_risk.pkl')
 
 ############# lm ###################
-
