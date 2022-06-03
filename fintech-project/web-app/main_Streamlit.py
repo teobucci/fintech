@@ -7,14 +7,14 @@ import matplotlib.pyplot as plt
 import shap
 
 # Interfaccia web
-st.title('Product suggestion by client Needs')
+st.title('Product suggestion by Clients\' Needs')
 
 st.markdown("""
-This web app helps you suggest the best product based on the client profile.
-It takes into account: **Age, Gender, Family Members, Financial Education, Income and Wealth**.
-**Risk** is predicted using a linear model.
-**Accumulation** and **Income** need are predicted using a Bagging Classifier.
-For more indormation about the models see `Model_creator.py` in this repository.
+This web app helps you suggest the best product based on the client profile.<br />
+It takes into account: **Age, Gender, Family Members, Financial Education, Income and Wealth**.<br />
+**Risk** is predicted using a linear model.<br />
+**Accumulation** and **Income** need are predicted using a Bagging Classifier.<br />
+For more indormation about the models see `Model_creator.py` in this repository.<br />
 """)
 
 # Utils:
