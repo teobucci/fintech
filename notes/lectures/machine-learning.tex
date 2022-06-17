@@ -141,6 +141,7 @@ Generally, \textbf{the inertia decreases as }$k$\textbf{ increases}, approaching
           \end{equation*}
           
           Choose the number of clusters that maximizes the average silhouette score across all observations.
+          The silhouette value is a measure of how similar an object is to its own cluster (cohesion) compared to other clusters (separation). The silhouette ranges from $−1$ to $+1$, where a high value indicates that the object is well matched to its own cluster and poorly matched to neighboring clusters. If most objects have a high value, then the clustering configuration is appropriate. If many points have a low or negative value, then the clustering configuration may have too many or too few clusters.
     \item The \textbf{gap statistic} compares the within cluster sum of squares with what would be expected with random data.
           \begin{itemize}
               \item Let us create $N$ sets of random points.
@@ -176,7 +177,7 @@ Now we see some alternative clustering approaches.
     \item Start with each observation in its own cluster
     \item Combine the two closest clusters
     \item Continue until all observations have been combined into a single cluster (or since we have only $k$ clusters)
-    \item Can be implemented in Python with AgglomerativeClustering.
+    \item Can be implemented in Python with \texttt{sklearn.cluster.AgglomerativeClustering}.
     \item Measures of closeness of clusters:
           \begin{itemize}
               \item Average Euclidean distance between points in clusters
