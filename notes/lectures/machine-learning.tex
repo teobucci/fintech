@@ -20,7 +20,7 @@ Different kinds of \textit{learning:}
               \item Examples: credit scoring, client selection
               \item Methods: Networks, Clustering
           \end{itemize}
-    \item \textbf{Reinforcement} learning (multi-stage decision making)
+    \item \textbf{Reinforcement learning} (multi-stage decision making)
           \begin{itemize}
               \item Examples: trading
               \item Methods: Q-learning and Neural Network/Random Forest (to approximate matrix $Q$)
@@ -29,14 +29,14 @@ Different kinds of \textit{learning:}
 
 Software:
 \begin{itemize}
-    \item There a several alternatives such as Python, R, Matlab, Spark, and Julia.
+    \item There a several alternatives such as Python, R, MATLAB, Spark, and Julia.
     \item Need ability to handle very large data sets and availability of packages that implement the algorithms.
     \item Python seems to be winning at the moment.
 \end{itemize}
 
-\textbf{Traditional statistics:} Means, SDs, Probability distributions, Significance tests, Confidence intervals, Linear regression.
+\paragraph{Traditional statistics} Means, SDs, Probability distributions, Significance tests, Confidence intervals, Linear regression.
 
-\textbf{Modern statistics:}
+\paragraph{Modern statistics}
 \begin{itemize}
     \item Huge data sets 
     \item Fantastic improvements in computer processing speeds and data storage costs
@@ -89,7 +89,7 @@ Anomalies in a big dataset may follow very complicated patterns, which are diffi
 \begin{itemize}
     \item In unsupervised learning we are not trying to predict anything.
     \item The objective is to \textbf{cluster} data to increase our \textbf{understanding} of the environment.
-    \item How? With the \textbf{k-means algorithm}.
+    \item How? With the \textbf{$k$-means algorithm}.
 \end{itemize}
 
 Before using many ML algorithms (including those for unsupervised learning), it is important to scale feature values so that they are comparable.
@@ -116,7 +116,7 @@ where $v_{pj} ,v_{qj}$ are the values of the $j$-th feature for $P$ and $Q$.
 
 Now that we have a distance measure, it is important to define the \textbf{center of a cluster}, also known as \textbf{cluster centroid}.
 
-\textbf{k-means algorithm to find k clusters:}
+\textbf{$k$-means algorithm to find $k$ clusters:}
 \begin{enumerate}
     \item Choose $k$ random points as cluster centers
     \item Assign each observation no the nearest center
@@ -209,7 +209,7 @@ Assumes that observations come from a mixture of distributions and uses statisti
 
 \section{Reduce dimensionality}
 
-\subsection{PCA - Principal Components Analysis}
+\subsection{Principal Components Analysis (PCA)}
 
 This is an approach to reduce the number of variables
 \begin{itemize}
@@ -238,7 +238,7 @@ In the previous steps, apart from standardization, we did not make any changes o
 
 We now need to use the feature vector formed using the eigenvectors of the covariance matrix, to reorient the data from the original axes to the ones represented by the principal components (hence the name Principal Components Analysis). This can be done by multiplying the transpose of the original data set by the transpose of the feature vector.
 \begin{equation*}
-    \text{FinalDataSet} =\text{FeatureVector}^{T} \cdot \text{StandardizedOriginalDataSet}^{T}
+    \text{FinalDataSet} =\text{FeatureVector}\transpose \cdot \text{StandardizedOriginalDataSet}\transpose
 \end{equation*}
 
 \section{Supervised Learning: with focus on Classification}
@@ -692,7 +692,7 @@ https://www.youtube.com/watch?v=7VeUPuFGJHk
     \item We construct a tree where instead of maximizing expected information gain we maximize the \textbf{expected decrease in mean squared error.}
 \end{itemize}
 
-\section{Random Forest}
+\subsection{Random Forest}
 
 \begin{itemize}
     \item This involves constructing many trees by for example:
@@ -906,12 +906,10 @@ The values of all features except the one under consideration are chosen randoml
 
 \subsection{Global Interpretability in Random Forests}
 
-\textbf{Mean Decrease Accuracy (\%IncMSE)}
-
+\paragraph{Mean Decrease Accuracy (\%IncMSE)}
 This shows how much our model accuracy decreases if we leave out \textit{\textbf{that feature.}}
 
-\textbf{Mean Decrease Gini (IncNodePurity)}
-
+\paragraph{Mean Decrease Gini (IncNodePurity)}
 This is the total decrease in node impurities, measured by the Gini Index from splitting on \textit{\textbf{the feature}}, averaged over all trees.
 
 The higher the value of mean decrease accuracy or mean decrease Gini score, the higher the importance of the feature to our model.
