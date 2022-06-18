@@ -1,6 +1,7 @@
 % !TEX root = ../main.tex
 
 \chapter{Machine Learning (D. Marazzina)}
+
 \begin{itemize}
     \item Machine learning is a branch of AI.
     \item The idea underlying machine learning is that we give a computer program access to lots of data and let it learn about relationships between variables and make predictions.
@@ -58,6 +59,7 @@ ML good practice:
     \item Rule of thumb: increase model complexity until model no longer generalizes well to the validation set
     \item The test set is used to provide a final out-of-sample indication of how well the chosen model works
 \end{itemize}
+
 \section{Data cleaning}
 
 Data cleaning refers to identifying and correcting errors in the dataset that may negatively impact a predictive model. Data cleaning is used to refer to all kinds of tasks and activities to detect and repair errors in the data. Although critically important, data cleaning is not exciting, not does it involve fancy techniques. Just a good knowledge of the dataset. Cleaning up your data is not the most glamorous of tasks, but it’s an essential part of data wrangling. Knowing how to properly clean and assemble your data will set you miles apart from others in your field. \textit{Garbage in, garbage out!}
@@ -81,7 +83,9 @@ If some observations contain missing or inconsistent data, consider the possibil
 \textbf{Isolation forest} is an algorithm for anomaly detection that works on the principle of isolating anomalies. In statistics, an \textbf{anomaly} (or \textbf{outlier}) is an observation or event that deviates so much from other events to arouse suspicion it was generated erroneously.
 
 Anomalies in a big dataset may follow very complicated patterns, which are difficult to detect “by eye” in the great majority of cases. Isolation Forest explicitly isolates anomalous points in the dataset. From a mathematical point of view, recursive partitioning can be represented by a tree structure named Isolation Tree, while the number of partitions required to isolate a point can be interpreted as the length of the path, within the tree, to reach a terminating node starting from the root. Intuitively, the anomalous points are those (easier to isolate, hence) with the smaller path length in the tree.
+
 \section{Unsupervised Learning}
+
 \begin{itemize}
     \item In unsupervised learning we are not trying to predict anything.
     \item The objective is to \textbf{cluster} data to increase our \textbf{understanding} of the environment.
@@ -126,7 +130,7 @@ For any given $k$ the objective is to minimize \textbf{inertia}, which is define
 \begin{equation*}
     \text{inertia} =\sum _{i=1}^{n} d{_{i}}^{2}
 \end{equation*}
-where $d_{i}$ is the distance of observation $i$ from its cluster center, and $n$ is the number of observations. In practice we use the k-means algorithm with several different starting points and choose the result that has the smallest inertia.
+where $d_{i}$ is the distance of observation $i$ from its cluster center, and $n$ is the number of observations. In practice we use the $k$-means algorithm with several different starting points and choose the result that has the smallest inertia.
 
 Generally, \textbf{the inertia decreases as }$k$\textbf{ increases}, approaching $0$ when $k=n$, i.e., we have $n$ observations and $n$ clusters, i.e., each cluster coincide with a single observation.
 
@@ -161,10 +165,12 @@ Generally, \textbf{the inertia decreases as }$k$\textbf{ increases}, approaching
                     \end{equation*}
           \end{itemize}
 \end{itemize}
+
 \subsection{The Curse of Dimensionality}
+
 \begin{itemize}
     \item The Euclidean distance measure increases as the number of features increase.
-    \item This is referred to as the \textbf{curse of dimensionality}, and could prevent the k-means algorithm to work efficiently.
+    \item This is referred to as the \textbf{curse of dimensionality}, and could prevent the $k$-means algorithm to work efficiently.
     \item Consider two observations that have values for feature $j$ equal to $x_{j}$ and $y_{j}$. An alternative distance measure that always lies between $0$ and $2$ is
           \begin{equation*}
               1-\frac{\sum _{j=1}^{m} x_{j} y_{j}}{\sqrt{\sum _{j=1}^{m} x_{j}^{2}\sum _{j=1}^{m} y_{j}^{2}}}
@@ -172,7 +178,9 @@ Generally, \textbf{the inertia decreases as }$k$\textbf{ increases}, approaching
 \end{itemize}
 
 Now we see some alternative clustering approaches.
+
 \subsection{Hierarchical Clustering}
+
 \begin{itemize}
     \item Start with each observation in its own cluster
     \item Combine the two closest clusters
@@ -186,16 +194,21 @@ Now we see some alternative clustering approaches.
               \item Increase in inertia (a version of Ward’s method)
           \end{itemize}
 \end{itemize}
+
 \subsection{Density-based clustering}
+
 \begin{itemize}
     \item Forms clusters based on the closeness of individual observations.
-    \item Unlike k-means the algorithm, it is not based on cluster centers.
+    \item Unlike $k$-means the algorithm, it is not based on cluster centers.
     \item We might initially choose 8 observations that are close. After that we add an observation to the cluster if it is close to at least 5 other observations in the cluster, and repeat. 
 \end{itemize}
+
 \subsection{Distribution-based Clustering}
 
 Assumes that observations come from a mixture of distributions and uses statistical procedures to separate the distributions.
+
 \section{Reduce dimensionality}
+
 \subsection{PCA - Principal Components Analysis}
 
 This is an approach to reduce the number of variables
@@ -227,7 +240,9 @@ We now need to use the feature vector formed using the eigenvectors of the covar
 \begin{equation*}
     \text{FinalDataSet} =\text{FeatureVector}^{T} \cdot \text{StandardizedOriginalDataSet}^{T}
 \end{equation*}
+
 \section{Supervised Learning: with focus on Classification}
+
 \subsection{Linear Regression}
 
 Linear regression is a very popular tool because once you have made the assumption that the model is linear you do not need huge amount of data.
@@ -277,7 +292,9 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
           \end{itemize}
     \item We must first scale feature values
 \end{itemize}
+
 \subsection{Ridge regression}
+
 \begin{itemize}
     \item Reduce magnitude of regression coefficients by choosing a parameter $\lambda $ and minimizing:
           
@@ -287,7 +304,9 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
     \item What happens as $\lambda $ increases? Minimizing the above function, all $b_{i}$s approach 0 as $\lambda $ increases.
     \item Ridge regression, as linear regression, can be solved analytically.
 \end{itemize}
+
 \subsection{Lasso Regression}
+
 \begin{itemize}
     \item Similar to ridge regression except we minimize:
           
@@ -297,7 +316,9 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
     \item This has the effect of completely eliminating the less important factors .
     \item We must use gradient descent.
 \end{itemize}
+
 \subsection{Elastic Net Regression}
+
 \begin{itemize}
     \item Middle ground between \textit{Ridge} and \textit{Lasso:}
     \item Minimize:
@@ -306,7 +327,9 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
           \end{equation*}
     \item Must use gradient descent.
 \end{itemize}
+
 \section{Logistic Regression}
+
 \begin{itemize}
     \item The objective is to classify observations into a “positive outcome” and “negative outcome” using data on features
     \item Dependent variable: binary (1 – 0)
@@ -434,7 +457,9 @@ Use Unsupervised Learning to construct clusters.
     \item Each cluster corresponds to a set of probabilities, e.g., the probability of being a class 1 cluster is equal to the number of observations in this cluster belonging to class 1 divided by the total number of observations in this cluster.
     \item If a new observation fall in a cluster, it inherits all the cluster’s class probabilities.
 \end{itemize}
+
 \subsection{Alternative to regression: $k$-nearest neighbors}
+
 \begin{itemize}
     \item Normalize data.
     \item Measure the distance in $n$-dimensional space of the new data from the data for which there are labels (i.e. known outcomes).
@@ -443,6 +468,7 @@ Use Unsupervised Learning to construct clusters.
     \item For example if you are forecasting car sales in a certain area with $k=3$ and the three nearest neighbors for GDP growth and interest rates give sales of 5.2, 5.4 and 5.6 million units, the forecast would be the average of these or 5.4 million units.
     \item If you are forecasting whether a loan will default with $k=5$ and that of the five nearest neighbors four defaulted and one was good loan, you would estimate an 80\% chance of default
 \end{itemize}
+
 \subsection{Networks for clustering}
 
 Graph (directed/undirected/partially directed/weighted/bipartite).
@@ -575,8 +601,11 @@ Comparison of different centralities:
     \item Betweenness most Central Nodes: H.
     \item Eigenvector most Central Nodes: D and K.
 \end{itemize}
+
 \section{Decision Trees}
+
 \subsection{Measures of Uncertainty}
+
 \begin{itemize}
     \item Suppose that there are $n$ possible outcomes and $p_{i}$ is the probability of outcome $i$ with $\sum _{i} p_{i} =1$.
     \item \textbf{Entropy} measure of uncertainty:
@@ -592,7 +621,9 @@ Comparison of different centralities:
               \text{Gini} =1-\left( p^{2} +\left( 1-p\right)^{2}\right) =2p\left( 1-p\right)
           \end{equation*}
 \end{itemize}
+
 \subsection{Information Gain}
+
 \begin{itemize}
     \item The information gain is the expected decrease in uncertainty (as measured by either entropy or Gini).
     \item Suppose that there is a 20\% chance that a person will receive a job offer
@@ -610,7 +641,9 @@ Comparison of different centralities:
               0.7219-0.6751=0.0468
           \end{equation*}
 \end{itemize}
+
 \subsection{The Decision Tree Algorithm}
+
 \begin{itemize}
     \item Algorithm chooses the feature at the root of the tree that has the greatest expected information gain.
     \item At subsequent nodes it chooses the feature (not already chosen) that has the greatest expected information gain.
@@ -622,7 +655,9 @@ https://www.youtube.com/watch?v=7VeUPuFGJHk
 \textbf{Classification Tree:} the output variable is discrete and finite (usually binary).
 
 \textbf{Regression Tree:} the output variable has continuous values.
+
 \subsection{Classification Tree}
+
 \begin{itemize}
     \item Classification trees are recursive algorithms that split the dataset into smaller sets (nodes) in a step by step fashion thanks to binary rules defined on the features of the observations. 
     \item The complete dataset is the root node of the tree. To split the node, a feature is selected and a binary rule, e.g., if the value of the feature is larger or smaller than a given threshold, is defined on it in order to obtain two disjoint datasets. These two datasets become nodes of the tree. This procedure is repeated for each new node until a stopping criterion is met, e.g., the specified maximum depth of the tree is reached. 
@@ -644,7 +679,9 @@ https://www.youtube.com/watch?v=7VeUPuFGJHk
     \item The leaves contain the estimation of the tree (in our case class 0 or 1), which is given by the most recurrent class in that leaf: if more than 50\% of the observations in the leaf are of class 1, then the leaf is a class 1 leaf.
     \item We also get a probability of being of class 1 for each leaf, given by the proportion of observations of class 1 in that leaf.
 \end{itemize}
+
 \subsection{Regression Tree}
+
 \begin{itemize}
     \item Regression trees have basically the same structure as classification trees, but the dependent variable is a continuous variable, and the measure of impurity is the MSE of the observations in the node. 
     \item The quantity predicted by each leaf is the average of the values of the target variable of the observations in the leaf.
@@ -654,7 +691,9 @@ https://www.youtube.com/watch?v=7VeUPuFGJHk
           \end{equation*}
     \item We construct a tree where instead of maximizing expected information gain we maximize the \textbf{expected decrease in mean squared error.}
 \end{itemize}
+
 \section{Random Forest}
+
 \begin{itemize}
     \item This involves constructing many trees by for example:
           \begin{itemize}
@@ -702,13 +741,18 @@ https://www.youtube.com/watch?v=7VeUPuFGJHk
               \item number of trees: the number of trees in the forest.
           \end{itemize}
 \end{itemize}
+
 \section{Supervised Learning: Neural Networks}
 
-A 3-layer NON with 2 layers of hidden units
+Perceptron
+
+\fg{0.7}{perceptron}
+
+A 3-layer Neural Network (NN) with 2 layers of hidden units
 
 \fg{0.7}{87769a16d778f6cc934341c419b59760-Up0hDHH7BM-image.png}
 
-Naming convention: a $N$\textbf{-layer} neural network with $N-1$ layers of \textbf{hidden units} and one \textbf{output layer}.
+Naming convention: a $N$\textbf{-layer} neural network with $N-1$ layers of \textbf{hidden units} and one \textbf{output layer}. Usually we don't count the input layer.
 
 Usually every layer has its activation function.
 
@@ -759,23 +803,28 @@ It is important to use a stopping rule to \textbf{avoid over-fitting}. We calcul
 \subsection{Convolutional Neural Network (CNN)}
 
 In a vanilla ANN the layers are \textbf{fully connected} which can give rise to a very large number of parameters. In a CNN, the number of neurons in one layer that affect the next layer is \textbf{reduced}. Often used for image recognition where each pixel can be a feature.
+
+\textbf{Key advantages.} Consider a image that is $100 \cdot 100$ or $10.000$ pixels. A regular neural network would lead to $10.000\cdot(10.000+1)$ or about $100$ million parameters to define the first layer. If a CNN's receptive field is $10\cdot 10$ and a layer has $6$ feature maps only $6\cdot 101 = 606$ are required. More importantly, once the CNN has learned to recognize a pattern in one location it can recognize it in another location.
+
+
 \subsection{Recurrent Neural Network (RNN)}
 
 In a vanilla ANN, the $v$’s are functions of the inputs and the sequence of the inputs does not matter. In a recurrent neural network there is a \textbf{time dimension} in the data. The current $v$’s are made functions of the corresponding previous $v$’s (or possibly previous outputs) as well as current inputs. A \textbf{long short-term memory (LSTM)} network is a type of RNN where part of the algorithm learns what should be remembered and what should be forgotten from previous data.
 
 Applications are when working with sequential data where the relationship between targets and features may be changing through time. Also used in NLP (autocompletion for example).
 
-\textbf{Black-Scholes-Merton Application}
+% \textbf{Black-Scholes-Merton Application}
 
-Goal Option
+% Goal Option
 
-Let $S_{t}$ be a \textbf{stock} at time $t$. You can also buy \textbf{Financial Derivatives} (like \textbf{European Call Options}, something which have a \textbf{maturity} $T$ (years), a \textbf{strike} $K$ and a \textbf{payoff} $( S_{T} -K)^{T}$).
+% Let $S_{t}$ be a \textbf{stock} at time $t$. You can also buy \textbf{Financial Derivatives} (like \textbf{European Call Options}, something which have a \textbf{maturity} $T$ (years), a \textbf{strike} $K$ and a \textbf{payoff} $( S_{T} -K)^{T}$).
 
-In the B\&S\&M framework we can model
-\begin{equation*}
-    [ \dotsc unreadable\ from\ blackboard\dotsc ]
-\end{equation*}
-which is highly non-linear. We can use NN to learn this formula.
+% In the B\&S\&M framework we can model
+% \begin{equation*}
+%     [ \dotsc unreadable\ from\ blackboard\dotsc ]
+% \end{equation*}
+% which is highly non-linear. We can use NN to learn this formula.
+
 \section{Interpretability}
 
 \textbf{Why is model interpretability important?}
@@ -793,7 +842,7 @@ which is highly non-linear. We can use NN to learn this formula.
 
 White-box models
 \begin{itemize}
-    \item k-nearest neighbors
+    \item $k$-nearest neighbors
     \item Decision trees
     \item Linear regression
 \end{itemize}
@@ -830,12 +879,15 @@ Procedure is:
 \end{enumerate}
 
 Global Interpretability as LIME approach:
+
 \subsection{Partial Dependence Plot}
 
 The partial dependence plot is the expected prediction as a function of the value of a particular feature.
 
 The values of all features except the one under consideration are chosen randomly 
+
 \subsection{Shapley Values}
+
 \begin{itemize}
     \item The SHAP (SHapley Additive exPlanations) method allows us to capture the impact of the different features on the ML output. 
     \item The method borrows from cooperative game theory and consists in the calculation of SHAP value, which represents a measure of the importance of a feature. 
@@ -851,6 +903,7 @@ The values of all features except the one under consideration are chosen randoml
     \item For an ensemble model where predictions are the average of predictions given by several underlying models, the Shapley value is the average of the Shapley values for the underlying models. 
     \item Calculation time increases exponentially with the number of features
 \end{itemize}
+
 \subsection{Global Interpretability in Random Forests}
 
 \textbf{Mean Decrease Accuracy (\%IncMSE)}
@@ -862,3 +915,207 @@ This shows how much our model accuracy decreases if we leave out \textit{\textbf
 This is the total decrease in node impurities, measured by the Gini Index from splitting on \textit{\textbf{the feature}}, averaged over all trees.
 
 The higher the value of mean decrease accuracy or mean decrease Gini score, the higher the importance of the feature to our model.
+
+\section{Reinforcement Learning}
+
+Reinforcement learning is concerned with finding a strategy for taking a series of decisions rather than just one.
+The environment is usually changing unpredictably.
+
+\subsection{Rewards and costs}
+
+\begin{itemize}
+    \item There are rewards and costs and the algorithm tries to maximize expected rewards (net of costs) in its interaction with the environment 
+    \item Exploitation vs. Exploration (Should you choose best decision based on evidence to date or try something new?)
+    \item Action evaluated by the sum of expected rewards (net of costs) that come after it (possibly discounted)
+\end{itemize}
+
+Rewards The time horizon may be
+\begin{itemize}
+    \item finite: finite and fixed number of steps
+    \item indefinite: until some stopping criteria is met (\emph{absorbing} states)
+    \item infinite: forever
+\end{itemize}
+There are different number of rewards.
+\begin{itemize}
+    \item \textbf{Total reward}
+    \[
+        V = \sum_{i=1}^{\infty} r_{i} 
+    \]
+    \item \textbf{Average reward}
+    \[
+        V = \lim_{n \to \infty} \frac{r_{1} + \cdots + r_{n}}{n}
+    \]
+    \item \textbf{Discounted reward}
+    \[
+        V = \sum_{i=1}^{\infty} \gamma ^{i-1} r_{i}  
+    \]
+\end{itemize}
+
+We define the \textbf{return} $v_{t}$ as the total discounted reward from time $t+1,\ldots$
+\[
+    v_{t} = r_{t+1} + \gamma r_{t+2} + \cdots = \sum_{k=0}^{\infty} \gamma ^{k} r_{t+k+1}   
+\]
+\begin{itemize}
+    \item The \textbf{discount} $\gamma \in [0,1)$ is the present value of future rewards.
+    \item The value of receiving reward $r$ after $k+1$ steps is $\gamma ^{k}r $
+    \item \textbf{Immediate} reward vs \textbf{delayed} reward
+    \begin{itemize}
+        \item $\gamma $ close to $0$ leads to myopic evaluation
+        \item $\gamma $ close to $1$ leads to far-sighted evaluation
+    \end{itemize}
+    \item $\gamma $ can also be interpreted as the probability that the process will go on.
+\end{itemize}
+
+\subsection{Policies}
+
+A policy, at any given point in time, \textbf{decides} which action the agent selects. A policy fully defines the \textbf{behavior} of an agent.
+
+\paragraph{Value function} Given a policy $\pi $, it is possible to define the \textbf{utility} of each state: \textbf{Policy Evaluation}. The state-value function $V^{\pi }(s) $ of an MDP (Markov Decision Process) is the expected return starting from state $s$, and then following policy $\pi $
+\[
+    V^{\pi }(s) = \EE_{\pi }[v_{t}\mid s_{t}=s] 
+\]
+For control purposes, rather than the value of each state, it is easier to consider the value of each action in each state. The action-value function $Q^{\pi }(s,a) $ is the expected return starting from state $s$, taking action $a$, and then following policy $\pi $
+\[
+    Q^{\pi }(s,a) = \EE_{\pi }[v_{t} \mid s_{t}=s,a_{t}=a] 
+\]
+
+\paragraph{Optimal value function} The \textbf{optimal state-value function} $V^{\star}(s) $ is the maximum value function over all policies
+\[
+    V^{\star}(s) = \max_{\pi }V^{\pi }(s)  
+\]
+The \textbf{optimal action-value function} $Q^{\star}(s,a) $ is the maximum action-value function over all policies
+\[
+    Q^{\star}(s,a) = \max_{\pi }Q^{\pi }(s,a)
+\]
+The optimal value function specifies the best possible performance in the MDP. An MDP is \emph{solved} when we know the optimal value function.
+
+\paragraph{Optimal Policy} Value functions define a partial ordering over policies
+\[
+    \pi \geq \pi ' \iff V^{\pi }(s)\geq V^{\pi'}(s), \forall s\in \Sc
+\]
+Theorem: for any Markov Decision Process
+\begin{itemize}
+    \item There exists an \textbf{optimal policy} $\pi ^{\star} $ that is better than or equal to all policies $\pi ^{\star}\geq \pi ,\forall \pi  $
+    \item \textbf{All} optimal policies achieve the optimal value function, $V^{\pi ^{\star} }(s) = V^{\star}(s)$
+    \item \textbf{All} optimal policies achieve the optimal action-value function, $Q^{\pi ^{\star} }(s,a) = Q^{\star}(s,a)$
+    \item There is always a \textbf{deterministic optimal policy} for any MDP.
+\end{itemize}
+A deterministic optimal policy can be found by maximizing over $Q^{\star}(s,a) $
+\[
+    \pi ^{\star}(a\mid s) = \begin{cases}
+        1 & \text{if } a = \argmax_{a\in \Ac} Q^{\star}(s,a) \\
+        0 & \text{otherwise}
+    \end{cases} 
+\]
+
+\paragraph{Monte-Carlo Policy Evaluation}
+\begin{itemize}
+    \item \textbf{Goal}: learn $V^{\pi}$ from experience under policy $\pi$
+    \[
+    s_{1}, a_{1}, r_{2}, \ldots, s_{T} \sim \pi
+    \]
+    \item Recall that the \textbf{return} is the total discounted reward:
+    \[
+    v_{t}=r_{t+1}+\gamma r_{t+2}+\cdots+\gamma^{T-1} r_{t+T}
+    \]
+    \item Recall that the \textbf{value function} is the expected return:
+    \[
+    V^{\pi}(s)=\mathbb{E}\left[v_{t} \mid s_{t}=s\right]
+    \]
+    \item Monte Carlo policy evaluation uses \textbf{empirical mean} return instead of expected return
+    \begin{itemize}
+        \item \textbf{first visit}: average returns only for the first time $s$ is visited (\textbf{unbiased} estimator)
+        \item \textbf{every visit}: average returns for every time $s$ is visited (\textbf{biased but consistent estimator})
+    \end{itemize}
+\end{itemize}
+
+\paragraph{TD Prediction}
+\begin{itemize}
+    \item \textbf{Goal}: learn $V^{\pi}$ online from experience under policy $\pi$
+    \item \textbf{Recall}: incremental every-visit Monte Carlo
+    \[
+    V\left(s_{t}\right)=V^{\text {new }}\left(s_{t}\right)+\alpha\left(v_{t}-V^{\text {old }}\left(s_{t}\right)\right)
+    \]
+    \item \textbf{Simplest} temporal-difference learning algorithm: $\mathrm{TD}(0)$
+    \begin{itemize}
+        \item Update value $V\left(s_{t}\right)$ towards estimated return $r_{t+1}+\gamma V\left(s_{t+1}\right)$
+        \[
+        V\left(s_{t}\right)=V^{\text {new }}\left(s_{t}\right)+\alpha\left(r_{t+1}+\gamma V^{\text {old }}\left(s_{t+1}\right)-V^{\text {old }}\left(s_{t}\right)\right)
+        \]
+        \item $r_{t+1}+\gamma V\left(s_{t+1}\right)$ is called the TD target
+        \item $\delta_{t}=r_{t+1}+\gamma V\left(s_{t+1}\right)-V\left(s_{t}\right)$ is called the TD error
+    \end{itemize}
+\end{itemize}
+
+We can update either $V$ or $Q$
+
+\begin{itemize}
+    \item MC: we usually set
+    or
+    \[
+    Q(s, a)^{\text{new}}=Q(s, a)^{\text{old}}+\frac{1}{n}\left[v-Q(s, a)^{\text{old}}\right] \text{ or } Q(s, a)^{\text{new}}=Q(s, a)^{\text{old}}+\alpha\left[v-Q(s, a)^{\text{old}}\right]
+    \]
+    for some parameter $\alpha$ (e.a. $0.1)$
+    \item TD:
+\[
+Q(s, a)^{\text{new}}=Q(s, a)^{\text{old}}+\alpha\left[r+\gamma V^{\text{old}}-Q(s, a)^{\text{old}}\right]
+\]
+\end{itemize}
+
+\paragraph{On-policy exploration}
+\begin{itemize}
+    \item There are two doors in front of you
+    \item You open the left door and get reward 0 , $V(\text{left})=0$
+    \item You open the right door and get reward $+1$, $V(\text{right})=+1$
+    \item You open the right door and get reward $+3$, $V(\text{right})=+2$
+    \item You open the right door and get reward $+2$, $V(\text{right})=+2$
+\end{itemize}
+
+Are you sure you've chosen the best door?
+
+\paragraph{$\varepsilon$-Greedy exploration}
+
+\begin{itemize}
+    \item Simplest idea for ensuring \textbf{continual exploration}
+    \item \textbf{All} $m$ actions are tried with \textbf{non-zero} probability
+    \item With probability $1-\varepsilon$ choose the \textbf{greedy} action
+    \item With probability $\varepsilon$ choose an action at \textbf{random}
+    \[
+    \pi(s, a)= \begin{cases}\frac{\varepsilon}{m}+1-\varepsilon & \text {if } a^{\star}=\argmax _{a \in \Ac} Q(s, a) \\ \frac{\varepsilon}{m} & \text {otherwise}\end{cases}
+    \]
+\end{itemize}
+
+
+\paragraph{MC vs TD Control}
+\begin{itemize}
+    \item Temporal-Difference (TD) learning has several advantages over Monte-Carlo (MC)
+    \begin{itemize}
+        \item Lower Variance
+        \item Online
+        \item Incomplete sequences
+    \end{itemize}
+    \item Natural idea: use TD instead of MC in our control loop
+    \begin{itemize}
+        \item Apply TD to $Q(s, a)$
+        \item Use $\varepsilon$-Greedy policy improvement
+        \item Update every time-step
+    \end{itemize}
+\end{itemize}
+
+The exploration parameter $\varepsilon$ and initial values. It makes sense to reduce $\varepsilon$ over time. For example we can let it decline exponentially
+The initial $Q$-values makes a difference.
+If the standard deviation of the payoff is increased, a higher value of $\varepsilon$ would be appropriate.
+
+\paragraph{$n$-step bootstrapping} Monte Carlo bases updates on what happens over the complete life of the trial.
+Temporal difference bases updates on what happens over the next period .
+\textbf{$n$-step bootstrapping algorithms} is between the two. It bases updates on what happens over the next $n$ periods.
+
+\paragraph{When there are many states or actions (or both)}
+
+\begin{itemize}
+    \item The cells of the state/action table do not get filled in very quickly
+    \item It becomes necessary to estimate the $Q(s,a)$ function from observed values.
+    \item As this function is in general non-linear a natural approach is to use artificial neural networks (ANNs) or RFs (as in the Forex example in the next slide).
+    \item We use an ANN or a RF to minimize the sum of squared errors between the estimates and the target
+    \item This is known as deep $Q$-learning or deep reinforcement learning.
+\end{itemize}
