@@ -62,9 +62,9 @@ ML good practice:
 
 \section{Data cleaning}
 
-Data cleaning refers to identifying and correcting errors in the dataset that may negatively impact a predictive model. Data cleaning is used to refer to all kinds of tasks and activities to detect and repair errors in the data. Although critically important, data cleaning is not exciting, not does it involve fancy techniques. Just a good knowledge of the dataset. Cleaning up your data is not the most glamorous of tasks, but it’s an essential part of data wrangling. Knowing how to properly clean and assemble your data will set you miles apart from others in your field. \textit{Garbage in, garbage out!}
+Data cleaning refers to identifying and correcting errors in the dataset that may negatively impact a predictive model. Data cleaning is used to refer to all kinds of tasks and activities to detect and repair errors in the data. Although critically important, data cleaning is not exciting, not does it involve fancy techniques. Just a good knowledge of the dataset. Cleaning up your data is not the most glamorous of tasks, but it's an essential part of data wrangling. Knowing how to properly clean and assemble your data will set you miles apart from others in your field. \textit{Garbage in, garbage out!}
 
-There are many types of errors that exist in a dataset, although some of the simplest errors include columns that don’t contain much information and duplicated rows.
+There are many types of errors that exist in a dataset, although some of the simplest errors include columns that don't contain much information and duplicated rows.
 \begin{itemize}
     \item Identify (and delete) columns that contain a single value
     \item Consider columns that have very few values (near $0$ variance)
@@ -191,7 +191,7 @@ Now we see some alternative clustering approaches.
               \item Average Euclidean distance between points in clusters
               \item Maximum distance between points in clusters
               \item Minimum distance between points in clusters
-              \item Increase in inertia (a version of Ward’s method)
+              \item Increase in inertia (a version of Ward's method)
           \end{itemize}
 \end{itemize}
 
@@ -455,7 +455,7 @@ If we have 99\% of observations belonging to class 1, the trivial predictor givi
 Use Unsupervised Learning to construct clusters.
 \begin{itemize}
     \item Each cluster corresponds to a set of probabilities, e.g., the probability of being a class 1 cluster is equal to the number of observations in this cluster belonging to class 1 divided by the total number of observations in this cluster.
-    \item If a new observation fall in a cluster, it inherits all the cluster’s class probabilities.
+    \item If a new observation fall in a cluster, it inherits all the cluster's class probabilities.
 \end{itemize}
 
 \subsection{Alternative to regression: $k$-nearest neighbors}
@@ -809,7 +809,7 @@ In a vanilla ANN the layers are \textbf{fully connected} which can give rise to 
 
 \subsection{Recurrent Neural Network (RNN)}
 
-In a vanilla ANN, the $v$’s are functions of the inputs and the sequence of the inputs does not matter. In a recurrent neural network there is a \textbf{time dimension} in the data. The current $v$’s are made functions of the corresponding previous $v$’s (or possibly previous outputs) as well as current inputs. A \textbf{long short-term memory (LSTM)} network is a type of RNN where part of the algorithm learns what should be remembered and what should be forgotten from previous data.
+In a vanilla ANN, the $v$'s are functions of the inputs and the sequence of the inputs does not matter. In a recurrent neural network there is a \textbf{time dimension} in the data. The current $v$'s are made functions of the corresponding previous $v$'s (or possibly previous outputs) as well as current inputs. A \textbf{long short-term memory (LSTM)} network is a type of RNN where part of the algorithm learns what should be remembered and what should be forgotten from previous data.
 
 Applications are when working with sequential data where the relationship between targets and features may be changing through time. Also used in NLP (autocompletion for example).
 
