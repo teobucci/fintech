@@ -344,6 +344,19 @@ How? With distributed consent! More than 50\% of Ethereum users have accepted th
 
 \section{Stablecoins}
 
+
+Fiat backing
+The value of stablecoins of this type is based on the value of the backing currency, which is held by a third-party–regulated financial entity. In this setting, the trust in the custodian of the backing asset is crucial for the stability of price of the stablecoin.
+
+Cryptocurrency backing
+Cryptocurrency-backed stablecoins are issued with cryptocurrencies as collateral, which is conceptually similar to fiat-backed stablecoins. However, the significant difference between the two designs is that while fiat collateralization typically happens off the blockchain, the cryptocurrency or crypto asset used to back this type of stablecoins is done on the blockchain, using smart contracts in a more decentralized fashion.
+
+Seigniorage-style/algorithmic stablecoins
+Seigniorage-style coins, also known as algorithmic stablecoins, utilize algorithms to control the stablecoin's money supply, similar to a central bank's approach to printing and destroying currency. Seigniorage-based stablecoins are a less popular form of stablecoin.[8]
+
+
+
+
 \fg{0.7}{bdcc146817b36f24613f0c0967a7d1f9-1ruH8716er-image}
 
 \fg{0.7}{7dc3967046522e1c02d9c1916fa87f9b-DMNNfblLZC-image}
@@ -354,7 +367,7 @@ A \textbf{stablecoin} is a new class of cryptocurrencies that attempts to offer 
 
 Stablecoins have gained traction as they attempt to offer the best of both worlds—the instant processing and security or privacy of payments of cryptocurrencies, and the volatility-free stable valuations of fiat currencies.
 
-Usually, one token of stablecoin equals one gram of gold. Since they're tied to the gold, this stablecoin's price can't fall below the current price of the gold. A third party holds the gold in reserve.
+\paragraph{Gold-backed Stablecoins} Usually, one token of stablecoin equals one gram of gold. Since they're tied to the gold, this stablecoin's price can't fall below the current price of the gold. A third party holds the gold in reserve.
 
 \begin{itemize}
 	\item Libra
@@ -362,9 +375,72 @@ Usually, one token of stablecoin equals one gram of gold. Since they're tied to 
 	\item MakerDAO is a protocol behind the stable coin DAI — a cryptocurrency that maintains a 1:1 peg to the USD. 
 \end{itemize}
 
+\section{Coin vs Token}
+
+\paragraph{Coin} It's a unit of value that is native to a blockchain. It is a means of exchange within the blockchain to incentivize the network of participants to use the blockchain. The cryptocurrencies Bitcoin, Ether, Ripple, and Litecoin are all examples of native cryptocurrencies. The sole purpose of a cryptocurrency is for exchange of value, and it has limited functionality beyond that.
+
+\paragraph{Token} It's a piece of business logic (i.e., “smart contract”) coded into an existing blockchain. A token can have a functionality beyond an exchange of value — it can represent any asset or functionality desired by the developer for use on a platform. Most tokens are created on the Ethereum blockchain by using ERC-20 smart contracts, such as Tron and VeChain.
+
+Coins and tokens differ not only for the IT definition, but also for \textbf{market behaviour}.
+
+\section{How to create a crypto?}
+
+Build Your Own Blockchain—or Fork an Existing One - Both methods require quite a bit of technical knowledge. You can fork an existing blockchain by taking the open-source code found on Github making a few changes, and launching a new blockchain with a new name
+
+Launch a Coin or Token Using a Cryptocurrency Creation Platform - all you have to do is to choose a platform, pay for this service, and then enter the parameters, from the logo to the number of coins awarded for signing a block
+
+You can also create a token—what is essentially a smart contract—with or without a public ICO. Because tokens can represent any asset, you can even create a token with no real value or serious purpose other than to exchange among friends. This is faster, simpler, and cheaper than creating a coin because it doesn't require the time and effort to build and maintain a new or forked blockchain and instead relies on the technology already in use for Bitcoin or Ethereum.
+
+\section{Smart Contracts}
+
+Ethereum
+\begin{itemize}
+	\item It is another platform developed on blockchain technology.
+	\item In order to be able to run on the peer-to-peer network, Ethereum users pay for the use through a cryptocurrency, called Ether, which therefore acts both as a cryptocurrency and as a fuel.
+	\item Ethereum is different from the Bitcoin blockchain since \textbf{it is constructed to create Smart Contracts}. Even in Bitcoin, elementary smart contracts can be created. In Ethereum the peculiarity is that they are \textbf{listed on a Turing-complete language}.
+	\item A smart contract is a program that runs on Ethereum's decentralized virtual machine.
+	\item The smart contract cannot act actively (for example, it cannot monitor the status of another smart contract and act accordingly), but it acts reactively (a user, not necessarily directly, must invoke it to perform any operation).
+	\item The smart contract cannot interrogate the world outside the blockchain. For example, in the case of a sports bet managed through a smart contract, this cannot obtain the result of the game from a website and act accordingly.
+	\item The smart contract can instead obtain information using \textbf{oracles}.
+	\item Oracles are smart contracts in which information from the outside world is loaded in exchange for a reward.
+\end{itemize}
+
+\paragraph{Collateral} Put simply, collateral is an item of value that a lender can seize from a borrower if he or she fails to repay a loan according to the agreed terms. One common example is when you take out a mortgage. Normally, the bank will ask you to provide your home as collateral.
+Collateral acts as a \textbf{guarantee} that the lender will receive back the amount lent even if the borrower does not repay the loan as agreed.
+
+\emph{Example.} I want to create a tourism insurance contract against rain. Bob signed a tourism insurance contract for an holiday in New York for May 2, 2020. This contract will reimburse the payment for his trip (200\$) if that day it will rain. In the insurance contract there is this clause which defines the meaning of ``it will rain''. Rainfall amount is described as the \emph{depth of water reaching the ground}, typically in inches or millimeters (25 mm equals one inch). It rains more than 0.1 inch on that day, according to the Laguardia Airport Station result, reported by the website \url{https://www.wunderground.com/history/monthly/us/ny/new-york-city/KLGA}.
+
+We need an \textbf{oracle}.
+\begin{enumerate}
+	\item The insurer creates the code of the smart contract.
+	\item The insurer pays a third part to be an oracle, i.e. to report the website information to the smart contract.
+	\item The insurer is ready to sell the insurance contract.
+\end{enumerate}
+
+Why Bob should prefer a blockchain-based insurance? Based on a \textbf{third part}, which has no reason to say that it did not rain, if it happened.
+\textbf{Automatic payment}: if the oracle tells to the smart contract that it happened, the smart contract pays.
+
+What happens if Bob wants to be paid in fiat money?
+
+The smart contract can only say ``this contract is to be paid'', for example creating a null transaction with this sentence in the \texttt{OPReturn} field. This is written on the blockchain, which is immutable. Then, the insurer, once he/she reads this on the blockchain can tell to his/her bank ``please, pay''.
+So, not a real automatic payment without cryptocurrencies.
+
+Possible solution: Stablecoins.
+
+\section{Ethereum's Tokens}
+
+\begin{itemize}
+	\item Any fungible commodity can be represented by a token derived from Ethereum's \textbf{ERC-20 standard}.
+	\item Non fungible tokens can be derived from \textbf{ERC-721}. This recent standard has made possible to represent goods like pieces of art, personalized access rights, properties.
+\end{itemize}
+
 \section{ICO}
 
-It's a utility token.
+An \textbf{initial coin offering (ICO)} or initial currency offering is a type of funding using cryptocurrencies. It is often a form of \textbf{crowdfunding}, although a private ICO which does not seek public investment is also possible. In an ICO, a quantity of cryptocurrency is sold in the form of "tokens" ("coins") to speculators or investors, in exchange for legal tender or other (generally established and more stable) cryptocurrencies such as Bitcoin or Ether. The tokens are promoted as future functional units of currency if or when the ICO's funding goal is met and the project successfully launches.
+
+An ICO can be a \textbf{source of capital} for startup companies. ICOs can allow startups to \textbf{avoid regulations} that prevent them from seeking investment directly from the public, and intermediaries such as venture capitalists, banks, and stock exchanges, which may demand greater scrutiny and some percentage of future profits or joint ownership. ICOs may fall \textbf{outside existing regulations}, depending on the nature of the project, or be banned altogether in some jurisdictions, such as China and South Korea.
+
+Due to the lack of regulation and enforcement of securities law, ICOs have been the vehicle for \textbf{scams and fraud}.
 
 The biggest disadvantage of an ICO investment is the risk. The market is volatile, and you never know the actual intentions of a newly minted company. The first risk can be called ordinary fraud when the team of the project pursues only one goal: to collect investors' money. In addition, since there are no laws at the moment that would regulate the conduct of cryptocurrency crowd sales from the position of an investor, it cannot be ruled out that the project may not live to the stage of product appearance or disappoint the investor with its implementation. Based on the statistical research provided by Satis Group, a premier ICO advisory company, approximately $81\%$ of ICOs are Scams, $\sim 6\%$ Failed, $\sim 5\%$ had Gone Dead, and $\sim 8\%$ went on to trade on an exchange.
 
@@ -372,7 +448,35 @@ According to the evaluation of the Wall Street Journal, due to fraudulent crowdf
 
 The other serious threat is hackers' attacks. Research, conducted by Ernst\&Young (2017), showed that more than $10\%$ of all funds raised by ICO were stolen by cybercriminals. Analysts examined 372 ICOs conducted between 2015 and 2017. The monthly amount of losses from hackers in an ICO is $\$1.5$ million. Moreover, attackers often manage to gain access to personal data from investors: from their addresses and phone numbers to billing information. This vulnerability of ICO is usually caused by errors in the code of the smart contract which weren't indicated during the audit.
 
-\subsection{Security Token Offerings (STO)}
+Before launching ICO, the development team specifies tasks, for which funds should be raised, and indicates in its whitepaper 2 figures: the minimum and maximum, which are called Soft Cap and Hard Cap. Hard Cap defines the final goal, the upper limit of the amount of money invested, the most desired result. This is a very important indicator, precisely, because many cryptocurrencies have a limit on the total number of units in circulation. This, in turn, is one of the most important factors influencing the value of the coin, naturally, in addition to supply and demand. Soft Cap - the minimum required amount of the investments for the team to proceed the project implementation in accordance with the plans. If it is not reached within the specified period, the contract is closed and automatically returns all funds raised to depositors. If Hard Cap is achieved, the sale of tokens stops. However, after overcoming soft cap investors control only purchased tokens and can't monitor invested money or withdraw part of the investment.
+
+Overall, the main risks are taxes risk (there is no agreement on whether or not the taxes/vat should be paid), regulation and legislation risks (there no one position between countries about legislation and regulation in ICO, moreover, some location of ICO even with laws concerning the legal procedure of ICO may decrease the probability of success 8 . The important question for investors does ICO documents have a legal basis and do they have any rights in the court), business (and investors) risks, structural risks (e.g. obfuscation of how the founders will use ICO funds, undeclared salaries, unpublished financial documents, token holders cannot vote out the management of the token issuer, etc), team risks (there is a significant number of unqualified team (no real business experience) and quality of the management is the classical factor influences the financial performance of securities), token risks (they may be stolen/lost or wallet may be hacked). Finally, the big concern is the connection between the token holders and holding company and several relevant questions arise, for example, what happens if the company which issued the tokens is sold or will the token holders have any rights under the new management? In order to overcome new models are introduced.
+
+
+\paragraph{Decentralized Autonomous Initial Coin Offering (DAICO)}\leavevmode
+\begin{itemize}
+	\item DAICO is a new fundraising model. Founder of Ethereum blockchain Vitalik Buterin proposed this model, combining the advantages of decentralized autonomous organizations (DAO) with the classic ICO. This synergistic model allows you to make the process of collecting and spending funds as transparent and safe as possible.
+	\item DAICO is based on a smart contract that regulates all actions to attract and work with funds.
+	\item The difference between DAICO and ICO begins after the first stage when a mechanism called a “tap” is launched. Tap allows tokens holders to control how much money is available to the team. The crane determines the amount per second that the development team can withdraw from the contract. Such tool gives to holders of tokens control over the spending of the funds raised and guaranteeing the security of their own investments. Payments to developers are made not once, but gradually, for example, once a month. If they need a larger amount than the one that is written in the smart contract, then this question is put to the vote. And holders of tokens can either approve this proposal or not.  
+\end{itemize}
+
+\section{Initial Exchange Offerings (IEO)}
+
+There are several advantages of IEO which are in overcoming the disadvantages of ICO:
+\begin{itemize}
+	\item The risk of Scams for investors is lower. The project is launched at the exchange after the serious procedure of verification. The exchange rejects the doubtful project in order to save its’ reputation. 
+	\item The process of listing new tokens is faster. 
+	\item Redistribution of costs becomes available. According to Autonomous Research, there is 1-3 mln cost to list the token at the exchange. An IEO project has lower costs for listing. 
+	\item The speed of funding is higher. In ICO the primary distribution of tokens may been lasted for several days whereas in IEO it lasts several minutes or even seconds. 
+	\item Investors’ gain is higher. The listing token values are bigger than in primary distribution. 
+	\item There is no need to open another wallet. 
+	\item The process of investing is simple, the investors need to replenish the balance on the exchange, wait for the token-sale and put an order for buying.
+	\item Tokens are traded at an equal price. This reduces the probability of falling rates from the early investors who purchased first.
+\end{itemize}
+
+At the same all these advantages have some drawbacks. For example, due to the high distribution speed, some investors have no time to make an order and buy tokens of big projects. Moreover, nowadays there is limited number of IEO, and they are not mainstream way of funding the projects. Reason for lower popularity is the unwillingness of exchanges to take additional work. The mentioned verification procedure is very strict, e.g. there is an obligation for verification of identity. 
+
+\section{Security Token Offerings (STO)}
 
 \begin{itemize}
 	\item The popular utility tokens used in ICO have the main disadvantage, which is the absence of any compensation for investors in case of ICO fails as utility tokens are not security papers leading to the absence of any obligations for making beneficial conditions for investors. 
