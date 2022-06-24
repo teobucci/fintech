@@ -77,12 +77,12 @@ If some observations contain missing or inconsistent data, consider the possibil
 \begin{itemize}
     \item to remove the observation
     \item to remove the feature (if this affect only a feature and a large number of observations, e.g., only 60\% of observations has the data of a given feature known)
-    \item to “fill the gap” inserting, e.g., a mean/median value (if numerical) or interpolating (if they are time-dependent data, and you know the values at time $t_{i-1}$ and $t_{i+1}$, but not at time $t_{i}$).
+    \item to ``fill the gap'' inserting, e.g., a mean/median value (if numerical) or interpolating (if they are time-dependent data, and you know the values at time $t_{i-1}$ and $t_{i+1}$, but not at time $t_{i}$).
 \end{itemize}
 
 \textbf{Isolation forest} is an algorithm for anomaly detection that works on the principle of isolating anomalies. In statistics, an \textbf{anomaly} (or \textbf{outlier}) is an observation or event that deviates so much from other events to arouse suspicion it was generated erroneously.
 
-Anomalies in a big dataset may follow very complicated patterns, which are difficult to detect “by eye” in the great majority of cases. Isolation Forest explicitly isolates anomalous points in the dataset. From a mathematical point of view, recursive partitioning can be represented by a tree structure named Isolation Tree, while the number of partitions required to isolate a point can be interpreted as the length of the path, within the tree, to reach a terminating node starting from the root. Intuitively, the anomalous points are those (easier to isolate, hence) with the smaller path length in the tree.
+Anomalies in a big dataset may follow very complicated patterns, which are difficult to detect ``by eye'' in the great majority of cases. Isolation Forest explicitly isolates anomalous points in the dataset. From a mathematical point of view, recursive partitioning can be represented by a tree structure named Isolation Tree, while the number of partitions required to isolate a point can be interpreted as the length of the path, within the tree, to reach a terminating node starting from the root. Intuitively, the anomalous points are those (easier to isolate, hence) with the smaller path length in the tree.
 
 \section{Unsupervised Learning}
 
@@ -106,13 +106,13 @@ Before using many ML algorithms (including those for unsupervised learning), it 
 
 For clustering we need a \textbf{distance} measure. The simplest distance measure is the Euclidean distance measure.
 \begin{equation*}
-    d\left( A,B\right) =\sqrt{\left( x_{B} -x_{A}\right)^{2} +\left( y_{B} -y_{A}\right)^{2}}
+    d\left(A,B\right) =\sqrt{\left(x_{B} -x_{A}\right)^{2} +\left(y_{B} -y_{A}\right)^{2}}
 \end{equation*}
 In general when there are $m$ features the distance between $P$ and $Q$ is
 \begin{equation*}
-    d\left( P,Q\right) =\sqrt{\sum\limits _{j=1}^{m}\left( v_{pj} -v_{qj}\right)^{2}}
+    d\left(P,Q\right) =\sqrt{\sum\limits _{j=1}^{m}\left(v_{pj} -v_{qj}\right)^{2}}
 \end{equation*}
-where $v_{pj} ,v_{qj}$ are the values of the $j$-th feature for $P$ and $Q$.
+where $v_{pj},v_{qj}$ are the values of the $j$-th feature for $P$ and $Q$.
 
 Now that we have a distance measure, it is important to define the \textbf{center of a cluster}, also known as \textbf{cluster centroid}.
 
@@ -139,29 +139,29 @@ Generally, \textbf{the inertia decreases as }$k$\textbf{ increases}, approaching
 \begin{itemize}
     \item \textbf{The elbow approach:} in this case, $k=4$ seems the best choice, since the inertia decreases of a small quantity moving from $4$ to $5$ w.r.t from $3$ to $4$.
     \item \textbf{The elbow approach + distance between clusters analysis:} if moving from $k$ to $k+1$ clusters we create a cluster with center very close to the center of another cluster, we stop the algorithm to $k$.
-    \item \textbf{The silhouette method:} for each observation $i$ calculate $a( i)$, the average distance from other observations in its cluster, and $b( i)$, the average distance from observations in the \textbf{closest other cluster}, i.e., for each cluster (excluding the one which contains the observation), we compute the average distance of the considered observation $i$ from the observations of the cluster, and \textbf{then take the minimum}. The silhouette score for observation $i$, $s( i)$, is defined as
+    \item \textbf{The silhouette method:}\footnote{\url{https://en.wikipedia.org/wiki/Silhouette_(clustering)}} for each observation $i$ calculate $a(i)$, the average distance from other observations in its cluster, and $b(i)$, the average distance from observations in the \textbf{closest other cluster}, i.e., for each cluster (excluding the one which contains the observation), we compute the average distance of the considered observation $i$ from the observations of the cluster, and \textbf{then take the minimum}. The silhouette score for observation $i$, $s(i)$, is defined as
           \begin{equation*}
-              s( i) =\frac{b( i) -a( i)}{\max\{a( i) ,b( i)\}}
+              s(i) =\frac{b(i) -a(i)}{\max\{a(i),b(i)\}}
           \end{equation*}
           
           Choose the number of clusters that maximizes the average silhouette score across all observations.
           The silhouette value is a measure of how similar an object is to its own cluster (cohesion) compared to other clusters (separation). The silhouette ranges from $-1$ to $+1$, where a high value indicates that the object is well matched to its own cluster and poorly matched to neighboring clusters. If most objects have a high value, then the clustering configuration is appropriate. If many points have a low or negative value, then the clustering configuration may have too many or too few clusters.
-    \item The \textbf{gap statistic} compares the within cluster sum of squares with what would be expected with random data.
+    \item The \textbf{Gap statistic} compares the within cluster sum of squares with what would be expected with random data.
           \begin{itemize}
               \item Let us create $N$ sets of random points.
               \item For each set, let us cluster this points in $k$ clusters, and compute the Inertia, for different $k$.
               \item Let us define with
                     \begin{itemize}
                         \item $w_{k}$ the inertia computed for the real data
-                        \item $m_{k}( s_{k})$ the mean value (standard deviation) of the $N$ inertias computed exploiting the random sets
+                        \item $m_{k}(s_{k})$ the mean value (standard deviation) of the $N$ inertias computed exploiting the random sets
                     \end{itemize}
               \item We define the Gap as
                     \begin{equation*}
-                        Gap( k) =m_{k} -w_{k}
+                        \texttt{gap}(k) = m_{k} - w_{k}
                     \end{equation*}
               \item We set $k$ such that
                     \begin{equation*}
-                        Gap( k) \in ( s_{k+1} ,Gap( k+1))
+                        \texttt{gap}(k) \in (s_{k+1},\texttt{gap}(k+1))
                     \end{equation*}
           \end{itemize}
 \end{itemize}
@@ -218,7 +218,7 @@ This is an approach to reduce the number of variables
               \item Any observation on the original variables is a linear combination of the $n$ factors
               \item The $n$ factors are uncorrelated
               \item The quantity of a particular factor in a particular observation is the factor score
-              \item The importance of a particular factor is measured by the standard deviation of its factor score across observations \ 
+              \item The importance of a particular factor is measured by the standard deviation of its factor score across observations
           \end{itemize}
     \item The idea is to find a few variables that \textbf{account for a high percentage of the variance} in the observations.
 \end{itemize}
@@ -249,11 +249,11 @@ Linear regression is a very popular tool because once you have made the assumpti
 
 In ML we refer to the constant term as the \textit{bias} and the coefficients as \textit{weights}. Assume $m$ features and $n$ observations:
 \begin{equation*}
-    Y=a+b_{1} X_{1} +\cdots +b_{m} X_{m} +\varepsilon ,
+    Y=a+b_{1} X_{1} +\cdots +b_{m} X_{m} +\varepsilon,
 \end{equation*}
 we choose $a,b_{i}$ to minimize the mean squared error:
 \begin{equation*}
-    MSE=\frac{1}{n}\sum _{j=1}^{n}[ Y_{j} -( a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j})]^{2}
+    MSE=\frac{1}{n}\sum _{j=1}^{n}[ Y_{j} -(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j})]^{2}
 \end{equation*}
 This can be done analytically by inverting a matrix. Alternatively a numerical (\textbf{gradient descent}) method can be used. The objective is to minimize a function by changing parameters. Steps are as follows:
 \begin{enumerate}
@@ -274,11 +274,11 @@ $R$-square varies between 0 and 1: when 0, the model used does not explain the d
     \item assist. prof 1, assoc. prof 2, full prof 3.
 \end{itemize}
 
-\textbf{Dummy Variably Trap.} Suppose we have a constant term and a number of dummy variables (equal to 0 or 1) where, for each observation, only one dummy can take value 1 (e.g., dummies $X_{1} ,X_{2} ,\dotsc $: dummy \textit{born in Europe, born in Africa}, ...).
+\textbf{Dummy Variably Trap.} Suppose we have a constant term and a number of dummy variables (equal to 0 or 1) where, for each observation, only one dummy can take value 1 (e.g., dummies $X_{1},X_{2},\dotsc $: dummy \textit{born in Europe, born in Africa}, ...).
 
 There is then no unique solution because, for any $C$, we can add $C$ to the constant term and subtract $C$ from each of the dummy variables coefficient \textbf{without changing the prediction.}
 \begin{equation*}
-    Y\ =\ a+b_{1} X_{1} +b_{2} X_{2} =a+C+( b_{1} -C) X_{1} +( b_{2} -C) X_{2}
+    Y = a+b_{1} X_{1} +b_{2} X_{2} =a+C+(b_{1} -C) X_{1} +(b_{2} -C) X_{2}
 \end{equation*}
 \textbf{Regularization} solves this problem.
 \begin{itemize}
@@ -299,7 +299,7 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
     \item Reduce magnitude of regression coefficients by choosing a parameter $\lambda $ and minimizing:
           
           \begin{equation*}
-              \frac{1}{n}\sum\limits _{j=1}^{n}\left[ Y_{j} -\left( a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j}\right)\right]^{2} +\lambda \sum _{i=1}^{m} b_{i}^{2}
+              \frac{1}{n}\sum\limits _{j=1}^{n}\left[ Y_{j} -\left(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j}\right)\right]^{2} +\lambda \sum _{i=1}^{m} b_{i}^{2}
           \end{equation*}
     \item What happens as $\lambda $ increases? Minimizing the above function, all $b_{i}$s approach 0 as $\lambda $ increases.
     \item Ridge regression, as linear regression, can be solved analytically.
@@ -311,7 +311,7 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
     \item Similar to ridge regression except we minimize:
           
           \begin{equation*}
-              \frac{1}{n}\sum\limits _{j=1}^{n}\left[ Y_{j} -\left( a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j}\right)\right]^{2} +\lambda \sum _{i=1}^{m}\left| b_{i}\right| 
+              \frac{1}{n}\sum\limits _{j=1}^{n}\left[ Y_{j} -\left(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j}\right)\right]^{2} +\lambda \sum _{i=1}^{m}\left| b_{i}\right| 
           \end{equation*}
     \item This has the effect of completely eliminating the less important factors .
     \item We must use gradient descent.
@@ -323,7 +323,7 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
     \item Middle ground between \textit{Ridge} and \textit{Lasso:}
     \item Minimize:
           \begin{equation*}
-              \frac{1}{n}\sum\limits _{j=1}^{n}[ Y_{j} -( a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j})]^{2} +\lambda _{1}\sum _{i=1}^{m} b_{i}^{2} +\lambda _{2}\sum _{i=1}^{m}| b_{i}| 
+              \frac{1}{n}\sum\limits _{j=1}^{n}[ Y_{j} -(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j})]^{2} +\lambda _{1}\sum _{i=1}^{m} b_{i}^{2} +\lambda _{2}\sum _{i=1}^{m}| b_{i}| 
           \end{equation*}
     \item Must use gradient descent.
 \end{itemize}
@@ -331,7 +331,7 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
 \section{Logistic Regression}
 
 \begin{itemize}
-    \item The objective is to classify observations into a “positive outcome” and “negative outcome” using data on features
+    \item The objective is to classify observations into a ``positive outcome'' and ``negative outcome'' using data on features
     \item Dependent variable: binary (1 – 0)
     \item Probability of a positive outcome is assumed to be a \textbf{sigmoid} function:
           \begin{equation*}
@@ -344,26 +344,26 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
 
 \fg{0.7}{b73959a12b4ee61d6858da9d987c1ffa-I7e1tfoeOe-image.png}
 
-$Y\in \{0,1\}$. Let $Q=p\left( X\right)$ be the probability that $Y=1$, conditioned to the value of $X$.
+$Y\in \{0,1\}$. Let $Q=p\left(X\right)$ be the probability that $Y=1$, conditioned to the value of $X$.
 \begin{equation*}
-    \log\left(\frac{p\left( X\right)}{1-p\left( X\right)}\right) =\beta _{0} +\beta _{1} X
+    \log\left(\frac{p\left(X\right)}{1-p\left(X\right)}\right) =\beta _{0} +\beta _{1} X
 \end{equation*}
 Multivariate
 \begin{equation*}
-    \log\left(\frac{p( X)}{1-p( X)}\right) =\beta _{0} +\beta _{1} X_{1} +\cdots +\beta _{k} X_{k}
+    \log\left(\frac{p(X)}{1-p(X)}\right) =\beta _{0} +\beta _{1} X_{1} +\cdots +\beta _{k} X_{k}
 \end{equation*}
 \textbf{Maximum Likelihood Estimation (MLE)}
 \begin{itemize}
     \item We use the training set to maximize
           \begin{equation*}
-              \sum _{\text{pos. outcomes}}\log( Q) +\sum _{\text{neg. outcomes}}\log( 1-Q)
+              \sum _{\text{pos. outcomes}}\log(Q) +\sum _{\text{neg. outcomes}}\log(1-Q)
           \end{equation*}
     \item This cannot be maximized analytically but we can use a gradient ascent algorithm.
 \end{itemize}
 
 \textbf{Logistic regression as classifier.}
 
-Once betas are estimated, we use the regression to estimate $p\left( X\right)$.
+Once betas are estimated, we use the regression to estimate $p\left(X\right)$.
 
 We have to choose a \textbf{threshold!}
 \begin{gather*}
@@ -372,36 +372,35 @@ We have to choose a \textbf{threshold!}
 \end{gather*}
 
 \begin{itemize}
-    \item \textbf{Sensitivity.} True Positive fraction, the proportion of class 1 (positive) members classified as such.
-    \item \textbf{Specificity.} True Negative fraction, the proportion between the members of class 0 (negative) classified as such.
+    \item \textbf{Sensitivity.} True Positive Rate, the proportion of class 1 (positive) members classified as such.
+    \item \textbf{Specificity.} True Negative Rate, the proportion between the members of class 0 (negative) classified as such.
 \end{itemize}
 
-The Confusion matrix and common ratios
+The \textbf{confusion matrix} and common ratios\footnote{\url{https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers}}
 
 \begin{center}
-    
     \begin{tabular}{|c|c|c|}
         \hline 
                      & Predict pos. & Predict neg. \\
         \hline 
-        Outcome pos. & $TP$         & $FN$         \\
+        Outcome pos. & \texttt{TP}         & \texttt{FN}         \\
         \hline 
-        Outcome neg. & $FP$         & $TN$         \\
+        Outcome neg. & \texttt{FP}         & \texttt{TN}         \\
         \hline
     \end{tabular}
 \end{center}
 
 \begin{gather*}
-    \text{accuracy} =\frac{TP+TN}{\text{all}}\\
-    \text{True Positive Ratio (TPR or sensitivity)} =\frac{TP}{TP+FN}\\
+    \text{accuracy} =\frac{\texttt{TP}+\texttt{TN}}{\text{all}}\\
+    \text{True Positive Rate (\texttt{TPR} or sensitivity)} =\frac{\texttt{TP}}{\texttt{TP}+\texttt{FN}}\\
     \\
-    \text{True Negative Ratio (specificity)} =\frac{TN}{TN+FP}\\
+    \text{True Negative Rate (\texttt{TNR} or specificity)} =\frac{\texttt{TN}}{\texttt{TN}+\texttt{FP}}\\
     \\
-    \text{False Positive Ratio} =\frac{FP}{TP+FP}\\
+    \text{False Positive Rate} =\frac{\texttt{FP}}{\texttt{TP}+\texttt{FP}} = 1 - \texttt{TNR}\\
     \\
-    \text{Precision} ,P=\frac{TP}{TP+FP}\\
+    \text{Precision (\texttt{P})} = \frac{\texttt{TP}}{\texttt{TP}+\texttt{FP}}\\
     \\
-    F\text{-score} =2\cdot \frac{P\cdot TPR}{P+TPR}
+    F\text{-score} = 2 \cdot \frac{\texttt{P} \cdot \texttt{TPR}}{\texttt{P} + \texttt{TPR}}
 \end{gather*}
 \textbf{ROC Curve (receiver operating characteristic).}
 
@@ -409,7 +408,7 @@ Sensitivity and specificity are tested by varying the classifier parameters - e.
 
 \fg{0.7}{bdab95cc33820afd21b5c1ad51bbcb05-fkO7SSo4fY-image.png}
 
-The performance of a classifier can be measured using the so-called \textbf{AUC, the area under the ROC curve}. \ The \textit{greater the area the greater the goodness} (sensitivity and specificity) that the classifier is able to obtain. The bisector in the graph is obtained through a trivial classifier (I randomly assign the observations to the two classes). For a classifier to be useful, the \textbf{AUC must beat the trivial classifier} (i.e. AUC greater than 0.5).
+The performance of a classifier can be measured using the so-called \textbf{AUC, the area under the ROC curve}. The \textit{greater the area the greater the goodness} (sensitivity and specificity) that the classifier is able to obtain. The bisector in the graph is obtained through a trivial classifier (I randomly assign the observations to the two classes). For a classifier to be useful, the \textbf{AUC must beat the trivial classifier} (i.e. AUC greater than 0.5).
 
 The area under the curve is a popular way of summarizing the predictive ability of a model to estimate a binary variable
 \begin{itemize}
@@ -418,7 +417,7 @@ The area under the curve is a popular way of summarizing the predictive ability 
     \item When AUC < 0.5 the model is worse than random.
 \end{itemize}
 
-\textbf{Imbalanced Dataset} typically refers to a problem with classification problems where the classes are not represented equally.
+\textbf{Imbalanced Dataset}\footnote{\url{https://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/}} typically refers to a problem with classification problems where the classes are not represented equally.
 
 The \textit{accuracy paradox} is the name for the exact situation in the introduction to this post.
 
@@ -525,7 +524,7 @@ In directed graphs:
 
 \textbf{Shortest Path}
 
-A \textbf{path} in a network is a sequence of vertices $x,y,\dotsc ,z$ such that each consecutive pair of vertices $i,j$ is connected by an edge $(i,j)$ in the network.
+A \textbf{path} in a network is a sequence of vertices $x,y,\dotsc,z$ such that each consecutive pair of vertices $i,j$ is connected by an edge $(i,j)$ in the network.
 
 The \textbf{shortest path} is the shortest of all possible paths between two vertices.
 
@@ -533,7 +532,7 @@ The \textbf{shortest path} is the shortest of all possible paths between two ver
 
 The average graph-distance between all pair of nodes
 \begin{equation*}
-    L_{G} =\frac{1}{n(n-1)}\sum _{i\neq j} d( v_{i} ,v_{j})
+    L_{G} =\frac{1}{n(n-1)}\sum _{i\neq j} d(v_{i},v_{j})
 \end{equation*}
 If all nodes are connected, then the graph distance equals to 1
 
@@ -561,7 +560,7 @@ If all nodes are connected, then the graph distance equals to 1
               \boxed{B(i)=\sum _{s\neq i\neq t}\frac{\delta _{st} (i)}{\delta _{st}}}
           \end{equation*}
           
-          where $st\left( i\right)$ is the number of shortest paths between $s$ and $t$ that pass through $i$, and $st$ is the total number of shortest paths between $s$ and $t$.
+          where $st\left(i\right)$ is the number of shortest paths between $s$ and $t$ that pass through $i$, and $st$ is the total number of shortest paths between $s$ and $t$.
     \item Normalized betweenness centrality
           
           \begin{equation*}
@@ -610,15 +609,15 @@ Comparison of different centralities:
     \item Suppose that there are $n$ possible outcomes and $p_{i}$ is the probability of outcome $i$ with $\sum _{i} p_{i} =1$.
     \item \textbf{Entropy} measure of uncertainty:
           \begin{equation*}
-              \text{Entropy} =\mathbb{E}\left[\text{information}\right] =\sum _{i=1}^{n} p_{i} \cdot \log\left(\frac{1}{p_{i}}\right) =-\sum _{i=1}^{n} p_{i}\log p_{i}
+              \texttt{entropy} =\mathbb{E}\left[\texttt{information}\right] =\sum _{i=1}^{n} p_{i} \cdot \log\left(\frac{1}{p_{i}}\right) =-\sum _{i=1}^{n} p_{i}\log p_{i}
           \end{equation*}
     \item \textbf{Gini} Measure of uncertainty:
           \begin{equation*}
-              \text{Gini} =1-\sum _{i=1}^{n} p_{i}^{2}
+              \texttt{gini} = 1 - \sum_{i=1}^{n} p_{i}^{2}
           \end{equation*}
     \item In case of a binary variable ($n=2$) we have
           \begin{equation*}
-              \text{Gini} =1-\left( p^{2} +\left( 1-p\right)^{2}\right) =2p\left( 1-p\right)
+              \texttt{gini} = 1 - (p^{2} + (1-p)^{2}) = 2p(1-p)
           \end{equation*}
 \end{itemize}
 
@@ -630,11 +629,11 @@ Comparison of different centralities:
     \item Suppose further that there is a 50\% chance the person has a relevant degree. If the person does have a relevant degree the probability of a job offer rises to 30\%, otherwise it falls to 10\%
     \item Initial entropy:
           \begin{equation*}
-              -[ 0.2\log( 0.2) +0.8\log( 0.8)] =0.7219
+              -[ 0.2\log(0.2) +0.8\log(0.8)] =0.7219
           \end{equation*}
     \item Expected entropy:
           \begin{equation*}
-              -0.5\left[ 0.1\log\left( 0.1\right) +0.9\log\left( 0.9\right)\right] -0.5\left[ 0.3\log\left( 0.3\right) +0.7\log\left( 0.7\right)\right] =0.6751\ \ \ \ 
+              -0.5\left[ 0.1\log\left(0.1\right) +0.9\log\left(0.9\right)\right] -0.5\left[ 0.3\log\left(0.3\right) +0.7\log\left(0.7\right)\right] = 0.6751
           \end{equation*}
     \item Expected information gain from knowing whether there is a relevant degree:
           \begin{equation*}
@@ -647,14 +646,12 @@ Comparison of different centralities:
 \begin{itemize}
     \item Algorithm chooses the feature at the root of the tree that has the greatest expected information gain.
     \item At subsequent nodes it chooses the feature (not already chosen) that has the greatest expected information gain.
-    \item When there is a threshold, it determines the optimal threshold for each feature (i.e., the threshold that maximizes the expected information gain for that feature) and bases calculations on that threshold.
+    \item When there is a threshold (numerical feature), it determines the optimal threshold for each feature (i.e., the threshold that maximizes the expected information gain for that feature) and bases calculations on that threshold.
 \end{itemize}
 
-https://www.youtube.com/watch?v=7VeUPuFGJHk
+\textbf{Classification Tree:}\footnote{\url{https://youtu.be/_L39rN6gz7Y}} the output variable is discrete and finite (usually binary).
 
-\textbf{Classification Tree:} the output variable is discrete and finite (usually binary).
-
-\textbf{Regression Tree:} the output variable has continuous values.
+\textbf{Regression Tree:}\footnote{\url{https://youtu.be/g9c66TUylZ4}} the output variable has continuous values.
 
 \subsection{Classification Tree}
 
@@ -663,19 +660,19 @@ https://www.youtube.com/watch?v=7VeUPuFGJHk
     \item The complete dataset is the root node of the tree. To split the node, a feature is selected and a binary rule, e.g., if the value of the feature is larger or smaller than a given threshold, is defined on it in order to obtain two disjoint datasets. These two datasets become nodes of the tree. This procedure is repeated for each new node until a stopping criterion is met, e.g., the specified maximum depth of the tree is reached. 
     \item So a classification tree is a growing tree with nodes refining the information about the exogenous variables to classify an item in the database (in the binary case, class 0 or 1). 
     \item Each node is associated with a measure of \textit{Impurity}. Such a measure is high when the dataset representing the node contains observations belonging to different classes of the endogenous variable, and reaches its lowest value (zero) when the node only contains observations belonging to a single class.
-    \item In the binary case, i.e. only two classes, we can use the Gini impurity. Given a node $x$, the Gini impurity, denoted by $G( x)$, for a binary classier is defined as
+    \item In the binary case, i.e. only two classes, we can use the Gini impurity. Given a node $x$, the Gini impurity, denoted by $G(x)$, for a binary classier is defined as
           \begin{equation*}
-              G( x) =p( 1-p)
+              G(x) = 2p(1-p)
           \end{equation*}
           
           where $p$ denotes the proportion of observations belonging to class 1, contained in node $x$. $p$ can be interpreted as the probability of being of class 1 in the node. We can also use Entropy, instead of Gini index.
-    \item We aim to minimize the Gini index; its maximum ($1/4$) corresponds to the case in which a node is perfectly balanced (50\% of the observations in the node are of class 0 and 50\% of class 1, and therefore $p=1/2$).
+    \item We aim to \textbf{minimize} the Gini index; its maximum ($1/4$) corresponds to the case in which a node is perfectly balanced (50\% of the observations in the node are of class 0 and 50\% of class 1, and therefore $p=1/2$).
     \item The feature (exogenous variable) and the binary rule that are used for the split at a node are defined through a search process that maximizes the impurity decrease after the split. Given a split rule $r$ that divides node $x$ (observations of the dataset) into the nodes $x_{L}$ and $x_{R}$, we define the impurity decrease after the split as
           \begin{equation*}
-              G\left( x\right) -p_{L} \cdot G\left( x_{L}\right) -p_{R} \cdot G\left( x_{R}\right)
+              G\left(x\right) -p_{L} \cdot G\left(x_{L}\right) -p_{R} \cdot G\left(x_{R}\right)
           \end{equation*}
           
-          where $p_{L}( p_{R})$ is the percentage of observations in $x$ that after the split belong to node $x_{L}( x_{R})$. The last nodes of the tree (the arrival point of the algorithm, i.e., the nodes that are not split anymore) are called \textit{leaves}. 
+          where $p_{L}(p_{R})$ is the percentage of observations in $x$ that after the split belong to node $x_{L}(x_{R})$. The last nodes of the tree (the arrival point of the algorithm, i.e., the nodes that are not split anymore) are called \textit{leaves}. 
     \item The leaves contain the estimation of the tree (in our case class 0 or 1), which is given by the most recurrent class in that leaf: if more than 50\% of the observations in the leaf are of class 1, then the leaf is a class 1 leaf.
     \item We also get a probability of being of class 1 for each leaf, given by the proportion of observations of class 1 in that leaf.
 \end{itemize}
@@ -683,11 +680,11 @@ https://www.youtube.com/watch?v=7VeUPuFGJHk
 \subsection{Regression Tree}
 
 \begin{itemize}
-    \item Regression trees have basically the same structure as classification trees, but the dependent variable is a continuous variable, and the measure of impurity is the MSE of the observations in the node. 
+    \item Regression trees have basically the same structure as classification trees, but the dependent variable is a \emph{numerical} variable, and the measure of impurity is the MSE of the observations in the node. 
     \item The quantity predicted by each leaf is the average of the values of the target variable of the observations in the leaf.
-    \item The MSE that measures the pureness of the node, computing the distance between the estimated value of the node (the average of the value of all the observations belonging to the node) and the value of the observations contained in the node, i.e., if there are $N$ observations belonging to a node, and pi is the value of observation i, $i=1,\dotsc ,N$, then we compute
+    \item The MSE measures the pureness of the node, computing the distance between the estimated value of the node (the average of the value of all the observations belonging to the node) and the value of the observations contained in the node, i.e., if there are $N$ observations belonging to a node, and $p_i$ is the value of observation $i$, $i=1,\dotsc,N$, then we compute
           \begin{equation*}
-              \frac{1}{N}\sum\limits _{i=1}^{N}\left( p_{i} -\frac{1}{N}\sum\limits _{j=1}^{N} p_{j}\right)^{2}
+              \frac{1}{N}\sum\limits _{i=1}^{N}\left(p_{i} -\frac{1}{N}\sum\limits _{j=1}^{N} p_{j}\right)^{2}
           \end{equation*}
     \item We construct a tree where instead of maximizing expected information gain we maximize the \textbf{expected decrease in mean squared error.}
 \end{itemize}
@@ -760,7 +757,7 @@ Usually every layer has its activation function.
 
 The most common activation functions are
 \begin{equation*}
-    \sigma ( z) =\frac{1}{1+e^{-z}} \ \ \ \ \tanh( z) =\frac{e^{z} -e^{-z}}{e^{z} +e^{-z}} \ \ \ \ \text{ReLU}( z) =\max( 0,z)
+    \sigma (z) =\frac{1}{1+e^{-z}} \quad \tanh(z) =\frac{e^{z} -e^{-z}}{e^{z} +e^{-z}} \quad \text{ReLU}(z) =\max(0,z)
 \end{equation*}
 
 \fg{0.7}{c145a362119def1f36fc4b9e846ef6f7-0TDQNpDze4-image.png}
@@ -773,7 +770,7 @@ Remember that ReLU (Rectified Linear Unit) is unbounded.
 
 Let us use the Sigmoid to relate the $v_{k}$ to the features.
 \begin{equation*}
-    v_{1} =\frac{1}{1+e^{-a_{1} -w_{11} x_{1} -w_{21} x_{2}}} \ \ \ \ v_{2} =\frac{1}{1+e^{-a_{2} -w_{12} x_{1} -w_{22} x_{2}}} \ \ \ \ v_{3} =\frac{1}{1+e^{-a_{3} -w_{13} x_{1} -w_{23} x_{2}}}
+    v_{1} =\frac{1}{1+e^{-a_{1} -w_{11} x_{1} -w_{21} x_{2}}} \quad v_{2} =\frac{1}{1+e^{-a_{2} -w_{12} x_{1} -w_{22} x_{2}}} \quad v_{3} =\frac{1}{1+e^{-a_{3} -w_{13} x_{1} -w_{23} x_{2}}}
 \end{equation*}
 The output is a bias (constant) plus linear combination of the preceding values
 \begin{equation*}
@@ -787,7 +784,7 @@ However, the theorem doesn't tell how many neurons or layers.
 
 If there are $F$ features, $H$ hidden layers, $M$ neurons in each hidden layer and $T$ targets the number of parameters is:
 \begin{equation*}
-    \text{\#parameters} =( F+1) M+M( M+1)( H-1) +( M+1) T
+    \text{\#parameters} =(F+1) M+M(M+1)(H-1) +(M+1) T
 \end{equation*}
 
 \textbf{How to deal with such a large number of parameters?}
@@ -817,7 +814,7 @@ Applications are when working with sequential data where the relationship betwee
 
 % Goal Option
 
-% Let $S_{t}$ be a \textbf{stock} at time $t$. You can also buy \textbf{Financial Derivatives} (like \textbf{European Call Options}, something which have a \textbf{maturity} $T$ (years), a \textbf{strike} $K$ and a \textbf{payoff} $( S_{T} -K)^{T}$).
+% Let $S_{t}$ be a \textbf{stock} at time $t$. You can also buy \textbf{Financial Derivatives} (like \textbf{European Call Options}, something which have a \textbf{maturity} $T$ (years), a \textbf{strike} $K$ and a \textbf{payoff} $(S_{T} -K)^{T}$).
 
 % In the B\&S\&M framework we can model
 % \begin{equation*}
@@ -867,18 +864,16 @@ Features dependency could be a problem: we might be able to group features that 
 
 \textbf{Global Interpretability:} what are the drivers of the black-box predictions?
 
-\subsection{LIME}
+\subsection{Local Interpretable Model-Agnostic Explanations (LIME)}
 
-LIME tries to understand a black-box model by fitting a simpler model to data that is close to the currently observed data (Local Interpretability).
+LIME modifies a single data sample by perturbing the feature values and observes the resulting impact on the output. LIME tries to understand a black-box model by fitting a simpler model to data that is close to the currently observed datum.
 
 Procedure is:
 \begin{enumerate}
-    \item Perturb feature values to get a samples
-    \item Run black-box model to get predictions for samples
+    \item Perturb feature values
+    \item Run black-box model to get predictions
     \item Train an easy to interpret model such as linear regression or decision trees to fit the data set that is created from samples and predictions
 \end{enumerate}
-
-Global Interpretability as LIME approach:
 
 \subsection{Partial Dependence Plot}
 
@@ -993,7 +988,7 @@ The optimal value function specifies the best possible performance in the MDP. A
 \]
 Theorem: for any Markov Decision Process
 \begin{itemize}
-    \item There exists an \textbf{optimal policy} $\pi ^{\star} $ that is better than or equal to all policies $\pi ^{\star}\geq \pi ,\forall \pi  $
+    \item There exists an \textbf{optimal policy} $\pi ^{\star} $ that is better than or equal to all policies $\pi ^{\star}\geq \pi,\forall \pi  $
     \item \textbf{All} optimal policies achieve the optimal value function, $V^{\pi ^{\star} }(s) = V^{\star}(s)$
     \item \textbf{All} optimal policies achieve the optimal action-value function, $Q^{\pi ^{\star} }(s,a) = Q^{\star}(s,a)$
     \item There is always a \textbf{deterministic optimal policy} for any MDP.
@@ -1063,7 +1058,7 @@ Q(s, a)^{\text{new}}=Q(s, a)^{\text{old}}+\alpha\left[r+\gamma V^{\text{old}}-Q(
 \paragraph{On-policy exploration}
 \begin{itemize}
     \item There are two doors in front of you
-    \item You open the left door and get reward 0 , $V(\text{left})=0$
+    \item You open the left door and get reward 0, $V(\text{left})=0$
     \item You open the right door and get reward $+1$, $V(\text{right})=+1$
     \item You open the right door and get reward $+3$, $V(\text{right})=+2$
     \item You open the right door and get reward $+2$, $V(\text{right})=+2$
@@ -1079,7 +1074,11 @@ Are you sure you've chosen the best door?
     \item With probability $1-\varepsilon$ choose the \textbf{greedy} action
     \item With probability $\varepsilon$ choose an action at \textbf{random}
     \[
-    \pi(s, a)= \begin{cases}\frac{\varepsilon}{m}+1-\varepsilon & \text {if } a^{\star}=\argmax _{a \in \Ac} Q(s, a) \\ \frac{\varepsilon}{m} & \text {otherwise}\end{cases}
+    \pi(s, a) =
+    \begin{cases}
+      \frac{\varepsilon}{m}+1-\varepsilon & \text {if } a^{\star}=\argmax _{a \in \Ac} Q(s, a) \\
+      \frac{\varepsilon}{m} & \text {otherwise}
+    \end{cases}
     \]
 \end{itemize}
 
