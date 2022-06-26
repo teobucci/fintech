@@ -45,16 +45,14 @@ A blockchain is a distributed (or architecturally decentralized) and politically
 	\item A \textbf{block} is a part of the Blockchain that contains a set of (Bitcoin) transactions. On average, a new block, which includes transactions, is added to the Blockchain every $10$ minutes (the system is tuned to make so happen).
 	\item \textbf{Confirmation:} to be included in a block, and therefore in the Blockchain, a transaction must be confirmed by several nodes (\textbf{miners}), i.e. processed by the network.
 	\item \textbf{Mining:} it is a mathematical process performed by the Blockchain nodes on the candidate block: once solved the block (and therefore all the transactions recorded in it) is confirmed and inserted into a block of the Blockchain. As a reward for their service, miners receive newly created Bitcoins (and the transaction fees). Mining $1$ new block now makes you earn $6.25$ BTC, mining can be done with ad hoc hardware and consumes a lot of energy.
-	      
-	      Miners accumulate transactions all the time (selecting them with a certain criterion, such as those that offer the highest fees). When they have enough transactions to fill a block (which has a fixed size) they try to solve the mining problem. The first miner that solves the mining problem propagates the block in the network, which is verified (they verify if the \textit{Proof of Work} is valid) by the other nodes and added to their copy of the blockchain.
+	Miners accumulate transactions all the time (selecting them with a certain criterion, such as those that offer the highest fees). When they have enough transactions to fill a block (which has a fixed size) they try to solve the mining problem. The first miner that solves the mining problem propagates the block in the network, which is verified (they verify if the \textit{Proof of Work} is valid) by the other nodes and added to their copy of the blockchain.
 \end{itemize}
 
 \fg{0.7}{804e766ecde2775d6efff4a980e6a2ab-b0x52ZU7IL-image}
 
 \begin{itemize}
 	\item \textbf{Cryptographic signature}: it is a mathematical mechanism that allows you to prove the identity and ownership of Bitcoins in this case.
-	      
-	      When your Bitcoin software marks a transaction with your private key, the entire network can recognize you (not as an individual but as an id) and verify that the Bitcoins spent are in your possession. The transaction becomes public with respect to your code. There is currently no way for other nodes to guess your private key, to steal your Bitcoins.
+	When your Bitcoin software marks a transaction with your private key, the entire network can recognize you (not as an individual but as an id) and verify that the Bitcoins spent are in your possession. The transaction becomes public with respect to your code. There is currently no way for other nodes to guess your private key, to steal your Bitcoins.
 \end{itemize}
 
 \fg{0.7}{6133e4c47407f4c52e44ce591f19e7c7-bAzikty36C-anatomy_of_a_transaction}
@@ -147,7 +145,7 @@ Proof of Work, or PoW, is an algorithm that is used by different cryptocurrencie
 
 \textit{Hashcash (SHA-256)}\footnote{Visit this site to try some hashing: \url{https://emn178.github.io/online-tools/sha256.html}} is the Proof of Work feature used by Bitcoin. Cryptocurrency forces miners to solve extremely complex and computationally difficult mathematical problems to add blocks to the blockchain. This function produces a very specific type of data that is used to verify that a significant amount of work has been done.
 
-A hash function takes an input of \textit{any} length and creates an output of \textit{fixed} length. 
+A hash function takes an input of \textit{any} length and creates an output of \textit{fixed} length.
 \begin{equation*}
 	\texttt{a0680c04c4eb53884be77b4e10677f2b}
 \end{equation*}
@@ -155,7 +153,7 @@ This is referred to as the \textit{message digest}.
 
 It is also known as the digital fingerprint.
 
-Every transaction has a hash associated with it. In a block, all of the transaction hashes in the block are themselves hashed (sometimes several times, the exact process is complex), and the result is the Merkle root. In other words, the Merkle root is the \textit{hash of all the hashes of all the transactions in the block}. 
+Every transaction has a hash associated with it. In a block, all of the transaction hashes in the block are themselves hashed (sometimes several times, the exact process is complex), and the result is the Merkle root. In other words, the Merkle root is the \textit{hash of all the hashes of all the transactions in the block}.
 
 Our target is to \textbf{find a variation of it that SHA-256 hashes to a value beginning with `000'}. We vary the string by adding an integer value to the end called a \texttt{nonce} and incrementing it each time. Finding a match for ``Hello, world!'' takes us 4251 tries (but happens to have zeroes in the first four digits).
 
@@ -167,9 +165,13 @@ Game theory: the nodes of the network compete with each other to register the ne
 
 Proof of Stake is an alternative method, a way by which nodes reach a consensus.
 
-In the Proof of Stake consensus model, the number of digital currency tokens held by each user is an important issue within the system. The greater the stake (``stake''), i.e. the number of tokens owned by a user, the greater the chances that the system is not being breached. The more an individual is exposed to a cryptocurrency, the more likely they are to perform optimally.
+\fg[First proposal of the Proof of Stake.]{0.7}{pos}
 
-The Proof of Stake blocks, unlike the Proof of Work blocks, are not mined, but minted. Participants who have a significant stake in Proof of Stake systems are selected on a pseudorandom basis to mint the blocks and add them to the blockchain.
+In Proof of Stake you stake your money apart, and the greater the stake, the higher is the probability that you will be chosen to create a new block. Blocks are not mined, but minted. The idea is that you should not fraud the system, for example by adding fake transactions to the block, otherwise the money you put at stake will be taken from you. Provided you stake enough money, it should be more convenient to be fair. Moreover you are incentivized to do it because you get a reward.
+
+The real problem is how to choose the validators, because rich people have more money to stake, thus more chances of being chosen as validators and becoming even richer.
+
+There is no waste of energy, and there is no vulnerability to 50\%+1 attacks.
 
 \section{Uniqueness}
 
@@ -177,7 +179,7 @@ The chain is unique: if two different chains are created (for example, due to a 
 
 To determine the correct chain, there are mechanisms: the chain considered correct is always the \textbf{longest one} (longest chain rule). \textbf{The blockchain rewards computational effort.}
 
-Generally, the longest chain is also the one stored by the majority of the network nodes (50\%+1 rule), given that \textbf{miners are constantly incentivized to create valid blocks} through the fees and Bitcoins generated at each resolution of the mining problem. 
+Generally, the longest chain is also the one stored by the majority of the network nodes (50\%+1 rule), given that \textbf{miners are constantly incentivized to create valid blocks} through the fees and Bitcoins generated at each resolution of the mining problem.
 
 From a game theory perspective, collaborating on the longest chain is a balance, as no one can achieve a better result for themselves (without collaborating with others) by creating invalid blocks (PoWs). \textbf{This makes it very difficult for a hacker to change even the last block}.
 
@@ -197,19 +199,17 @@ For the extraction of Bitcoins, computers with specific processors called ASICs 
 
 It's \textit{not real-time} technology, it may take up to 1-2 hours to complete a transaction.
 
-\section{Hashing and Notarization}
+\section{Notarization}
 
 Notarization is a very useful \textbf{application} of the Blockchain. Suppose you want to prove that a certain document (a thesis for example) was ready on a given day.
-\begin{itemize}
-	\item The blockchain is like a ledger with a transaction order distributed among many entities where \textbf{only data can be added} and each one keeps an identical copy. Each register in the accounting book has a \textbf{time stamp}, is \textbf{immutable} and can be checked individually.
-	\item Notarization: a hash containing the fingerprints of the files is recorded in the blockchain. All parties having access to the blockchain can individually verify the authenticity of these files.
-\end{itemize}
 
-How Does It Work? It is not possible to attach documents to the blockchain.
+Suppose the hash of the file is recorded in the blockchain. All parties having access to the blockchain can individually verify the authenticity of these files.
+
+It is not possible to attach documents to the blockchain. The procedure is the following:
 \begin{enumerate}
 	\item The document is hashed. This means that the content of the document is \textit{summarized}, or better represented, by a string of 64 characters (256bit).
 	\item The 64-character string is then put into a Bitcoin (or other) blockchain transaction using the \texttt{OP\_RETURN} \textbf{field}, it's a \textit{free} field presented in every Bitcoin transaction: free, but limited in size.
-	\item A small Bitcoin payment is made to process the transaction and \textit{register it on the blockchain} (\textbf{you can also make a 0 BTC transaction}, so paying only the cost of the transaction - variable but around 0.00001 BTC).
+	\item A small Bitcoin payment is made to process the transaction and \textit{register it on the blockchain} (\textbf{you can also make a 0 BTC transaction}, so paying only the cost of the transaction - variable but around $0.00001$ BTC).
 \end{enumerate}
 
 Hashing is \textit{irreversible} once you know the hash, it is \textit{mathematically impossible} to deduce the original text.
@@ -267,6 +267,8 @@ Read here to see how to verify a block on the blockchain!
 
 \section{Cryptoassets (D. Marazzina)}
 
+Every coin that is not Bitcoin is referred to as \textbf{altcoin}.
+
 A \textbf{cryptoasset} (coin) is a financial asset that is created and exchanged on a platform; like a blockchain, but not only a blockchain.
 
 Assets are divided into
@@ -279,15 +281,23 @@ Is Bitcoin a token? Not exactly. While all cryptocurrencies are technically toke
 
 It's not easy to \textit{diversify} cryptoassets because correlation is very high.
 
-USDT and USDC are very stable.
-
 It may happen that there are so called \textbf{forks} on the Blockchain:
 \begin{itemize}
 	\item \textbf{Soft fork:} when there are two versions of the Blockchain and it's solved automatically.
 	\item \textbf{Hard fork:} when something (a software update that only some install) creates two versions of the Blockchain.
 \end{itemize}
 
-\paragraph*{Bitcoin Cash.}
+\paragraph{Polkadot} multi-chain etherogeneous and scalable technology that gives freedom on the structure and the chains of its network (Ethereum is stricter). Consensus is granted on all the chains, which all communicates.\footnote{\url{https://en.wikipedia.org/wiki/Polkadot_(cryptocurrency)}}
+\textbf{DOT} is the cryptocurrency of the Polkadot platform.
+
+\paragraph{Ripple} Built for enterprise use, Ripple aims to be a fast (4 seconds), cost-efficient cryptocurrency for cross-border payments. Within the Ripple system, money isn't actually transferred from one place to another: only the promise of payment is transferred.
+It's designed to find the most convenient way to exchange two cryptocurrencies. The transaction fee is paid and then destroyed by the network.\footnote{\url{https://en.wikipedia.org/wiki/Ripple_(payment_protocol)}}
+\textbf{XRP} is the cryptocurrency used by the Ripple payment network.
+
+
+
+
+\paragraph{Bitcoin Cash.}
 
 It's a cryptocurrency that is a fork of Bitcoin that was created in 2017:
 \begin{itemize}
@@ -312,11 +322,11 @@ Another hard fork of Bitcoin.
 \begin{itemize}
 	\item Bitcoin Gold is a fork of Bitcoin that seeks to reduce the influence of miners who use specialized equipment known as ASICs. The team's stated goal is to ``make Bitcoin decentralized again.''
 	\item Bitcoin Gold hard forked from the Bitcoin blockchain on October 24, 2017.
-	\item In May 2018, Bitcoin Gold was hit by a 51\% hashing attack by an unknown actor. This type of attack makes it possible to manipulate the blockchain ledger on which transactions are recorded and to spend the same digital coins more than once. During the attack, 388,000 BTG (worth approximately \$18 million) was stolen from several cryptocurrency exchanges. 
+	\item In May 2018, Bitcoin Gold was hit by a 51\% hashing attack by an unknown actor. This type of attack makes it possible to manipulate the blockchain ledger on which transactions are recorded and to spend the same digital coins more than once. During the attack, 388,000 BTG (worth approximately \$18 million) was stolen from several cryptocurrency exchanges.
 	\item Bitcoin Gold suffered from 51\% attacks again in January 2020\footnote{{\scriptsize\url{https://thenextweb.com/hardfork/2020/01/27/Bitcoin-gold-51-percent-attack-blockchain-reorg-cryptocurrency-binance-exchange/}}}.
 \end{itemize}
 
-\textit{Interesting example.}
+\paragraph{TheDAO incident}\label{dao-incident}
 
 TheDAO (Decentralized Autonomous Organization), an automated investment fund, entirely managed by computers and based on blockchain technology: it has raised over 150 million dollars in the short period in which it was open to public subscription.
 
@@ -342,54 +352,74 @@ How? With distributed consent! More than 50\% of Ethereum users have accepted th
 
 \textbf{Distributed consent overcomes the immutability of the Blockchain.}
 
-\section{Stablecoins}
+\section{Derivatives}
 
+A \textbf{futures contract} is an agreement between counter-parties to buy or sell an asset at an explicit price and date in the future. The buyer is obligated to buy the underlying asset a specific price once the contract expires, and the seller is required to furnish the asset at the time of expiry.
 
-Fiat backing
-The value of stablecoins of this type is based on the value of the backing currency, which is held by a third-party–regulated financial entity. In this setting, the trust in the custodian of the backing asset is crucial for the stability of price of the stablecoin.
+In \textbf{inverse futures contract} BTC are the coin while USD are the commodity.
 
-Cryptocurrency backing
-Cryptocurrency-backed stablecoins are issued with cryptocurrencies as collateral, which is conceptually similar to fiat-backed stablecoins. However, the significant difference between the two designs is that while fiat collateralization typically happens off the blockchain, the cryptocurrency or crypto asset used to back this type of stablecoins is done on the blockchain, using smart contracts in a more decentralized fashion.
+\paragraph{BTC Perpetual Swap} Theese are perpetual inverse futures contract. \emph{Perpetual} means without expiration. For example I give you 20 BTC and you give me 40 USD, I'm short on BTC; if BTC goes down you're losing -- paying me. Every 8 hours we repeat. It's a way of \textbf{funding}, the longs will pay and the shorts will receive.
 
-Seigniorage-style/algorithmic stablecoins
-Seigniorage-style coins, also known as algorithmic stablecoins, utilize algorithms to control the stablecoin's money supply, similar to a central bank's approach to printing and destroying currency. Seigniorage-based stablecoins are a less popular form of stablecoin.[8]
+\section{Decentralized Finance (DeFi)}
 
+\textbf{DeFi} is an ambitious attempt to decentralize core traditional financial use cases like trading, lending, investment, wealth management, payment and insurance on the blockchain. Good trust on Ethereum, even though usability is not awesome.
 
+\paragraph{Lightning Network} Layer 2 payment protocol on top of a blockchain cryptocurrecy where payments can happen fast solving the scalability problem. The idea is: you open a \emph{payment channel} by queueing it in the blockchain, then you make a lot of fast transactions, finally you close the channel and only the final version of the transactions in broadcasted.
 
+\section{Fungible and Non-fungible Token (NFT)}
 
-\fg{0.7}{bdcc146817b36f24613f0c0967a7d1f9-1ruH8716er-image}
+\fg{0.8}{nft}
 
-\fg{0.7}{7dc3967046522e1c02d9c1916fa87f9b-DMNNfblLZC-image}
+\paragraph{CryptoKitties} is a blockchain game on Ethereum developed by Axiom Zen that allows players to purchase, collect, breed and sell virtual cats. It is one of the earliest attempts to deploy blockchain technology for recreation and leisure. The game's popularity in December 2017 congested the Ethereum network, causing it to reach an all-time high in number of transactions and slowing it down significantly.
 
-\fg{0.7}{49d147896a4ef0b2ca9045ac755abe65-Sx4PA1dE8U-image}
+CryptoKitties operates on Ethereum's underlying blockchain network, as a \textbf{non-fungible token}, unique to each CryptoKitty.
 
-A \textbf{stablecoin} is a new class of cryptocurrencies that attempts to offer \textbf{price stability} and is backed by a reserve asset. 
+Several traits can be passed down from the parents to the offspring. There are a total of 12 \emph{cattributes} for any cat, including pattern, mouth shape, fur, eye shape. Other features like cool down times are not passed down but are instead a function of the \emph{generation} of the offspring, which is one higher than the maximum generation between the two parents. In December 2017 a CryptoKitty sold for \$100,000.
 
-Stablecoins have gained traction as they attempt to offer the best of both worlds—the instant processing and security or privacy of payments of cryptocurrencies, and the volatility-free stable valuations of fiat currencies.
+A CryptoKitty's ownership is tracked via a smart contract on the Ethereum blockchain.
 
-\paragraph{Gold-backed Stablecoins} Usually, one token of stablecoin equals one gram of gold. Since they're tied to the gold, this stablecoin's price can't fall below the current price of the gold. A third party holds the gold in reserve.
+\paragraph{Ethereum's Tokens} Any \textbf{fungible} commodity can be represented by a token derived from \textbf{ERC-20 standard}. \textbf{NFTs} can be derived from \textbf{ERC-721 standard}. This recent standard has made possible to represent goods like pieces of art, personalized access rights, properties.
 
 \begin{itemize}
-	\item Libra
-	\item Tether
-	\item MakerDAO is a protocol behind the stable coin DAI — a cryptocurrency that maintains a 1:1 peg to the USD. 
+	\item More than 80\% of DeFi solution is on Ethereum
+	\item Algorand is a promising technology (but young)
 \end{itemize}
+
+\fg[Classification of tokens.]{0.8}{token-classification}
+
+\fg[Example of a restaurant voucher.]{0.8}{token-classification-restaurant}
 
 \section{Coin vs Token}
 
 \paragraph{Coin} It's a unit of value that is native to a blockchain. It is a means of exchange within the blockchain to incentivize the network of participants to use the blockchain. The cryptocurrencies Bitcoin, Ether, Ripple, and Litecoin are all examples of native cryptocurrencies. The sole purpose of a cryptocurrency is for exchange of value, and it has limited functionality beyond that.
 
-\paragraph{Token} It's a piece of business logic (i.e., “smart contract”) coded into an existing blockchain. A token can have a functionality beyond an exchange of value — it can represent any asset or functionality desired by the developer for use on a platform. Most tokens are created on the Ethereum blockchain by using ERC-20 smart contracts, such as Tron and VeChain.
+\paragraph{Token} It's a piece of business logic (i.e., ``smart contract'') coded into an existing blockchain. A token can have a functionality beyond an exchange of value — it can represent any asset or functionality desired by the developer for use on a platform. Most tokens are created on the Ethereum blockchain by using ERC-20 smart contracts, such as Tron and VeChain.
 
 Coins and tokens differ not only for the IT definition, but also for \textbf{market behaviour}.
 
 \section{How to create a crypto?}
 
-Build Your Own Blockchain—or Fork an Existing One - Both methods require quite a bit of technical knowledge. You can fork an existing blockchain by taking the open-source code found on Github making a few changes, and launching a new blockchain with a new name
+Tokens are often released through a crowdsale known as an initial coin offering (ICO) in exchange for existing coins, which in turn fund projects like gaming platforms or digital wallets. You can still get publicly available tokens after an ICO has ended—similar to buying coins—using the underlying currency to make the purchase.
 
-Launch a Coin or Token Using a Cryptocurrency Creation Platform - all you have to do is to choose a platform, pay for this service, and then enter the parameters, from the logo to the number of coins awarded for signing a block
+\begin{enumerate}
+	\item \textbf{Build Your Own Blockchain} or \textbf{Fork an Existing One}. Both methods require quite a bit of technical knowledge. You can fork an existing blockchain by taking the open-source code found on Github making a few changes, and launching a new blockchain with a new name.
+	\item Launch a Coin or Token Using a Cryptocurrency Creation Platform - all you have to do is to choose a platform, pay for this service, and then enter the parameters, from the logo to the number of coins awarded for signing a block.
+	This is faster, simpler, and cheaper than creating a coin because it doesn't require the time and effort to build and maintain a new or forked blockchain and instead relies on the technology already in use for Bitcoin or Ethereum.
+\end{enumerate}
 
-You can also create a token—what is essentially a smart contract—with or without a public ICO. Because tokens can represent any asset, you can even create a token with no real value or serious purpose other than to exchange among friends. This is faster, simpler, and cheaper than creating a coin because it doesn't require the time and effort to build and maintain a new or forked blockchain and instead relies on the technology already in use for Bitcoin or Ethereum.
+Then you need to find someone which will buy the coin or token. This is not easy: you need a community interested in your coin/token: usually it is easier if the coin/token is connected to a real project.
+
+Plenty of cryptocurrencies are unsuccessful, even questionable from a legal standpoint, because the ICO wasn't created in good faith or the coin failed to generate lasting interest.
+
+\section{Exchange}
+
+You can visit \url{https://blog.coingecko.com/trust-score/} to see the best exchanges according to some score.
+
+\paragraph{Quadriga} Gerald Cotten created Quadriga, a Canadian exchange, where he controlled fake accounts with fake money. People exchanged real money with these fake accounts and were scammed for \$135 million. See\\
+\url{https://www.youtube.com/watch?v=NMDZcbkgpJA}\\
+\url{https://www.youtube.com/watch?v=jT55oLyT0ac}
+
+\paragraph{Bitgrail} Nearly one year after Francesco Firano, the owner and operator of the Bitgrail cryptocurrency exchange, announced that the exchange had lost 17 million NANO (approximately \$170 million), an Italian Bankruptcy Court and a court-appointed technical expert concluded that Mr. Firano (``The Bomber'' as Mr. Firano called himself on social media) was at fault for the loss and is required to return as much of the assets to his customers as possible. The ruling is a landmark decision that sets an important precedent for the protection of cryptocurrency users worldwide. In its decision, the court concluded that both Bitgrail and Mr. Firano, personally, be declared bankrupt, authorizing seizures of many of Mr. Firano’s personal assets. So far, authorities have seized over \$1 million in personal assets, including Mr. Firano’s car. Millions of dollars in cryptocurrency assets have been seized from Bitgrail’s exchange accounts and moved to accounts managed by trustees appointed by the Court. The Court found that the NANO reported lost by Mr. Firano on February 9, 2018, had actually been removed from the exchange months earlier, between July 2017 and December 2017. The Court criticized Mr. Firano for not immediately taking steps to account for the losses.
 
 \section{Smart Contracts}
 
@@ -405,10 +435,12 @@ Ethereum
 	\item Oracles are smart contracts in which information from the outside world is loaded in exchange for a reward.
 \end{itemize}
 
+\emph{Example.} AXA is testing insurance on late flights using smart contracts.
+
 \paragraph{Collateral} Put simply, collateral is an item of value that a lender can seize from a borrower if he or she fails to repay a loan according to the agreed terms. One common example is when you take out a mortgage. Normally, the bank will ask you to provide your home as collateral.
 Collateral acts as a \textbf{guarantee} that the lender will receive back the amount lent even if the borrower does not repay the loan as agreed.
 
-\emph{Example.} I want to create a tourism insurance contract against rain. Bob signed a tourism insurance contract for an holiday in New York for May 2, 2020. This contract will reimburse the payment for his trip (200\$) if that day it will rain. In the insurance contract there is this clause which defines the meaning of ``it will rain''. Rainfall amount is described as the \emph{depth of water reaching the ground}, typically in inches or millimeters (25 mm equals one inch). It rains more than 0.1 inch on that day, according to the Laguardia Airport Station result, reported by the website \url{https://www.wunderground.com/history/monthly/us/ny/new-york-city/KLGA}.
+\emph{Example.} I want to create a tourism insurance contract against rain. Bob signed a tourism insurance contract for an holiday in New York for May 2, 2020. This contract will reimburse the payment for his trip (200\$) if that day it will rain. In the insurance contract there is this clause which defines the meaning of ``it will rain''. Rainfall amount is described as the \emph{depth of water reaching the ground}, typically in inches or millimeters (25 mm equals one inch). It rains more than 0.1 inch on that day, according to the Laguardia Airport Station result, reported by the website \url{https://www.wunderground.com/history/monthly/us/ny/new-york-city/KLGA}.
 
 We need an \textbf{oracle}.
 \begin{enumerate}
@@ -422,95 +454,461 @@ Why Bob should prefer a blockchain-based insurance? Based on a \textbf{third par
 
 What happens if Bob wants to be paid in fiat money?
 
-The smart contract can only say ``this contract is to be paid'', for example creating a null transaction with this sentence in the \texttt{OPReturn} field. This is written on the blockchain, which is immutable. Then, the insurer, once he/she reads this on the blockchain can tell to his/her bank ``please, pay''.
+The smart contract can only say ``this contract is to be paid'', for example creating a null transaction with this sentence in the \texttt{OP\_RETURN} field. This is written on the blockchain, which is immutable. Then, the insurer, once he/she reads this on the blockchain can tell to his/her bank ``please, pay''.
 So, not a real automatic payment without cryptocurrencies.
 
 Possible solution: Stablecoins.
 
-\section{Ethereum's Tokens}
+\section{Coin Offerings}
+
+\subsection{Initial Coin Offering (ICO)}
+
+\paragraph{Origins of the ICO} J. R. Willett needed to fund his idea (MasterCoin, a supplementary protocol to Bitcoin with built-in support for custom tokens), so he asked for some BTC donations. He also added several features inside the protocol that would only be available to those owning MasterCoins.
+Willet introduced the \textbf{first ICO}, and the first utility token.
+Total raised: US\$600K.
+
+The MasterCoin protocol turned out to be incredibly successful. Rebranded to and known today as \textbf{Omni Layer (OMNI)}, it now serves as the underlying protocol for the \textbf{Tether token (USDT)}.
+
+\textbf{NextCoin (NXT)} is a peculiar second ICO.
+
+\paragraph{Ethereum}
+In 2014 Vitalik Buterin tries raising funds for a new and noteworthy ICO for what he envisions the world's first zero-infrastructure platform, named \textbf{Ethereum}.
+The token sale raised 3700BTC in the first 12 hours.
+Total raised: US\$18.3M
+
+Since Ethereum's inception, over 1.000 \textbf{ERC20} cryptocurrencies have been issued on the platform since its initial ICO. ERC20 itself is a protocol standard that defines certain rules and standards for issuing tokens on Ethereum's network and infrastructure. ERC stands for \emph{Ethereum Request For Comments} and \emph{20} stands for a unique ID number to distinguish this standard from others.
+
+In 2016 a decentralized autonomous organization called The DAO, a set of smart contracts developed on the platform, raised a record US\$150 million in a crowd/token sale to fund the project. \textbf{The DAO was exploited} in June when US\$50 million in Ether were taken by an unknown hacker. Subsequently, Ethereum was split into two separate blockchains (see \ref{dao-incident}) -— the new separate version became \textbf{Ethereum (ETH)} with the theft reversed, and the original continued as \textbf{Ethereum Classic (ETC)}.
+\textbf{Solidity}, initially proposed by Gavin Wood in August 2014, is the primary \textbf{programming language} (contract-oriented) used on the Ethereum platform.
+
+\paragraph{Fall of ICO}
+According to the ICORating, in the second half of 2018, the profitability of investments in blockchain startups decreased by 22\%, and 58\% of ICO projects announced in Q4 2018 were not able to raise more than 100,000 USD. Moreover, in Q4 2018 40\% of projects with previously announced ICOs have already deleted their social network accounts and websites
+
+Cayman Island and British Virgin Islands rank among top ICO countries volume-wise.
+
+\paragraph{Disadvantages and limitations}
+The biggest disadvantage of an ICO investment is the \textbf{risk}. The market is volatile, and you never know the actual intentions of a newly minted company. The first risk can be called \textbf{ordinary fraud} when the team of the project pursues only one goal: to collect investors' money.
+In addition, since \textbf{there are no laws at the moment} that would regulate the conduct of cryptocurrency crowdsales from the position of an investor, it cannot be ruled out that the project may not live to the stage of product appearance or disappoint the investor with its implementation.
+Based on the statistical research provided by Satis Group, premier ICO advisory company, approximately 81\% of ICO's are \textbf{scams}, 6\% Failed, 5\% had \textbf{gone dead}, and 8\% went on to trade on an exchange.
+
+Actually, one of the main reasons for such statistics might be \textbf{lack of token holders' control over their investments}, the absence of bills and laws regulating the legal field in the sphere of ICO.
+
+The other serious threat is \textbf{hackers' attacks}. Research, conducted by Ernst\&Young (2017), showed that more than 10\% of all funds raised by ICO was stolen by cybercriminals. Analysts examined 372 ICOs conducted between 2015 and 2017. The monthly amount of losses from hackers in an ICO is \$1.5 million. Moreover, \textbf{attackers often manage to gain access to personal data from investors}: from their addresses and phone numbers to billing information.
+
+Before launching ICO, the development team specifies tasks, for which funds should be raised, and indicates in its whitepaper 2 figures: the minimum and maximum, which are called \textbf{Soft Cap} and \textbf{Hard Cap}.
 
 \begin{itemize}
-	\item Any fungible commodity can be represented by a token derived from Ethereum's \textbf{ERC-20 standard}.
-	\item Non fungible tokens can be derived from \textbf{ERC-721}. This recent standard has made possible to represent goods like pieces of art, personalized access rights, properties.
+	\item Hard Cap -- defines the final goal, the upper limit of the amount of money invested, the most desired result. This is a very important indicator, precisely, because \textbf{many cryptocurrencies have a limit on the total number of units in circulation}. This, in turn, is one of the most important factors influencing the value of the coin, naturally, in addition to supply and demand.
+	\item Soft Cap -- the minimum required amount of the investments for the team to proceed the project implementation in accordance with the plans. If it is not reached within the specified period, the contract is closed and automatically returns all funds raised to depositors. If Hard Cap is achieved, the sale of tokens stops. However, after overcoming soft cap investors control only purchased tokens and can't monitor invested money or withdraw part of the investment.
 \end{itemize}
 
-\section{ICO}
+Finally, the big concern is the \textbf{connection between the token holders and holding company} and several relevant questions arise, for example, \textbf{what happens if the company which issued the tokens is sold or will the token holders have any rights under the new management}?
 
-An \textbf{initial coin offering (ICO)} or initial currency offering is a type of funding using cryptocurrencies. It is often a form of \textbf{crowdfunding}, although a private ICO which does not seek public investment is also possible. In an ICO, a quantity of cryptocurrency is sold in the form of "tokens" ("coins") to speculators or investors, in exchange for legal tender or other (generally established and more stable) cryptocurrencies such as Bitcoin or Ether. The tokens are promoted as future functional units of currency if or when the ICO's funding goal is met and the project successfully launches.
+\subsection{Decentralized Autonomous Initial Coin Offering (DAICO)}
 
-An ICO can be a \textbf{source of capital} for startup companies. ICOs can allow startups to \textbf{avoid regulations} that prevent them from seeking investment directly from the public, and intermediaries such as venture capitalists, banks, and stock exchanges, which may demand greater scrutiny and some percentage of future profits or joint ownership. ICOs may fall \textbf{outside existing regulations}, depending on the nature of the project, or be banned altogether in some jurisdictions, such as China and South Korea.
+DAICO is a new fundraising model. Founder of Ethereum blockchain Vitalik Buterin proposed this model, combining the advantages of Decentralized Autonomous Organizations (DAO) with the classic ICO. This synergistic model allows you to make the process of collecting and spending funds as \textbf{transparent} and \textbf{safe} as possible.
 
-Due to the lack of regulation and enforcement of securities law, ICOs have been the vehicle for \textbf{scams and fraud}.
+DAICO is \textbf{based on a smart contract that regulates all actions} to attract and work with funds.
 
-The biggest disadvantage of an ICO investment is the risk. The market is volatile, and you never know the actual intentions of a newly minted company. The first risk can be called ordinary fraud when the team of the project pursues only one goal: to collect investors' money. In addition, since there are no laws at the moment that would regulate the conduct of cryptocurrency crowd sales from the position of an investor, it cannot be ruled out that the project may not live to the stage of product appearance or disappoint the investor with its implementation. Based on the statistical research provided by Satis Group, a premier ICO advisory company, approximately $81\%$ of ICOs are Scams, $\sim 6\%$ Failed, $\sim 5\%$ had Gone Dead, and $\sim 8\%$ went on to trade on an exchange.
+The difference between DAICO and ICO begins after the first stage when a mechanism called a \textbf{tap} is launched. Tap allows tokens holders to \textbf{control how much money is available to the team}. The \textbf{crane} determines the \textbf{amount per second that the development team can withdraw} from the contract. Payments to developers are made not once, but \textbf{gradually}, for example, once a month. If they need a larger amount than the one that is written in the smart contract, then this question is put to the \textbf{vote}. And holders of tokens can either approve this proposal or not.
 
-According to the evaluation of the Wall Street Journal, due to fraudulent crowdfunding campaigns, token holders have lost more than a billion dollars. One of the main reasons for such statistics might be the lack of token holders' control over their investments and the absence of bills and laws regulating the legal field in the sphere of ICO.
+\subsection{Initial Exchange Offerings (IEO)}
 
-The other serious threat is hackers' attacks. Research, conducted by Ernst\&Young (2017), showed that more than $10\%$ of all funds raised by ICO were stolen by cybercriminals. Analysts examined 372 ICOs conducted between 2015 and 2017. The monthly amount of losses from hackers in an ICO is $\$1.5$ million. Moreover, attackers often manage to gain access to personal data from investors: from their addresses and phone numbers to billing information. This vulnerability of ICO is usually caused by errors in the code of the smart contract which weren't indicated during the audit.
-
-Before launching ICO, the development team specifies tasks, for which funds should be raised, and indicates in its whitepaper 2 figures: the minimum and maximum, which are called Soft Cap and Hard Cap. Hard Cap defines the final goal, the upper limit of the amount of money invested, the most desired result. This is a very important indicator, precisely, because many cryptocurrencies have a limit on the total number of units in circulation. This, in turn, is one of the most important factors influencing the value of the coin, naturally, in addition to supply and demand. Soft Cap - the minimum required amount of the investments for the team to proceed the project implementation in accordance with the plans. If it is not reached within the specified period, the contract is closed and automatically returns all funds raised to depositors. If Hard Cap is achieved, the sale of tokens stops. However, after overcoming soft cap investors control only purchased tokens and can't monitor invested money or withdraw part of the investment.
-
-Overall, the main risks are taxes risk (there is no agreement on whether or not the taxes/vat should be paid), regulation and legislation risks (there no one position between countries about legislation and regulation in ICO, moreover, some location of ICO even with laws concerning the legal procedure of ICO may decrease the probability of success 8 . The important question for investors does ICO documents have a legal basis and do they have any rights in the court), business (and investors) risks, structural risks (e.g. obfuscation of how the founders will use ICO funds, undeclared salaries, unpublished financial documents, token holders cannot vote out the management of the token issuer, etc), team risks (there is a significant number of unqualified team (no real business experience) and quality of the management is the classical factor influences the financial performance of securities), token risks (they may be stolen/lost or wallet may be hacked). Finally, the big concern is the connection between the token holders and holding company and several relevant questions arise, for example, what happens if the company which issued the tokens is sold or will the token holders have any rights under the new management? In order to overcome new models are introduced.
-
-
-\paragraph{Decentralized Autonomous Initial Coin Offering (DAICO)}\leavevmode
-\begin{itemize}
-	\item DAICO is a new fundraising model. Founder of Ethereum blockchain Vitalik Buterin proposed this model, combining the advantages of decentralized autonomous organizations (DAO) with the classic ICO. This synergistic model allows you to make the process of collecting and spending funds as transparent and safe as possible.
-	\item DAICO is based on a smart contract that regulates all actions to attract and work with funds.
-	\item The difference between DAICO and ICO begins after the first stage when a mechanism called a “tap” is launched. Tap allows tokens holders to control how much money is available to the team. The crane determines the amount per second that the development team can withdraw from the contract. Such tool gives to holders of tokens control over the spending of the funds raised and guaranteeing the security of their own investments. Payments to developers are made not once, but gradually, for example, once a month. If they need a larger amount than the one that is written in the smart contract, then this question is put to the vote. And holders of tokens can either approve this proposal or not.  
-\end{itemize}
-
-\section{Initial Exchange Offerings (IEO)}
+The cryptocurrency exchange is directly involved in the selection of projects, the organization of the tokensale and the sale of tokens.
 
 There are several advantages of IEO which are in overcoming the disadvantages of ICO:
 \begin{itemize}
-	\item The risk of Scams for investors is lower. The project is launched at the exchange after the serious procedure of verification. The exchange rejects the doubtful project in order to save its’ reputation. 
-	\item The process of listing new tokens is faster. 
-	\item Redistribution of costs becomes available. According to Autonomous Research, there is 1-3 mln cost to list the token at the exchange. An IEO project has lower costs for listing. 
-	\item The speed of funding is higher. In ICO the primary distribution of tokens may been lasted for several days whereas in IEO it lasts several minutes or even seconds. 
-	\item Investors’ gain is higher. The listing token values are bigger than in primary distribution. 
-	\item There is no need to open another wallet. 
-	\item The process of investing is simple, the investors need to replenish the balance on the exchange, wait for the token-sale and put an order for buying.
-	\item Tokens are traded at an equal price. This reduces the probability of falling rates from the early investors who purchased first.
+\item \textbf{The risk of Scams for investors is lower}. The project is launched at the exchange after the serious procedure of verification. The exchange rejects the doubtful project in order to save its' reputation.
+\item The process of \textbf{listing new tokens is faster}.
+\item \textbf{Redistribution of costs becomes available}. According to Autonomous Research, there is \$1-3 M cost to list the token at the exchange. An IEO project has lower costs for listing.
+\item The \textbf{speed of funding is higher}. In ICO the primary distribution of tokens may been lasted for several days whereas in IEO it lasts \textbf{several minutes} or even seconds.
+\item Investors' gain is higher. The listing \textbf{token values are bigger} than in primary distribution.
+\item There is \textbf{no need to open another wallet}.
+\item The process of investing is simple, the investors need to replenish the balance on the exchange, wait for the token-sale and put an order for buying.
+\item \textbf{Tokens are traded at an equal price}. This reduces the probability of falling rates from the early investors who purchased first.
 \end{itemize}
 
-At the same all these advantages have some drawbacks. For example, due to the high distribution speed, some investors have no time to make an order and buy tokens of big projects. Moreover, nowadays there is limited number of IEO, and they are not mainstream way of funding the projects. Reason for lower popularity is the unwillingness of exchanges to take additional work. The mentioned verification procedure is very strict, e.g. there is an obligation for verification of identity. 
+At the same all these advantages have some drawbacks. For example, due to the high distribution speed, \textbf{some investors have no time to make an order and buy tokens of big projects}. Moreover, nowadays there is limited number of IEO, and they are not mainstream way of funding the projects. Reason for lower popularity is the \textbf{unwillingness of exchanges to take additional work}. The mentioned verification procedure is very strict, e.g. there is an obligation for \textbf{verification of identity}.
 
-\section{Security Token Offerings (STO)}
+\emph{Example.} BitTorrent token (BTT) on Binance exchange\footnote{\url{https://icoholder.com/en/bittorrent-28385}} and LEO token on the Bitfinex exchange.
+
+The evident advantage of IEO over an ICO is the presence of existing user base on the exchange platform that allows to raise tremendous investments even on the private sale stage.
+
+\subsection{Security Token Offerings (STO)}
+
+The popular utility tokens used in ICO have the main disadvantage, which is the \textbf{absence of any compensation for investors in case of ICO fail} as utility tokens are not security papers leading to the absence of any obligations for making beneficial conditions for investors.
+\textbf{Security tokens represent real capital} in the enterprise, at the same time such token is \textbf{not necessarily tied to a share in the company}, it can be used to \textbf{divide the rights of the ownership}. In fact, they may \textbf{give the holder a number of rights}: ownership of shares, periodic dividends, cashflows, payment of debts, the right to vote, etc. All these rights are secured by a smart contract. Due to the features of these tokens, their value is supported by securities, therefore, they are considered an investment.
+The issue of security tokens requires \textbf{serious supervision by regulatory authorities}. This supervision leads to the protection of investments and gives investors more rights, thus restoring the balance of power from the point of view of stakeholders.
+\textbf{Security token offering (STO)} is the initial offer of security tokens. STO is similar to ICO in one thing: both issues token for investors. The main reason for buying securities token is \textbf{dividends or voting rights} .
+STO project meets all the requirements of the SEC: investor's money is protected by law. In case of disputes, the investor can file a complaint with the appropriate authority since this type of token falls under the legislation on securities.
+
+By 20th March 2019, 122 STOs have already been completed, raising \$512M.
+54 Security Token Offerings are currently listed and ongoing.
+Out of 328 STOs launched so far, only 12 of them have failed (3.65\%). STO raised \$1258 mln in overall.
+
+\emph{Examples.} Bolton Coin, UniCrypy, GG World Lottery.
+
+\fg{0.6}{1285a6b75181acc02dbcae61b217a6bc-0Z4VUukkZi-image}
+
+\section{Stablecoins}
+
+A stablecoin is a new class of cryptocurrencies that attempts to offer \textbf{price stability} and are \textbf{backed by a reserve asset}.
+
+Stablecoins may be pegged to a currency like the U.S. dollar or to a commodity's price such as gold.
+
+Stablecoins achieve their price stability via collateralization (backing) or through algorithmic mechanisms of buying and selling the reference asset or its derivatives.
+
+Stablecoins have gained traction as they attempt to offer the best of both world's—the instant processing and security or privacy of payments of cryptocurrencies, and the volatility-free stable valuations of fiat currencies.
+
+\emph{Example.} The Reserve protocol comprises two tokens: the Reserve token (RSV - a decentralized stablecoin) and the Reserve Rights token (RSR - a cryptocurrency used to facilitate the stability of the Reserve token and confers the cryptographic right to purchase excess Reserve tokens as the network grows).
+
+\emph{Example.} bitCNY Pegged to the Chinese Yuan
+
+\fg{0.8}{stablecoin_list}
+
+\paragraph{Gold-Backed Stablecoins}
+Usually one token of stablecoin equals one gram of the gold. Since they're tied to the gold, this stablecoin's price can't fall below the current price of the gold. A third party holds the gold in reserve.
+
+\paragraph{LIBRA}
+
+Morgan Beller planted the first seeds of Libra,\footnote{\url{https://sls.gmu.edu/pfrt/wp-content/uploads/sites/54/2020/02/LibraWhitePaper_en_US-Rev0723.pdf
+}} she is known as the key figure behind Facebook's push into blockchain technology; she also considers herself a co-creator of Libra.\footnote{\url{https://www.publish0x.com/crypto-timelines/a-brief-timeline-of-libra-xqqdww}}
 
 \begin{itemize}
-	\item The popular utility tokens used in ICO have the main disadvantage, which is the absence of any compensation for investors in case of ICO fails as utility tokens are not security papers leading to the absence of any obligations for making beneficial conditions for investors. 
-	\item The decision to this challenge is a security token. Security tokens represent real capital in the enterprise, at the same time such token is not necessarily tied to a share in the company, it can be used to divide the rights of the ownership. They may give the holder several rights: ownership of shares, periodic dividends, cashflows, payment of debts, the right to vote, etc. All these rights are secured by a smart contract. Due to the features of these tokens, their value is supported by securities, therefore, they are considered an investment. 
-	\item The issue of security tokens requires serious supervision by regulatory authorities. This supervision leads to the protection of investments and gives investors more rights, thus restoring the balance of power from the point of view of stakeholders 
-	\item Security token offering (STO) is the initial offer of security tokens. STO is similar to ICO in one thing: both issue tokens for investors. The main reason for buying securities tokens is dividends or voting rights.
-	\item STO project meets all the requirements of the SEC means that investor's money is protected by law. In case of disputes, the investor can file a complaint with the appropriate authority since this type of token falls under the legislation on securities 
+\item May 2017: Morgan Beller left her job at Medium.com and started working at Facebook. Nine months later, she joined the blockchain strategy team and started working on Facebook blockchain initiative.
+\item 8 May 2018: David Marcus (Facebook vice president) joined the new Libra team and officially began working on the new project. They recruited other top Facebook talent onto the new blockchain division.
+\item 13 June 2019: The Wall Street Journal reported that Facebook is working on its own cryptocurrency that will be announced next week, and set to be launched next year alongside the blockchain-based network that will support it. The Wall Street Journal also reported that Facebook has secured backing from more than a dozen companies like PayPal, Visa, Mastercard, Stripe, Booking.com, and each company will invest around \$10 million to fund the new currency development.
+\item 18 June 2019: Facebook announced Libra digital currency, Calibra digital wallet, and the nonprofit Libra Association, an organization based in Geneva, Switzerland, that will govern the new currency.
+\item 16 July 2019: David Marcus told the Senate Banking Committee in U.S. Senate Hearing, "that Facebook will only build its own Calibra cryptocurrency wallet into Messenger and WhatsApp, and will refuse to embed competing wallets" and also expressed that "Libra will not launch until the U.S. lawmakers' concerns have been answered".
+\item 4 October 2019: PayPal withdraws from the Libra Association.
+\item 9 October 2019: U.S. Senator Sherrod Brown and Senator Brian Schatz sent letters to the CEOs of Stripe, Visa, and MasterCard to express deep concerns over Facebook's Libra Association
+\item 11 October 2019: eBay, Mastercard, Strip, Visa, and Mercado Pago withdraw from the Libra Association.
+\item 15 October 2019: Facebook launches Libra Association. Representatives from the remaining 21 organizations (out of 28 original members) met and signed Libra Association charter in Geneva. 21 initial members include: Coinbase, Lyft, Uber Technologies, Spotify AB, PayU, Vodafone, Women's World Banking, Mercy Corps, Creative Destruction Lab any other organizations
 \end{itemize}
 
-\fg{0.7}{1285a6b75181acc02dbcae61b217a6bc-0Z4VUukkZi-image}
+\paragraph{Tether}\footnote{\url{https://tether.to/en/}}
 
-\section{Asset allocation}
+Abstract. A digital token backed by fiat currency provides individuals and organizations with a robust and decentralized method of exchanging value while using a familiar accounting unit. The innovation of blockchains is an auditable and cryptographically secured global ledger. Asset-backed token issuers and other market participants can take advantage of blockchain technology, along with embedded consensus systems, to transact in familiar, less volatile currencies and assets. In order to maintain accountability and to ensure stability in exchange price, we propose a method to \textbf{maintain a one-to-one reserve ratio between a cryptocurrency token, called tethers, and its associated real-world asset, fiat currency}. This method uses the Bitcoin blockchain, Proof of Reserves, and other audit methods to prove that issued tokens are fully backed and reserved at all times.
 
-First 50 stocks for capitalization (S\&P50)
+Beginning with a whitepaper published online in January 2012, J.R. Willett described the possibility of building new currencies on top of the Bitcoin Protocol.
+The precursor to Tether, originally named ``Realcoin'', was announced in July 2014. The first tokens were issued on 6 October 2014, on the Bitcoin blockchain.
+On 20 November 2014, Tether CEO Reeve Collins announced the project was being renamed to ``Tether''.
+In January 2015, the cryptocurrency exchange Bitfinex enabled trading of Tether on their platform.
+In early 2018 Tether accounted for about 10\% of the trading volume of Bitcoin, but during the summer of 2018 it accounted for up to 80\% of Bitcoin volume.
+It formerly claimed that each token was backed by one United States dollar, but on 14 March 2019 changed the backing to include loans to affiliate companies
+On 30 April 2019 Tether Limited's lawyer claimed that each Tether was backed by only \$0.74 in cash and cash equivalent.
 
-4 cryptocurrencies
+\paragraph{MakerDAO}\footnote{\url{https://makerdao.com/}}
+
+It's the protocol behind the stable coin Dai —- a cryptocurrency that maintains a 1:1 peg to the USD, being backed by collateral (Ether to be specific).
+
+Let's say you're an Ether holder and you would like to create Dai. Your first move would be to send your Ether to a \textbf{Collateralized Debt Position (CDP)}. A CDP is a type of software that runs on the blockchain, in this case the Ethereum blockchain, and lives within the Maker ecosystem.
+
+Once your Ether is in the CDP smart contract, you are able to create Dai. The amount of Dai you can create is relative to how much Ether you have put into the CDP. This ratio is fixed, but can be changed over time. The amount of Dai you can create relative to the Ether you put in is called the \textbf{collateralization ratio}.
+
+Assume 1 Ether = \$100 and collateralization ratio is 1.5. If you send 1 Ether into the CDP smart contract, then you are now able to create 66 Dai, i.e. 100/1.5.
+
 \begin{itemize}
-	\item BITCOIN
-	\item ETHEREUM
-	\item RIPPLE
-	\item LITECOIN
+	\item \textbf{what happens when Ether goes up?}\\
+	The system becomes over collateralized and Dai becomes stronger.
+	Maker has mechanisms that incentivize users to create more Dai if the price of Dai should trade above one dollar.
+	\item \textbf{what happens when Ether goes down?}\\
+	If Ether goes down, now that can cause problems.\\
+	If the value of Ether held as collateral is worth less than the amount of Dai it's supposed to be backing, then Dai would not be worth one dollar and the system could collapse.\\
+	Maker combats this by liquidating CDPs and auctioning off the Ether inside before the value of the Ether is less than the amount of Dai it is backing.\\
+	Basically, if the price feed into the CDP indicates that the value of Ether has gone below a certain threshold, the liquidation ratio (let's use 125\% of created Dai), then the CDP is ``liquidated'' and the Ether inside the CDP is auctioned off for Dai until there is enough Dai to pay back what was extracted from the CDP.
+\end{itemize}
+
+\textbf{Volatility cannot be destroyed}, it can only be transferred. If we have a stable token like Dai that has been stripped of its volatility, where did it go? In the Maker system, volatility is transferred entirely to the holder of the CDP. Using our prior example, should I withdraw 66 Dai from a CDP containing one ether, I will only own that one Ether if its price is above the liquidation ratio. Dai is effectively a loan on my ether.
+
+This leads us to the interesting consequence: I can take the Dai that I borrowed and use it to buy more ether. By doing this, I am basically buying Ether on margin. That's right, completely decentralized leverage!
+
+MakerDAO is like a credit facility that issues loans with a certain interest rate. If the interest rate (stability fee) is low, people are encouraged to borrow more (lock up more ETH). If the interest rate is high, the cost of capital is high making it less attractive to borrow (close out CDPs).
+
+Tether is pegged to an asset, MakerDAO is tied to the amount you put in a CDP and can cause problems because Ether is much more volatile.
+
+\fg{1}{bdcc146817b36f24613f0c0967a7d1f9-1ruH8716er-image}
+
+\paragraph{Algorithmic Stablecoins}\leavevmode
+\url{https://www.youtube.com/watch?v=S7-rfvpEpJs}
+
+\fg{1}{7dc3967046522e1c02d9c1916fa87f9b-DMNNfblLZC-image}
+
+\fg{1}{49d147896a4ef0b2ca9045ac755abe65-Sx4PA1dE8U-image}
+
+\section{Cryptocurrencies and Asset Allocation}
+
+Some meaningful questions:
+\begin{itemize}
+	\item Are expected returns higher than (classical) financial assets ones?
+	\item Are cryptocurrencies riskier than (classical) financial assets?
+	\item What about diversification?
+\end{itemize}
+
+Let $\pi =(w_{1},\ldots,w_{N})$ be a portfolio, where $w_{i}$ is the amount of asset $i$, and is positive if bought, negative if short.
+
+\paragraph{Mean-Variance Analysis}
+
+It's the process of weigthing risk, expressed as variance, against expected return, \textbf{applied to a portfolio, not a single asset}.
+
+Investors use mean-variance analysis to make decisions about which financial instruments to invest in, based on how much risk they are willing to take on in exchange for different levels of reward.
+
+The \textbf{efficient frontier} is the set of optimal portfolios that offer the highest expected return for a defined level of risk or the lowest risk for a given level of expected return.
+
+\fg{0.5}{efficient-frontier}
+
+$N$ assets: $R=(\bar{r}_1,\ldots,\bar{r}_N)$ is the vector of expected return. $V$ is the covariance matrix.
+
+\[
+	\bar{R} = \pi R \qquad \bar{\sigma}^2 = \pi V \pi \transpose
+\]
+
+are the expected return and variance of the portfolio.
+
+\paragraph{Our market for the first (toy) problem}
+
+\begin{itemize}
+	\item Bitcoin
+	\item Ether
+	\item Amazon
+	\item Apple
+	\item Facebook
+	\item General Electric
+	\item General Motor
+\end{itemize}
+
+Daily datas (only working day) from September 2017 to February 2020
+
+\begin{gather*}
+\begin{bmatrix}
+\text{return}\\
+\text{variance}
+\end{bmatrix} =\begin{bmatrix}
+1.0026 & 1.0017 & 1.0014 & 1.0012 & 1.0005 & 0.9993 & 1.0000\\
+0.24 & 0.36 & 0.03 & 0.03 & 0.04 & 0.06 & 0.03
+\end{bmatrix}\\
+\\
+\text{correlation} =\begin{bmatrix}
+1.0000 & 0.6975 & 0.0149 & 0.0188 & 0.0350 & 0.0160 & -0.0093\\
+0.6975 & 1.0000 & 0.0546 & 0.0614 & 0.0441 & 0.0403 & 0.0561\\
+0.0149 & 0.0546 & 1.0000 & 0.5807 & 0.5623 & 0.2261 & 0.3016\\
+0.0188 & 0.0614 & 0.5807 & 1.0000 & 0.4706 & 0.2844 & 0.3454\\
+0.0350 & 0.0441 & 0.5623 & 0.4706 & 1.0000 & 0.2132 & 0.3292\\
+0.0160 & 0.0403 & 0.2261 & 0.2844 & 0.2132 & 1.0000 & 0.2809\\
+-0.0093 & 0.0561 & 0.3016 & 0.3454 & 0.3292 & 0.2809 & 1.0000
+\end{bmatrix}
+\end{gather*}
+
+\textbf{Portfolio 1}
+\[
+	\pi = \begin{bmatrix}
+	0.9573 & -0.2611 &  2.8507 &  2.7995 & -1.4778 & -2.1661 & -1.7026
+	\end{bmatrix}
+	\qquad
+	\bar{R} = 1.01
+\]
+
+\textbf{Portfolio 2}
+\[
+	\pi = \begin{bmatrix}
+	0.1037 & -0.0223 &  0.2308 &  0.3644 &  0.0439 &  0.0252 &  0.2543
+	\end{bmatrix}
+	\qquad
+	\bar{R} = 1.001
+\]
+
+\textbf{Portfolio 3}
+\[
+	\pi = \begin{bmatrix}
+	0.0184 &  0.0015 & -0.0312 &  0.1209 &  0.1961 &  0.2444 &  0.4500
+	\end{bmatrix}
+	\qquad
+	\bar{R} = 1.0001
+\]
+
+Suppose to invest \$100. After one year:
+\begin{itemize}
+	\item Portfolio 1: $100 \cdot 1.01^{365} = 3778$
+	\item Portfolio 2: $100 \cdot 1.001^{365} = 144$
+	\item Portfolio 3: $100 \cdot 1.0001^{365} = 103$
+\end{itemize}
+
+The best reason to invest in cryptocurrency seems \textbf{diversification}.
+
+\paragraph{Our market for the second (toy) problem}
+
+\begin{itemize}
+	\item First 50 stocks for capitalization (S\&P50)
+	\item 4 cryptocurrencies: Bitcoin, Ethereum, Ripple, Litecoin
 \end{itemize}
 
 Period: July 2015-May 2019
 
 \fg{0.7}{a091830eaba227339add9fbe000a7964-Xjp2TOr5Gl-image}
 
-Correlation
+Cryptocurrencies are very uncorrelated with standard financial assets, as can be proved using statistics. However, they are quite correlated among them.
 
-\fg{0.7}{a9628e77047a0bb29a84c79a86340735-oczvbgskgs-image}
+\fg[Correlation.]{0.7}{a9628e77047a0bb29a84c79a86340735-oczvbgskgs-image}
 
-\section{Central Bank Digital Currency}
+\fg[Mean-Variance Analysis]{0.7}{toy2}
 
-\texttt{[08-CBDM.pptx]}
+\section{Central Bank Digital Currency (CBDC)}
+
+Central bank money handled through electronic means and accessible to the broad public. Responsibility for the Central Bank.
+
+CBDC is a third form of base money, next to deposits and banknotes.
+
+The four key properties of Money:
+\begin{itemize}
+	\item Issuer: central bank or not
+	\item Form: digital or physical
+	\item Accessibility: widely or restricted
+	\item Technology: token - or account - based. The key difference between tokens and accounts is in their verification: a person receiving a token verifies that token is genuine, an intermediary verifies the identity of an account holder.
+\end{itemize}
+
+
+\textbf{Cash features}
+\begin{itemize}
+	\item Inclusive: easy to use and available to everybody without electronic devices.
+	\item Crisis proof: device independent (power blackout).
+	Peer to peer transactions: there is no intermediation of a thrid party to complete a transaction.
+	\item Anonymous.
+	\item Off-line transactions.
+\end{itemize}
+
+Digital means of payments do not satisfy these features. Digital means require third parties (record keeping, identity validation). It si difficult to deploy off-line transactions.
+Today: cash is the only form of central bank issued money available to individuals.
+Today: part of money (bank deposits) is managed by profit oriented players.
+CBDC: universal/inclusive, digital, central bank issued (legal tender)
+
+
+% vantaggi del cash sul digitale
+
+2. State of the art
+
+3. Motivation
+
+The Consumer perspective
+The Central Bank perspective
+The real economy perspective
+
+% robe varie che non ho segnato
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \chapter{Blockchain (N. C. Fabrizio)}
 
@@ -518,7 +916,7 @@ Correlation
 
 Bitcoin is the mother of all the blockchains. It's constructed around the idea of having a \textbf{ledger} where we track information. Typically there is a \textbf{central} authority which holds the only copy of it and is the only one allowed to modify it.
 
-A distributed ledger is a \textbf{tamperproof} sequence of data that can be \textbf{read} and \textbf{augmented} by \textbf{everyone}. Nodes don't need to \textbf{trust} each other, the mechanism of \textbf{consensus} (a combination of game theory and probability) removes the need for it, and everyone has an interest in behaving as the blockchain requires. 
+A distributed ledger is a \textbf{tamperproof} sequence of data that can be \textbf{read} and \textbf{augmented} by \textbf{everyone}. Nodes don't need to \textbf{trust} each other, the mechanism of \textbf{consensus} (a combination of game theory and probability) removes the need for it, and everyone has an interest in behaving as the blockchain requires.
 
 DLT: which desirable properties?
 \begin{itemize}
@@ -610,7 +1008,7 @@ Some desirable properties of a (new) block
 
 \subsection{Proof of Work}
 
-\paragraph*{Proof of Work} (at a certain degree of approximation) is finding \texttt{nonce} (number only used once) such that 
+\paragraph*{Proof of Work} (at a certain degree of approximation) is finding \texttt{nonce} (number only used once) such that
 \begin{equation*}
 	H(H(\text{previous block}),M(\text{transactions} +\text{revenue transaction}),\texttt{nonce})
 \end{equation*}
@@ -699,7 +1097,7 @@ The network maybe \textbf{permissionless} or \textbf{permissioned}.
 \textbf{Public}
 \begin{itemize}
 	\item No one is in charge
-	\item Anyone can participate 
+	\item Anyone can participate
 	\item Open and transparent
 	\item Decentralized consensus mechanisms (PoW, PoS, ...)
 	\item Mining
@@ -751,7 +1149,7 @@ Ethereum runs on its native token (\textbf{Ether}) which serves two main purpose
 	\item Ether is \textbf{rewarded as an incentive to the miners who contribute to the Ethereum network} with their resources - much like Bitcoin's structure.
 \end{itemize}
 
-Every time a contract is executed, Ethereum consumes a token which is termed as \textbf{gas} to run the computations. Gas is required to be paid for every operation performed on the Ethereum blockchain. Its price is expressed in ether and it's decided by the miners, which can refuse to process the transaction with less than a certain gas price.
+Every time a contract is executed, Ethereum consumes a token which is termed as \textbf{gas} to run the computations. Gas is required to be paid for every operation performed on the Ethereum blockchain. Its price is expressed in Ether and it's decided by the miners, which can refuse to process the transaction with less than a certain gas price.
 
 \textbf{Examples}\footnote{\url{https://medium.com/coreledger/what-are-smart-contracts-a-breakdown-for-beginners-92ac68ebdbeb}}
 \begin{itemize}

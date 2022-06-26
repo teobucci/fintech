@@ -408,16 +408,16 @@ Sensitivity and specificity are tested by varying the classifier parameters - e.
 
 \fg{0.7}{bdab95cc33820afd21b5c1ad51bbcb05-fkO7SSo4fY-image.png}
 
-The performance of a classifier can be measured using the so-called \textbf{AUC, the area under the ROC curve}. The \textit{greater the area the greater the goodness} (sensitivity and specificity) that the classifier is able to obtain. The bisector in the graph is obtained through a trivial classifier (I randomly assign the observations to the two classes). For a classifier to be useful, the \textbf{AUC must beat the trivial classifier} (i.e. AUC greater than 0.5).
+The performance of a classifier can be measured using the so-called \textbf{\texttt{AUC}, the area under the ROC curve}. The \textit{greater the area the greater the goodness} (sensitivity and specificity) that the classifier is able to obtain. The bisector in the graph is obtained through a trivial classifier (I randomly assign the observations to the two classes). For a classifier to be useful, the \textbf{\texttt{AUC} must beat the trivial classifier} (i.e. \texttt{AUC} greater than 0.5).
 
 The area under the curve is a popular way of summarizing the predictive ability of a model to estimate a binary variable
 \begin{itemize}
-    \item When AUC = 1 the model is perfect. 
-    \item When AUC = 0.5 the model has no predictive ability.
-    \item When AUC < 0.5 the model is worse than random.
+    \item When $\texttt{AUC} = 1$ the model is perfect. 
+    \item When $\texttt{AUC} = 0.5$ the model has no predictive ability.
+    \item When $\texttt{AUC} < 0.5$ the model is worse than random.
 \end{itemize}
 
-\textbf{Imbalanced Dataset}\footnote{\url{https://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/}} typically refers to a problem with classification problems where the classes are not represented equally.
+\paragraph{Imbalanced Dataset}\footnote{\url{https://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/}} typically refers to a problem with classification problems where the classes are not represented equally.
 
 The \textit{accuracy paradox} is the name for the exact situation in the introduction to this post.
 
@@ -922,7 +922,7 @@ The environment is usually changing unpredictably.
     \item Action evaluated by the sum of expected rewards (net of costs) that come after it (possibly discounted)
 \end{itemize}
 
-Rewards The time horizon may be
+The time horizon may be
 \begin{itemize}
     \item finite: finite and fixed number of steps
     \item indefinite: until some stopping criteria is met (\emph{absorbing} states)
@@ -1001,7 +1001,7 @@ A deterministic optimal policy can be found by maximizing over $Q^{\star}(s,a) $
     \end{cases} 
 \]
 
-\paragraph{Monte-Carlo Policy Evaluation}
+\paragraph{Monte-Carlo (MC) Policy Evaluation}
 \begin{itemize}
     \item \textbf{Goal}: learn $V^{\pi}$ from experience under policy $\pi$
     \[
@@ -1013,7 +1013,7 @@ A deterministic optimal policy can be found by maximizing over $Q^{\star}(s,a) $
     \]
     \item Recall that the \textbf{value function} is the expected return:
     \[
-    V^{\pi}(s)=\mathbb{E}\left[v_{t} \mid s_{t}=s\right]
+    V^{\pi}(s)=\mathbb{E}_{\pi}\left[v_{t} \mid s_{t}=s\right]
     \]
     \item Monte Carlo policy evaluation uses \textbf{empirical mean} return instead of expected return
     \begin{itemize}
@@ -1022,45 +1022,48 @@ A deterministic optimal policy can be found by maximizing over $Q^{\star}(s,a) $
     \end{itemize}
 \end{itemize}
 
-\paragraph{TD Prediction}
+\paragraph{Temporal Difference (TD) Prediction}
 \begin{itemize}
     \item \textbf{Goal}: learn $V^{\pi}$ online from experience under policy $\pi$
     \item \textbf{Recall}: incremental every-visit Monte Carlo
     \[
-    V\left(s_{t}\right)=V^{\text {new }}\left(s_{t}\right)+\alpha\left(v_{t}-V^{\text {old }}\left(s_{t}\right)\right)
+    V(s_{t})^{\text{new}} \leftarrow V(s_{t})^{\text{old}}+\alpha(v_{t}-V^{\text{old}}(s_{t}))
     \]
     \item \textbf{Simplest} temporal-difference learning algorithm: $\mathrm{TD}(0)$
     \begin{itemize}
-        \item Update value $V\left(s_{t}\right)$ towards estimated return $r_{t+1}+\gamma V\left(s_{t+1}\right)$
+        \item Update value $V(s_{t})$ towards estimated return $r_{t+1}+\gamma V(s_{t+1})$
         \[
-        V\left(s_{t}\right)=V^{\text {new }}\left(s_{t}\right)+\alpha\left(r_{t+1}+\gamma V^{\text {old }}\left(s_{t+1}\right)-V^{\text {old }}\left(s_{t}\right)\right)
+        V(s_{t})^{\text{new}}\leftarrow V^{\text{old}}(s_{t})+\alpha(r_{t+1}+\gamma V^{\text{old}}(s_{t+1})-V^{\text{old}}(s_{t}))
         \]
-        \item $r_{t+1}+\gamma V\left(s_{t+1}\right)$ is called the TD target
-        \item $\delta_{t}=r_{t+1}+\gamma V\left(s_{t+1}\right)-V\left(s_{t}\right)$ is called the TD error
+        \item $r_{t+1}+\gamma V(s_{t+1})$ is called the TD target
+        \item $\delta_{t}=r_{t+1}+\gamma V(s_{t+1})-V(s_{t})$ is called the TD error
     \end{itemize}
 \end{itemize}
+
+While Monte Carlo methods only adjust their estimates once the final outcome is known, TD methods adjust predictions to match later, more accurate, predictions about the future before the final outcome is known.
 
 We can update either $V$ or $Q$
 
 \begin{itemize}
     \item MC: we usually set
     or
-    \[
-    Q(s, a)^{\text{new}}=Q(s, a)^{\text{old}}+\frac{1}{n}\left[v-Q(s, a)^{\text{old}}\right] \text{ or } Q(s, a)^{\text{new}}=Q(s, a)^{\text{old}}+\alpha\left[v-Q(s, a)^{\text{old}}\right]
-    \]
+    \begin{align*}
+      Q(s, a)^{\text{new}}&\leftarrow Q(s, a)^{\text{old}}+\frac{1}{n}[v-Q(s, a)^{\text{old}}] \\
+      \text{or}\quad Q(s, a)^{\text{new}}&\leftarrow Q(s, a)^{\text{old}}+\alpha[v-Q(s, a)^{\text{old}}]
+    \end{align*}
     for some parameter $\alpha$ (e.a. $0.1)$
     \item TD:
 \[
-Q(s, a)^{\text{new}}=Q(s, a)^{\text{old}}+\alpha\left[r+\gamma V^{\text{old}}-Q(s, a)^{\text{old}}\right]
+Q(s, a)^{\text{new}}\leftarrow Q(s, a)^{\text{old}}+\alpha[r+\gamma V^{\text{old}}-Q(s, a)^{\text{old}}]
 \]
 \end{itemize}
 
-\paragraph{On-policy exploration}
+\paragraph{Example of Greedy Action Selection}\footnote{\url{https://www.davidsilver.uk/wp-content/uploads/2020/03/control.pdf}}
 \begin{itemize}
     \item There are two doors in front of you
     \item You open the left door and get reward 0, $V(\text{left})=0$
     \item You open the right door and get reward $+1$, $V(\text{right})=+1$
-    \item You open the right door and get reward $+3$, $V(\text{right})=+2$
+    \item You open the right door and get reward $+2$, $V(\text{right})=+2$
     \item You open the right door and get reward $+2$, $V(\text{right})=+2$
 \end{itemize}
 
@@ -1076,8 +1079,8 @@ Are you sure you've chosen the best door?
     \[
     \pi(s, a) =
     \begin{cases}
-      \frac{\varepsilon}{m}+1-\varepsilon & \text {if } a^{\star}=\argmax _{a \in \Ac} Q(s, a) \\
-      \frac{\varepsilon}{m} & \text {otherwise}
+      \frac{\varepsilon}{m} + 1 - \varepsilon & \text{if } a^{\star}=\argmax _{a \in \Ac} Q(s, a) \\
+      \frac{\varepsilon}{m} & \text{otherwise}
     \end{cases}
     \]
 \end{itemize}
@@ -1099,12 +1102,12 @@ Are you sure you've chosen the best door?
     \end{itemize}
 \end{itemize}
 
-The exploration parameter $\varepsilon$ and initial values. It makes sense to reduce $\varepsilon$ over time. For example we can let it decline exponentially
+\paragraph{The exploration parameter $\varepsilon$ and initial values.} It makes sense to reduce $\varepsilon$ over time. For example we can let it decline exponentially.
 The initial $Q$-values makes a difference.
 If the standard deviation of the payoff is increased, a higher value of $\varepsilon$ would be appropriate.
 
 \paragraph{$n$-step bootstrapping} Monte Carlo bases updates on what happens over the complete life of the trial.
-Temporal difference bases updates on what happens over the next period .
+Temporal difference bases updates on what happens over the next period.
 \textbf{$n$-step bootstrapping algorithms} is between the two. It bases updates on what happens over the next $n$ periods.
 
 \paragraph{When there are many states or actions (or both)}
@@ -1112,7 +1115,108 @@ Temporal difference bases updates on what happens over the next period .
 \begin{itemize}
     \item The cells of the state/action table do not get filled in very quickly
     \item It becomes necessary to estimate the $Q(s,a)$ function from observed values.
-    \item As this function is in general non-linear a natural approach is to use artificial neural networks (ANNs) or RFs (as in the Forex example in the next slide).
+    \item As this function is in general non-linear a natural approach is to use artificial neural networks (ANNs) or RFs.
     \item We use an ANN or a RF to minimize the sum of squared errors between the estimates and the target
     \item This is known as deep $Q$-learning or deep reinforcement learning.
 \end{itemize}
+
+
+IMMAGINE ACTIO
+Screenshot 2022-06-25 at 12.24.58
+
+Exploration-Exploitation
+- To obtain a lot of reward, a reinforcement learning agent must prefer actions that it has tried in the past and found to be effective in producing reward
+- But to discover such actions, it has to try actions that it has not selected before
+
+- Exploit (act greedily) w.r.t it has already experienced to maximize reward
+- Explore (act non-greedily) take actions which don't have the maximum expected reward in order to learn more about them and make better selections in the future
+- Stochastic Tasks, each action must be tried many times to gain a reliable estimate of its expected reward
+
+
+4 key elements of RL: policy, reward, value function, model (optional).
+
+Policy
+- This is the mapping from states to actions
+- Defining the agent's behavior
+- Policies are usually stochastic, meaning that we sample an action from a probability distribution compared to something like supervised learning where we would take the argmax of the distribution
+
+
+Reward
+- Goal of the RL agent
+- The environment sends a reward at each time step (usually 0)
+- Agent is trying to maximize reward
+- Primary basis for altering the policy (Also Novelty Search / Intrinsic Motivation)
+- Reward signals may be stochastic functions of state and actions
+
+
+
+Value Function
+- Assigning values to states
+- Specifies what is good in the long run vs. reward which is an immediate signal
+- The value of a state is the reward the agent can expect starting from that state
+- Values correspond to a more refined and farsighted judgment of how pleased or displeased we are that our environment is in a particular state
+
+
+Model (Optional $\rightarrow$ Model-Based vs. Model-Free)
+- Mimics the behavior of the environment
+- Allows inference about how the environment might behave
+- Given a state and action, the model might predict the resultant next state and next reward
+- Models are used for planning, considering future situations before experiencing them
+- Model-Based (Models and Planning)
+- Model-Free (Explicitly Trial-and-Error Learners)
+
+
+Reinforcement vs. Supervised Learning
+- Supervised Learning tells the agent the exact correct situation for every state for the purpose of generalizing to states not seen in the training set
+- Reinforcement Learning generally has a much sparser reward signal, do not know what the correct action for every state is, but receive rewards based on a series of states and actions
+
+The Agent seeks to achieve a goal despite uncertaintiy about its environment.
+
+\textbf{Actions change future states.}
+
+Rewards are given directly by the environment, but values must be estimated and re-estimated from the sequences of observations an agent makes over its entire lifetime
+
+The most important component of all RL algorithms is a method for efficiently estimating values.
+The central role of value estimation is arguably the most important breakthrough in RL over the last 6 decades.
+
+
+Greedy action selection rule
+\[
+A_{t} = \argmax_{a} Q_{t}(a),
+\]
+
+Greedy vs. $\varepsilon$-Greedy Action Selection
+- Discard $A_{t}$ with probability $\varepsilon$, and re-sample another action with uniform probability
+- As the number of steps increases, every action will be sampled an infinite number of times, ensuring that all the $Q_{t}(a)$ converges to $q_{\star}(a)$
+
+
+\[
+  newestimate \leftarrow oldestimate + stepsize[target - oldestimate]
+\]
+
+
+
+
+
+It might happen that rewards are very sparse and the agent only knows very late in the game if he won or not. The key issue is that in case of a loss, we don't want to throw everything away, because maybe he played an excellent game of chess until the last move. The key to RL is to understand which actions and combinations lead to win or loss.
+
+How do we optimize this policy? Many ways:
+\begin{itemize}
+  \item Monte Carlo (MC)
+  \item Temporal Differences (TD) which is model-free
+  \item Exploration vs Exploitation
+\end{itemize}
+
+
+Q-learning: learn both $\pi$ and the value-function at the same time. $Q(s,a)=$ what is the quality of being in state $s$ and taking action $a$?
+
+
+
+
+
+
+
+
+
+MC all steps are equal BADDDD
+formula
