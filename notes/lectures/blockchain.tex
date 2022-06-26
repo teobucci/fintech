@@ -183,7 +183,11 @@ Generally, the longest chain is also the one stored by the majority of the netwo
 
 From a game theory perspective, collaborating on the longest chain is a balance, as no one can achieve a better result for themselves (without collaborating with others) by creating invalid blocks (PoWs). \textbf{This makes it very difficult for a hacker to change even the last block}.
 
-\fg[An example of distributed consensus (or maybe not). \texttt{BTC Guild} can choose: \emph{longer chain rule»} vs. \emph{50\%+1 rule}.]{0.9}{c5d0d8444570c81ebcd5ac910f0741e7-HutyWMPv53-image}
+In \textbf{March 2013}\footnote{\url{https://github.com/bitcoin/bips/blob/master/bip-0050.mediawiki}}\footnote{\url{https://freedom-to-tinker.com/2015/07/28/analyzing-the-2013-bitcoin-fork-centralized-decision-making-saved-the-day/}}\footnote{\url{https://twitter.com/gavinandresen/status/311290936527298561}} there was a problem, because the Bitcoin software was being updated from version 0.7 to 0.8. It happened that a new block was created by a miner who had version 0.8, and was correctly recognized to miners who had 0.8, but those with version 0.7 rejected it.
+
+In the end miners decided to switch back to 0.7, since ``\emph{we cannot get every bitcoin user in the world to now instantly switch to 0.8 so no, we need to rollback to the 0.7 chain}'' (Pieter Wuille). Eventually 24 blocks would be lost.
+
+\fg[\texttt{BTC Guild} was a key player in solving the March 2013 fork, having at disposal 20-30\% of the hashpower.]{0.9}{c5d0d8444570c81ebcd5ac910f0741e7-HutyWMPv53-image}
 
 \section{How the nodes get paid}
 
@@ -326,29 +330,25 @@ Another hard fork of Bitcoin.
 	\item Bitcoin Gold suffered from 51\% attacks again in January 2020\footnote{{\scriptsize\url{https://thenextweb.com/hardfork/2020/01/27/Bitcoin-gold-51-percent-attack-blockchain-reorg-cryptocurrency-binance-exchange/}}}.
 \end{itemize}
 
-\paragraph{TheDAO incident}\label{dao-incident}
+\paragraph{TheDAO incident}\label{dao-incident}\footnote{\url{https://medium.com/swlh/the-story-of-the-dao-its-history-and-consequences-71e6a8a551ee}}
 
-TheDAO (Decentralized Autonomous Organization), an automated investment fund, entirely managed by computers and based on blockchain technology: it has raised over 150 million dollars in the short period in which it was open to public subscription.
+The Decentralized Autonomous Organization (known as TheDAO) was meant to operate like a venture capital fund for the crypto and decentralized space. The lack of a centralized authority reduced costs and in theory provides more control and access to the investors.
 
-An individual or group of individuals found a flaw in the smart contract to steal funds from the \textit{cash} of the TheDAO.
+On \textbf{June 17, 2016}, a hacker found a loophole in the coding that allowed him to drain funds from TheDAO. In the first few hours of the attack, 3.6 million ETH were stolen, the equivalent of \$70 million at the time.
 
-The software platform was launched on May 28, 2016.
-
-On Friday 17 June, funds were subtracted thanks to a \textit{badly thought line of code} that allowed funds belonging to TheDAO to be subtracted.
-
-If \textit{code-is-law}, is this subtraction illegal?
+It’s important to understand that this bug did not come from Ethereum itself, but from this one application that was built on Ethereum.
 
 If the blockchain is immutable, how can it be canceled?
 
 Two solutions:
 \begin{itemize}
-	\item A Soft Fork is an operation that updates Ethereum's functionality while maintaining backward compatibility.
-	\item A Hard Fork, on the other hand, is an update of the protocol that makes old versions of Ethereum obsolete.
+	\item \textbf{Soft Fork}: doing a software update to lock the funds (but would remain on the attackers wallet).
+	\item \textbf{Hard Fork}: go back to a previous version of the blockchain.
 \end{itemize}
 
 A hard fork was made, and the blockchain was rewritten by eliminating the transaction.
 
-How? With distributed consent! More than 50\% of Ethereum users have accepted the update. This is why now there exists Ethereum Classic, almost abandoned.
+How? With distributed consent! More than 50\% of Ethereum users have accepted the update. The new separate version became \textbf{Ethereum (ETH)} with the theft reversed, and the original continued as \textbf{Ethereum Classic (ETC)}.
 
 \textbf{Distributed consent overcomes the immutability of the Blockchain.}
 
@@ -478,7 +478,7 @@ Total raised: US\$18.3M
 
 Since Ethereum's inception, over 1.000 \textbf{ERC20} cryptocurrencies have been issued on the platform since its initial ICO. ERC20 itself is a protocol standard that defines certain rules and standards for issuing tokens on Ethereum's network and infrastructure. ERC stands for \emph{Ethereum Request For Comments} and \emph{20} stands for a unique ID number to distinguish this standard from others.
 
-In 2016 a decentralized autonomous organization called The DAO, a set of smart contracts developed on the platform, raised a record US\$150 million in a crowd/token sale to fund the project. \textbf{The DAO was exploited} in June when US\$50 million in Ether were taken by an unknown hacker. Subsequently, Ethereum was split into two separate blockchains (see \ref{dao-incident}) -— the new separate version became \textbf{Ethereum (ETH)} with the theft reversed, and the original continued as \textbf{Ethereum Classic (ETC)}.
+In 2016 a decentralized autonomous organization called TheDAO, a set of smart contracts developed on the platform, raised a record US\$150 million in a crowd/token sale to fund the project. \textbf{TheDAO was exploited} in June when US\$50 million in Ether were taken by an unknown hacker. Subsequently, Ethereum was split into two separate blockchains (see \ref{dao-incident}) -— the new separate version became \textbf{Ethereum (ETH)} with the theft reversed, and the original continued as \textbf{Ethereum Classic (ETC)}.
 \textbf{Solidity}, initially proposed by Gavin Wood in August 2014, is the primary \textbf{programming language} (contract-oriented) used on the Ethereum platform.
 
 \paragraph{Fall of ICO}
