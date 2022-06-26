@@ -13,12 +13,12 @@ Different kinds of \textit{learning:}
     \item \textbf{Unsupervised} learning (find patterns)
           \begin{itemize}
               \item Examples: interpolation (with noise data), calibration, lapse prediction 
-              \item Methods: Neural Networks, Decision Trees, Random Forests
+              \item Methods: Neural Networks, Clustering
           \end{itemize}
     \item \textbf{Supervised} learning (predict numerical value or classification)
           \begin{itemize}
               \item Examples: credit scoring, client selection
-              \item Methods: Networks, Clustering
+              \item Methods: Neural Networks, Decision Trees, Random Forests
           \end{itemize}
     \item \textbf{Reinforcement learning} (multi-stage decision making)
           \begin{itemize}
@@ -885,12 +885,15 @@ The values of all features except the one under consideration are chosen randoml
 
 \begin{itemize}
     \item The SHAP (SHapley Additive exPlanations) method allows us to capture the impact of the different features on the ML output. 
-    \item The method borrows from cooperative game theory and consists in the calculation of SHAP value, which represents a measure of the importance of a feature. 
+    \item The method borrows from \textbf{cooperative game theory} and consists in the calculation of SHAP value, which represents a measure of the \textbf{importance} of a feature. 
     \item More precisely, the SHAP value of a feature measures how much it contributes, either positively or negatively, to the classifier prediction.
     \item The goal of the SHAP method is to explain a prediction computing the contribution of each feature to the prediction itself.
     \item More precisely, the method shows the contribution of each feature to push the model output from the base value (the average model output over the training dataset) to the model output associated with the observation. Given a single observation, a set of SHAP values, one for each feature, is calculated.
 \end{itemize}
 
+\[
+  \phi_i (v)=\sum_{S \subseteq N \backslash\{i\}} \frac{|S| !(n-|S|-1) !}{n !}(v(S \cup\{i\})-v(S))
+\]
 \textbf{Properties}
 \begin{itemize}
     \item If a feature never changes the prediction, its contribution is zero. 
@@ -914,13 +917,8 @@ The higher the value of mean decrease accuracy or mean decrease Gini score, the 
 Reinforcement learning is concerned with finding a strategy for taking a series of decisions rather than just one.
 The environment is usually changing unpredictably.
 
-\subsection{Rewards and costs}
-
-\begin{itemize}
-    \item There are rewards and costs and the algorithm tries to maximize expected rewards (net of costs) in its interaction with the environment 
-    \item Exploitation vs. Exploration (Should you choose best decision based on evidence to date or try something new?)
-    \item Action evaluated by the sum of expected rewards (net of costs) that come after it (possibly discounted)
-\end{itemize}
+\paragraph{Rewards and costs}
+There are rewards and costs and the algorithm tries to maximize expected rewards (net of costs) in its interaction with the environment. In doing that, should you choose best decision based on evidence to date or try something new?
 
 The time horizon may be
 \begin{itemize}
@@ -928,29 +926,31 @@ The time horizon may be
     \item indefinite: until some stopping criteria is met (\emph{absorbing} states)
     \item infinite: forever
 \end{itemize}
-There are different number of rewards.
+
+There are different types of rewards.
+
 \begin{itemize}
     \item \textbf{Total reward}
     \[
-        V = \sum_{i=1}^{\infty} r_{i} 
+        V = \sum_{i=1}^{\infty} r_i
     \]
     \item \textbf{Average reward}
     \[
-        V = \lim_{n \to \infty} \frac{r_{1} + \cdots + r_{n}}{n}
+        V = \lim_{n \to \infty} \frac{r_1 + \cdots + r_n}{n}
     \]
     \item \textbf{Discounted reward}
     \[
-        V = \sum_{i=1}^{\infty} \gamma ^{i-1} r_{i}  
+        V = \sum_{i=1}^{\infty} \gamma^{i-1} r_i
     \]
 \end{itemize}
 
-We define the \textbf{return} $v_{t}$ as the total discounted reward from time $t+1,\ldots$
+We define the \textbf{return} $v_t$ as the total discounted reward from time $t+1,\ldots$
 \[
-    v_{t} = r_{t+1} + \gamma r_{t+2} + \cdots = \sum_{k=0}^{\infty} \gamma ^{k} r_{t+k+1}   
+    v_t = r_{t+1} + \gamma r_{t+2} + \cdots = \sum_{k=0}^{\infty} \gamma^k r_{t+k+1}
 \]
 \begin{itemize}
     \item The \textbf{discount} $\gamma \in [0,1)$ is the present value of future rewards.
-    \item The value of receiving reward $r$ after $k+1$ steps is $\gamma ^{k}r $
+    \item The value of receiving reward $r$ after $k+1$ steps is $\gamma^k r $
     \item \textbf{Immediate} reward vs \textbf{delayed} reward
     \begin{itemize}
         \item $\gamma $ close to $0$ leads to myopic evaluation
@@ -959,136 +959,78 @@ We define the \textbf{return} $v_{t}$ as the total discounted reward from time $
     \item $\gamma $ can also be interpreted as the probability that the process will go on.
 \end{itemize}
 
-\subsection{Policies}
-
+\paragraph{Policies}
 A policy, at any given point in time, \textbf{decides} which action the agent selects. A policy fully defines the \textbf{behavior} of an agent.
 
-\paragraph{Value function} Given a policy $\pi $, it is possible to define the \textbf{utility} of each state: \textbf{Policy Evaluation}. The state-value function $V^{\pi }(s) $ of an MDP (Markov Decision Process) is the expected return starting from state $s$, and then following policy $\pi $
+\paragraph{Value function}
+Given a policy $\pi$ it is possible to define the \textbf{utility} of each state: \textbf{Policy Evaluation}. The value function $V^{\pi}(s) $ of a Markov Decision Process (MDP) is the expected return starting from state $s$, and then following policy $\pi$
 \[
-    V^{\pi }(s) = \EE_{\pi }[v_{t}\mid s_{t}=s] 
+    V^{\pi}(s) = \EE_{\pi}[v_t\mid s_t=s]
 \]
-For control purposes, rather than the value of each state, it is easier to consider the value of each action in each state. The action-value function $Q^{\pi }(s,a) $ is the expected return starting from state $s$, taking action $a$, and then following policy $\pi $
+\paragraph{Action-value function}
+For control purposes, rather than the value of each state, it is easier to consider the value of each action in each state. The action-value function $Q^{\pi}(s,a) $ is the expected return starting from state $s$, taking action $a$, and then following policy $\pi $
 \[
-    Q^{\pi }(s,a) = \EE_{\pi }[v_{t} \mid s_{t}=s,a_{t}=a] 
+    Q^{\pi}(s,a) = \EE_{\pi}[v_t \mid s_t=s,a_t=a]
 \]
 
-\paragraph{Optimal value function} The \textbf{optimal state-value function} $V^{\star}(s) $ is the maximum value function over all policies
+\paragraph{Optimal value function} The \textbf{optimal value function} $V^{\star}(s) $ is the maximum value function over all policies
 \[
-    V^{\star}(s) = \max_{\pi }V^{\pi }(s)  
+    V^{\star}(s) = \max_{\pi}V^{\pi}(s)
 \]
 The \textbf{optimal action-value function} $Q^{\star}(s,a) $ is the maximum action-value function over all policies
 \[
-    Q^{\star}(s,a) = \max_{\pi }Q^{\pi }(s,a)
+    Q^{\star}(s,a) = \max_{\pi}Q^{\pi}(s,a)
 \]
-The optimal value function specifies the best possible performance in the MDP. An MDP is \emph{solved} when we know the optimal value function.
 
 \paragraph{Optimal Policy} Value functions define a partial ordering over policies
 \[
-    \pi \geq \pi ' \iff V^{\pi }(s)\geq V^{\pi'}(s), \forall s\in \Sc
+    \pi \geq \pi ' \iff V^{\pi}(s)\geq V^{\pi'}(s), \forall s\in \Sc
 \]
 Theorem: for any Markov Decision Process
 \begin{itemize}
-    \item There exists an \textbf{optimal policy} $\pi ^{\star} $ that is better than or equal to all policies $\pi ^{\star}\geq \pi,\forall \pi  $
-    \item \textbf{All} optimal policies achieve the optimal value function, $V^{\pi ^{\star} }(s) = V^{\star}(s)$
-    \item \textbf{All} optimal policies achieve the optimal action-value function, $Q^{\pi ^{\star} }(s,a) = Q^{\star}(s,a)$
+    \item There exists an \textbf{optimal policy} $\pi^{\star} $ that is better than or equal to all policies $\pi^{\star}\geq \pi,\forall \pi  $
+    \item \textbf{All} optimal policies achieve the optimal value function, $V^{\pi^{\star}}(s) = V^{\star}(s)$
+    \item \textbf{All} optimal policies achieve the optimal action-value function, $Q^{\pi^{\star}}(s,a) = Q^{\star}(s,a)$
     \item There is always a \textbf{deterministic optimal policy} for any MDP.
 \end{itemize}
-A deterministic optimal policy can be found by maximizing over $Q^{\star}(s,a) $
+
+\paragraph{Monte-Carlo (MC)}
+The simplest approach to model learning from purely trial and error is Monte Carlo learning. It's an episodic learning algorithm: \textbf{it needs to run an entire episode} (many states, e.g. until the end of the game) until it can use that information for learning.
+I pick some policy and run through the game, I compute the cumulative discounted reward and divide that reward among every state that I passed in the episode. Updating value function:
 \[
-    \pi ^{\star}(a\mid s) = \begin{cases}
-        1 & \text{if } a = \argmax_{a\in \Ac} Q^{\star}(s,a) \\
-        0 & \text{otherwise}
-    \end{cases} 
+    \boxed{V(s_t)^{\text{new}}\leftarrow V(s_t)^{\text{old}} + \frac{1}{n} \left( v_t - V(s_t)^{\text{old}} \right) \qquad \forall t=1,\ldots,n}
+\]
+where $n$ is number of iteration taken to complete the episode.
+
+It's inefficient, takes many episodes and it's assuming that every single step taken to victory or loss is equally important.
+
+I can do the same updating the action-value function:
+\[
+    \boxed{Q(s_t,a_t)^{\text{new}}\leftarrow Q(s_t,a_t)^{\text{old}} + \frac{1}{n} \left( v_t - Q(s_t,a_t)^{\text{old}} \right) \qquad \forall t=1,\ldots,n}
 \]
 
-\paragraph{Monte-Carlo (MC) Policy Evaluation}
-\begin{itemize}
-    \item \textbf{Goal}: learn $V^{\pi}$ from experience under policy $\pi$
-    \[
-    s_{1}, a_{1}, r_{2}, \ldots, s_{T} \sim \pi
-    \]
-    \item Recall that the \textbf{return} is the total discounted reward:
-    \[
-    v_{t}=r_{t+1}+\gamma r_{t+2}+\cdots+\gamma^{T-1} r_{t+T}
-    \]
-    \item Recall that the \textbf{value function} is the expected return:
-    \[
-    V^{\pi}(s)=\mathbb{E}_{\pi}\left[v_{t} \mid s_{t}=s\right]
-    \]
-    \item Monte Carlo policy evaluation uses \textbf{empirical mean} return instead of expected return
-    \begin{itemize}
-        \item \textbf{first visit}: average returns only for the first time $s$ is visited (\textbf{unbiased} estimator)
-        \item \textbf{every visit}: average returns for every time $s$ is visited (\textbf{biased but consistent estimator})
-    \end{itemize}
-\end{itemize}
-
-\paragraph{Temporal Difference (TD) Prediction}
-\begin{itemize}
-    \item \textbf{Goal}: learn $V^{\pi}$ online from experience under policy $\pi$
-    \item \textbf{Recall}: incremental every-visit Monte Carlo
-    \[
-    V(s_{t})^{\text{new}} \leftarrow V(s_{t})^{\text{old}}+\alpha(v_{t}-V^{\text{old}}(s_{t}))
-    \]
-    \item \textbf{Simplest} temporal-difference learning algorithm: $\mathrm{TD}(0)$
-    \begin{itemize}
-        \item Update value $V(s_{t})$ towards estimated return $r_{t+1}+\gamma V(s_{t+1})$
-        \[
-        V(s_{t})^{\text{new}}\leftarrow V^{\text{old}}(s_{t})+\alpha(r_{t+1}+\gamma V^{\text{old}}(s_{t+1})-V^{\text{old}}(s_{t}))
-        \]
-        \item $r_{t+1}+\gamma V(s_{t+1})$ is called the TD target
-        \item $\delta_{t}=r_{t+1}+\gamma V(s_{t+1})-V(s_{t})$ is called the TD error
-    \end{itemize}
-\end{itemize}
-
-While Monte Carlo methods only adjust their estimates once the final outcome is known, TD methods adjust predictions to match later, more accurate, predictions about the future before the final outcome is known.
-
-We can update either $V$ or $Q$
-
-\begin{itemize}
-    \item MC: we usually set
-    or
-    \begin{align*}
-      Q(s, a)^{\text{new}}&\leftarrow Q(s, a)^{\text{old}}+\frac{1}{n}[v-Q(s, a)^{\text{old}}] \\
-      \text{or}\quad Q(s, a)^{\text{new}}&\leftarrow Q(s, a)^{\text{old}}+\alpha[v-Q(s, a)^{\text{old}}]
-    \end{align*}
-    for some parameter $\alpha$ (e.a. $0.1)$
-    \item TD:
+\paragraph{Temporal Difference (TD)}
+A more advanced approach is \textbf{Temporal Difference TD($0$)}, it highlights events that are more recent in giving the rewards: events that happened recently are more correlated to the reward I'm getting. The value function can be written as:
 \[
-Q(s, a)^{\text{new}}\leftarrow Q(s, a)^{\text{old}}+\alpha[r+\gamma V^{\text{old}}-Q(s, a)^{\text{old}}]
+    V(s_t) = \EE[r_t + \gamma V(s_{t+1})]
 \]
-\end{itemize}
+i.e. expected reward now plus discounted value function at the next state I find myself in (Bellman Equation).
 
-\paragraph{Example of Greedy Action Selection}\footnote{\url{https://www.davidsilver.uk/wp-content/uploads/2020/03/control.pdf}}
-\begin{itemize}
-    \item There are two doors in front of you
-    \item You open the left door and get reward 0, $V(\text{left})=0$
-    \item You open the right door and get reward $+1$, $V(\text{right})=+1$
-    \item You open the right door and get reward $+2$, $V(\text{right})=+2$
-    \item You open the right door and get reward $+2$, $V(\text{right})=+2$
-\end{itemize}
+I now update the value function in this way:
+\[
+    \boxed{V(s_t)^{\text{new}}\leftarrow V(s_t)^{\text{old}} + \alpha \left( r_t + \gamma V(s_{t+1}) - V(s_t)^{\text{old}} \right)}
+\]
+The correction term doesn't average across all the trajectories (unlike MC). The first part of the correction is exactly the expected value function (TD target estimate) and the I subtract the old estimate. The whole correction term is called TD Error and is multiplied by a rate $\alpha$. TD($0$) looks only one instant in the future, one $\Delta t$ delay between action and rewards, but it can be generalized to TD($N$) (\textbf{$n$-step bootstrapping}), as $N$ goes to infinity this method converges to MC.
 
-Are you sure you've chosen the best door?
-
-\paragraph{$\varepsilon$-Greedy exploration}
-
-\begin{itemize}
-    \item Simplest idea for ensuring \textbf{continual exploration}
-    \item \textbf{All} $m$ actions are tried with \textbf{non-zero} probability
-    \item With probability $1-\varepsilon$ choose the \textbf{greedy} action
-    \item With probability $\varepsilon$ choose an action at \textbf{random}
-    \[
-    \pi(s, a) =
-    \begin{cases}
-      \frac{\varepsilon}{m} + 1 - \varepsilon & \text{if } a^{\star}=\argmax _{a \in \Ac} Q(s, a) \\
-      \frac{\varepsilon}{m} & \text{otherwise}
-    \end{cases}
-    \]
-\end{itemize}
-
+\textbf{Q-Learning}\footnote{\url{https://www.youtube.com/watch?v=0iqz4tcKN58}} is essentially TD learning on the Q function:
+\[
+    \boxed{Q(s_t,a_t)^{\text{new}}\leftarrow Q(s_t,a_t)^{\text{old}} + \alpha \left( r_k + \gamma \max_aQ(s_{t+1},a) - Q(s_t,a_t)^{\text{old}} \right)}
+\]
+Notice that there is a $\max$ over $a$: when I get to $r_t$ it doesn't have to be the optimal on policy action, I can do some random action. However, when I compute the quality for the next state $s_{t+1}$ I optimize over the action $a$.
 
 \paragraph{MC vs TD Control}
 \begin{itemize}
-    \item Temporal-Difference (TD) learning has several advantages over Monte-Carlo (MC)
+    \item TD learning has several advantages over Monte-Carlo (MC)
     \begin{itemize}
         \item Lower Variance
         \item Online
@@ -1102,135 +1044,23 @@ Are you sure you've chosen the best door?
     \end{itemize}
 \end{itemize}
 
-\paragraph{The exploration parameter $\varepsilon$ and initial values.} It makes sense to reduce $\varepsilon$ over time. For example we can let it decline exponentially.
+\paragraph{Exploration vs Exploitation}\leavevmode
+
+\emph{Example of Greedy Action Selection}\footnote{\url{https://www.davidsilver.uk/wp-content/uploads/2020/03/control.pdf}}
+\begin{itemize}
+    \item There are two doors in front of you
+    \item You open the left door and get reward 0, $V(\text{left})=0$
+    \item You open the right door and get reward $+1$, $V(\text{right})=+1$
+    \item You open the right door and get reward $+2$, $V(\text{right})=+2$
+    \item You open the right door and get reward $+2$, $V(\text{right})=+2$
+\end{itemize}
+Are you sure you've chosen the best door?
+
+\textbf{$\varepsilon$-Greedy exploration} is the simplest idea for ensuring \textbf{continual exploration}. \textbf{All} $m$ actions are tried with \textbf{non-zero} probability
+\begin{itemize}
+    \item With probability $1-\varepsilon$ choose the \textbf{greedy} action
+    \item With probability $\varepsilon$ choose an action at \textbf{random}
+\end{itemize}
+It makes sense to reduce $\varepsilon$ over time. For example we can let it decline exponentially.
 The initial $Q$-values makes a difference.
-If the standard deviation of the payoff is increased, a higher value of $\varepsilon$ would be appropriate.
-
-\paragraph{$n$-step bootstrapping} Monte Carlo bases updates on what happens over the complete life of the trial.
-Temporal difference bases updates on what happens over the next period.
-\textbf{$n$-step bootstrapping algorithms} is between the two. It bases updates on what happens over the next $n$ periods.
-
-\paragraph{When there are many states or actions (or both)}
-
-\begin{itemize}
-    \item The cells of the state/action table do not get filled in very quickly
-    \item It becomes necessary to estimate the $Q(s,a)$ function from observed values.
-    \item As this function is in general non-linear a natural approach is to use artificial neural networks (ANNs) or RFs.
-    \item We use an ANN or a RF to minimize the sum of squared errors between the estimates and the target
-    \item This is known as deep $Q$-learning or deep reinforcement learning.
-\end{itemize}
-
-
-\fg{0.3}{agent-env}
-
-Exploration-Exploitation
-- To obtain a lot of reward, a reinforcement learning agent must prefer actions that it has tried in the past and found to be effective in producing reward
-- But to discover such actions, it has to try actions that it has not selected before
-
-- Exploit (act greedily) w.r.t it has already experienced to maximize reward
-- Explore (act non-greedily) take actions which don't have the maximum expected reward in order to learn more about them and make better selections in the future
-- Stochastic Tasks, each action must be tried many times to gain a reliable estimate of its expected reward
-
-
-4 key elements of RL: policy, reward, value function, model (optional).
-
-Policy
-- This is the mapping from states to actions
-- Defining the agent's behavior
-- Policies are usually stochastic, meaning that we sample an action from a probability distribution compared to something like supervised learning where we would take the argmax of the distribution
-
-
-Reward
-- Goal of the RL agent
-- The environment sends a reward at each time step (usually 0)
-- Agent is trying to maximize reward
-- Primary basis for altering the policy (Also Novelty Search / Intrinsic Motivation)
-- Reward signals may be stochastic functions of state and actions
-
-
-
-Value Function
-- Assigning values to states
-- Specifies what is good in the long run vs. reward which is an immediate signal
-- The value of a state is the reward the agent can expect starting from that state
-- Values correspond to a more refined and farsighted judgment of how pleased or displeased we are that our environment is in a particular state
-
-
-Model (Optional $\rightarrow$ Model-Based vs. Model-Free)
-- Mimics the behavior of the environment
-- Allows inference about how the environment might behave
-- Given a state and action, the model might predict the resultant next state and next reward
-- Models are used for planning, considering future situations before experiencing them
-- Model-Based (Models and Planning)
-- Model-Free (Explicitly Trial-and-Error Learners)
-
-
-Reinforcement vs. Supervised Learning
-- Supervised Learning tells the agent the exact correct situation for every state for the purpose of generalizing to states not seen in the training set
-- Reinforcement Learning generally has a much sparser reward signal, do not know what the correct action for every state is, but receive rewards based on a series of states and actions
-
-The Agent seeks to achieve a goal despite uncertaintiy about its environment.
-
-\textbf{Actions change future states.}
-
-Rewards are given directly by the environment, but values must be estimated and re-estimated from the sequences of observations an agent makes over its entire lifetime
-
-The most important component of all RL algorithms is a method for efficiently estimating values.
-The central role of value estimation is arguably the most important breakthrough in RL over the last 6 decades.
-
-
-Greedy action selection rule
-\[
-A_{t} = \argmax_{a} Q_{t}(a),
-\]
-
-Greedy vs. $\varepsilon$-Greedy Action Selection
-- Discard $A_{t}$ with probability $\varepsilon$, and re-sample another action with uniform probability
-- As the number of steps increases, every action will be sampled an infinite number of times, ensuring that all the $Q_{t}(a)$ converges to $q_{\star}(a)$
-
-
-\[
-  \texttt{newEstimate} \leftarrow \texttt{oldEstimate} + \texttt{stepSize}[\texttt{target} - \texttt{oldEstimate}]
-\]
-
-
-
-
-
-It might happen that rewards are very sparse and the agent only knows very late in the game if he won or not. The key issue is that in case of a loss, we don't want to throw everything away, because maybe he played an excellent game of chess until the last move. The key to RL is to understand which actions and combinations lead to win or loss.
-
-How do we optimize this policy? Many ways:
-\begin{itemize}
-  \item Monte Carlo (MC)
-  \item Temporal Differences (TD) which is model-free
-  \item Exploration vs Exploitation
-\end{itemize}
-
-
-Q-Learning: learn both $\pi$ and the value-function at the same time. $Q(s,a)=$ what is the quality of being in state $s$ and taking action $a$?
-
-
-
-
-Q-Learning: \url{https://www.youtube.com/watch?v=0iqz4tcKN58}
-
-
-
-
-MC all steps are equal BADDDD
-
-
-
-TD
-\[
-  V(s) \leftarrow V(s) + \alpha (\underbrace{r+\gamma V(s')}_{\text{TD target}} - V(s))
-\]
-
-
-Q-Learning
-\[
-  Q^{\text{new}}(s_{t},a_{t}) \leftarrow \underbrace{Q(s_{t},a_{t})}_{\text{old value}} + \underbrace{\alpha}_{\text{learning rate}} \cdot  \overbrace{\bigg( \underbrace{\underbrace{r_{t}}_{\text{reward}} + \underbrace{\gamma}_{\text{discount factor}} \cdot \underbrace{\max_{a}Q(s_{t+1}, a)}_{\text{estimate of optimal future value}}}_{\text{new value (temporal difference target)}} - \underbrace{Q(s_{t},a_{t})}_{\text{old value}} \bigg) }^{\text{temporal difference}} 
-\]
-
-
-
+It keeps both exploration (visiting random, unknowned states) and exploitation (searching best reward).
