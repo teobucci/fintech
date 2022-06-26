@@ -754,7 +754,11 @@ Cryptocurrencies are very uncorrelated with standard financial assets, as can be
 
 \section{Central Bank Digital Currency (CBDC)}
 
-Central bank money handled through electronic means and accessible to the broad public. Responsibility for the Central Bank.
+CBDC are digital tokens, similar to cryptocurrency, issued by a central bank. They are pegged to the value of that country's fiat currency.
+
+Central bank money handled through electronic means and accessible to the broad public.  A CBDC is issued and regulated by a nation's monetary authority or central bank and as such it's a central bank liability.
+
+As a centralized form of currency, they may not anonymize transactions as some cryptocurrencies do.
 
 CBDC is a third form of base money, next to deposits and banknotes.
 
@@ -762,8 +766,8 @@ The four key properties of Money:
 \begin{itemize}
 	\item Issuer: central bank or not
 	\item Form: digital or physical
-	\item Accessibility: widely or restricted
-	\item Technology: token - or account - based. The key difference between tokens and accounts is in their verification: a person receiving a token verifies that token is genuine, an intermediary verifies the identity of an account holder.
+	\item Accessibility: widely (retail) or restricted (wholesale)
+	\item Technology: token - or account - based. Token-based retail CBDCs are accessible with private/public keys. This method of validation allows users to execute transactions anonymously. Account-based retail CBDCs require digital identification to access an account.
 \end{itemize}
 
 
@@ -776,24 +780,97 @@ The four key properties of Money:
 	\item Off-line transactions.
 \end{itemize}
 
-Digital means of payments do not satisfy these features. Digital means require third parties (record keeping, identity validation). It si difficult to deploy off-line transactions.
-Today: cash is the only form of central bank issued money available to individuals.
-Today: part of money (bank deposits) is managed by profit oriented players.
-CBDC: universal/inclusive, digital, central bank issued (legal tender)
+Digital means of payments do not satisfy these features. Digital means require third parties (record keeping, identity validation). It is difficult to deploy off-line transactions.
+
+Today: cash is the only form of central bank issued money available to individuals and part of money (bank deposits) is managed by profit oriented players.
+CBDC: universal/inclusive, digital, central bank issued (legal tender \footnote{Legal tender is anything recognized by law as a means to settle a public or private debt or meet a financial obligation, including tax payments, contracts, and legal fines or damages. Fiat currency of a country is a legal tender})
 
 
 % vantaggi del cash sul digitale
 
-2. State of the art
+\paragraph{State of the art}
 
-3. Motivation
+Many central banks are still considering multiple options. 
+5 projects focus on a direct CBDC, 2 on an indirect CBDC, and 10 investigate several designs or do not specify the architecture. 
 
-The Consumer perspective
-The Central Bank perspective
-The real economy perspective
+Only one project focuses on conventional (database) technology whereas 5 focus on DLT.
+The problem of DLT is the inadequate performance and scalability, offering no advantages in a centralised system or cash-like resilience in case of prolonged outages.
 
+Three projects focus on token-based access and three on account based access.
+
+No CBDC project has an explicit focus on payments beyond the central bank’s jurisdiction. Several central banks are working on cross-border payment trials in parallel to their CBDC efforts. 
+
+\paragraph{Motivation}
+
+
+\textbf{The Consumer perspective}
+A digital currency like CBDC is an additional form of public money and mean of payment. The currency should be cheap to use, secure, risk-free (its holders should not be subject to any market risk or issuer default risk), easy to use and efficient (permitting fast payments). 
+
+The possibility of cash to be used without any technical infrastructure is not (fully) matched by electronic payment solutions. As such, the CBDC should allow citizens to continue to make their payments as much as they do today with cash, allowing off-line payments, free of charge for basic users and privacy friendly.
+
+The pandemic and resulting economic crisis have led to marked changes in the use of cash and in retail payment behaviour:
+\begin{itemize}
+	\item temporary decline in cash withdrawals 
+	\item higher cash holdings 
+	\item increased use of contactless payments and surge in e-commerce
+\end{itemize}
+
+In a crisis period households without access to digital payment means could face barriers to making and receiving payments. 
+
+This has led to an acceleration in the reduction of ATM and physical bank branches, possibly impacting groups of people who do not have access to digital payment mechanism (seniors, migrants...).
+
+Moreover, 1 billion people worldwide do not have basic identification (ID) credentials, and many more have IDs that cannot be trusted because are of poor quality or cannot be  verified. 
+3.4 billion people have some form of ID but with limited ability to use it in the digital world. 
+Lack of ID makes it difficult for citizens to access financial services, for financial service providers to on-board customers and for governments to efficiently transfer funds to the rightful beneficiary. 
+
+General purpose CBDCs could enhance inclusion in the medium term if inclusion features prominently in CBDC designs.
+In emerging markets general purpose CBDCs could improve financial inclusion by providing a low-cost means of payment and acting as an on-ramp to broader financial services and advanced economies central banks are considering these CBDCs in light of declining cash use and potential reduced access to cash. 
+
+Trade-offs between token and account based CBDCs from a consumer perspective:
+\begin{itemize}
+	\item Account-based CBDCs require individuals to present valid ID, linking personal ID to a CBDC could generate data privacy concerns. Identification is not strictly needed for a token-based CBDC.
+	\item Ownership of a token-based CBDC is linked to “knowledge” such as a digital signature. This design could improve access to financial services, substitute for cash in countries where access to cash is cumbersome, enable a degree of anonymity and reduce the need for financial accounts. Yet a token-based CBDC without formal identification presents integrity risks and would have limited usefulness for G2P payments due to opportunities for fraud. 
+\end{itemize}
+
+
+
+
+\textbf{The Central Bank perspective}
+
+The introduction of a CBDC might reinforce the transmission of monetary policy by allowing the central bank to set the remuneration rate on the digital currency in order to directly influence the consumption and investment choices of the non-financial sector, leading to monetary stability.
+
+Cash and CBDC, if widely available and transacted via resilient channels that are separate from those of other payment services, could constitute a possible contingency mechanism for electronic retail payments that could remain in use even when private solutions are not available (because of outages of private card payment schemes, online banking and ATMs). 
+
+
+\textbf{The real economy perspective}
+CBDC can encourage digital innovation by:
+\begin{itemize}
+	\item filling the gap in the provision of digital payments
+	\item enhancing financial inclusion (user solutions accessible to customers)
+	\item preserve independence in retal payments
+\end{itemize}
+
+Foreign central banks are assessing the possibility of issuing their own CBDC and private actors, including large technology firms, are developing payment solutions that could threaten financial, economic and political sovereignty. Wide acceptance of a mean of payment not denominated in sovereign currency could weaken the transmission of monetary policy, affect financial stability, safety and efficiency of the payment system.
+
+CBDC may be the solution to these threats if it offers functionalities that are at least as attractive as those of the payment solutions available in foreign currencies or through unregulated entities.
 % robe varie che non ho segnato
 
+\paragraph{Technology and architecture}
+
+There are three main possible architectures, defining the role of the central bank in day-to-day payment and the structure of legal claims:
+\begin{itemize}
+	\item Indirect CBDC (two-tier CBDC) model: the consumer has a claim on an intermediary, with the central bank keeping track only of wholesale accounts. The indirect CBDC implies loads similar to those of today’s system. 
+	\item Direct CBDC model: the CBDC represents a direct claim on the central bank, which keeps a record of all balances and updates it with every transaction. The direct CBDC would require massive technological capabilities, as the central bank processes all transactions by itself, handling a volume of payments traffic comparable with that of today’s credit or debit card operators. 
+	\item Hybrid CBDC model: an intermediate solution providing for direct claims on the central bank while allowing intermediaries to handle payments. The hybrid CBDC architecture is more complex to operate than the indirect model, as the central bank does maintain retail balances. It could be implemented at scale using today's technology.
+\end{itemize}
+
+The infrastructure could be based on a conventional centrally controlled database, or on a distributed ledger.
+In conventional databases, resilience is typically achieved by storing data over multiple physical nodes, which are controlled by one authoritative entity.
+In DLT-based systems, the ledger is jointly managed by different entities in a decentralized manner and without such a top node.The overhead needed to operate a consensus mechanism is the main reason why DLTs have lower transaction throughput than conventional architectures. 
+
+Current DLT could not be used for the direct CBDC except in  very small jurisdictions. DLT could be used for the indirect CBDC architecture, as the number of transactions in many wholesale payment systems is comparable with that handled by existing blockchain platforms.
+
+Resilience: neither a DLT-based system nor a conventional one has a clear-cut advantage. The key vulnerability of a conventional architecture is the failure of the top node, for example via a targeted hacking attack. The key vulnerability of DLT is the consensus mechanism, which may be put under pressure, for example, by a denial-of-service type of attack. 
 
 
 
