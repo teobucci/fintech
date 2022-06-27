@@ -11,20 +11,20 @@
 Different kinds of \textit{learning:}
 \begin{itemize}
     \item \textbf{Unsupervised} learning (find patterns)
-          \begin{itemize}
-              \item Examples: interpolation (with noise data), calibration, lapse prediction 
-              \item Methods: Neural Networks, Clustering
-          \end{itemize}
+    \begin{itemize}
+        \item Examples: interpolation (with noise data), calibration, lapse prediction 
+        \item Methods: Neural Networks, Clustering
+    \end{itemize}
     \item \textbf{Supervised} learning (predict numerical value or classification)
-          \begin{itemize}
-              \item Examples: credit scoring, client selection
-              \item Methods: Neural Networks, Decision Trees, Random Forests
-          \end{itemize}
+    \begin{itemize}
+        \item Examples: credit scoring, client selection
+        \item Methods: Neural Networks, Decision Trees, Random Forests
+    \end{itemize}
     \item \textbf{Reinforcement learning} (multi-stage decision making)
-          \begin{itemize}
-              \item Examples: trading
-              \item Methods: Q-Learning and Neural Network/Random Forest (to approximate matrix $Q$)
-          \end{itemize}
+    \begin{itemize}
+        \item Examples: trading
+        \item Methods: Q-Learning and Neural Network/Random Forest (to approximate matrix $Q$)
+    \end{itemize}
 \end{itemize}
 
 Software:
@@ -50,11 +50,11 @@ Features are the \textit{old} independent variables for linear regression, but i
 ML good practice:
 \begin{itemize}
     \item Divide data into three sets
-          \begin{itemize}
-              \item Training set
-              \item Validation set
-              \item Test set
-          \end{itemize}
+    \begin{itemize}
+        \item Training set
+        \item Validation set
+        \item Test set
+    \end{itemize}
     \item Develop different models using the training set and compare them using the validation set
     \item Rule of thumb: increase model complexity until model no longer generalizes well to the validation set
     \item The test set is used to provide a final out-of-sample indication of how well the chosen model works
@@ -140,30 +140,29 @@ Generally, \textbf{the inertia decreases as }$k$\textbf{ increases}, approaching
     \item \textbf{The elbow approach:} in this case, $k=4$ seems the best choice, since the inertia decreases of a small quantity moving from $4$ to $5$ w.r.t from $3$ to $4$.
     \item \textbf{The elbow approach + distance between clusters analysis:} if moving from $k$ to $k+1$ clusters we create a cluster with center very close to the center of another cluster, we stop the algorithm to $k$.
     \item \textbf{The silhouette method:}\footnote{\url{https://en.wikipedia.org/wiki/Silhouette_(clustering)}} for each observation $i$ calculate $a(i)$, the average distance from other observations in its cluster, and $b(i)$, the average distance from observations in the \textbf{closest other cluster}, i.e., for each cluster (excluding the one which contains the observation), we compute the average distance of the considered observation $i$ from the observations of the cluster, and \textbf{then take the minimum}. The silhouette score for observation $i$, $s(i)$, is defined as
-          \begin{equation*}
-              s(i) =\frac{b(i) -a(i)}{\max\{a(i),b(i)\}}
-          \end{equation*}
-          
-          Choose the number of clusters that maximizes the average silhouette score across all observations.
-          The silhouette value is a measure of how similar an object is to its own cluster (cohesion) compared to other clusters (separation). The silhouette ranges from $-1$ to $+1$, where a high value indicates that the object is well matched to its own cluster and poorly matched to neighboring clusters. If most objects have a high value, then the clustering configuration is appropriate. If many points have a low or negative value, then the clustering configuration may have too many or too few clusters.
+    \begin{equation*}
+        s(i) =\frac{b(i) -a(i)}{\max\{a(i),b(i)\}}
+    \end{equation*}
+    Choose the number of clusters that maximizes the average silhouette score across all observations.
+    The silhouette value is a measure of how similar an object is to its own cluster (cohesion) compared to other clusters (separation). The silhouette ranges from $-1$ to $+1$, where a high value indicates that the object is well matched to its own cluster and poorly matched to neighboring clusters. If most objects have a high value, then the clustering configuration is appropriate. If many points have a low or negative value, then the clustering configuration may have too many or too few clusters.
     \item The \textbf{Gap statistic} compares the within cluster sum of squares with what would be expected with random data.
-          \begin{itemize}
-              \item Let us create $N$ sets of random points.
-              \item For each set, let us cluster this points in $k$ clusters, and compute the Inertia, for different $k$.
-              \item Let us define with
-                    \begin{itemize}
-                        \item $w_{k}$ the inertia computed for the real data
-                        \item $m_{k}(s_{k})$ the mean value (standard deviation) of the $N$ inertias computed exploiting the random sets
-                    \end{itemize}
-              \item We define the Gap as
-                    \begin{equation*}
-                        \texttt{gap}(k) = m_{k} - w_{k}
-                    \end{equation*}
-              \item We set $k$ such that
-                    \begin{equation*}
-                        \texttt{gap}(k) \in (s_{k+1},\texttt{gap}(k+1))
-                    \end{equation*}
-          \end{itemize}
+    \begin{itemize}
+        \item Let us create $N$ sets of random points.
+        \item For each set, let us cluster this points in $k$ clusters, and compute the Inertia, for different $k$.
+        \item Let us define with
+        \begin{itemize}
+            \item $w_{k}$ the inertia computed for the real data
+            \item $m_{k}(s_{k})$ the mean value (standard deviation) of the $N$ inertias computed exploiting the random sets
+        \end{itemize}
+        \item We define the Gap as
+        \begin{equation*}
+            \texttt{gap}(k) = m_{k} - w_{k}
+        \end{equation*}
+        \item We set $k$ such that
+        \begin{equation*}
+            \texttt{gap}(k) \in (s_{k+1},\texttt{gap}(k+1))
+        \end{equation*}
+    \end{itemize}
 \end{itemize}
 
 \subsection{The Curse of Dimensionality}
@@ -172,9 +171,9 @@ Generally, \textbf{the inertia decreases as }$k$\textbf{ increases}, approaching
     \item The Euclidean distance measure increases as the number of features increase.
     \item This is referred to as the \textbf{curse of dimensionality}, and could prevent the $k$-means algorithm to work efficiently.
     \item Consider two observations that have values for feature $j$ equal to $x_{j}$ and $y_{j}$. An alternative distance measure that always lies between $0$ and $2$ is
-          \begin{equation*}
-              1-\frac{\sum _{j=1}^{m} x_{j} y_{j}}{\sqrt{\sum _{j=1}^{m} x_{j}^{2}\sum _{j=1}^{m} y_{j}^{2}}}
-          \end{equation*}
+    \begin{equation*}
+        1-\frac{\sum _{j=1}^{m} x_{j} y_{j}}{\sqrt{\sum _{j=1}^{m} x_{j}^{2}\sum _{j=1}^{m} y_{j}^{2}}}
+    \end{equation*}
 \end{itemize}
 
 Now we see some alternative clustering approaches.
@@ -187,12 +186,12 @@ Now we see some alternative clustering approaches.
     \item Continue until all observations have been combined into a single cluster (or since we have only $k$ clusters)
     \item Can be implemented in Python with \texttt{sklearn.cluster.AgglomerativeClustering}.
     \item Measures of closeness of clusters:
-          \begin{itemize}
-              \item Average Euclidean distance between points in clusters
-              \item Maximum distance between points in clusters
-              \item Minimum distance between points in clusters
-              \item Increase in inertia (a version of Ward's method)
-          \end{itemize}
+    \begin{itemize}
+        \item Average Euclidean distance between points in clusters
+        \item Maximum distance between points in clusters
+        \item Minimum distance between points in clusters
+        \item Increase in inertia (a version of Ward's method)
+    \end{itemize}
 \end{itemize}
 
 \subsection{Density-based clustering}
@@ -214,12 +213,12 @@ Assumes that observations come from a mixture of distributions and uses statisti
 This is an approach to reduce the number of variables
 \begin{itemize}
     \item PCA replaces a set of $n$ variables by $n$ \textbf{new} factors so that:
-          \begin{itemize}
-              \item Any observation on the original variables is a linear combination of the $n$ factors
-              \item The $n$ factors are uncorrelated
-              \item The quantity of a particular factor in a particular observation is the factor score
-              \item The importance of a particular factor is measured by the standard deviation of its factor score across observations
-          \end{itemize}
+    \begin{itemize}
+        \item Any observation on the original variables is a linear combination of the $n$ factors
+        \item The $n$ factors are uncorrelated
+        \item The quantity of a particular factor in a particular observation is the factor score
+        \item The importance of a particular factor is measured by the standard deviation of its factor score across observations
+    \end{itemize}
     \item The idea is to find a few variables that \textbf{account for a high percentage of the variance} in the observations.
 \end{itemize}
 
@@ -285,11 +284,11 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
     \item Linear regression can over-fit, particularly when there are a large number of correlated features.
     \item Results for validation set may not then be as good as for training set
     \item Regularization is a way of avoiding over fitting and reducing the number of features. Possible Regularization technique:
-          \begin{itemize}
-              \item Ridge 
-              \item Lasso
-              \item Elastic net
-          \end{itemize}
+    \begin{itemize}
+        \item Ridge 
+        \item Lasso
+        \item Elastic net
+    \end{itemize}
     \item We must first scale feature values
 \end{itemize}
 
@@ -297,10 +296,9 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
 
 \begin{itemize}
     \item Reduce magnitude of regression coefficients by choosing a parameter $\lambda $ and minimizing:
-          
-          \begin{equation*}
-              \frac{1}{n}\sum\limits _{j=1}^{n}\left[ Y_{j} -\left(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j}\right)\right]^{2} +\lambda \sum _{i=1}^{m} b_{i}^{2}
-          \end{equation*}
+    \begin{equation*}
+        \frac{1}{n}\sum\limits _{j=1}^{n}\left[ Y_{j} -\left(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j}\right)\right]^{2} +\lambda \sum _{i=1}^{m} b_{i}^{2}
+    \end{equation*}
     \item What happens as $\lambda $ increases? Minimizing the above function, all $b_{i}$s approach 0 as $\lambda $ increases.
     \item Ridge regression, as linear regression, can be solved analytically.
 \end{itemize}
@@ -309,10 +307,9 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
 
 \begin{itemize}
     \item Similar to ridge regression except we minimize:
-          
-          \begin{equation*}
-              \frac{1}{n}\sum\limits _{j=1}^{n}\left[ Y_{j} -\left(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j}\right)\right]^{2} +\lambda \sum _{i=1}^{m}\left| b_{i}\right| 
-          \end{equation*}
+    \begin{equation*}
+        \frac{1}{n}\sum\limits _{j=1}^{n}\left[ Y_{j} -\left(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j}\right)\right]^{2} +\lambda \sum _{i=1}^{m}\left| b_{i}\right| 
+    \end{equation*}
     \item This has the effect of completely eliminating the less important factors .
     \item We must use gradient descent.
 \end{itemize}
@@ -322,9 +319,9 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
 \begin{itemize}
     \item Middle ground between \textit{Ridge} and \textit{Lasso:}
     \item Minimize:
-          \begin{equation*}
-              \frac{1}{n}\sum\limits _{j=1}^{n}[ Y_{j} -(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j})]^{2} +\lambda _{1}\sum _{i=1}^{m} b_{i}^{2} +\lambda _{2}\sum _{i=1}^{m}| b_{i}| 
-          \end{equation*}
+    \begin{equation*}
+        \frac{1}{n}\sum\limits _{j=1}^{n}[ Y_{j} -(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j})]^{2} +\lambda _{1}\sum _{i=1}^{m} b_{i}^{2} +\lambda _{2}\sum _{i=1}^{m}| b_{i}| 
+    \end{equation*}
     \item Must use gradient descent.
 \end{itemize}
 
@@ -334,12 +331,13 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
     \item The objective is to classify observations into a ``positive outcome'' and ``negative outcome'' using data on features
     \item Dependent variable: binary (1 – 0)
     \item Probability of a positive outcome is assumed to be a \textbf{sigmoid} function:
-          \begin{equation*}
-              Q=\frac{1}{1+e^{-Y}}
-          \end{equation*}where $Y$ is related linearly to the values of the features:
-          \begin{equation*}
-              Y=a+b_{1} X_{1} +\cdots +b_{m} X_{m}
-          \end{equation*}          
+    \begin{equation*}
+        Q=\frac{1}{1+e^{-Y}}
+    \end{equation*}
+    where $Y$ is related linearly to the values of the features:
+    \begin{equation*}
+        Y=a+b_{1} X_{1} +\cdots +b_{m} X_{m}
+    \end{equation*}          
 \end{itemize}
 
 \fg{0.7}{b73959a12b4ee61d6858da9d987c1ffa-I7e1tfoeOe-image.png}
@@ -355,9 +353,9 @@ Multivariate
 \textbf{Maximum Likelihood Estimation (MLE)}
 \begin{itemize}
     \item We use the training set to maximize
-          \begin{equation*}
-              \sum _{\text{pos. outcomes}}\log(Q) +\sum _{\text{neg. outcomes}}\log(1-Q)
-          \end{equation*}
+    \begin{equation*}
+        \sum _{\text{pos. outcomes}}\log(Q) +\sum _{\text{neg. outcomes}}\log(1-Q)
+    \end{equation*}
     \item This cannot be maximized analytically but we can use a gradient ascent algorithm.
 \end{itemize}
 
@@ -427,26 +425,18 @@ If we have 99\% of observations belonging to class 1, the trivial predictor givi
 
 \begin{itemize}
     \item \textbf{Can You Collect More Data?}
-    \item \textbf{Try Changing Your Performance Metric}
-          
-          Accuracy is not the metric to use when working with an imbalanced dataset. We have seen that it is misleading.
-    \item \textbf{Try Resampling Your Dataset}
-          
-          You can change the dataset that you use to build your predictive model to have more balanced data.
-          
-          This change is called sampling your dataset and there are two main methods that you can use to even-up the classes:
-          
-          You can add copies of instances from the under-represented class called over-sampling (or more formally sampling with replacement), or
-          
-          You can (randomly) delete instances from the over-represented class, called under-sampling.
-    \item \textbf{Try Generate Synthetic Samples}
-          
-          A simple way to generate synthetic samples is to randomly sample the attributes from instances in the minority class.
-    \item \textbf{Try Penalized Models}
-          
-          You can use the same algorithms but give them a different perspective on the problem.
-          
-          Penalized classification imposes an additional cost on the model for making classification mistakes on the minority class during training. These penalties can bias the model to pay more attention to the minority class.
+    \item \textbf{Try Changing Your Performance Metric}\\
+    Accuracy is not the metric to use when working with an imbalanced dataset. We have seen that it is misleading.
+    \item \textbf{Try Resampling Your Dataset}\\
+    You can change the dataset that you use to build your predictive model to have more balanced data.\\
+    This change is called sampling your dataset and there are two main methods that you can use to even-up the classes:\\
+    You can add copies of instances from the under-represented class called over-sampling (or more formally sampling with replacement), or\\
+    You can (randomly) delete instances from the over-represented class, called under-sampling.
+    \item \textbf{Try Generate Synthetic Samples}\\
+    A simple way to generate synthetic samples is to randomly sample the attributes from instances in the minority class.
+    \item \textbf{Try Penalized Models}\\
+    You can use the same algorithms but give them a different perspective on the problem.\\
+    Penalized classification imposes an additional cost on the model for making classification mistakes on the minority class during training. These penalties can bias the model to pay more attention to the minority class.
 \end{itemize}
 
 \subsection{Alternative to regression: clusterization.}
@@ -495,31 +485,27 @@ Centrality measures: \textit{which vertices are more important?}
     \item The simplest measure of importance is the degree centrality
     \item The vertex with largest degree exerts the greatest effect on the network
     \item Degree centrality: number of nearest neighbours
-          
-          \begin{equation*}
-              \boxed{D(i)=\sum _{j=1}^{n} A_{ij} =\sum _{j=1}^{n} A_{ji}}
-          \end{equation*}
+    \begin{equation*}
+        \boxed{D(i)=\sum _{j=1}^{n} A_{ij} =\sum _{j=1}^{n} A_{ji}}
+    \end{equation*}
     \item Sensitive to the addition of one more node
     \item We cannot compare degree centrality of vertices belonging to \textit{two different} networks
     \item Normalized degree centrality (relative metric to compare degree centrality)
-          
-          \begin{equation*}
-              \boxed{N_{D} (i)=\frac{1}{n-1} D(i)}
-          \end{equation*}
+    \begin{equation*}
+        \boxed{N_{D} (i)=\frac{1}{n-1} D(i)}
+    \end{equation*}
 \end{itemize}
 
 In directed graphs:
 \begin{itemize}
     \item \textbf{In-Degree:} the number of edges \textit{incoming} to a vertex
-          
-          \begin{equation*}
-              d_{i}^{\leftarrow } =\sum _{j=1}^{n} A_{ji}
-          \end{equation*}
+    \begin{equation*}
+        d_{i}^{\leftarrow } =\sum _{j=1}^{n} A_{ji}
+    \end{equation*}
     \item \textbf{Out-Degree:} the number of edges \textit{outgoing} from a vertex
-          
-          \begin{equation*}
-              d_{i}^{\rightarrow } =\sum _{j=1}^{n} A_{ij}
-          \end{equation*}
+    \begin{equation*}
+        d_{i}^{\rightarrow } =\sum _{j=1}^{n} A_{ij}
+    \end{equation*}
 \end{itemize}
 
 \textbf{Shortest Path}
@@ -539,33 +525,27 @@ If all nodes are connected, then the graph distance equals to 1
 \textbf{Closeness Centrality}
 \begin{itemize}
     \item Measures how close a node is to all the other nodes in network (in terms of the shortest path)
-          
-          \begin{equation*}
-              \boxed{C(i)=\frac{1}{\sum _{j=1}^{n} d(i,j)}}
-          \end{equation*}
-          
-          where $d(i,j)$ is the \textit{shortest} path between the nodes $i$ and $j$.
+    \begin{equation*}
+        \boxed{C(i)=\frac{1}{\sum _{j=1}^{n} d(i,j)}}
+    \end{equation*}
+    where $d(i,j)$ is the \textit{shortest} path between the nodes $i$ and $j$.
     \item Normalized closeness centrality (relative metric to compare closeness centrality)
-          
-          \begin{equation*}
-              \boxed{N_{C} (i)=(n-1)C(i)}
-          \end{equation*}
+    \begin{equation*}
+        \boxed{N_{C} (i)=(n-1)C(i)}
+    \end{equation*}
 \end{itemize}
 
 \textbf{Betweenness Centrality}
 \begin{itemize}
     \item The number of shortest paths from all vertices to all others that pass through a node.
-          
-          \begin{equation*}
-              \boxed{B(i)=\sum _{s\neq i\neq t}\frac{\delta _{st} (i)}{\delta _{st}}}
-          \end{equation*}
-          
-          where $st\left(i\right)$ is the number of shortest paths between $s$ and $t$ that pass through $i$, and $st$ is the total number of shortest paths between $s$ and $t$.
+    \begin{equation*}
+        \boxed{B(i)=\sum _{s\neq i\neq t}\frac{\delta _{st} (i)}{\delta _{st}}}
+    \end{equation*}
+    where $st\left(i\right)$ is the number of shortest paths between $s$ and $t$ that pass through $i$, and $st$ is the total number of shortest paths between $s$ and $t$.
     \item Normalized betweenness centrality
-          
-          \begin{equation*}
-              N_{B} (i)=\frac{2}{(n-1)(n-2)} B(i)
-          \end{equation*}
+    \begin{equation*}
+        N_{B} (i)=\frac{2}{(n-1)(n-2)} B(i)
+    \end{equation*}
     \item Probability that a communication from $s$ to $t$ will go through $i$.
 \end{itemize}
 
@@ -573,18 +553,16 @@ If all nodes are connected, then the graph distance equals to 1
 \begin{itemize}
     \item Eigenvector centrality measures assign an importance score to vertices in a way that is proportional to the importance scores of its neighbors hence the importance of a node depends on the importance of its neighbors.
     \item This involves an eigenvector problem of the form
-          
-          \begin{equation*}
-              Av=\lambda _{1} v
-          \end{equation*}
-          
-          where $A$ is the adjacency matrix, $v$ is a vector containing the eigenvector centralities, and $\lambda _{1}$ is the \textit{largest eigenvalue} of $A$.
+    \begin{equation*}
+        Av=\lambda _{1} v
+    \end{equation*}
+    where $A$ is the adjacency matrix, $v$ is a vector containing the eigenvector centralities, and $\lambda _{1}$ is the \textit{largest eigenvalue} of $A$.
     \item Other forms of eigenvector centrality
-          \begin{itemize}
-              \item Bonacichs centrality
-              \item PageRank centrality
-              \item Katz centrality and hub/authority scores
-          \end{itemize}
+    \begin{itemize}
+        \item Bonacichs centrality
+        \item PageRank centrality
+        \item Katz centrality and hub/authority scores
+    \end{itemize}
 \end{itemize}
 
 \fg{0.7}{1d2e322c742378851516d74d8279ab20-raPewaxZmA-image.png}
@@ -608,17 +586,17 @@ Comparison of different centralities:
 \begin{itemize}
     \item Suppose that there are $n$ possible outcomes and $p_{i}$ is the probability of outcome $i$ with $\sum _{i} p_{i} =1$.
     \item \textbf{Entropy} measure of uncertainty:
-          \begin{equation*}
-              \texttt{entropy} =\mathbb{E}\left[\texttt{information}\right] =\sum _{i=1}^{n} p_{i} \cdot \log\left(\frac{1}{p_{i}}\right) =-\sum _{i=1}^{n} p_{i}\log p_{i}
-          \end{equation*}
+    \begin{equation*}
+        \texttt{entropy} =\mathbb{E}\left[\texttt{information}\right] =\sum _{i=1}^{n} p_{i} \cdot \log\left(\frac{1}{p_{i}}\right) =-\sum _{i=1}^{n} p_{i}\log p_{i}
+    \end{equation*}
     \item \textbf{Gini} Measure of uncertainty:
-          \begin{equation*}
-              \texttt{gini} = 1 - \sum_{i=1}^{n} p_{i}^{2}
-          \end{equation*}
+    \begin{equation*}
+        \texttt{gini} = 1 - \sum_{i=1}^{n} p_{i}^{2}
+    \end{equation*}
     \item In case of a binary variable ($n=2$) we have
-          \begin{equation*}
-              \texttt{gini} = 1 - (p^{2} + (1-p)^{2}) = 2p(1-p)
-          \end{equation*}
+    \begin{equation*}
+        \texttt{gini} = 1 - (p^{2} + (1-p)^{2}) = 2p(1-p)
+    \end{equation*}
 \end{itemize}
 
 \subsection{Information Gain}
@@ -628,17 +606,17 @@ Comparison of different centralities:
     \item Suppose that there is a 20\% chance that a person will receive a job offer
     \item Suppose further that there is a 50\% chance the person has a relevant degree. If the person does have a relevant degree the probability of a job offer rises to 30\%, otherwise it falls to 10\%
     \item Initial entropy:
-          \begin{equation*}
-              -[ 0.2\log(0.2) +0.8\log(0.8)] =0.7219
-          \end{equation*}
+    \begin{equation*}
+        -[ 0.2\log(0.2) +0.8\log(0.8)] =0.7219
+    \end{equation*}
     \item Expected entropy:
-          \begin{equation*}
-              -0.5\left[ 0.1\log\left(0.1\right) +0.9\log\left(0.9\right)\right] -0.5\left[ 0.3\log\left(0.3\right) +0.7\log\left(0.7\right)\right] = 0.6751
-          \end{equation*}
+    \begin{equation*}
+        -0.5\left[ 0.1\log\left(0.1\right) +0.9\log\left(0.9\right)\right] -0.5\left[ 0.3\log\left(0.3\right) +0.7\log\left(0.7\right)\right] = 0.6751
+    \end{equation*}
     \item Expected information gain from knowing whether there is a relevant degree:
-          \begin{equation*}
-              0.7219-0.6751=0.0468
-          \end{equation*}
+    \begin{equation*}
+        0.7219-0.6751=0.0468
+    \end{equation*}
 \end{itemize}
 
 \subsection{The Decision Tree Algorithm}
@@ -661,18 +639,16 @@ Comparison of different centralities:
     \item So a classification tree is a growing tree with nodes refining the information about the exogenous variables to classify an item in the database (in the binary case, class 0 or 1). 
     \item Each node is associated with a measure of \textit{Impurity}. Such a measure is high when the dataset representing the node contains observations belonging to different classes of the endogenous variable, and reaches its lowest value (zero) when the node only contains observations belonging to a single class.
     \item In the binary case, i.e. only two classes, we can use the Gini impurity. Given a node $x$, the Gini impurity, denoted by $G(x)$, for a binary classier is defined as
-          \begin{equation*}
-              G(x) = 2p(1-p)
-          \end{equation*}
-          
-          where $p$ denotes the proportion of observations belonging to class 1, contained in node $x$. $p$ can be interpreted as the probability of being of class 1 in the node. We can also use Entropy, instead of Gini index.
+    \begin{equation*}
+        G(x) = 2p(1-p)
+    \end{equation*}
+    where $p$ denotes the proportion of observations belonging to class 1, contained in node $x$. $p$ can be interpreted as the probability of being of class 1 in the node. We can also use Entropy, instead of Gini index.
     \item We aim to \textbf{minimize} the Gini index; its maximum ($1/4$) corresponds to the case in which a node is perfectly balanced (50\% of the observations in the node are of class 0 and 50\% of class 1, and therefore $p=1/2$).
     \item The feature (exogenous variable) and the binary rule that are used for the split at a node are defined through a search process that maximizes the impurity decrease after the split. Given a split rule $r$ that divides node $x$ (observations of the dataset) into the nodes $x_{L}$ and $x_{R}$, we define the impurity decrease after the split as
-          \begin{equation*}
-              G\left(x\right) -p_{L} \cdot G\left(x_{L}\right) -p_{R} \cdot G\left(x_{R}\right)
-          \end{equation*}
-          
-          where $p_{L}(p_{R})$ is the percentage of observations in $x$ that after the split belong to node $x_{L}(x_{R})$. The last nodes of the tree (the arrival point of the algorithm, i.e., the nodes that are not split anymore) are called \textit{leaves}. 
+    \begin{equation*}
+        G\left(x\right) -p_{L} \cdot G\left(x_{L}\right) -p_{R} \cdot G\left(x_{R}\right)
+    \end{equation*}
+    where $p_{L}(p_{R})$ is the percentage of observations in $x$ that after the split belong to node $x_{L}(x_{R})$. The last nodes of the tree (the arrival point of the algorithm, i.e., the nodes that are not split anymore) are called \textit{leaves}. 
     \item The leaves contain the estimation of the tree (in our case class 0 or 1), which is given by the most recurrent class in that leaf: if more than 50\% of the observations in the leaf are of class 1, then the leaf is a class 1 leaf.
     \item We also get a probability of being of class 1 for each leaf, given by the proportion of observations of class 1 in that leaf.
 \end{itemize}
@@ -892,7 +868,7 @@ The values of all features except the one under consideration are chosen randoml
 \end{itemize}
 
 \[
-  \phi_i (v)=\sum_{S \subseteq N \backslash\{i\}} \frac{|S| !(n-|S|-1) !}{n !}(v(S \cup\{i\})-v(S))
+    \phi_i (v)=\sum_{S \subseteq N \backslash\{i\}} \frac{|S| !(n-|S|-1) !}{n !}(v(S \cup\{i\})-v(S))
 \]
 \textbf{Properties}
 \begin{itemize}

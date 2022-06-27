@@ -4,8 +4,8 @@
 
 A blockchain is a \textbf{DL} (Distributed Ledger\footnote{in Italian: \textit{libro mastro}.}) where data are replicated, shared, and synchronized all over the world. \textbf{No one is the owner}. Any involved block cannot be altered retroactively, without the alteration of all the subsequent blocks. Blocks are connected in a chain.
 \begin{itemize}
-	\item \textbf{Trust} is not required in the blockchain;
-	\item It is required in Dropbox, Google Drive, etc.
+    \item \textbf{Trust} is not required in the blockchain;
+    \item It is required in Dropbox, Google Drive, etc.
 \end{itemize}
 
 What happens if a node (by mistake or not) propagates an \textbf{incorrect transaction}? The system must not validate it. How? Through a \textbf{consensus mechanism}.
@@ -20,39 +20,39 @@ Bitcoin is an electronic currency created in 2009 following the famouse paper\fo
 
 Keywords:
 \begin{itemize}
-	\item Consensus mechanism for lack of trust
-	\item Decentralized database
-	\item Cryptography
-	\item Generation of new money
+    \item Consensus mechanism for lack of trust
+    \item Decentralized database
+    \item Cryptography
+    \item Generation of new money
 \end{itemize}
 
 \section{Decentralization}
 
 \begin{itemize}
-	\item Politically decentralized: Bitcoin is not controlled by a specific entity.
-	\item Architecturally decentralized (or distributed): Bitcoin lives on machines spread across the planet.
-	\item Logically centralized: all machines that Bitcoin lives on agree on a shared status (e.g. how many Bitcoins each has).
+    \item Politically decentralized: Bitcoin is not controlled by a specific entity.
+    \item Architecturally decentralized (or distributed): Bitcoin lives on machines spread across the planet.
+    \item Logically centralized: all machines that Bitcoin lives on agree on a shared status (e.g. how many Bitcoins each has).
 \end{itemize}
 
 A blockchain is a distributed (or architecturally decentralized) and politically decentralized database managed by a peer-to-peer network through distributed consensus mechanisms (to agree on a shared state, as logically centralized).\footnote{Visit this website to explore it! \url{https://www.blockchain.com/explorer}}
 \begin{itemize}
-	\item A \textbf{transaction} is a Bitcoin transfer that is included in the Blockchain. A transaction is identified by the two addresses (counterparts) and by the amount exchanged. The cryptographic private key signature of the two counterparts provides \textbf{proof of their identity} and that the Bitcoins come from the real owner. The signature also \textbf{prevents that the transaction (once executed) is altered} by others. The two addresses are publicly identified by a code.
+    \item A \textbf{transaction} is a Bitcoin transfer that is included in the Blockchain. A transaction is identified by the two addresses (counterparts) and by the amount exchanged. The cryptographic private key signature of the two counterparts provides \textbf{proof of their identity} and that the Bitcoins come from the real owner. The signature also \textbf{prevents that the transaction (once executed) is altered} by others. The two addresses are publicly identified by a code.
 \end{itemize}
 
 \fg{0.7}{b5a948c1859f2826ea6b5ac0d3a83474-Pmg6G5phwe-image}
 
 \begin{itemize}
-	\item A \textbf{block} is a part of the Blockchain that contains a set of (Bitcoin) transactions. On average, a new block, which includes transactions, is added to the Blockchain every $10$ minutes (the system is tuned to make so happen).
-	\item \textbf{Confirmation:} to be included in a block, and therefore in the Blockchain, a transaction must be confirmed by several nodes (\textbf{miners}), i.e. processed by the network.
-	\item \textbf{Mining:} it is a mathematical process performed by the Blockchain nodes on the candidate block: once solved the block (and therefore all the transactions recorded in it) is confirmed and inserted into a block of the Blockchain. As a reward for their service, miners receive newly created Bitcoins (and the transaction fees). Mining $1$ new block now makes you earn $6.25$ BTC, mining can be done with ad hoc hardware and consumes a lot of energy.
-	Miners accumulate transactions all the time (selecting them with a certain criterion, such as those that offer the highest fees). When they have enough transactions to fill a block (which has a fixed size) they try to solve the mining problem. The first miner that solves the mining problem propagates the block in the network, which is verified (they verify if the \textit{Proof of Work} is valid) by the other nodes and added to their copy of the blockchain.
+    \item A \textbf{block} is a part of the Blockchain that contains a set of (Bitcoin) transactions. On average, a new block, which includes transactions, is added to the Blockchain every $10$ minutes (the system is tuned to make so happen).
+    \item \textbf{Confirmation:} to be included in a block, and therefore in the Blockchain, a transaction must be confirmed by several nodes (\textbf{miners}), i.e. processed by the network.
+    \item \textbf{Mining:} it is a mathematical process performed by the Blockchain nodes on the candidate block: once solved the block (and therefore all the transactions recorded in it) is confirmed and inserted into a block of the Blockchain. As a reward for their service, miners receive newly created Bitcoins (and the transaction fees). Mining $1$ new block now makes you earn $6.25$ BTC, mining can be done with ad hoc hardware and consumes a lot of energy.
+    Miners accumulate transactions all the time (selecting them with a certain criterion, such as those that offer the highest fees). When they have enough transactions to fill a block (which has a fixed size) they try to solve the mining problem. The first miner that solves the mining problem propagates the block in the network, which is verified (they verify if the \textit{Proof of Work} is valid) by the other nodes and added to their copy of the blockchain.
 \end{itemize}
 
 \fg{0.7}{804e766ecde2775d6efff4a980e6a2ab-b0x52ZU7IL-image}
 
 \begin{itemize}
-	\item \textbf{Cryptographic signature}: it is a mathematical mechanism that allows you to prove the identity and ownership of Bitcoins in this case.
-	When your Bitcoin software marks a transaction with your private key, the entire network can recognize you (not as an individual but as an id) and verify that the Bitcoins spent are in your possession. The transaction becomes public with respect to your code. There is currently no way for other nodes to guess your private key, to steal your Bitcoins.
+    \item \textbf{Cryptographic signature}: it is a mathematical mechanism that allows you to prove the identity and ownership of Bitcoins in this case.
+    When your Bitcoin software marks a transaction with your private key, the entire network can recognize you (not as an individual but as an id) and verify that the Bitcoins spent are in your possession. The transaction becomes public with respect to your code. There is currently no way for other nodes to guess your private key, to steal your Bitcoins.
 \end{itemize}
 
 \fg{0.7}{6133e4c47407f4c52e44ce591f19e7c7-bAzikty36C-anatomy_of_a_transaction}
@@ -60,8 +60,8 @@ A blockchain is a distributed (or architecturally decentralized) and politically
 \section{Asymmetric (or public key) encryption}
 
 \begin{itemize}
-	\item Step 1: a public-private key pair is generated for Alice
-	\item Step 2: Bob uses Alice's public key to encrypt the message. Only those who have Alice's private key can decrypt it!
+    \item Step 1: a public-private key pair is generated for Alice
+    \item Step 2: Bob uses Alice's public key to encrypt the message. Only those who have Alice's private key can decrypt it!
 \end{itemize}
 
 So, if Alice has kept the private key hidden, only she can read the message
@@ -111,12 +111,12 @@ Output=3.
 We have decoded the message!
 
 \begin{itemize}
-	\item Alice and Bob know \texttt{n=91}.
-	\item Everyone knows \texttt{5}.
-	\item Only Alice knows \texttt{29}.
-	\item Knowing \texttt{5} (public key) is not sufficient to decrypt the message.
-	\item Can Bob trace Alice's private key? That is, is the information \texttt{91} sufficient to compromise security?
-	\item Mathematical problem: factorization into prime numbers.
+    \item Alice and Bob know \texttt{n=91}.
+    \item Everyone knows \texttt{5}.
+    \item Only Alice knows \texttt{29}.
+    \item Knowing \texttt{5} (public key) is not sufficient to decrypt the message.
+    \item Can Bob trace Alice's private key? That is, is the information \texttt{91} sufficient to compromise security?
+    \item Mathematical problem: factorization into prime numbers.
 \end{itemize}
 
 Prime factorization is not the most difficult problem on a bit-to-bit basis. Specialized algorithms such as Quadratic Sieve and General Number Field Sieve were created to address the factorization problem and have had some success. These algorithms are faster and less computationally intensive than the naive approach of guessing pairs of known primes.
@@ -147,7 +147,7 @@ Proof of Work, or PoW, is an algorithm that is used by different cryptocurrencie
 
 A hash function takes an input of \textit{any} length and creates an output of \textit{fixed} length.
 \begin{equation*}
-	\texttt{a0680c04c4eb53884be77b4e10677f2b}
+    \texttt{a0680c04c4eb53884be77b4e10677f2b}
 \end{equation*}
 This is referred to as the \textit{message digest}.
 
@@ -211,9 +211,9 @@ Suppose the hash of the file is recorded in the blockchain. All parties having a
 
 It is not possible to attach documents to the blockchain. The procedure is the following:
 \begin{enumerate}
-	\item The document is hashed. This means that the content of the document is \textit{summarized}, or better represented, by a string of 64 characters (256bit).
-	\item The 64-character string is then put into a Bitcoin (or other) blockchain transaction using the \texttt{OP\_RETURN} \textbf{field}, it's a \textit{free} field presented in every Bitcoin transaction: free, but limited in size.
-	\item A small Bitcoin payment is made to process the transaction and \textit{register it on the blockchain} (\textbf{you can also make a 0 BTC transaction}, so paying only the cost of the transaction - variable but around $0.00001$ BTC).
+    \item The document is hashed. This means that the content of the document is \textit{summarized}, or better represented, by a string of 64 characters (256bit).
+    \item The 64-character string is then put into a Bitcoin (or other) blockchain transaction using the \texttt{OP\_RETURN} \textbf{field}, it's a \textit{free} field presented in every Bitcoin transaction: free, but limited in size.
+    \item A small Bitcoin payment is made to process the transaction and \textit{register it on the blockchain} (\textbf{you can also make a 0 BTC transaction}, so paying only the cost of the transaction - variable but around $0.00001$ BTC).
 \end{enumerate}
 
 Hashing is \textit{irreversible} once you know the hash, it is \textit{mathematically impossible} to deduce the original text.
@@ -232,10 +232,10 @@ Not just finance: The Blockchain can be used as a register in which to enter any
 
 Comparison of transactions capacity\footnote{\url{https://altcointoday.com/Bitcoin-ethereum-vs-visa-paypal-transactions-per-second/}}
 \begin{itemize}
-	\item Bitcoin – 3 to 4 transactions per second (1 block every 10 minutes);
-	\item Ethereum – 20 transactions per second (1 block every 15 seconds);
-	\item PayPal – 193 transactions per second average;
-	\item Visa – 1.667 transaction per second.
+    \item Bitcoin – 3 to 4 transactions per second (1 block every 10 minutes);
+    \item Ethereum – 20 transactions per second (1 block every 15 seconds);
+    \item PayPal – 193 transactions per second average;
+    \item Visa – 1.667 transaction per second.
 \end{itemize}
 
 PoW is \textbf{expensive:} it is the main cause of scalability problems (as well as memory problems: all nodes should store all transactions).
@@ -246,23 +246,23 @@ Permissioned ledgers (or private blockchains) can be controlled, and therefore c
 
 \textbf{Three false myths?}
 \begin{enumerate}
-	\item Less expensive system
-	      \begin{enumerate}
-	      	\item Bitcoin transactions on the Blockchain cost (nearly) nothing.
-	      	\item But this is possible because new Bitcoins are created for the remuneration of the network nodes that work for the proper functioning of the system.
-	      \end{enumerate}
-	\item Safer
-	      \begin{enumerate}
-	      	\item Potentially yes: safer in terms of immutability (less than 51\% attacks), but not privacy.
-	      	\item The system of remuneration of the nodes pushes to use their own computing power to make the system work, not to try to force it.
-	      	\item The database is distributed all over the world.
-	      \end{enumerate}
-	\item Faster
-	      \begin{enumerate}
-	      	\item The current financial transaction system is \textit{slow} not for a technological issue, but for a consensus issue.
-	      	\item ``Consensus by reconciliation'': a process that the financial markets have chosen as their ``checks and balances'' system.
-	      	\item It is, therefore, a question of moving to a new form of ``decentralized consensus'': an automatic mechanism that allows transactions to be quickly validated. Like in Bitcoin!
-	      \end{enumerate}
+    \item Less expensive system
+        \begin{enumerate}
+            \item Bitcoin transactions on the Blockchain cost (nearly) nothing.
+            \item But this is possible because new Bitcoins are created for the remuneration of the network nodes that work for the proper functioning of the system.
+        \end{enumerate}
+    \item Safer
+        \begin{enumerate}
+            \item Potentially yes: safer in terms of immutability (less than 51\% attacks), but not privacy.
+            \item The system of remuneration of the nodes pushes to use their own computing power to make the system work, not to try to force it.
+            \item The database is distributed all over the world.
+        \end{enumerate}
+    \item Faster
+        \begin{enumerate}
+            \item The current financial transaction system is \textit{slow} not for a technological issue, but for a consensus issue.
+            \item ``Consensus by reconciliation'': a process that the financial markets have chosen as their ``checks and balances'' system.
+            \item It is, therefore, a question of moving to a new form of ``decentralized consensus'': an automatic mechanism that allows transactions to be quickly validated. Like in Bitcoin!
+        \end{enumerate}
 \end{enumerate}
 
 Read here to see how to verify a block on the blockchain!
@@ -277,8 +277,8 @@ A \textbf{cryptoasset} (coin) is a financial asset that is created and exchanged
 
 Assets are divided into
 \begin{itemize}
-	\item \textbf{cryptocurrencies:} the native currency of the blockchain (Bitcoin)
-	\item \textbf{tokens:} crypto asset not native of the technology
+    \item \textbf{cryptocurrencies:} the native currency of the blockchain (Bitcoin)
+    \item \textbf{tokens:} crypto asset not native of the technology
 \end{itemize}
 
 Is Bitcoin a token? Not exactly. While all cryptocurrencies are technically tokens, Bitcoin is usually not considered a token, but a coin. This is because it is generated by the blockchain that supports it. Tokens, on the other hand, operate on existing blockchains. In fact, a single blockchain offers space for \textbf{many different tokens}. Suffice it to say that the Ethereum network currently hosts almost half a million.
@@ -287,8 +287,8 @@ It's not easy to \textit{diversify} cryptoassets because correlation is very hig
 
 It may happen that there are so called \textbf{forks} on the Blockchain:
 \begin{itemize}
-	\item \textbf{Soft fork:} when there are two versions of the Blockchain and it's solved automatically.
-	\item \textbf{Hard fork:} when something (a software update that only some install) creates two versions of the Blockchain.
+    \item \textbf{Soft fork:} when there are two versions of the Blockchain and it's solved automatically.
+    \item \textbf{Hard fork:} when something (a software update that only some install) creates two versions of the Blockchain.
 \end{itemize}
 
 \paragraph{Polkadot} multi-chain etherogeneous and scalable technology that gives freedom on the structure and the chains of its network (Ethereum is stricter). Consensus is granted on all the chains, which all communicates.\footnote{\url{https://en.wikipedia.org/wiki/Polkadot_(cryptocurrency)}}
@@ -302,29 +302,29 @@ It's designed to find the most convenient way to exchange two cryptocurrencies. 
 
 It's a cryptocurrency that is a fork of Bitcoin that was created in 2017:
 \begin{itemize}
-	\item On 21 July 2017 Bitcoin miners locked in a software upgrade referred to as \textbf{Bitcoin Improvement Proposal (BIP) 91: the Segregated Witness (Consensus layer).}
-	\item SegWit alleviates the scaling problem by enabling the Lightning Network, an overlay network of micropayment channels, hypothetically resolving the scaling problem by enabling virtually unlimited numbers of instant, low-fee transactions to occur \textit{off chain}.
-	\item By 8 August 100\% of the Bitcoin mining pools signaled support for SegWit.
-	\item A small group of mostly China-based Bitcoin miners, that were unhappy with Bitcoin's proposed SegWit improvement plans, pushed forward alternative plans for a split which \textbf{created Bitcoin Cash}. The proposed split included a plan to increase the number of transactions its ledger can process by increasing the block size limit.
+    \item On 21 July 2017 Bitcoin miners locked in a software upgrade referred to as \textbf{Bitcoin Improvement Proposal (BIP) 91: the Segregated Witness (Consensus layer).}
+    \item SegWit alleviates the scaling problem by enabling the Lightning Network, an overlay network of micropayment channels, hypothetically resolving the scaling problem by enabling virtually unlimited numbers of instant, low-fee transactions to occur \textit{off chain}.
+    \item By 8 August 100\% of the Bitcoin mining pools signaled support for SegWit.
+    \item A small group of mostly China-based Bitcoin miners, that were unhappy with Bitcoin's proposed SegWit improvement plans, pushed forward alternative plans for a split which \textbf{created Bitcoin Cash}. The proposed split included a plan to increase the number of transactions its ledger can process by increasing the block size limit.
 \end{itemize}
 
 In 2018 Bitcoin Cash subsequently split into two cryptocurrencies: Bitcoin Cash, and Bitcoin SV.
 
 \paragraph*{Bitcoin SV.}
 \begin{itemize}
-	\item On 15 November 2018, a hard fork chain split of Bitcoin Cash occurred between two rival factions called Bitcoin Cash and Bitcoin SV.
-	\item The split originated from what was described as a \textit{civil war} in two competing Bitcoin cash camps.
-	\item The first camp promoted the software entitled Bitcoin ABC (short for Adjustable Blocksize Cap) which would maintain the block size at 32 MB.
-	\item The second camp put forth a competing software version Bitcoin SV, short for \emph{Bitcoin Satoshi Vision}, that would increase the block size limit to 128 MB.
+    \item On 15 November 2018, a hard fork chain split of Bitcoin Cash occurred between two rival factions called Bitcoin Cash and Bitcoin SV.
+    \item The split originated from what was described as a \textit{civil war} in two competing Bitcoin cash camps.
+    \item The first camp promoted the software entitled Bitcoin ABC (short for Adjustable Blocksize Cap) which would maintain the block size at 32 MB.
+    \item The second camp put forth a competing software version Bitcoin SV, short for \emph{Bitcoin Satoshi Vision}, that would increase the block size limit to 128 MB.
 \end{itemize}
 
 \paragraph*{Bitcoin Gold.}
 Another hard fork of Bitcoin.
 \begin{itemize}
-	\item Bitcoin Gold is a fork of Bitcoin that seeks to reduce the influence of miners who use specialized equipment known as ASICs. The team's stated goal is to ``make Bitcoin decentralized again.''
-	\item Bitcoin Gold hard forked from the Bitcoin blockchain on October 24, 2017.
-	\item In May 2018, Bitcoin Gold was hit by a 51\% hashing attack by an unknown actor. This type of attack makes it possible to manipulate the blockchain ledger on which transactions are recorded and to spend the same digital coins more than once. During the attack, 388,000 BTG (worth approximately \$18M) was stolen from several cryptocurrency exchanges.
-	\item Bitcoin Gold suffered from 51\% attacks again in January 2020\footnote{{\scriptsize\url{https://thenextweb.com/hardfork/2020/01/27/Bitcoin-gold-51-percent-attack-blockchain-reorg-cryptocurrency-binance-exchange/}}}.
+    \item Bitcoin Gold is a fork of Bitcoin that seeks to reduce the influence of miners who use specialized equipment known as ASICs. The team's stated goal is to ``make Bitcoin decentralized again.''
+    \item Bitcoin Gold hard forked from the Bitcoin blockchain on October 24, 2017.
+    \item In May 2018, Bitcoin Gold was hit by a 51\% hashing attack by an unknown actor. This type of attack makes it possible to manipulate the blockchain ledger on which transactions are recorded and to spend the same digital coins more than once. During the attack, 388,000 BTG (worth approximately \$18M) was stolen from several cryptocurrency exchanges.
+    \item Bitcoin Gold suffered from 51\% attacks again in January 2020\footnote{{\scriptsize\url{https://thenextweb.com/hardfork/2020/01/27/Bitcoin-gold-51-percent-attack-blockchain-reorg-cryptocurrency-binance-exchange/}}}.
 \end{itemize}
 
 \paragraph{TheDAO incident}\label{dao-incident}\footnote{\url{https://medium.com/swlh/the-story-of-the-dao-its-history-and-consequences-71e6a8a551ee}}
@@ -339,8 +339,8 @@ If the blockchain is immutable, how can it be canceled?
 
 Two solutions:
 \begin{itemize}
-	\item \textbf{Soft Fork}: doing a software update to lock the funds (but would remain on the attackers wallet).
-	\item \textbf{Hard Fork}: go back to a previous version of the blockchain.
+    \item \textbf{Soft Fork}: doing a software update to lock the funds (but would remain on the attackers wallet).
+    \item \textbf{Hard Fork}: go back to a previous version of the blockchain.
 \end{itemize}
 
 A hard fork was made, and the blockchain was rewritten by eliminating the transaction.
@@ -378,8 +378,8 @@ A CryptoKitty's ownership is tracked via a smart contract on the Ethereum blockc
 \paragraph{Ethereum's Tokens} Any \textbf{fungible} commodity can be represented by a token derived from \textbf{ERC-20 standard}. \textbf{NFTs} can be derived from \textbf{ERC-721 standard}. This recent standard has made possible to represent goods like pieces of art, personalized access rights, properties.
 
 \begin{itemize}
-	\item More than 80\% of DeFi solution is on Ethereum
-	\item Algorand is a promising technology (but young)
+    \item More than 80\% of DeFi solution is on Ethereum
+    \item Algorand is a promising technology (but young)
 \end{itemize}
 
 \fg[Classification of tokens.]{0.8}{token-classification}
@@ -399,9 +399,9 @@ Coins and tokens differ not only for the IT definition, but also for \textbf{mar
 Tokens are often released through a crowdsale known as an initial coin offering (ICO) in exchange for existing coins, which in turn fund projects like gaming platforms or digital wallets. You can still get publicly available tokens after an ICO has ended-similar to buying coins-using the underlying currency to make the purchase.
 
 \begin{enumerate}
-	\item \textbf{Build Your Own Blockchain} or \textbf{Fork an Existing One}. Both methods require quite a bit of technical knowledge. You can fork an existing blockchain by taking the open-source code found on Github making a few changes, and launching a new blockchain with a new name.
-	\item Launch a Coin or Token Using a Cryptocurrency Creation Platform -- all you have to do is to choose a platform, pay for this service, and then enter the parameters, from the logo to the number of coins awarded for signing a block.
-	This is faster, simpler, and cheaper than creating a coin because it doesn't require the time and effort to build and maintain a new or forked blockchain and instead relies on the technology already in use for Bitcoin or Ethereum.
+    \item \textbf{Build Your Own Blockchain} or \textbf{Fork an Existing One}. Both methods require quite a bit of technical knowledge. You can fork an existing blockchain by taking the open-source code found on Github making a few changes, and launching a new blockchain with a new name.
+    \item Launch a Coin or Token Using a Cryptocurrency Creation Platform -- all you have to do is to choose a platform, pay for this service, and then enter the parameters, from the logo to the number of coins awarded for signing a block.
+    This is faster, simpler, and cheaper than creating a coin because it doesn't require the time and effort to build and maintain a new or forked blockchain and instead relies on the technology already in use for Bitcoin or Ethereum.
 \end{enumerate}
 
 Then you need to find someone which will buy the coin or token. This is not easy: you need a community interested in your coin/token: usually it is easier if the coin/token is connected to a real project.
@@ -422,14 +422,14 @@ You can visit \url{https://blog.coingecko.com/trust-score/} to see the best exch
 
 Ethereum
 \begin{itemize}
-	\item It is another platform developed on blockchain technology.
-	\item In order to be able to run on the peer-to-peer network, Ethereum users pay for the use through a cryptocurrency, called Ether, which therefore acts both as a cryptocurrency and as a fuel.
-	\item Ethereum is different from the Bitcoin blockchain since \textbf{it is constructed to create Smart Contracts}. Even in Bitcoin, elementary smart contracts can be created. In Ethereum the peculiarity is that they are \textbf{listed on a Turing-complete language}.
-	\item A smart contract is a program that runs on Ethereum's decentralized virtual machine.
-	\item The smart contract cannot act actively (for example, it cannot monitor the status of another smart contract and act accordingly), but it acts reactively (a user, not necessarily directly, must invoke it to perform any operation).
-	\item The smart contract cannot interrogate the world outside the blockchain. For example, in the case of a sports bet managed through a smart contract, this cannot obtain the result of the game from a website and act accordingly.
-	\item The smart contract can instead obtain information using \textbf{oracles}.
-	\item Oracles are smart contracts in which information from the outside world is loaded in exchange for a reward.
+    \item It is another platform developed on blockchain technology.
+    \item In order to be able to run on the peer-to-peer network, Ethereum users pay for the use through a cryptocurrency, called Ether, which therefore acts both as a cryptocurrency and as a fuel.
+    \item Ethereum is different from the Bitcoin blockchain since \textbf{it is constructed to create Smart Contracts}. Even in Bitcoin, elementary smart contracts can be created. In Ethereum the peculiarity is that they are \textbf{listed on a Turing-complete language}.
+    \item A smart contract is a program that runs on Ethereum's decentralized virtual machine.
+    \item The smart contract cannot act actively (for example, it cannot monitor the status of another smart contract and act accordingly), but it acts reactively (a user, not necessarily directly, must invoke it to perform any operation).
+    \item The smart contract cannot interrogate the world outside the blockchain. For example, in the case of a sports bet managed through a smart contract, this cannot obtain the result of the game from a website and act accordingly.
+    \item The smart contract can instead obtain information using \textbf{oracles}.
+    \item Oracles are smart contracts in which information from the outside world is loaded in exchange for a reward.
 \end{itemize}
 
 \emph{Example.} AXA is testing insurance on late flights using smart contracts.
@@ -441,9 +441,9 @@ Collateral acts as a \textbf{guarantee} that the lender will receive back the am
 
 We need an \textbf{oracle}.
 \begin{enumerate}
-	\item The insurer creates the code of the smart contract.
-	\item The insurer pays a third part to be an oracle, i.e. to report the website information to the smart contract.
-	\item The insurer is ready to sell the insurance contract.
+    \item The insurer creates the code of the smart contract.
+    \item The insurer pays a third part to be an oracle, i.e. to report the website information to the smart contract.
+    \item The insurer is ready to sell the insurance contract.
 \end{enumerate}
 
 Why Bob should prefer a blockchain-based insurance? Based on a \textbf{third part}, which has no reason to say that it did not rain, if it happened.
@@ -495,8 +495,8 @@ The other serious threat is \textbf{hackers' attacks}. Research, conducted by Er
 Before launching ICO, the development team specifies tasks, for which funds should be raised, and indicates in its whitepaper 2 figures: the minimum and maximum, which are called \textbf{Soft Cap} and \textbf{Hard Cap}.
 
 \begin{itemize}
-	\item Hard Cap -- defines the final goal, the upper limit of the amount of money invested, the most desired result. This is a very important indicator, precisely, because \textbf{many cryptocurrencies have a limit on the total number of units in circulation}. This, in turn, is one of the most important factors influencing the value of the coin, naturally, in addition to supply and demand.
-	\item Soft Cap -- the minimum required amount of the investments for the team to proceed the project implementation in accordance with the plans. If it is not reached within the specified period, the contract is closed and automatically returns all funds raised to depositors. If Hard Cap is achieved, the sale of tokens stops. However, after overcoming soft cap investors control only purchased tokens and can't monitor invested money or withdraw part of the investment.
+    \item Hard Cap -- defines the final goal, the upper limit of the amount of money invested, the most desired result. This is a very important indicator, precisely, because \textbf{many cryptocurrencies have a limit on the total number of units in circulation}. This, in turn, is one of the most important factors influencing the value of the coin, naturally, in addition to supply and demand.
+    \item Soft Cap -- the minimum required amount of the investments for the team to proceed the project implementation in accordance with the plans. If it is not reached within the specified period, the contract is closed and automatically returns all funds raised to depositors. If Hard Cap is achieved, the sale of tokens stops. However, after overcoming soft cap investors control only purchased tokens and can't monitor invested money or withdraw part of the investment.
 \end{itemize}
 
 Finally, the big concern is the \textbf{connection between the token holders and holding company} and several relevant questions arise, for example, \textbf{what happens if the company which issued the tokens is sold or will the token holders have any rights under the new management}?
@@ -572,15 +572,15 @@ Morgan Beller planted the first seeds of Libra,\footnote{\url{https://sls.gmu.ed
 }} she is known as the key figure behind Facebook's push into blockchain technology; she also considers herself a co-creator of Libra.\footnote{\url{https://www.publish0x.com/crypto-timelines/a-brief-timeline-of-libra-xqqdww}}
 
 \begin{itemize}
-	\item May 2017: Morgan Beller left her job at Medium.com and started working at Facebook. Nine months later, she joined the blockchain strategy team and started working on Facebook blockchain initiative.
-	\item 8 May 2018: David Marcus (Facebook vice president) joined the new Libra team and officially began working on the new project. They recruited other top Facebook talent onto the new blockchain division.
-	\item 13 June 2019: The Wall Street Journal reported that Facebook is working on its own cryptocurrency that will be announced next week, and set to be launched next year alongside the blockchain-based network that will support it. The Wall Street Journal also reported that Facebook has secured backing from more than a dozen companies like PayPal, Visa, Mastercard, Stripe, Booking.com, and each company will invest around \$10M to fund the new currency development.
-	\item 18 June 2019: Facebook announced Libra digital currency, Calibra digital wallet, and the nonprofit Libra Association, an organization based in Geneva, Switzerland, that will govern the new currency.
-	\item 16 July 2019: David Marcus told the Senate Banking Committee in U.S. Senate Hearing, "that Facebook will only build its own Calibra cryptocurrency wallet into Messenger and WhatsApp, and will refuse to embed competing wallets" and also expressed that "Libra will not launch until the U.S. lawmakers' concerns have been answered".
-	\item 4 October 2019: PayPal withdraws from the Libra Association.
-	\item 9 October 2019: U.S. Senator Sherrod Brown and Senator Brian Schatz sent letters to the CEOs of Stripe, Visa, and MasterCard to express deep concerns over Facebook's Libra Association
-	\item 11 October 2019: eBay, Mastercard, Strip, Visa, and Mercado Pago withdraw from the Libra Association.
-	\item 15 October 2019: Facebook launches Libra Association. Representatives from the remaining 21 organizations (out of 28 original members) met and signed Libra Association charter in Geneva. 21 initial members include: Coinbase, Lyft, Uber Technologies, Spotify AB, PayU, Vodafone, Women's World Banking, Mercy Corps, Creative Destruction Lab any other organizations
+    \item May 2017: Morgan Beller left her job at Medium.com and started working at Facebook. Nine months later, she joined the blockchain strategy team and started working on Facebook blockchain initiative.
+    \item 8 May 2018: David Marcus (Facebook vice president) joined the new Libra team and officially began working on the new project. They recruited other top Facebook talent onto the new blockchain division.
+    \item 13 June 2019: The Wall Street Journal reported that Facebook is working on its own cryptocurrency that will be announced next week, and set to be launched next year alongside the blockchain-based network that will support it. The Wall Street Journal also reported that Facebook has secured backing from more than a dozen companies like PayPal, Visa, Mastercard, Stripe, Booking.com, and each company will invest around \$10M to fund the new currency development.
+    \item 18 June 2019: Facebook announced Libra digital currency, Calibra digital wallet, and the nonprofit Libra Association, an organization based in Geneva, Switzerland, that will govern the new currency.
+    \item 16 July 2019: David Marcus told the Senate Banking Committee in U.S. Senate Hearing, "that Facebook will only build its own Calibra cryptocurrency wallet into Messenger and WhatsApp, and will refuse to embed competing wallets" and also expressed that "Libra will not launch until the U.S. lawmakers' concerns have been answered".
+    \item 4 October 2019: PayPal withdraws from the Libra Association.
+    \item 9 October 2019: U.S. Senator Sherrod Brown and Senator Brian Schatz sent letters to the CEOs of Stripe, Visa, and MasterCard to express deep concerns over Facebook's Libra Association
+    \item 11 October 2019: eBay, Mastercard, Strip, Visa, and Mercado Pago withdraw from the Libra Association.
+    \item 15 October 2019: Facebook launches Libra Association. Representatives from the remaining 21 organizations (out of 28 original members) met and signed Libra Association charter in Geneva. 21 initial members include: Coinbase, Lyft, Uber Technologies, Spotify AB, PayU, Vodafone, Women's World Banking, Mercy Corps, Creative Destruction Lab any other organizations
 \end{itemize}
 
 \paragraph{Tether}\footnote{\url{https://tether.to/en/}}
@@ -606,14 +606,14 @@ Once your Ether is in the CDP smart contract, you are able to create Dai. The am
 Assume 1 Ether = \$100 and collateralization ratio is 1.5. If you send 1 Ether into the CDP smart contract, then you are now able to create 66 Dai, i.e. 100/1.5.
 
 \begin{itemize}
-	\item \textbf{what happens when Ether goes up?}\\
-	The system becomes over collateralized and Dai becomes stronger.
-	Maker has mechanisms that incentivize users to create more Dai if the price of Dai should trade above one dollar.
-	\item \textbf{what happens when Ether goes down?}\\
-	If Ether goes down, now that can cause problems.\\
-	If the value of Ether held as collateral is worth less than the amount of Dai it's supposed to be backing, then Dai would not be worth one dollar and the system could collapse.\\
-	Maker combats this by liquidating CDPs and auctioning off the Ether inside before the value of the Ether is less than the amount of Dai it is backing.\\
-	Basically, if the price feed into the CDP indicates that the value of Ether has gone below a certain threshold, the liquidation ratio (let's use 125\% of created Dai), then the CDP is ``liquidated'' and the Ether inside the CDP is auctioned off for Dai until there is enough Dai to pay back what was extracted from the CDP.
+    \item \textbf{what happens when Ether goes up?}\\
+    The system becomes over collateralized and Dai becomes stronger.
+    Maker has mechanisms that incentivize users to create more Dai if the price of Dai should trade above one dollar.
+    \item \textbf{what happens when Ether goes down?}\\
+    If Ether goes down, now that can cause problems.\\
+    If the value of Ether held as collateral is worth less than the amount of Dai it's supposed to be backing, then Dai would not be worth one dollar and the system could collapse.\\
+    Maker combats this by liquidating CDPs and auctioning off the Ether inside before the value of the Ether is less than the amount of Dai it is backing.\\
+    Basically, if the price feed into the CDP indicates that the value of Ether has gone below a certain threshold, the liquidation ratio (let's use 125\% of created Dai), then the CDP is ``liquidated'' and the Ether inside the CDP is auctioned off for Dai until there is enough Dai to pay back what was extracted from the CDP.
 \end{itemize}
 
 \textbf{Volatility cannot be destroyed}, it can only be transferred. If we have a stable token like Dai that has been stripped of its volatility, where did it go? In the Maker system, volatility is transferred entirely to the holder of the CDP. Using our prior example, should I withdraw 66 Dai from a CDP containing one ether, I will only own that one Ether if its price is above the liquidation ratio. Dai is effectively a loan on my ether.
@@ -637,9 +637,9 @@ Tether is pegged to an asset, MakerDAO is tied to the amount you put in a CDP an
 
 Some meaningful questions:
 \begin{itemize}
-	\item Are expected returns higher than (classical) financial assets ones?
-	\item Are cryptocurrencies riskier than (classical) financial assets?
-	\item What about diversification?
+    \item Are expected returns higher than (classical) financial assets ones?
+    \item Are cryptocurrencies riskier than (classical) financial assets?
+    \item What about diversification?
 \end{itemize}
 
 Let $\pi =(w_{1},\ldots,w_{N})$ be a portfolio, where $w_{i}$ is the amount of asset $i$, and is positive if bought, negative if short.
@@ -657,7 +657,7 @@ The \textbf{efficient frontier} is the set of optimal portfolios that offer the 
 $N$ assets: $R=(\bar{r}_1,\ldots,\bar{r}_N)$ is the vector of expected return. $V$ is the covariance matrix.
 
 \[
-	\bar{R} = \pi R \qquad \bar{\sigma}^2 = \pi V \pi \transpose
+    \bar{R} = \pi R \qquad \bar{\sigma}^2 = \pi V \pi \transpose
 \]
 
 are the expected return and variance of the portfolio.
@@ -665,13 +665,13 @@ are the expected return and variance of the portfolio.
 \paragraph{Our market for the first (toy) problem}
 
 \begin{itemize}
-	\item Bitcoin
-	\item Ether
-	\item Amazon
-	\item Apple
-	\item Facebook
-	\item General Electric
-	\item General Motor
+    \item Bitcoin
+    \item Ether
+    \item Amazon
+    \item Apple
+    \item Facebook
+    \item General Electric
+    \item General Motor
 \end{itemize}
 
 Daily datas (only working day) from September 2017 to February 2020
@@ -698,36 +698,36 @@ Daily datas (only working day) from September 2017 to February 2020
 
 \textbf{Portfolio 1}
 \[
-	\pi = \begin{bmatrix}
-	0.9573 & -0.2611 & 2.8507 & 2.7995 & -1.4778 & -2.1661 & -1.7026
-	\end{bmatrix}
-	\qquad
-	\bar{R} = 1.01
+    \pi = \begin{bmatrix}
+    0.9573 & -0.2611 & 2.8507 & 2.7995 & -1.4778 & -2.1661 & -1.7026
+    \end{bmatrix}
+    \qquad
+    \bar{R} = 1.01
 \]
 
 \textbf{Portfolio 2}
 \[
-	\pi = \begin{bmatrix}
-	0.1037 & -0.0223 & 0.2308 & 0.3644 & 0.0439 & 0.0252 & 0.2543
-	\end{bmatrix}
-	\qquad
-	\bar{R} = 1.001
+    \pi = \begin{bmatrix}
+    0.1037 & -0.0223 & 0.2308 & 0.3644 & 0.0439 & 0.0252 & 0.2543
+    \end{bmatrix}
+    \qquad
+    \bar{R} = 1.001
 \]
 
 \textbf{Portfolio 3}
 \[
-	\pi = \begin{bmatrix}
-	0.0184 & 0.0015 & -0.0312 & 0.1209 & 0.1961 & 0.2444 & 0.4500
-	\end{bmatrix}
-	\qquad
-	\bar{R} = 1.0001
+    \pi = \begin{bmatrix}
+    0.0184 & 0.0015 & -0.0312 & 0.1209 & 0.1961 & 0.2444 & 0.4500
+    \end{bmatrix}
+    \qquad
+    \bar{R} = 1.0001
 \]
 
 Suppose to invest \$100. After one year:
 \begin{itemize}
-	\item Portfolio 1: $100 \cdot 1.01^{365} = 3778$
-	\item Portfolio 2: $100 \cdot 1.001^{365} = 144$
-	\item Portfolio 3: $100 \cdot 1.0001^{365} = 103$
+    \item Portfolio 1: $100 \cdot 1.01^{365} = 3778$
+    \item Portfolio 2: $100 \cdot 1.001^{365} = 144$
+    \item Portfolio 3: $100 \cdot 1.0001^{365} = 103$
 \end{itemize}
 
 The best reason to invest in cryptocurrency seems \textbf{diversification}.
@@ -735,8 +735,8 @@ The best reason to invest in cryptocurrency seems \textbf{diversification}.
 \paragraph{Our market for the second (toy) problem}
 
 \begin{itemize}
-	\item First 50 stocks for capitalization (S\&P50)
-	\item 4 cryptocurrencies: Bitcoin, Ethereum, Ripple, Litecoin
+    \item First 50 stocks for capitalization (S\&P50)
+    \item 4 cryptocurrencies: Bitcoin, Ethereum, Ripple, Litecoin
 \end{itemize}
 
 Period: July 2015-May 2019
@@ -761,19 +761,19 @@ CBDC is a third form of base money, next to deposits and banknotes.
 
 The four key properties of Money:
 \begin{itemize}
-	\item Issuer: central bank or not
-	\item Form: digital or physical
-	\item Accessibility: widely (retail) or restricted (wholesale)
-	\item Technology: token - or account - based. Token-based retail CBDCs are accessible with private/public keys. This method of validation allows users to execute transactions anonymously. Account-based retail CBDCs require digital identification to access an account.
+    \item Issuer: central bank or not
+    \item Form: digital or physical
+    \item Accessibility: widely (retail) or restricted (wholesale)
+    \item Technology: token - or account - based. Token-based retail CBDCs are accessible with private/public keys. This method of validation allows users to execute transactions anonymously. Account-based retail CBDCs require digital identification to access an account.
 \end{itemize}
 
 \textbf{Cash features}
 \begin{itemize}
-	\item Inclusive: easy to use and available to everybody without electronic devices.
-	\item Crisis proof: device independent (power blackout).
-	Peer to peer transactions: there is no intermediation of a thrid party to complete a transaction.
-	\item Anonymous.
-	\item Off-line transactions.
+    \item Inclusive: easy to use and available to everybody without electronic devices.
+    \item Crisis proof: device independent (power blackout).
+    Peer to peer transactions: there is no intermediation of a thrid party to complete a transaction.
+    \item Anonymous.
+    \item Off-line transactions.
 \end{itemize}
 
 Digital means of payments do not satisfy these features. Digital means require third parties (record keeping, identity validation). It is difficult to deploy off-line transactions.
@@ -804,9 +804,9 @@ The possibility of cash to be used without any technical infrastructure is not (
 
 The pandemic and resulting economic crisis have led to marked changes in the use of cash and in retail payment behaviour:
 \begin{itemize}
-	\item temporary decline in cash withdrawals
-	\item higher cash holdings
-	\item increased use of contactless payments and surge in e-commerce
+    \item temporary decline in cash withdrawals
+    \item higher cash holdings
+    \item increased use of contactless payments and surge in e-commerce
 \end{itemize}
 
 In a crisis period households without access to digital payment means could face barriers to making and receiving payments.
@@ -822,8 +822,8 @@ In emerging markets general purpose CBDCs could improve financial inclusion by p
 
 Trade-offs between token and account based CBDCs from a consumer perspective:
 \begin{itemize}
-	\item Account-based CBDCs require individuals to present valid ID, linking personal ID to a CBDC could generate data privacy concerns. Identification is not strictly needed for a token-based CBDC.
-	\item Ownership of a token-based CBDC is linked to “knowledge” such as a digital signature. This design could improve access to financial services, substitute for cash in countries where access to cash is cumbersome, enable a degree of anonymity and reduce the need for financial accounts. Yet a token-based CBDC without formal identification presents integrity risks and would have limited usefulness for G2P payments due to opportunities for fraud.
+    \item Account-based CBDCs require individuals to present valid ID, linking personal ID to a CBDC could generate data privacy concerns. Identification is not strictly needed for a token-based CBDC.
+    \item Ownership of a token-based CBDC is linked to “knowledge” such as a digital signature. This design could improve access to financial services, substitute for cash in countries where access to cash is cumbersome, enable a degree of anonymity and reduce the need for financial accounts. Yet a token-based CBDC without formal identification presents integrity risks and would have limited usefulness for G2P payments due to opportunities for fraud.
 \end{itemize}
 
 \textbf{The Central Bank perspective}
@@ -836,9 +836,9 @@ Cash and CBDC, if widely available and transacted via resilient channels that ar
 
 CBDC can encourage digital innovation by:
 \begin{itemize}
-	\item filling the gap in the provision of digital payments
-	\item enhancing financial inclusion (user solutions accessible to customers)
-	\item preserve independence in retal payments
+    \item filling the gap in the provision of digital payments
+    \item enhancing financial inclusion (user solutions accessible to customers)
+    \item preserve independence in retal payments
 \end{itemize}
 
 Foreign central banks are assessing the possibility of issuing their own CBDC and private actors, including large technology firms, are developing payment solutions that could threaten financial, economic and political sovereignty. Wide acceptance of a mean of payment not denominated in sovereign currency could weaken the transmission of monetary policy, affect financial stability, safety and efficiency of the payment system.
@@ -850,10 +850,10 @@ CBDC may be the solution to these threats if it offers functionalities that are 
 
 The development of CBDC should be focused on creating the basis for these functionalities:
 \begin{itemize}
-	\item Cash-like payment system
-	\item Convenience to use
-	\item Resilience
-	\item Universal access-privacy
+    \item Cash-like payment system
+    \item Convenience to use
+    \item Resilience
+    \item Universal access-privacy
 \end{itemize}
 
 Consumers are unlikely to adopt a CBDC if it is less convenient to use than today's electronic payments/cash: key features are cash-like peer-to-peer usability, convenient real-time payments, privacy and wide accessibility.
@@ -866,11 +866,11 @@ From a privacy perspective, there is an underlying trade-off between privacy and
 
 There are three main possible architectures, defining the role of the central bank in day-to-day payment and the structure of legal claims:
 \begin{itemize}
-	\item Indirect CBDC (two-tier CBDC) model: the consumer has a claim on an intermediary, with the central bank keeping track only of wholesale accounts. The indirect CBDC implies loads similar to those of today's system.
-	\item Direct CBDC model: the CBDC represents a direct claim on the central bank, which keeps a record of all balances and updates it with every transaction. The direct CBDC would require massive technological capabilities, as the central bank processes all transactions by itself, handling a volume of payments traffic comparable with that of today's credit or debit card operators.
-	\item Hybrid CBDC model: an intermediate solution providing for direct claims on the central bank while allowing intermediaries to handle payments. The hybrid CBDC architecture is more complex to operate than the indirect model, as the central bank does maintain retail balances. It could be implemented at scale using today's technology.
+    \item Indirect CBDC (two-tier CBDC) model: the consumer has a claim on an intermediary, with the central bank keeping track only of wholesale accounts. The indirect CBDC implies loads similar to those of today's system.
+    \item Direct CBDC model: the CBDC represents a direct claim on the central bank, which keeps a record of all balances and updates it with every transaction. The direct CBDC would require massive technological capabilities, as the central bank processes all transactions by itself, handling a volume of payments traffic comparable with that of today's credit or debit card operators.
+    \item Hybrid CBDC model: an intermediate solution providing for direct claims on the central bank while allowing intermediaries to handle payments. The hybrid CBDC architecture is more complex to operate than the indirect model, as the central bank does maintain retail balances. It could be implemented at scale using today's technology.
 
-	It might offer better resilience than the indirect CBDC, but at the cost of a more complex to operate infrastructure for the central bank. The hybrid CBDC is simpler to operate than a direct CBDC. As the central bank does not directly interact with retail users, it can concentrate on a limited number of core processes, while intermediaries handle other services including instant payment confirmation.
+    It might offer better resilience than the indirect CBDC, but at the cost of a more complex to operate infrastructure for the central bank. The hybrid CBDC is simpler to operate than a direct CBDC. As the central bank does not directly interact with retail users, it can concentrate on a limited number of core processes, while intermediaries handle other services including instant payment confirmation.
 \end{itemize}
 
 The infrastructure could be based on a conventional centrally controlled database, or on a distributed ledger.
@@ -884,10 +884,10 @@ Resilience: neither a DLT-based system nor a conventional one has a clear-cut ad
 \paragraph{Two future scenarios}
 
 \begin{enumerate}
-	\item CBDC replaces the use of banknotes by households.\\
-	The balance sheet of banks and central bank would change but the effect on the economy is minor.
-	\item CBDC replaces bank deposits.\\
-	Higher funding costs, larger balance sheet of the Central Bank, collateral scarcity, disintermediation. In the extreme (full substitution): banks do not create money, monetary policy rate would be given by refinancing conditions of the banking system but by the interest rate paid on CBDC.
+    \item CBDC replaces the use of banknotes by households.\\
+    The balance sheet of banks and central bank would change but the effect on the economy is minor.
+    \item CBDC replaces bank deposits.\\
+    Higher funding costs, larger balance sheet of the Central Bank, collateral scarcity, disintermediation. In the extreme (full substitution): banks do not create money, monetary policy rate would be given by refinancing conditions of the banking system but by the interest rate paid on CBDC.
 \end{enumerate}
 
 \textbf{Central Bank}
@@ -922,9 +922,9 @@ A distributed ledger is a \textbf{tamperproof} sequence of data that can be \tex
 
 DLT: which desirable properties?
 \begin{itemize}
-	\item Immutability
-	\item Accessibility
-	\item Decentralisation
+    \item Immutability
+    \item Accessibility
+    \item Decentralisation
 \end{itemize}
 
 \section{Bitcoin Protocol}
@@ -950,20 +950,20 @@ Proof of Work! This is the solution adopted by the Bitcoin blockchain: by contro
 \paragraph*{Bitcoin mining protocol [Nakamoto08]}
 Each node of the Bitcoin network will
 \begin{itemize}
-	\item choose and verify pending transactions
-	\item solve the crypto-puzzle (depending on the previous block)
+    \item choose and verify pending transactions
+    \item solve the crypto-puzzle (depending on the previous block)
 \end{itemize}
 
 If solved/leader then
 \begin{itemize}
-	\item create the next block and
-	\item broadcast the new block
+    \item create the next block and
+    \item broadcast the new block
 \end{itemize}
 
 Everyone
 \begin{itemize}
-	\item validate new block (Proof of Work + transactions) and embed it in the local copy of the blockchain
-	\item start mining the next block
+    \item validate new block (Proof of Work + transactions) and embed it in the local copy of the blockchain
+    \item start mining the next block
 \end{itemize}
 
 The blockchain is actually a tree, including \emph{the} chain.
@@ -978,32 +978,32 @@ If a node wants to change an old block, or in general wants to make the chain ta
 
 \paragraph*{Hashes.} Are functions: $H(a)=h$ such that:
 \begin{itemize}
-	\item from $a$ to $h$ is easy, but from $h$ to $a$ computationally infeasible (you should try every possible input);
-	\item $a$ can be of any length (thus could even be a document) but $h$ is fixed by the specific hash function chosen.
+    \item from $a$ to $h$ is easy, but from $h$ to $a$ computationally infeasible (you should try every possible input);
+    \item $a$ can be of any length (thus could even be a document) but $h$ is fixed by the specific hash function chosen.
 \end{itemize}
 
 \textbf{Properties:}
 \begin{itemize}
-	\item \textbf{Collision resistance}, it's infeasible to find $a$ and $b$ such that $a\neq b$ and $H(a)=H(b)$
-	\item \textbf{Hiding}, when a secret value $r$ is chosen from a probability distribution that has high entropy, then given $H(r\mid x)$ it is infeasible to find $x$. ``$\mid$'' means concatenation of two strings.
-	\item \textbf{Puzzle friendliness}, given $h$ and a random $k$, it's unfeasible to find $x$ such that $h=H(k\mid x)$.
+    \item \textbf{Collision resistance}, it's infeasible to find $a$ and $b$ such that $a\neq b$ and $H(a)=H(b)$
+    \item \textbf{Hiding}, when a secret value $r$ is chosen from a probability distribution that has high entropy, then given $H(r\mid x)$ it is infeasible to find $x$. ``$\mid$'' means concatenation of two strings.
+    \item \textbf{Puzzle friendliness}, given $h$ and a random $k$, it's unfeasible to find $x$ such that $h=H(k\mid x)$.
 \end{itemize}
 
 \subsection{Merkle tree}
 
 Some desirable properties of a (new) block
 \begin{itemize}
-	\item follows linearly (and exclusively) the previous one - links to the previous block
-	\item the set of transactions is fixed before leader election - Merkle tree. against corruption
-	\item the leader is identified – as the solver of the puzzle
+    \item follows linearly (and exclusively) the previous one - links to the previous block
+    \item the set of transactions is fixed before leader election - Merkle tree. against corruption
+    \item the leader is identified – as the solver of the puzzle
 \end{itemize}
 
 \paragraph*{Merkle tree.} Is a digest of digests, i.e. a tree, a compact representation of a set of hashes of Bitcoin transactions, amongst the proposed and selected ones. The root represents all the hashes in the tree and any change anywhere would affect the root.
 \begin{itemize}
-	\item Transactions are hashed two by two until the root, which is like the DNA of the block.
-	\item In other words, a Merkle tree summarizes all the transactions in a block by producing a digital fingerprint of the entire set of transactions, thereby enabling a user to verify whether or not a transaction is included in a block.
-	\item It is possible to \textbf{verify that a transaction belongs to a block without verifying all the blocks.}
-	\item Thanks to this structure, it is quicker and more efficient to verify the consistency and content of the data
+    \item Transactions are hashed two by two until the root, which is like the DNA of the block.
+    \item In other words, a Merkle tree summarizes all the transactions in a block by producing a digital fingerprint of the entire set of transactions, thereby enabling a user to verify whether or not a transaction is included in a block.
+    \item It is possible to \textbf{verify that a transaction belongs to a block without verifying all the blocks.}
+    \item Thanks to this structure, it is quicker and more efficient to verify the consistency and content of the data
 \end{itemize}
 
 \fg{0.7}{a4e440abba339ed859d31f59f5a84ad6-6M8F4XuJr8-image}
@@ -1012,7 +1012,7 @@ Some desirable properties of a (new) block
 
 \paragraph*{Proof of Work} (at a certain degree of approximation) is finding \texttt{nonce} (number only used once) such that
 \begin{equation*}
-	H(H(\text{previous block}),M(\text{transactions} +\text{revenue transaction}),\texttt{nonce})
+    H(H(\text{previous block}),M(\text{transactions} +\text{revenue transaction}),\texttt{nonce})
 \end{equation*}
 is an hash starting with $C$ zeros. $M$ is the Merkle Root of the input transaction and the reward transaction. $C$ controls the complexity and adapts regularly. There are some technical details involved, like the fact the timestamps are also hashed, everything has to be converted to hexadecimal and the hash is made two times.
 
@@ -1020,33 +1020,33 @@ PoW is very expensive in terms of energy consumption.
 
 Miners have interest in solving this hard problem because they are rewarded:
 \begin{itemize}
-	\item the fees from each transaction;
-	\item an amount of BTC generated (mined), in other words, everyone suddenly agrees that such miner has that quantity in addition to their wallet. The quantity was initially 50 BTC and is halved every \numprint{210000} blocks; currently, it's 6.25 BTC. This mechanisms guarantees that in circulation there will never be more than
-	\begin{equation*}
-		\numprint{210000} \cdot (50+25+12.5+6.25+\cdots) = \numprint{21000000}\ \text{BTC}
-	\end{equation*}
+    \item the fees from each transaction;
+    \item an amount of BTC generated (mined), in other words, everyone suddenly agrees that such miner has that quantity in addition to their wallet. The quantity was initially 50 BTC and is halved every \numprint{210000} blocks; currently, it's 6.25 BTC. This mechanisms guarantees that in circulation there will never be more than
+    \begin{equation*}
+        \numprint{210000} \cdot (50+25+12.5+6.25+\cdots) = \numprint{21000000}\ \text{BTC}
+    \end{equation*}
 \end{itemize}
 
 \subsection{Public and private keys}
 
 Asymmetric\footnote{\textit{asymmetric} means that the two keys are different.} cryptography is based on two keys associated with an identity:
 \begin{itemize}
-	\item a private (secret) key $sk$, known only by the owner. It is generally used to encrypt a message by the owner, $sk\{m\}$
-	\item a public key $pk$ associated to the identity and public. It can decrypt a message encrypted with $sk$, i.e. $pk\{sk\{m\}\} =m$ and also $sk\{pk\{m]\} =m$.
+    \item a private (secret) key $sk$, known only by the owner. It is generally used to encrypt a message by the owner, $sk\{m\}$
+    \item a public key $pk$ associated to the identity and public. It can decrypt a message encrypted with $sk$, i.e. $pk\{sk\{m\}\} =m$ and also $sk\{pk\{m]\} =m$.
 \end{itemize}
 
 \textbf{Properties}
 \begin{itemize}
-	\item one way function: unfeasible from $sk\{m\}$ to get $m$ without $pk$, easy with $pk$.
-	\item with $n$ nodes, only $n$ pairs ($pk_{i}$,$sk_{i}$) are needed instead of $n^{2}$
-	\item anyone can secretly send to $j$ by using $pk_{j}\{m\}$
-	\item $j$ can prove that they own a piece of information by using $sk_{j}\{m\}$
+    \item one way function: unfeasible from $sk\{m\}$ to get $m$ without $pk$, easy with $pk$.
+    \item with $n$ nodes, only $n$ pairs ($pk_{i}$,$sk_{i}$) are needed instead of $n^{2}$
+    \item anyone can secretly send to $j$ by using $pk_{j}\{m\}$
+    \item $j$ can prove that they own a piece of information by using $sk_{j}\{m\}$
 \end{itemize}
 
 Signature of a message (of a transaction) – on top of asymmetric cryptography:
 \begin{itemize}
-	\item $sig:=sign(sk,\text{message})$
-	\item $isValid:=verify(pk,\text{message},sig)$
+    \item $sig:=sign(sk,\text{message})$
+    \item $isValid:=verify(pk,\text{message},sig)$
 \end{itemize}
 
 Using the public key $pk$ one can validate the author of a message (transaction!)
@@ -1065,7 +1065,7 @@ In algebraic geometric, an elliptic curves (EC) over $\mathbb{R}$ is defined by 
 
 Bitcoin uses EC for public key, it uses a famous EC \textbf{secp256k1}:
 \begin{equation*}
-	y^{2} =x^{3} +7
+    y^{2} =x^{3} +7
 \end{equation*}
 
 \url{https://youtu.be/muIv8I6v1aE}
@@ -1078,16 +1078,16 @@ Bitcoin uses elliptic curves for public keys.
 
 A block has two main components:
 \begin{itemize}
-	\item \textbf{list of transactions};
-	\item \textbf{block header}, which contains:
-	\begin{itemize}
-		\item \texttt{Version}: Block version number
-		\item \texttt{Previous Block hash}: This is used to compute a new block hash. Hence, making the blockchain temper-proof.\footnote{The first block doesn't have any previous one, it's called the \textbf{genesis block}.}
-		\item \texttt{Merkle Tree Root}: The root of the Merkle tree is a verification of all the transactions.
-		\item \texttt{Timestamp}: The time at which block is mined.
-		\item \texttt{Bits/Difficulty}: Difficulty in Bitcoin is expressed by the hash of a Bitcoin block header being required to be numerically lower than a certain target.
-		\item \texttt{Nonce}: A 32-bit random number used in blockchain, while calculating the cryptographic hash for a Block.
-	\end{itemize}
+    \item \textbf{list of transactions};
+    \item \textbf{block header}, which contains:
+    \begin{itemize}
+        \item \texttt{Version}: Block version number
+        \item \texttt{Previous Block hash}: This is used to compute a new block hash. Hence, making the blockchain temper-proof.\footnote{The first block doesn't have any previous one, it's called the \textbf{genesis block}.}
+        \item \texttt{Merkle Tree Root}: The root of the Merkle tree is a verification of all the transactions.
+        \item \texttt{Timestamp}: The time at which block is mined.
+        \item \texttt{Bits/Difficulty}: Difficulty in Bitcoin is expressed by the hash of a Bitcoin block header being required to be numerically lower than a certain target.
+        \item \texttt{Nonce}: A 32-bit random number used in blockchain, while calculating the cryptographic hash for a Block.
+    \end{itemize}
 \end{itemize}
 
 \section{Public, Hybrid and Private DLT}
@@ -1098,31 +1098,31 @@ The network maybe \textbf{permissionless} or \textbf{permissioned}.
 
 \textbf{Public}
 \begin{itemize}
-	\item No one is in charge
-	\item Anyone can participate
-	\item Open and transparent
-	\item Decentralized consensus mechanisms (PoW, PoS, ...)
-	\item Mining
-	\item Slow
+    \item No one is in charge
+    \item Anyone can participate
+    \item Open and transparent
+    \item Decentralized consensus mechanisms (PoW, PoS, ...)
+    \item Mining
+    \item Slow
 \end{itemize}
 
 \textbf{Hybrid}
 \begin{itemize}
-	\item Multiple selected organizations
-	\item Permissioned known identities
-	\item Pre-approved participants
-	\item Voting/multi- party consensus
-	\item Lighter and faster
+    \item Multiple selected organizations
+    \item Permissioned known identities
+    \item Pre-approved participants
+    \item Voting/multi- party consensus
+    \item Lighter and faster
 \end{itemize}
 
 \textbf{Private}
 \begin{itemize}
-	\item Private property of an
-	\item individual or an organization
-	\item Permissioned known identities
-	\item Pre-approved participants
-	\item Voting/multi- party consensus
-	\item Lighter and faster
+    \item Private property of an
+    \item individual or an organization
+    \item Permissioned known identities
+    \item Pre-approved participants
+    \item Voting/multi- party consensus
+    \item Lighter and faster
 \end{itemize}
 
 \fg{1}{0ab69fc7ee15e9b5efb04bb8d39299ab-2lIIJXa4gj-image}
@@ -1139,24 +1139,24 @@ A contract that self-executes, and handles the enforcement, the management, perf
 
 Smart contracts can:
 \begin{itemize}
-	\item Function as \textit{multi-signature} accounts, so that funds are spent only when a required percentage of people agree
-	\item Manage agreements between users, say if one buys insurance from the other
-	\item Provide utility to other contracts (similar to how a software library works)
-	\item Store information about an application, such as domain registration information or membership records.
+    \item Function as \textit{multi-signature} accounts, so that funds are spent only when a required percentage of people agree
+    \item Manage agreements between users, say if one buys insurance from the other
+    \item Provide utility to other contracts (similar to how a software library works)
+    \item Store information about an application, such as domain registration information or membership records.
 \end{itemize}
 
 Ethereum runs on its native token (\textbf{Ether}) which serves two main purposes:
 \begin{itemize}
-	\item Ether payment is \textbf{required for applications to perform any operation} so that broken and malicious programs are kept under control.
-	\item Ether is \textbf{rewarded as an incentive to the miners who contribute to the Ethereum network} with their resources - much like Bitcoin's structure.
+    \item Ether payment is \textbf{required for applications to perform any operation} so that broken and malicious programs are kept under control.
+    \item Ether is \textbf{rewarded as an incentive to the miners who contribute to the Ethereum network} with their resources - much like Bitcoin's structure.
 \end{itemize}
 
 Every time a contract is executed, Ethereum consumes a token which is termed as \textbf{gas} to run the computations. Gas is required to be paid for every operation performed on the Ethereum blockchain. Its price is expressed in Ether and it's decided by the miners, which can refuse to process the transaction with less than a certain gas price.
 
 \textbf{Examples}\footnote{\url{https://medium.com/coreledger/what-are-smart-contracts-a-breakdown-for-beginners-92ac68ebdbeb}}
 \begin{itemize}
-	\item A smart contract could be programmed to release funds for someone's birthday each year. It could also be programmed to release payment once someone confirms receipt of delivered goods. It could be used to enforce particular rights for holders of digital assets.
-	\item A simple example could be in the case of \textbf{life insurance}. The policy terms would be encoded into the smart contract. In the event of a passing, the notarized death certificate would be provided as the input trigger for the smart contract to release the payment to the named beneficiaries.
+    \item A smart contract could be programmed to release funds for someone's birthday each year. It could also be programmed to release payment once someone confirms receipt of delivered goods. It could be used to enforce particular rights for holders of digital assets.
+    \item A simple example could be in the case of \textbf{life insurance}. The policy terms would be encoded into the smart contract. In the event of a passing, the notarized death certificate would be provided as the input trigger for the smart contract to release the payment to the named beneficiaries.
 \end{itemize}
 
 \paragraph{Oracle} A blockchain oracle is a third-party service that connects smart contracts with the outside world, primarily to feed information in from the world, but also the reverse. Information from the world encapsulates multiple sources so that decentralised knowledge is obtained. Information to the world includes making payments and notifying parties. The oracle is the layer that queries, verifies, and authenticates external data sources, usually via trusted APIs, proprietary corporate data feeds and internet of things feeds and then relays that information.
@@ -1177,32 +1177,32 @@ Ethereum has announced the launch of 2.0 and the process of moving to Proof
 
 of Stake (may be completed and happen soon)
 \begin{itemize}
-	\item This approach does not require large expenditures on computing and energy, it will change the need for CPUs for mining
-	\item Miners are now ``validators'' and post a deposit in an escrow account
-	\item The more escrow you post, the higher the probability you will be chosen to nominate the next block
-	\item If you nominate a block with invalid transactions, you lose your escrow
-	\item One issue with this approach is that those that have the most Ethereum will be able to get even more
-	\item This leads to centralization eventually
-	\item On the other hand, it reduces the chance of a 51\% attack and allows for near-instant transaction approvals
-	\item The protocol is called Casper and this will be a hard fork
+    \item This approach does not require large expenditures on computing and energy, it will change the need for CPUs for mining
+    \item Miners are now ``validators'' and post a deposit in an escrow account
+    \item The more escrow you post, the higher the probability you will be chosen to nominate the next block
+    \item If you nominate a block with invalid transactions, you lose your escrow
+    \item One issue with this approach is that those that have the most Ethereum will be able to get even more
+    \item This leads to centralization eventually
+    \item On the other hand, it reduces the chance of a 51\% attack and allows for near-instant transaction approvals
+    \item The protocol is called Casper and this will be a hard fork
 \end{itemize}
 
 \section{Dapps}
 
 \begin{itemize}
-	\item \textbf{Decentralized Applications (Dapps)} are computer applications that operate over a blockchain enabling direct interaction between end-users and providers.
-	\item \textbf{The interface of the decentralized applications does not look any different than any website or mobile app today.}
-	\item The \textbf{smart contract represents the core logic} of a decentralized application. Smart contracts are integral building blocks of blockchains, that process information from external sensors or events and help the blockchain manage the state of all network actors.
+    \item \textbf{Decentralized Applications (Dapps)} are computer applications that operate over a blockchain enabling direct interaction between end-users and providers.
+    \item \textbf{The interface of the decentralized applications does not look any different than any website or mobile app today.}
+    \item The \textbf{smart contract represents the core logic} of a decentralized application. Smart contracts are integral building blocks of blockchains, that process information from external sensors or events and help the blockchain manage the state of all network actors.
 \end{itemize}
 
 \section{ERC20}
 
 \begin{itemize}
-	\item First token standard
-	\item Introduced in November 2015 as an Ethereum Request for Comments (ERC)
-	\item Automatically assigned GitHub issue number 20, giving rise to the name ``ERC20''
-	\item A standard for fungible tokens, meaning that different units of an ERC20 token are interchangeable and have no unique properties
-	\item The ERC20 protocol standard contains basic functions that any useful token should implement to enable trading. These include transferring tokens, inquiring about the balance of tokens at a certain address, and the total supply of tokens.
-	\item The ERC-20 standard defines the interfaces for a few common methods: i.e. totalSupply, balanceOf, transfer, transferFrom, and approve. These methods allow Ethereum smart contracts to issue fungible tokens and token holders to transfer tokens to one another.\footnote{\url{https://eips.ethereum.org/erc}}
-	\item Today, there are thousands and thousands of ERC20 tokens (derivatives of ETH), almost in every sector and use case, not only in finance (for a list see Etherscan and select ERC20)
+    \item First token standard
+    \item Introduced in November 2015 as an Ethereum Request for Comments (ERC)
+    \item Automatically assigned GitHub issue number 20, giving rise to the name ``ERC20''
+    \item A standard for fungible tokens, meaning that different units of an ERC20 token are interchangeable and have no unique properties
+    \item The ERC20 protocol standard contains basic functions that any useful token should implement to enable trading. These include transferring tokens, inquiring about the balance of tokens at a certain address, and the total supply of tokens.
+    \item The ERC-20 standard defines the interfaces for a few common methods: i.e. totalSupply, balanceOf, transfer, transferFrom, and approve. These methods allow Ethereum smart contracts to issue fungible tokens and token holders to transfer tokens to one another.\footnote{\url{https://eips.ethereum.org/erc}}
+    \item Today, there are thousands and thousands of ERC20 tokens (derivatives of ETH), almost in every sector and use case, not only in finance (for a list see Etherscan and select ERC20)
 \end{itemize}
