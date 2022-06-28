@@ -237,7 +237,7 @@ In the previous steps, apart from standardization, we did not make any changes o
 
 We now need to use the feature vector formed using the eigenvectors of the covariance matrix, to reorient the data from the original axes to the ones represented by the principal components (hence the name Principal Components Analysis). This can be done by multiplying the transpose of the original data set by the transpose of the feature vector.
 \begin{equation*}
-    \text{FinalDataSet} =\text{FeatureVector}\transpose \cdot \text{StandardizedOriginalDataSet}\transpose
+    \texttt{FinalDataSet} =\texttt{FeatureVector}\transpose \cdot \texttt{StandardizedOriginalDataSet}\transpose
 \end{equation*}
 
 \section{Supervised Learning: with focus on Classification}
@@ -252,7 +252,7 @@ In ML we refer to the constant term as the \textit{bias} and the coefficients as
 \end{equation*}
 we choose $a,b_{i}$ to minimize the mean squared error:
 \begin{equation*}
-    MSE=\frac{1}{n}\sum _{j=1}^{n}[ Y_{j} -(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j})]^{2}
+    \text{MSE}=\frac{1}{n}\sum _{j=1}^{n}[ Y_{j} -(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j})]^{2}
 \end{equation*}
 This can be done analytically by inverting a matrix. Alternatively a numerical (\textbf{gradient descent}) method can be used. The objective is to minimize a function by changing parameters. Steps are as follows:
 \begin{enumerate}
@@ -265,7 +265,7 @@ This can be done analytically by inverting a matrix. Alternatively a numerical (
 
 The $p$-value for each term tests the null hypothesis that the coefficient is equal to zero (no effect). \textbf{A low }$p$\textbf{-value (less than 0.05) indicates that you can reject the null hypothesis}. In other words, a predictor that has a low $p$-value is likely to be a meaningful addition to your model because changes in the predictor's value are related to changes in the response variable.
 
-$R$-square varies between 0 and 1: when 0, the model used does not explain the data at all; when it is 1 the model perfectly explains (i.e \textit{describes}, bad!) the data. 
+$R^2$ varies between 0 and 1: when 0, the model used does not explain the data at all; when it is 1 the model perfectly explains (i.e \textit{describes}, bad!) the data. 
 
 \textbf{Categorical features} are features where there are a number of \textit{non-numerical} alternatives. We can define a \textit{dummy variable} for each alternative. The variable equals 1 if the alternative is true and zero otherwise. This is known as one-hot encoding. But sometimes we do not have to do this because there is a natural ordering of variables, e.g.:
 \begin{itemize}
@@ -289,7 +289,7 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
         \item Lasso
         \item Elastic net
     \end{itemize}
-    \item We must first scale feature values
+    \item Must first scale feature values
 \end{itemize}
 
 \subsection{Ridge regression}
@@ -311,7 +311,7 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
         \frac{1}{n}\sum\limits _{j=1}^{n}\left[ Y_{j} -\left(a+b_{1} X_{1,j} +\cdots +b_{m} X_{m,j}\right)\right]^{2} +\lambda \sum _{i=1}^{m}\left| b_{i}\right| 
     \end{equation*}
     \item This has the effect of completely eliminating the less important factors .
-    \item We must use gradient descent.
+    \item Must use gradient descent.
 \end{itemize}
 
 \subsection{Elastic Net Regression}
@@ -439,7 +439,7 @@ If we have 99\% of observations belonging to class 1, the trivial predictor givi
     Penalized classification imposes an additional cost on the model for making classification mistakes on the minority class during training. These penalties can bias the model to pay more attention to the minority class.
 \end{itemize}
 
-\subsection{Alternative to regression: clusterization.}
+\subsection{Alternative to regression: clusterization}
 
 Use Unsupervised Learning to construct clusters.
 \begin{itemize}
@@ -447,7 +447,7 @@ Use Unsupervised Learning to construct clusters.
     \item If a new observation fall in a cluster, it inherits all the cluster's class probabilities.
 \end{itemize}
 
-\subsection{Alternative to regression: $k$-nearest neighbors}
+\subsection{Alternative to regression: $k$-nearest neighbors classifier}
 
 \begin{itemize}
     \item Normalize data.
@@ -585,11 +585,11 @@ Comparison of different centralities:
 
 \begin{itemize}
     \item Suppose that there are $n$ possible outcomes and $p_{i}$ is the probability of outcome $i$ with $\sum _{i} p_{i} =1$.
-    \item \textbf{Entropy} measure of uncertainty:
+    \item \textbf{Entropy} measure of a node:
     \begin{equation*}
         \texttt{entropy} =\mathbb{E}\left[\texttt{information}\right] =\sum _{i=1}^{n} p_{i} \cdot \log\left(\frac{1}{p_{i}}\right) =-\sum _{i=1}^{n} p_{i}\log p_{i}
     \end{equation*}
-    \item \textbf{Gini} Measure of uncertainty:
+    \item \textbf{Gini} measure of a node:
     \begin{equation*}
         \texttt{gini} = 1 - \sum_{i=1}^{n} p_{i}^{2}
     \end{equation*}
@@ -707,11 +707,11 @@ Comparison of different centralities:
     \item To calibrate the parameters of the RF we have to set a priori some hyper-parameters. The parameters of the model are then calibrated on the training set.
     \item The hyper-parameters are chosen evaluating the performance of the calibrated models on the validation set. 
           \begin{itemize}
-              \item maximum tree depth: the maximum depth for a tree; 
-              \item minimum leaf size: the minimum number of observations contained in a leaf. A split will only be considered if the number of observations belonging to each child node will be higher than the threshold;
-              \item minimum decrease of impurity after a split: a node is split if it generates an impurity decrease greater than or equal to the threshold;
-              \item minimum split size: the minimum number of observations belonging to a node required to split it;
-              \item number of trees: the number of trees in the forest.
+              \item \textbf{maximum tree depth}: the maximum depth for a tree; 
+              \item \textbf{minimum leaf size}: the minimum number of observations contained in a leaf. A split will only be considered if the number of observations belonging to each child node will be higher than the threshold;
+              \item \textbf{minimum decrease of impurity after a split}: a node is split if it generates an impurity decrease greater than or equal to the threshold;
+              \item \textbf{minimum split size}: the minimum number of observations belonging to a node required to split it;
+              \item \textbf{number of trees}: the number of trees in the forest.
           \end{itemize}
 \end{itemize}
 
@@ -1000,7 +1000,7 @@ The correction term doesn't average across all the trajectories (unlike MC). The
 
 \textbf{Q-Learning}\footnote{\url{https://www.youtube.com/watch?v=0iqz4tcKN58}} is essentially TD learning on the Q function:
 \[
-    \boxed{Q(s_t,a_t)^{\text{new}}\leftarrow Q(s_t,a_t)^{\text{old}} + \alpha \left( r_k + \gamma \max_aQ(s_{t+1},a) - Q(s_t,a_t)^{\text{old}} \right)}
+    \boxed{Q(s_t,a_t)^{\text{new}}\leftarrow Q(s_t,a_t)^{\text{old}} + \alpha \left( r_t + \gamma \max_aQ(s_{t+1},a) - Q(s_t,a_t)^{\text{old}} \right)}
 \]
 Notice that there is a $\max$ over $a$: when I get to $r_t$ it doesn't have to be the optimal on policy action, I can do some random action. However, when I compute the quality for the next state $s_{t+1}$ I optimize over the action $a$.
 
