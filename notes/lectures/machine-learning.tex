@@ -329,7 +329,7 @@ There is then no unique solution because, for any $C$, we can add $C$ to the con
 
 \begin{itemize}
     \item The objective is to classify observations into a ``positive outcome'' and ``negative outcome'' using data on features
-    \item Dependent variable: binary (1 – 0)
+    \item Dependent variable: binary (1 -- 0)
     \item Probability of a positive outcome is assumed to be a \textbf{sigmoid} function:
     \begin{equation*}
         Q=\frac{1}{1+e^{-Y}}
@@ -541,7 +541,7 @@ If all nodes are connected, then the graph distance equals to 1
     \begin{equation*}
         \boxed{B(i)=\sum _{s\neq i\neq t}\frac{\delta _{st} (i)}{\delta _{st}}}
     \end{equation*}
-    where $st\left(i\right)$ is the number of shortest paths between $s$ and $t$ that pass through $i$, and $st$ is the total number of shortest paths between $s$ and $t$.
+    where $\delta _{st} (i)$ is the number of shortest paths between $s$ and $t$ that pass through $i$, and $\delta _{st}$ is the total number of shortest paths between $s$ and $t$.
     \item Normalized betweenness centrality
     \begin{equation*}
         N_{B} (i)=\frac{2}{(n-1)(n-2)} B(i)
@@ -758,7 +758,7 @@ We have $13$ degrees of freedom.
 
 However, the theorem doesn't tell how many neurons or layers.
 
-If there are $F$ features, $H$ hidden layers, $M$ neurons in each hidden layer and $T$ targets the number of parameters is:
+If there are $F$ features, $H$ hidden layers, $M$ neurons in each hidden layer and $T$ targets the number of parameters is:\footnote{Idea: (what comes from previous + 1 ) $\cdot$ what comes next.}
 \begin{equation*}
     \text{\#parameters} =(F+1) M+M(M+1)(H-1) +(M+1) T
 \end{equation*}

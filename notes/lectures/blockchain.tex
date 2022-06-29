@@ -42,7 +42,7 @@ A blockchain is a distributed (or architecturally decentralized) and politically
 \fg{0.7}{b5a948c1859f2826ea6b5ac0d3a83474-Pmg6G5phwe-image}
 
 \begin{itemize}
-    \item A \textbf{block} is a part of the Blockchain that contains a set of (Bitcoin) transactions. On average, a new block, which includes transactions, is added to the Blockchain every $10$ minutes (the system is tuned to make so happen).
+    \item A \textbf{block} is a part of the Blockchain that contains a set of (Bitcoin) transactions. On average, a new block, which includes transactions, is added to the Blockchain every $10$ minutes (the system is tuned to make it happen).
     \item \textbf{Confirmation:} to be included in a block, and therefore in the Blockchain, a transaction must be confirmed by several nodes (\textbf{miners}), i.e. processed by the network.
     \item \textbf{Mining:} it is a mathematical process performed by the Blockchain nodes on the candidate block: once solved the block (and therefore all the transactions recorded in it) is confirmed and inserted into a block of the Blockchain. As a reward for their service, miners receive newly created Bitcoins (and the transaction fees). Mining $1$ new block now makes you earn $6.25$ BTC, mining can be done with ad hoc hardware and consumes a lot of energy.
     Miners accumulate transactions all the time (selecting them with a certain criterion, such as those that offer the highest fees). When they have enough transactions to fill a block (which has a fixed size) they try to solve the mining problem. The first miner that solves the mining problem propagates the block in the network, which is verified (they verify if the \textit{Proof of Work} is valid) by the other nodes and added to their copy of the blockchain.
@@ -70,7 +70,7 @@ So, if Alice has kept the private key hidden, only she can read the message
 
 Among the asymmetric cryptographies, Bitcoin uses \textbf{Elliptical Cryptography}.
 
-Public keys are based on the creation of a mathematical problem that is very difficult to solve without information, but which - with the use of some information (the private key) - becomes easy and quick to solve. The user publicly distributes the problem (the public key) and keeps the additional information hidden (the private key).
+Public keys are based on the creation of a mathematical problem that is very difficult to solve without information, but which -- with the use of some information (the private key) -- becomes easy and quick to solve. The user publicly distributes the problem (the public key) and keeps the additional information hidden (the private key).
 
 \textit{An example: RSA encryption.}
 
@@ -141,7 +141,7 @@ In addition to checking that the digital signatures of the transactions are auth
 
 The Bitcoin Blockchain is therefore based on \textit{Proof of Work}.
 
-Proof of Work, or PoW, is an algorithm that is used by different cryptocurrencies - such as Bitcoin and Ethereum - to reach a decentralized agreement between different nodes in the process of adding a specific block to the blockchain.
+Proof of Work, or PoW, is an algorithm that is used by different cryptocurrencies -- such as Bitcoin and Ethereum -- to reach a decentralized agreement between different nodes in the process of adding a specific block to the blockchain.
 
 \textit{Hashcash (SHA-256)}\footnote{Visit this site to try some hashing: \url{https://emn178.github.io/online-tools/sha256.html}} is the Proof of Work feature used by Bitcoin. Cryptocurrency forces miners to solve extremely complex and computationally difficult mathematical problems to add blocks to the blockchain. This function produces a very specific type of data that is used to verify that a significant amount of work has been done.
 
@@ -213,7 +213,7 @@ It is not possible to attach documents to the blockchain. The procedure is the f
 \begin{enumerate}
     \item The document is hashed. This means that the content of the document is \textit{summarized}, or better represented, by a string of 64 characters (256bit).
     \item The 64-character string is then put into a Bitcoin (or other) blockchain transaction using the \texttt{OP\_RETURN} \textbf{field}, it's a \textit{free} field presented in every Bitcoin transaction: free, but limited in size.
-    \item A small Bitcoin payment is made to process the transaction and \textit{register it on the blockchain} (\textbf{you can also make a 0 BTC transaction}, so paying only the cost of the transaction - variable but around $0.00001$ BTC).
+    \item A small Bitcoin payment is made to process the transaction and \textit{register it on the blockchain} (\textbf{you can also make a 0 BTC transaction}, so paying only the cost of the transaction -- variable but around $0.00001$ BTC).
 \end{enumerate}
 
 Hashing is \textit{irreversible} once you know the hash, it is \textit{mathematically impossible} to deduce the original text.
@@ -228,14 +228,14 @@ It is not yet possible to think of a DLT that \textbf{completely replaces the sy
 
 The cryptography used in Blockchain could certainly be considered to make current databases more secure.
 
-Not just finance: The Blockchain can be used as a register in which to enter any type of information and consequently also a contract, an act or a certificate, avoiding the intermediation of third parties, but maintaining the guarantee of advertising.
+Not just finance: the Blockchain system can be used as a register in which to enter any type of information and consequently also a contract, an act or a certificate, avoiding the intermediation of third parties, but maintaining the guarantee of advertising.
 
 Comparison of transactions capacity\footnote{\url{https://altcointoday.com/Bitcoin-ethereum-vs-visa-paypal-transactions-per-second/}}
 \begin{itemize}
-    \item Bitcoin – 3 to 4 transactions per second (1 block every 10 minutes);
-    \item Ethereum – 20 transactions per second (1 block every 15 seconds);
-    \item PayPal – 193 transactions per second average;
-    \item Visa – 1.667 transaction per second.
+    \item Bitcoin -- 3 to 4 transactions per second (1 block every 10 minutes);
+    \item Ethereum -- 20 transactions per second (1 block every 15 seconds);
+    \item PayPal -- 193 transactions per second average;
+    \item Visa -- 1.667 transaction per second.
 \end{itemize}
 
 PoW is \textbf{expensive:} it is the main cause of scalability problems (as well as memory problems: all nodes should store all transactions).
@@ -253,7 +253,7 @@ Permissioned ledgers (or private blockchains) can be controlled, and therefore c
         \end{enumerate}
     \item Safer
         \begin{enumerate}
-            \item Potentially yes: safer in terms of immutability (less than 51\% attacks), but not privacy.
+            \item Potentially yes: safer in terms of immutability (less than 50\%+1 attacks), but not privacy.
             \item The system of remuneration of the nodes pushes to use their own computing power to make the system work, not to try to force it.
             \item The database is distributed all over the world.
         \end{enumerate}
@@ -291,7 +291,7 @@ It may happen that there are so called \textbf{forks} on the Blockchain:
     \item \textbf{Hard fork:} when something (a software update that only some install) creates two versions of the Blockchain.
 \end{itemize}
 
-\paragraph{Polkadot} multi-chain etherogeneous and scalable technology that gives freedom on the structure and the chains of its network (Ethereum is stricter). Consensus is granted on all the chains, which all communicates.\footnote{\url{https://en.wikipedia.org/wiki/Polkadot_(cryptocurrency)}}
+\paragraph{Polkadot} Multi-chain etherogeneous and scalable technology that gives freedom on the structure and the chains of its network (Ethereum is stricter). Consensus is granted on all the chains, which all communicates.\footnote{\url{https://en.wikipedia.org/wiki/Polkadot_(cryptocurrency)}}
 \textbf{DOT} is the cryptocurrency of the Polkadot platform.
 
 \paragraph{Ripple} Built for enterprise use, Ripple aims to be a fast (4 seconds), cost-efficient cryptocurrency for cross-border payments. Within the Ripple system, money isn't actually transferred from one place to another: only the promise of payment is transferred.
@@ -321,10 +321,10 @@ In 2018 Bitcoin Cash subsequently split into two cryptocurrencies: Bitcoin Cash,
 \paragraph*{Bitcoin Gold.}
 Another hard fork of Bitcoin.
 \begin{itemize}
-    \item Bitcoin Gold is a fork of Bitcoin that seeks to reduce the influence of miners who use specialized equipment known as ASICs. The team's stated goal is to ``make Bitcoin decentralized again.''
+    \item Bitcoin Gold is a fork of Bitcoin that seeks to reduce the influence of miners who use specialized equipment known as ASICs\footnote{\url{https://academy.bit2me.com/it/que-son-mineros-asic/}}. The team's stated goal is to ``make Bitcoin decentralized again.''
     \item Bitcoin Gold hard forked from the Bitcoin blockchain on October 24, 2017.
-    \item In May 2018, Bitcoin Gold was hit by a 51\% hashing attack by an unknown actor. This type of attack makes it possible to manipulate the blockchain ledger on which transactions are recorded and to spend the same digital coins more than once. During the attack, 388,000 BTG (worth approximately \$18M) was stolen from several cryptocurrency exchanges.
-    \item Bitcoin Gold suffered from 51\% attacks again in January 2020\footnote{{\scriptsize\url{https://thenextweb.com/hardfork/2020/01/27/Bitcoin-gold-51-percent-attack-blockchain-reorg-cryptocurrency-binance-exchange/}}}.
+    \item In May 2018, Bitcoin Gold was hit by a 50\%+1 hashing attack by an unknown actor. This type of attack makes it possible to manipulate the blockchain ledger on which transactions are recorded and to spend the same digital coins more than once. During the attack, 388.000 BTG (worth approximately \$18M) was stolen from several cryptocurrency exchanges.
+    \item Bitcoin Gold suffered from 50\%+1 attacks again in January 2020\footnote{{\scriptsize\url{https://thenextweb.com/hardfork/2020/01/27/Bitcoin-gold-51-percent-attack-blockchain-reorg-cryptocurrency-binance-exchange/}}}.
 \end{itemize}
 
 \paragraph{TheDAO incident}\label{dao-incident}\footnote{\url{https://medium.com/swlh/the-story-of-the-dao-its-history-and-consequences-71e6a8a551ee}}
@@ -390,7 +390,7 @@ A CryptoKitty's ownership is tracked via a smart contract on the Ethereum blockc
 
 \paragraph{Coin} It's a unit of value that is native to a blockchain. It is a means of exchange within the blockchain to incentivize the network of participants to use the blockchain. The cryptocurrencies Bitcoin, Ether, Ripple, and Litecoin are all examples of native cryptocurrencies. The sole purpose of a cryptocurrency is for exchange of value, and it has limited functionality beyond that.
 
-\paragraph{Token} It's a piece of business logic (i.e., ``smart contract'') coded into an existing blockchain. A token can have a functionality beyond an exchange of value - it can represent any asset or functionality desired by the developer for use on a platform. Most tokens are created on the Ethereum blockchain by using ERC-20 smart contracts, such as Tron and VeChain.
+\paragraph{Token} It's a piece of business logic (i.e., ``smart contract'') coded into an existing blockchain. A token can have a functionality beyond an exchange of value -- it can represent any asset or functionality desired by the developer for use on a platform. Most tokens are created on the Ethereum blockchain by using ERC-20 smart contracts, such as Tron and VeChain.
 
 Coins and tokens differ not only for the IT definition, but also for \textbf{market behaviour}.
 
@@ -471,7 +471,7 @@ The MasterCoin protocol turned out to be incredibly successful. Rebranded to and
 \paragraph{Ethereum}
 In 2014 Vitalik Buterin tries raising funds for a new and noteworthy ICO for what he envisions the world's first zero-infrastructure platform, named \textbf{Ethereum}.
 The token sale raised 3700 BTC in the first 12 hours.
-Total raised: \$18.3M
+Total raised: \$18.3M.
 
 Since Ethereum's inception, over 1.000 \textbf{ERC20} cryptocurrencies have been issued on the platform since its initial ICO. ERC20 itself is a protocol standard that defines certain rules and standards for issuing tokens on Ethereum's network and infrastructure. ERC stands for \emph{Ethereum Request For Comments} and \emph{20} stands for a unique ID number to distinguish this standard from others.
 
@@ -536,12 +536,12 @@ The evident advantage of IEO over an ICO is the presence of existing user base o
 The popular utility tokens used in ICO have the main disadvantage, which is the \textbf{absence of any compensation for investors in case of ICO fail} as utility tokens are not security papers leading to the absence of any obligations for making beneficial conditions for investors.
 \textbf{Security tokens represent real capital} in the enterprise, at the same time such token is \textbf{not necessarily tied to a share in the company}, it can be used to \textbf{divide the rights of the ownership}. In fact, they may \textbf{give the holder a number of rights}: ownership of shares, periodic dividends, cashflows, payment of debts, the right to vote, etc. All these rights are secured by a smart contract. Due to the features of these tokens, their value is supported by securities, therefore, they are considered an investment.
 The issue of security tokens requires \textbf{serious supervision by regulatory authorities}. This supervision leads to the protection of investments and gives investors more rights, thus restoring the balance of power from the point of view of stakeholders.
-\textbf{Security token offering (STO)} is the initial offer of security tokens. STO is similar to ICO in one thing: both issues token for investors. The main reason for buying securities token is \textbf{dividends or voting rights} .
+\textbf{Security token offering (STO)} is the initial offer of security tokens. STO is similar to ICO in one thing: both issues token for investors. The main reason for buying securities token is \textbf{dividends or voting rights}.
 STO project meets all the requirements of the SEC: investor's money is protected by law. In case of disputes, the investor can file a complaint with the appropriate authority since this type of token falls under the legislation on securities.
 
 By 20th March 2019, 122 STOs have already been completed, raising \$512M.
 54 Security Token Offerings are currently listed and ongoing.
-Out of 328 STOs launched so far, only 12 of them have failed (3.65\%). STO raised \$1258 mln in overall.
+Out of 328 STOs launched so far, only 12 of them have failed (3.65\%). STO raised \$1258M in overall.
 
 \emph{Examples.} Bolton Coin, UniCrypy, GG World Lottery.
 
@@ -551,13 +551,13 @@ Out of 328 STOs launched so far, only 12 of them have failed (3.65\%). STO raise
 
 A stablecoin is a new class of cryptocurrencies that attempts to offer \textbf{price stability} and are \textbf{backed by a reserve asset}.
 
-Stablecoins may be pegged to a currency like the U.S. dollar or to a commodity's price such as gold.
+Stablecoins may be pegged to a currency like the USD or to a commodity's price such as gold.
 
 Stablecoins achieve their price stability via collateralization (backing) or through algorithmic mechanisms of buying and selling the reference asset or its derivatives.
 
 Stablecoins have gained traction as they attempt to offer the best of both world's-the instant processing and security or privacy of payments of cryptocurrencies, and the volatility-free stable valuations of fiat currencies.
 
-\emph{Example.} The Reserve protocol comprises two tokens: the Reserve token (RSV - a decentralized stablecoin) and the Reserve Rights token (RSR - a cryptocurrency used to facilitate the stability of the Reserve token and confers the cryptographic right to purchase excess Reserve tokens as the network grows).
+\emph{Example.} The Reserve protocol comprises two tokens: the Reserve token (RSV -- a decentralized stablecoin) and the Reserve Rights token (RSR -- a cryptocurrency used to facilitate the stability of the Reserve token and confers the cryptographic right to purchase excess Reserve tokens as the network grows).
 
 \emph{Example.} bitCNY Pegged to the Chinese Yuan
 
@@ -616,6 +616,13 @@ Assume 1 Ether = \$100 and collateralization ratio is 1.5. If you send 1 Ether i
     Basically, if the price feed into the CDP indicates that the value of Ether has gone below a certain threshold, the liquidation ratio (let's use 125\% of created Dai), then the CDP is ``liquidated'' and the Ether inside the CDP is auctioned off for Dai until there is enough Dai to pay back what was extracted from the CDP.
 \end{itemize}
 
+\emph{Example.} Two simple examples assuming the price of Ether is \$150 and you deposit 1 ETH at this price. Liquidation ratio is $1.5$.
+\begin{itemize}
+    \item You decide to take out 50 Dai which means your CDP is \textbf{collateralised} 300\% (collateralization ratio = 3). As long as the price of Ether doesn't drop below $(\$50 \cdot 1.5) = \$75$ your position will be safe. After one year, you decide to pay back the 50 Dai and retrieve your Ether locked up. Upon closing the position or other interactions with your CDP, you'll pay the annual stability fee (set at 3.5\% as of March 2019).
+    \item You decide to take out 95 Dai which means your CDP is collateralised at just 150.26\% (collateralization ratio = 1.5026, very close to liquidation ratio). The price of Ether drops to \$100 which means your CDP is \textbf{under-collateralized}: $\$95 \cdot 1.5 = \$142.50 > \$100$.\\
+    A 3rd party will realise that you don't have enough collateral and liquidate your CDP on your behalf. This results in your position being liquidated by 3 rd parties with a penalty. These 3rd parties have various ways to profit from your position being liquidated.
+\end{itemize}
+
 \textbf{Volatility cannot be destroyed}, it can only be transferred. If we have a stable token like Dai that has been stripped of its volatility, where did it go? In the Maker system, volatility is transferred entirely to the holder of the CDP. Using our prior example, should I withdraw 66 Dai from a CDP containing one ether, I will only own that one Ether if its price is above the liquidation ratio. Dai is effectively a loan on my ether.
 
 This leads us to the interesting consequence: I can take the Dai that I borrowed and use it to buy more ether. By doing this, I am basically buying Ether on margin. That's right, completely decentralized leverage!
@@ -637,8 +644,8 @@ Tether is pegged to an asset, MakerDAO is tied to the amount you put in a CDP an
 
 Some meaningful questions:
 \begin{itemize}
-    \item Are expected returns higher than (classical) financial assets ones?
-    \item Are cryptocurrencies riskier than (classical) financial assets?
+    \item Are cryptocurrencies \textbf{expected returns higher} than (classical) financial assets?
+    \item Are cryptocurrencies \textbf{riskier} than (classical) financial assets?
     \item What about diversification?
 \end{itemize}
 
@@ -764,7 +771,7 @@ The four key properties of Money:
     \item Issuer: central bank or not
     \item Form: digital or physical
     \item Accessibility: widely (retail) or restricted (wholesale)
-    \item Technology: token - or account - based. Token-based retail CBDCs are accessible with private/public keys. This method of validation allows users to execute transactions anonymously. Account-based retail CBDCs require digital identification to access an account.
+    \item Technology: token -- or account -- based. Token-based retail CBDCs are accessible with private/public keys. This method of validation allows users to execute transactions anonymously. Account-based retail CBDCs require digital identification to access an account.
 \end{itemize}
 
 \textbf{Cash features}
@@ -779,7 +786,7 @@ The four key properties of Money:
 Digital means of payments do not satisfy these features. Digital means require third parties (record keeping, identity validation). It is difficult to deploy off-line transactions.
 
 Today: cash is the only form of central bank issued money available to individuals and part of money (bank deposits) is managed by profit oriented players.
-CBDC: universal/inclusive, digital, central bank issued (legal tender\footnote{Legal tender is anything recognized by law as a means to settle a public or private debt or meet a financial obligation, including tax payments, contracts, and legal fines or damages. Fiat currency of a country is a legal tender.})
+CBDC: universal/inclusive, digital, central bank issued (legal tender\footnote{Legal tender is anything recognized by law as a means to settle a public or private debt or meet a financial obligation, including tax payments, contracts, and legal fines or damages. Fiat currency of a country is a legal tender.}).
 
 % vantaggi del cash sul digitale
 
@@ -798,7 +805,7 @@ No CBDC project has an explicit focus on payments beyond the central bank's juri
 \paragraph{Motivation}
 
 \textbf{The Consumer perspective}
-A digital currency like CBDC is an additional form of public money and mean of payment. The currency should be cheap to use, secure, risk-free (its holders should not be subject to any market risk or issuer default risk), easy to use and efficient (permitting fast payments).
+A digital currency like CBDC is an additional form of public money and means of payment. The currency should be cheap to use, secure, risk-free (its holders should not be subject to any market risk or issuer default risk), easy to use and efficient (permitting fast payments).
 
 The possibility of cash to be used without any technical infrastructure is not (fully) matched by electronic payment solutions. As such, the CBDC should allow citizens to continue to make their payments as much as they do today with cash, allowing off-line payments, free of charge for basic users and privacy friendly.
 
@@ -811,7 +818,7 @@ The pandemic and resulting economic crisis have led to marked changes in the use
 
 In a crisis period households without access to digital payment means could face barriers to making and receiving payments.
 
-This has led to an acceleration in the reduction of ATM and physical bank branches, possibly impacting groups of people who do not have access to digital payment mechanism (seniors, migrants...).
+This has led to an acceleration in the reduction of ATM and physical bank branches, possibly impacting groups of people who do not have access to digital payment mechanism (seniors, migrants, \ldots).
 
 Moreover, 1 billion people worldwide do not have basic identification (ID) credentials, and many more have IDs that cannot be trusted because are of poor quality or cannot be verified.
 3.4 billion people have some form of ID but with limited ability to use it in the digital world.
@@ -841,7 +848,7 @@ CBDC can encourage digital innovation by:
     \item preserve independence in retal payments
 \end{itemize}
 
-Foreign central banks are assessing the possibility of issuing their own CBDC and private actors, including large technology firms, are developing payment solutions that could threaten financial, economic and political sovereignty. Wide acceptance of a mean of payment not denominated in sovereign currency could weaken the transmission of monetary policy, affect financial stability, safety and efficiency of the payment system.
+Foreign central banks are assessing the possibility of issuing their own CBDC and private actors, including large technology firms, are developing payment solutions that could threaten financial, economic and political sovereignty. Wide acceptance of a means of payment not denominated in sovereign currency could weaken the transmission of monetary policy, affect financial stability, safety and efficiency of the payment system.
 
 CBDC may be the solution to these threats if it offers functionalities that are at least as attractive as those of the payment solutions available in foreign currencies or through unregulated entities.
 % robe varie che non ho segnato
@@ -875,7 +882,7 @@ There are three main possible architectures, defining the role of the central ba
 
 The infrastructure could be based on a conventional centrally controlled database, or on a distributed ledger.
 In conventional databases, resilience is typically achieved by storing data over multiple physical nodes, which are controlled by one authoritative entity.
-In DLT-based systems, the ledger is jointly managed by different entities in a decentralized manner and without such a top node.The overhead needed to operate a consensus mechanism is the main reason why DLTs have lower transaction throughput than conventional architectures.
+In DLT-based systems, the ledger is jointly managed by different entities in a decentralized manner and without such a top node. The overhead needed to operate a consensus mechanism is the main reason why DLTs have lower transaction throughput than conventional architectures.
 
 Current DLT could not be used for the direct CBDC except in very small jurisdictions. DLT could be used for the indirect CBDC architecture, as the number of transactions in many wholesale payment systems is comparable with that handled by existing blockchain platforms.
 
@@ -993,9 +1000,9 @@ If a node wants to change an old block, or in general wants to make the chain ta
 
 Some desirable properties of a (new) block
 \begin{itemize}
-    \item follows linearly (and exclusively) the previous one - links to the previous block
-    \item the set of transactions is fixed before leader election - Merkle tree. against corruption
-    \item the leader is identified – as the solver of the puzzle
+    \item follows linearly (and exclusively) the previous one -- links to the previous block
+    \item the set of transactions is fixed before leader election -- Merkle tree. against corruption
+    \item the leader is identified -- as the solver of the puzzle
 \end{itemize}
 
 \paragraph*{Merkle tree.} Is a digest of digests, i.e. a tree, a compact representation of a set of hashes of Bitcoin transactions, amongst the proposed and selected ones. The root represents all the hashes in the tree and any change anywhere would affect the root.
@@ -1043,7 +1050,7 @@ Asymmetric\footnote{\textit{asymmetric} means that the two keys are different.} 
     \item $j$ can prove that they own a piece of information by using $sk_{j}\{m\}$
 \end{itemize}
 
-Signature of a message (of a transaction) – on top of asymmetric cryptography:
+Signature of a message (of a transaction) -- on top of asymmetric cryptography:
 \begin{itemize}
     \item $sig:=sign(sk,\text{message})$
     \item $isValid:=verify(pk,\text{message},sig)$
@@ -1131,7 +1138,7 @@ In general, every blockchain has its token.
 
 \section{Ethereum}
 
-Ethereum is an \textbf{open-source} and public blockchain-based \textbf{distributed computing platform for building decentralized applications}. Vitalik Buterin envisioned Ethereum as a platform for developers to write programs on the blockchain. In short, Ethereum wants to be a \textbf{World Computer} that would decentralize – and some would argue, democratize – the existing client-server model. With Ethereum, servers and clouds are replaced by thousands of so-called ``nodes'' run by volunteers from across the globe (thus forming a ``world computer'').
+Ethereum is an \textbf{open-source} and public blockchain-based \textbf{distributed computing platform for building decentralized applications}. Vitalik Buterin envisioned Ethereum as a platform for developers to write programs on the blockchain. In short, Ethereum wants to be a \textbf{World Computer} that would decentralize -- and some would argue, democratize -- the existing client-server model. With Ethereum, servers and clouds are replaced by thousands of so-called ``nodes'' run by volunteers from across the globe (thus forming a ``world computer'').
 
 \textbf{Smart contracts} are simple programs stored on the blockchain that automatically exchange money based on certain conditions.
 
@@ -1148,7 +1155,7 @@ Smart contracts can:
 Ethereum runs on its native token (\textbf{Ether}) which serves two main purposes:
 \begin{itemize}
     \item Ether payment is \textbf{required for applications to perform any operation} so that broken and malicious programs are kept under control.
-    \item Ether is \textbf{rewarded as an incentive to the miners who contribute to the Ethereum network} with their resources - much like Bitcoin's structure.
+    \item Ether is \textbf{rewarded as an incentive to the miners who contribute to the Ethereum network} with their resources -- much like Bitcoin's structure.
 \end{itemize}
 
 Every time a contract is executed, Ethereum consumes a token which is termed as \textbf{gas} to run the computations. Gas is required to be paid for every operation performed on the Ethereum blockchain. Its price is expressed in Ether and it's decided by the miners, which can refuse to process the transaction with less than a certain gas price.
@@ -1183,7 +1190,7 @@ of Stake (may be completed and happen soon)
     \item If you nominate a block with invalid transactions, you lose your escrow
     \item One issue with this approach is that those that have the most Ethereum will be able to get even more
     \item This leads to centralization eventually
-    \item On the other hand, it reduces the chance of a 51\% attack and allows for near-instant transaction approvals
+    \item On the other hand, it reduces the chance of a 50\%+1 attack and allows for near-instant transaction approvals
     \item The protocol is called Casper and this will be a hard fork
 \end{itemize}
 
