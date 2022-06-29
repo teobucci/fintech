@@ -617,6 +617,11 @@ Comparison of different centralities:
     \begin{equation*}
         0.7219-0.6751=0.0468
     \end{equation*}
+    \item In general, suppose that node $x$ is split into $x_{L},x_{R}$ and our split is called $\Jc$
+    \[
+        \texttt{informationGain}(\Jc) = \underbrace{\texttt{entropy}(x)}_{\substack{\text{entropy before}\\\text{split}}} \underbrace{- p_{L} \texttt{entropy}(x_{L}) - p_{R} \texttt{entropy}(x_{R})}_{\text{entropy after split}}
+    \]
+    where $p_{L}$ and $p_{R}$ are the proportions of observations that from node $x$ fall into nodes $x_{L}$ and $x_{R}$.
 \end{itemize}
 
 \subsection{The Decision Tree Algorithm}
@@ -644,11 +649,11 @@ Comparison of different centralities:
     \end{equation*}
     where $p$ denotes the proportion of observations belonging to class 1, contained in node $x$. $p$ can be interpreted as the probability of being of class 1 in the node. We can also use Entropy, instead of Gini index.
     \item We aim to \textbf{minimize} the Gini index; its maximum ($1/4$) corresponds to the case in which a node is perfectly balanced (50\% of the observations in the node are of class 0 and 50\% of class 1, and therefore $p=1/2$).
-    \item The feature (exogenous variable) and the binary rule that are used for the split at a node are defined through a search process that maximizes the impurity decrease after the split. Given a split rule $r$ that divides node $x$ (observations of the dataset) into the nodes $x_{L}$ and $x_{R}$, we define the impurity decrease after the split as
+    \item The feature (exogenous variable) and the binary rule that are used for the split at a node are defined through a search process that maximizes the impurity decrease after the split. Using the terminology introduced before, the information gain here is:
     \begin{equation*}
-        G\left(x\right) -p_{L} \cdot G\left(x_{L}\right) -p_{R} \cdot G\left(x_{R}\right)
+        \texttt{informationGain}(\Jc) = G(x) -p_{L} \cdot G(x_{L}) -p_{R} \cdot G(x_{R})
     \end{equation*}
-    where $p_{L}(p_{R})$ is the percentage of observations in $x$ that after the split belong to node $x_{L}(x_{R})$. The last nodes of the tree (the arrival point of the algorithm, i.e., the nodes that are not split anymore) are called \textit{leaves}. 
+    The last nodes of the tree (the arrival point of the algorithm, i.e., the nodes that are not split anymore) are called \textit{leaves}. 
     \item The leaves contain the estimation of the tree (in our case class 0 or 1), which is given by the most recurrent class in that leaf: if more than 50\% of the observations in the leaf are of class 1, then the leaf is a class 1 leaf.
     \item We also get a probability of being of class 1 for each leaf, given by the proportion of observations of class 1 in that leaf.
 \end{itemize}
@@ -659,9 +664,13 @@ Comparison of different centralities:
     \item Regression trees have basically the same structure as classification trees, but the dependent variable is a \emph{numerical} variable, and the measure of impurity is the MSE of the observations in the node. 
     \item The quantity predicted by each leaf is the average of the values of the target variable of the observations in the leaf.
     \item The MSE measures the pureness of the node, computing the distance between the estimated value of the node (the average of the value of all the observations belonging to the node) and the value of the observations contained in the node, i.e., if there are $N$ observations belonging to a node, and $p_i$ is the value of observation $i$, $i=1,\dotsc,N$, then we compute
-          \begin{equation*}
-              \frac{1}{N}\sum\limits _{i=1}^{N}\left(p_{i} -\frac{1}{N}\sum\limits _{j=1}^{N} p_{j}\right)^{2}
-          \end{equation*}
+    \begin{equation*}
+        \text{MSE} = \frac{1}{N}\sum\limits _{i=1}^{N}\left(p_{i} -\frac{1}{N}\sum\limits _{j=1}^{N} p_{j}\right)^{2}
+    \end{equation*}
+    The information gain here is:
+    \[
+        \texttt{informationGain}(\Jc) = \text{MSE}(x) - p_{L} \cdot \text{MSE}(x_{L}) - p_{R} \cdot \text{MSE}(x_{R})
+    \]
     \item We construct a tree where instead of maximizing expected information gain we maximize the \textbf{expected decrease in mean squared error.}
 \end{itemize}
 
