@@ -5,7 +5,11 @@ import numpy as np
 import joblib
 import matplotlib.pyplot as plt
 import shap
-from os.path import join
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).parent
+MODELS_PATH = PROJECT_ROOT / 'models'
+DATA_PATH = PROJECT_ROOT / 'data'
 
 # web interface
 st.title('Product suggestion by Clients\' Needs')
@@ -40,10 +44,10 @@ class Client():
 man = Client()
 
 # load models
-lm_risk = joblib.load(join('models','lm_risk.pkl'))    # r_sq = 0.513
-xgb_acc = joblib.load(join('models','xgb_acc.pkl'))    # score = 0.815
-xgb_inc = joblib.load(join('models','xgb_inc.pkl'))    # score = 0.779
-Products = pd.read_excel(join('data','Needs.xls'), sheet_name="Products")
+lm_risk = joblib.load(MODELS_PATH / 'lm_risk.pkl')    # r_sq = 0.513
+xgb_acc = joblib.load(MODELS_PATH / 'xgb_acc.pkl')    # score = 0.815
+xgb_inc = joblib.load(MODELS_PATH / 'xgb_inc.pkl')    # score = 0.779
+Products = pd.read_excel(DATA_PATH / 'Needs.xls', sheet_name="Products")
 
 
 def scale():
