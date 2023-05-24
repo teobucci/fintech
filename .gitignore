@@ -11,3 +11,4 @@
 *.aux
 *.DS_Store
 notes/main.pdf
+.python-version
