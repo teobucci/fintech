@@ -34,7 +34,7 @@ The prototyping part is in the [`dev`](./project/dev/) folder while the Python p
 
 The web-app is currently unavailable, but can be locally started with
 
-```python
+```bash
 streamlit run project/app.py
 ```
 
