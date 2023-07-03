@@ -12,15 +12,25 @@ MODELS_PATH = PROJECT_ROOT / 'models'
 DATA_PATH = PROJECT_ROOT / 'data'
 
 # web interface
-st.title('Product suggestion by Clients\' Needs')
+st.title('Estimating Clients\' Needs')
 
 st.markdown("""
-Original repository: https://github.com/marcolucchini/Fintech-Project
+Original repository: https://github.com/teobucci/fintech/tree/master/project
 
 This web app helps you suggest the best product based on the client profile.
-It takes into account: **Age, Gender, Family Members, Financial Education, Income and Wealth**.
-**Risk** is predicted using a linear model. 
-**Accumulation** and **Income** need are predicted using a Bagging Classifier. 
+It takes into account:
+
+- Age
+- Gender
+- Family Members
+- Financial Education
+- Income and Wealth
+
+As for the outputs:
+
+- **Risk** is predicted using a linear model.
+- **Accumulation** and **Income** need are predicted using a Bagging Classifier.
+
 For more indormation about the models see `model_creator.py` in the `models` folder of this repository. 
 """)
 
