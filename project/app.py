@@ -1,11 +1,11 @@
-import pandas as pd
-from pyrsistent import inc
-import streamlit as st
-import numpy as np
+from pathlib import Path
+
 import joblib
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 import shap
-from pathlib import Path
+import streamlit as st
 
 PROJECT_ROOT = Path(__file__).parent
 MODELS_PATH = PROJECT_ROOT / 'models'

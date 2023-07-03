@@ -12,3 +12,4 @@
 *.DS_Store
 notes/main.pdf
 .python-version
+.vscode/settings.json
